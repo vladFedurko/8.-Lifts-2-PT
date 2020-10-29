@@ -24,6 +24,17 @@ namespace _8.Lifts_2__PT
             for (int i = 0; i < this.humanGenerationTable.ColumnCount; i++)
             {
                 System.Windows.Forms.NumericUpDown numericUpDown = new NumericUpDown();
+                numericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
+                numericUpDown.Name = "numericUpDown";
+                numericUpDown.Size = new System.Drawing.Size(146, 20);
+                if (i == 2 || i == 3)
+                {
+                    numericUpDown.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
+                    numericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+                    numericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
+                }
+                if(i==4)
+                numericUpDown.Maximum = new decimal(new int[] { 600, 0, 0, 0 });
                 ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
                 this.humanGenerationTable.Controls.Add(numericUpDown, i, this.humanGenerationTable.RowCount);
             }

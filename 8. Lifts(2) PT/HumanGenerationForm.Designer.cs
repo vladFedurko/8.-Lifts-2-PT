@@ -49,6 +49,7 @@
             // 
             // humanGenerationTable
             // 
+            this.humanGenerationTable.AutoScroll = true;
             this.humanGenerationTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.humanGenerationTable.ColumnCount = 4;
             this.humanGenerationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
