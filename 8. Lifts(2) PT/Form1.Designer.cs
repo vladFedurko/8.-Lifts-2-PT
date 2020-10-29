@@ -64,13 +64,16 @@
             // simulationTable
             // 
             this.simulationTable.AutoSize = true;
+            this.simulationTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.simulationTable.ColumnCount = 4;
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.simulationTable.Location = new System.Drawing.Point(135, 50);
+            this.simulationTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simulationTable.Location = new System.Drawing.Point(0, 30);
             this.simulationTable.Name = "simulationTable";
+            this.simulationTable.Padding = new System.Windows.Forms.Padding(135, 20, 50, 50);
             this.simulationTable.RowCount = 6;
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -78,7 +81,7 @@
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.simulationTable.Size = new System.Drawing.Size(748, 455);
+            this.simulationTable.Size = new System.Drawing.Size(932, 523);
             this.simulationTable.TabIndex = 0;
             this.simulationTable.Paint += new System.Windows.Forms.PaintEventHandler(this.SimulationTable_Paint);
             // 
@@ -176,7 +179,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(932, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(932, 30);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -189,38 +192,38 @@
             this.fireAlarmToolStripMenuItem,
             this.systemParametersToolStripMenuItem1});
             this.simulationToolStripMenuItem.Name = "simulationToolStripMenuItem";
-            this.simulationToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.simulationToolStripMenuItem.Size = new System.Drawing.Size(94, 26);
             this.simulationToolStripMenuItem.Text = "Simulation";
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.StartToolStripMenuItem_Click);
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.pauseToolStripMenuItem.Text = "Pause";
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.stopToolStripMenuItem.Text = "Stop";
             // 
             // fireAlarmToolStripMenuItem
             // 
             this.fireAlarmToolStripMenuItem.Name = "fireAlarmToolStripMenuItem";
-            this.fireAlarmToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.fireAlarmToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.fireAlarmToolStripMenuItem.Text = "Fire alarm";
             // 
             // systemParametersToolStripMenuItem1
             // 
             this.systemParametersToolStripMenuItem1.Name = "systemParametersToolStripMenuItem1";
-            this.systemParametersToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.systemParametersToolStripMenuItem1.Size = new System.Drawing.Size(218, 26);
             this.systemParametersToolStripMenuItem1.Text = "System parameters";
             // 
             // humanControllingToolStripMenuItem
@@ -230,25 +233,25 @@
             this.humanGenerationToolStripMenuItem,
             this.humanStatusToolStripMenuItem});
             this.humanControllingToolStripMenuItem.Name = "humanControllingToolStripMenuItem";
-            this.humanControllingToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
+            this.humanControllingToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.humanControllingToolStripMenuItem.Text = "Human controlling";
             // 
             // createHumanToolStripMenuItem
             // 
             this.createHumanToolStripMenuItem.Name = "createHumanToolStripMenuItem";
-            this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.createHumanToolStripMenuItem.Text = "Create human";
             // 
             // humanGenerationToolStripMenuItem
             // 
             this.humanGenerationToolStripMenuItem.Name = "humanGenerationToolStripMenuItem";
-            this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.humanGenerationToolStripMenuItem.Text = "Human generation";
             // 
             // humanStatusToolStripMenuItem
             // 
             this.humanStatusToolStripMenuItem.Name = "humanStatusToolStripMenuItem";
-            this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.humanStatusToolStripMenuItem.Text = "Human status";
             // 
             // configurationToolStripMenuItem
@@ -259,7 +262,7 @@
             this.statisticToolStripMenuItem,
             this.planFireAlarmToolStripMenuItem});
             this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(114, 26);
             this.configurationToolStripMenuItem.Text = "Configuration";
             // 
             // humanGenerationToolStripMenuItem1
@@ -319,13 +322,14 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 26);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // SimulationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(932, 553);
             this.Controls.Add(this.createHumanButton);
             this.Controls.Add(this.simulationSpeedLabel);
@@ -336,6 +340,7 @@
             this.Controls.Add(this.simulationTable);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "SimulationForm";
             this.Text = "SimuLifts";
             this.Load += new System.EventHandler(this.Form1_Load);
