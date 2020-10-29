@@ -106,11 +106,11 @@
             this.initial_floorLabel.TabIndex = 2;
             this.initial_floorLabel.Text = "Начальный этаж";
             this.initial_floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // addButton
             // 
             this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.addButton.Location = new System.Drawing.Point(362, 198);
+            this.addButton.Location = new System.Drawing.Point(335, 198);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(163, 28);
             this.addButton.TabIndex = 1;
@@ -150,7 +150,7 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.humanGenerationTable);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HumanGenerationForm";
             this.Text = "HumanGenerationForm";
             this.Deactivate += new System.EventHandler(this.HumanGenerationForm_Deactivate);
