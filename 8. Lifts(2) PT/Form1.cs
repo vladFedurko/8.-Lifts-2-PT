@@ -17,6 +17,7 @@ namespace _8.Lifts_2__PT
             Label label = new Label();
             label.Text = str;
             label.TextAlign = ContentAlignment.MiddleCenter;
+            //label.Dock = DockStyle.Fill;
             label.Anchor = AnchorStyles.Right | AnchorStyles.Left;
             return label;
         }
@@ -101,6 +102,11 @@ namespace _8.Lifts_2__PT
         {
             HumanGenerationForm form = new HumanGenerationForm();
             form.Show();
+        }
+
+        private void SimulationForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

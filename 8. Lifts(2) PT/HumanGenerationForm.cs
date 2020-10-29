@@ -21,6 +21,7 @@ namespace _8.Lifts_2__PT
         {
             //TO DO
             this.humanGenerationTable.RowCount++;
+
             for (int i = 0; i < this.humanGenerationTable.ColumnCount; i++)
             {
                 System.Windows.Forms.NumericUpDown numericUpDown = new NumericUpDown();

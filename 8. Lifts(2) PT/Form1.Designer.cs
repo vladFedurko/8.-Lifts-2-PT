@@ -63,7 +63,6 @@
             // 
             // simulationTable
             // 
-            this.simulationTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.simulationTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.simulationTable.ColumnCount = 4;
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
@@ -344,6 +343,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1243, 681);
             this.Controls.Add(this.createHumanButton);
             this.Controls.Add(this.simulationSpeedLabel);
@@ -358,6 +358,7 @@
             this.MinimumSize = new System.Drawing.Size(1261, 728);
             this.Name = "SimulationForm";
             this.Text = "SimuLifts";
+            this.Load += new System.EventHandler(this.SimulationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.speedSelecter)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
