@@ -65,21 +65,23 @@
             this.humanGenerationTable.Controls.Add(this.numericUpDown4, 3, 1);
             this.humanGenerationTable.Dock = System.Windows.Forms.DockStyle.Top;
             this.humanGenerationTable.Location = new System.Drawing.Point(0, 0);
+            this.humanGenerationTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.humanGenerationTable.Name = "humanGenerationTable";
-            this.humanGenerationTable.Padding = new System.Windows.Forms.Padding(10);
+            this.humanGenerationTable.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.humanGenerationTable.RowCount = 2;
-            this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.humanGenerationTable.Size = new System.Drawing.Size(635, 71);
+            this.humanGenerationTable.Size = new System.Drawing.Size(847, 87);
             this.humanGenerationTable.TabIndex = 0;
             // 
             // timeLabel
             // 
             this.timeLabel.AutoSize = true;
             this.timeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timeLabel.Location = new System.Drawing.Point(473, 11);
+            this.timeLabel.Location = new System.Drawing.Point(633, 13);
+            this.timeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(148, 19);
+            this.timeLabel.Size = new System.Drawing.Size(196, 23);
             this.timeLabel.TabIndex = 4;
             this.timeLabel.Text = "Через (секунд)";
             this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,9 +90,10 @@
             // 
             this.num_of_humansLabel.AutoSize = true;
             this.num_of_humansLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.num_of_humansLabel.Location = new System.Drawing.Point(14, 11);
+            this.num_of_humansLabel.Location = new System.Drawing.Point(18, 13);
+            this.num_of_humansLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.num_of_humansLabel.Name = "num_of_humansLabel";
-            this.num_of_humansLabel.Size = new System.Drawing.Size(146, 19);
+            this.num_of_humansLabel.Size = new System.Drawing.Size(196, 23);
             this.num_of_humansLabel.TabIndex = 1;
             this.num_of_humansLabel.Text = "Число создаваемых людей";
             this.num_of_humansLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,9 +102,10 @@
             // 
             this.finite_floorLabel.AutoSize = true;
             this.finite_floorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.finite_floorLabel.Location = new System.Drawing.Point(320, 11);
+            this.finite_floorLabel.Location = new System.Drawing.Point(428, 13);
+            this.finite_floorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.finite_floorLabel.Name = "finite_floorLabel";
-            this.finite_floorLabel.Size = new System.Drawing.Size(146, 19);
+            this.finite_floorLabel.Size = new System.Drawing.Size(196, 23);
             this.finite_floorLabel.TabIndex = 3;
             this.finite_floorLabel.Text = "Конечный этаж";
             this.finite_floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,9 +114,10 @@
             // 
             this.initial_floorLabel.AutoSize = true;
             this.initial_floorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.initial_floorLabel.Location = new System.Drawing.Point(167, 11);
+            this.initial_floorLabel.Location = new System.Drawing.Point(223, 13);
+            this.initial_floorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.initial_floorLabel.Name = "initial_floorLabel";
-            this.initial_floorLabel.Size = new System.Drawing.Size(146, 19);
+            this.initial_floorLabel.Size = new System.Drawing.Size(196, 23);
             this.initial_floorLabel.TabIndex = 2;
             this.initial_floorLabel.Text = "Начальный этаж";
             this.initial_floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -120,15 +125,17 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown1.Location = new System.Drawing.Point(14, 34);
+            this.numericUpDown1.Location = new System.Drawing.Point(18, 41);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(146, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(196, 22);
             this.numericUpDown1.TabIndex = 5;
             // 
             // numericUpDown2
             // 
             this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown2.Location = new System.Drawing.Point(167, 34);
+            this.numericUpDown2.Location = new System.Drawing.Point(223, 41);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             20,
             0,
@@ -140,7 +147,7 @@
             0,
             0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(146, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(196, 22);
             this.numericUpDown2.TabIndex = 6;
             this.numericUpDown2.Value = new decimal(new int[] {
             1,
@@ -151,7 +158,8 @@
             // numericUpDown3
             // 
             this.numericUpDown3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown3.Location = new System.Drawing.Point(320, 34);
+            this.numericUpDown3.Location = new System.Drawing.Point(428, 41);
+            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             20,
             0,
@@ -163,7 +171,7 @@
             0,
             0});
             this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(146, 20);
+            this.numericUpDown3.Size = new System.Drawing.Size(196, 22);
             this.numericUpDown3.TabIndex = 7;
             this.numericUpDown3.Value = new decimal(new int[] {
             1,
@@ -174,21 +182,23 @@
             // numericUpDown4
             // 
             this.numericUpDown4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown4.Location = new System.Drawing.Point(473, 34);
+            this.numericUpDown4.Location = new System.Drawing.Point(633, 41);
+            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             600,
             0,
             0,
             0});
             this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(148, 20);
+            this.numericUpDown4.Size = new System.Drawing.Size(196, 22);
             this.numericUpDown4.TabIndex = 8;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(120, 103);
+            this.addButton.Location = new System.Drawing.Point(160, 127);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(122, 23);
+            this.addButton.Size = new System.Drawing.Size(163, 28);
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Добавить правило...";
             this.addButton.UseVisualStyleBackColor = true;
@@ -196,9 +206,10 @@
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(279, 103);
+            this.saveButton.Location = new System.Drawing.Point(372, 127);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.Size = new System.Drawing.Size(100, 28);
             this.saveButton.TabIndex = 2;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -206,9 +217,10 @@
             // 
             // denyButton
             // 
-            this.denyButton.Location = new System.Drawing.Point(400, 102);
+            this.denyButton.Location = new System.Drawing.Point(533, 126);
+            this.denyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.denyButton.Name = "denyButton";
-            this.denyButton.Size = new System.Drawing.Size(75, 23);
+            this.denyButton.Size = new System.Drawing.Size(100, 28);
             this.denyButton.TabIndex = 3;
             this.denyButton.Text = "Отмена";
             this.denyButton.UseVisualStyleBackColor = true;
@@ -216,15 +228,17 @@
             // 
             // HumanGenerationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(635, 138);
+            this.ClientSize = new System.Drawing.Size(847, 170);
             this.Controls.Add(this.denyButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.humanGenerationTable);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HumanGenerationForm";
             this.Text = "HumanGenerationForm";
+            this.Load += new System.EventHandler(this.HumanGenerationForm_Load);
             this.humanGenerationTable.ResumeLayout(false);
             this.humanGenerationTable.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();

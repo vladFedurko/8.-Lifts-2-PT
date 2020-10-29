@@ -40,5 +40,10 @@ namespace _8.Lifts_2__PT
         {
             this.Close();
         }
+
+        private void HumanGenerationForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

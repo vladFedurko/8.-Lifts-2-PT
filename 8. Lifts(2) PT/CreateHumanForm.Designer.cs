@@ -28,164 +28,165 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateHumanForm));
+            this.initialFlootLabel = new System.Windows.Forms.Label();
+            this.finiteFloorLabel = new System.Windows.Forms.Label();
+            this.inSecondsLabel = new System.Windows.Forms.Label();
+            this.initialFloorSelector = new System.Windows.Forms.NumericUpDown();
+            this.finiteFloorSelector = new System.Windows.Forms.NumericUpDown();
+            this.inSecondsSelector = new System.Windows.Forms.NumericUpDown();
             this.saveButton = new System.Windows.Forms.Button();
-            this.denyButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            this.cancelButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.initialFloorSelector)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.finiteFloorSelector)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inSecondsSelector)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // initialFlootLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Начальный этаж";
+            this.initialFlootLabel.AutoSize = true;
+            this.initialFlootLabel.Location = new System.Drawing.Point(13, 10);
+            this.initialFlootLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.initialFlootLabel.Name = "initialFlootLabel";
+            this.initialFlootLabel.Size = new System.Drawing.Size(72, 17);
+            this.initialFlootLabel.TabIndex = 4;
+            this.initialFlootLabel.Text = "Initial floor";
             // 
-            // label2
+            // finiteFloorLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(277, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 5;
+            this.finiteFloorLabel.AutoSize = true;
+            this.finiteFloorLabel.Location = new System.Drawing.Point(195, 11);
+            this.finiteFloorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.finiteFloorLabel.Name = "finiteFloorLabel";
+            this.finiteFloorLabel.Size = new System.Drawing.Size(74, 17);
+            this.finiteFloorLabel.TabIndex = 6;
+            this.finiteFloorLabel.Text = "Finite floor";
             // 
-            // label3
+            // inSecondsLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(145, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Конечный этаж";
+            this.inSecondsLabel.AutoSize = true;
+            this.inSecondsLabel.Location = new System.Drawing.Point(374, 11);
+            this.inSecondsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.inSecondsLabel.Name = "inSecondsLabel";
+            this.inSecondsLabel.Size = new System.Drawing.Size(86, 17);
+            this.inSecondsLabel.TabIndex = 7;
+            this.inSecondsLabel.Text = "In (seconds)";
             // 
-            // label4
+            // initialFloorSelector
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(277, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Через (секунд)";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 25);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.initialFloorSelector.Location = new System.Drawing.Point(16, 31);
+            this.initialFloorSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.initialFloorSelector.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.initialFloorSelector.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 8;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.initialFloorSelector.Name = "initialFloorSelector";
+            this.initialFloorSelector.Size = new System.Drawing.Size(160, 22);
+            this.initialFloorSelector.TabIndex = 8;
+            this.initialFloorSelector.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDown2
+            // finiteFloorSelector
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(148, 25);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.finiteFloorSelector.Location = new System.Drawing.Point(197, 31);
+            this.finiteFloorSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.finiteFloorSelector.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
+            this.finiteFloorSelector.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 9;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.finiteFloorSelector.Name = "finiteFloorSelector";
+            this.finiteFloorSelector.Size = new System.Drawing.Size(160, 22);
+            this.finiteFloorSelector.TabIndex = 9;
+            this.finiteFloorSelector.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // numericUpDown4
+            // inSecondsSelector
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(283, 25);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.inSecondsSelector.Location = new System.Drawing.Point(377, 31);
+            this.inSecondsSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.inSecondsSelector.Maximum = new decimal(new int[] {
             600,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown4.TabIndex = 11;
+            this.inSecondsSelector.Name = "inSecondsSelector";
+            this.inSecondsSelector.Size = new System.Drawing.Size(160, 22);
+            this.inSecondsSelector.TabIndex = 11;
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(99, 57);
+            this.saveButton.Location = new System.Drawing.Point(132, 70);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(103, 23);
+            this.saveButton.Size = new System.Drawing.Size(137, 28);
             this.saveButton.TabIndex = 12;
-            this.saveButton.Text = "Сохранить";
+            this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // denyButton
+            // cancelButton
             // 
-            this.denyButton.Location = new System.Drawing.Point(234, 57);
-            this.denyButton.Name = "denyButton";
-            this.denyButton.Size = new System.Drawing.Size(92, 23);
-            this.denyButton.TabIndex = 13;
-            this.denyButton.Text = "Отмена";
-            this.denyButton.UseVisualStyleBackColor = true;
-            this.denyButton.Click += new System.EventHandler(this.denyButton_Click);
+            this.cancelButton.Location = new System.Drawing.Point(312, 70);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(123, 28);
+            this.cancelButton.TabIndex = 13;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // CreateHumanForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 92);
-            this.Controls.Add(this.denyButton);
+            this.ClientSize = new System.Drawing.Size(556, 113);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.inSecondsSelector);
+            this.Controls.Add(this.finiteFloorSelector);
+            this.Controls.Add(this.initialFloorSelector);
+            this.Controls.Add(this.inSecondsLabel);
+            this.Controls.Add(this.finiteFloorLabel);
+            this.Controls.Add(this.initialFlootLabel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CreateHumanForm";
-            this.Text = "Cоздать человека";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            this.Text = "Create human";
+            this.Load += new System.EventHandler(this.CreateHumanForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.initialFloorSelector)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.finiteFloorSelector)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inSecondsSelector)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.Label initialFlootLabel;
+        private System.Windows.Forms.Label finiteFloorLabel;
+        private System.Windows.Forms.Label inSecondsLabel;
+        private System.Windows.Forms.NumericUpDown initialFloorSelector;
+        private System.Windows.Forms.NumericUpDown finiteFloorSelector;
+        private System.Windows.Forms.NumericUpDown inSecondsSelector;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button denyButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }
