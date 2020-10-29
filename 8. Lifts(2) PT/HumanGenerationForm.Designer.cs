@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HumanGenerationForm));
             this.humanGenerationTable = new System.Windows.Forms.TableLayoutPanel();
             this.timeLabel = new System.Windows.Forms.Label();
             this.num_of_humansLabel = new System.Windows.Forms.Label();
@@ -235,6 +236,7 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.humanGenerationTable);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HumanGenerationForm";
             this.Text = "HumanGenerationForm";
