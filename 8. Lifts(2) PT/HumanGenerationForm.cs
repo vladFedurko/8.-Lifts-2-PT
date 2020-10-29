@@ -20,16 +20,19 @@ namespace _8.Lifts_2__PT
         private void AddButton_Click(object sender, EventArgs e)
         {
             //TO DO
-            this.humanGenerationTable.RowCount++;
-            //this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+           //this.humanGenerationTable.SuspendLayout();
+           // this.humanGenerationTable.RowCount++;
+           //this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             //this.humanGenerationTable.Padding = new Padding(0,0,0, this.humanGenerationTable.Padding.Bottom-24);
-            //this.humanGenerationTable.Size= new Size(this.humanGenerationTable.Size.Width, this.humanGenerationTable.Size.Height+24);
+            //this.humanGenerationTable.Size= new Size(this.humanGenerationTable.Size.Width, this.humanGenerationTable.Size.Height+30);
             for (int i = 0; i < this.humanGenerationTable.ColumnCount; i++)
             {
                 System.Windows.Forms.NumericUpDown numericUpDown = new NumericUpDown();
+
+                Console.WriteLine("" + i);
                 numericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-                numericUpDown.Name = "numericUpDown";
-                //numericUpDown.Size = new System.Drawing.Size(146, 20);
+               // numericUpDown.Name = "numericUpDown";
+                numericUpDown.Size = new System.Drawing.Size(146, 20);
                 if (i == 1 || i == 2)
                 {
                     numericUpDown.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
@@ -38,9 +41,12 @@ namespace _8.Lifts_2__PT
                 }
                 if (i == 3)
                     numericUpDown.Maximum = new decimal(new int[] { 600, 0, 0, 0 });
-                ((System.ComponentModel.ISupportInitialize)(numericUpDown)).BeginInit();
-                this.humanGenerationTable.Controls.Add(numericUpDown, i, this.humanGenerationTable.RowCount);
+                this.humanGenerationTable.Controls.Add(numericUpDown);
+                //((System.ComponentModel.ISupportInitialize)(numericUpDown)).BeginInit();
             }
+            this.humanGenerationTable.ResumeLayout(false);
+            this.humanGenerationTable.PerformLayout();
+
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
