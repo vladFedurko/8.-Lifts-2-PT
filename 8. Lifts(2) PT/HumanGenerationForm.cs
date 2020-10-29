@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace _8.Lifts_2__PT
 {
     public partial class HumanGenerationForm : Form
@@ -28,8 +27,6 @@ namespace _8.Lifts_2__PT
             for (int i = 0; i < this.humanGenerationTable.ColumnCount; i++)
             {
                 System.Windows.Forms.NumericUpDown numericUpDown = new NumericUpDown();
-
-                Console.WriteLine("" + i);
                 numericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
                // numericUpDown.Name = "numericUpDown";
                 numericUpDown.Size = new System.Drawing.Size(146, 20);
@@ -44,8 +41,8 @@ namespace _8.Lifts_2__PT
                 this.humanGenerationTable.Controls.Add(numericUpDown);
                 //((System.ComponentModel.ISupportInitialize)(numericUpDown)).BeginInit();
             }
-            this.humanGenerationTable.ResumeLayout(false);
-            this.humanGenerationTable.PerformLayout();
+            //this.humanGenerationTable.ResumeLayout(false);
+           // this.humanGenerationTable.PerformLayout();
 
         }
 

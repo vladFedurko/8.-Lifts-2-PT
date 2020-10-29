@@ -101,5 +101,16 @@ namespace _8.Lifts_2__PT
             HumanGenerationForm form = new HumanGenerationForm();
             form.Show();
         }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void systemParametersToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SystemParametersForm form = new SystemParametersForm();
+            form.Show();
+        }
     }
 }
