@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HumanGenerationForm));
             this.humanGenerationTable = new System.Windows.Forms.TableLayoutPanel();
             this.timeLabel = new System.Windows.Forms.Label();
             this.num_of_humansLabel = new System.Windows.Forms.Label();
@@ -65,7 +66,7 @@
             this.humanGenerationTable.Controls.Add(this.numericUpDown4, 3, 1);
             this.humanGenerationTable.Dock = System.Windows.Forms.DockStyle.Top;
             this.humanGenerationTable.Location = new System.Drawing.Point(0, 0);
-            this.humanGenerationTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.humanGenerationTable.Margin = new System.Windows.Forms.Padding(4);
             this.humanGenerationTable.Name = "humanGenerationTable";
             this.humanGenerationTable.Padding = new System.Windows.Forms.Padding(13, 12, 13, 12);
             this.humanGenerationTable.RowCount = 2;
@@ -126,7 +127,7 @@
             // 
             this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown1.Location = new System.Drawing.Point(18, 41);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(196, 22);
             this.numericUpDown1.TabIndex = 5;
@@ -135,7 +136,7 @@
             // 
             this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown2.Location = new System.Drawing.Point(223, 41);
-            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             20,
             0,
@@ -159,7 +160,7 @@
             // 
             this.numericUpDown3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown3.Location = new System.Drawing.Point(428, 41);
-            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown3.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             20,
             0,
@@ -183,7 +184,7 @@
             // 
             this.numericUpDown4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericUpDown4.Location = new System.Drawing.Point(633, 41);
-            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown4.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             600,
             0,
@@ -196,7 +197,7 @@
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(160, 127);
-            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(163, 28);
             this.addButton.TabIndex = 1;
@@ -207,7 +208,7 @@
             // saveButton
             // 
             this.saveButton.Location = new System.Drawing.Point(372, 127);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 28);
             this.saveButton.TabIndex = 2;
@@ -218,7 +219,7 @@
             // denyButton
             // 
             this.denyButton.Location = new System.Drawing.Point(533, 126);
-            this.denyButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.denyButton.Margin = new System.Windows.Forms.Padding(4);
             this.denyButton.Name = "denyButton";
             this.denyButton.Size = new System.Drawing.Size(100, 28);
             this.denyButton.TabIndex = 3;
@@ -235,7 +236,8 @@
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.humanGenerationTable);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HumanGenerationForm";
             this.Text = "HumanGenerationForm";
             this.Deactivate += new System.EventHandler(this.HumanGenerationForm_Deactivate);
