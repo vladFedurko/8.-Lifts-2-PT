@@ -53,7 +53,7 @@ namespace _8.Lifts_2__PT
 
         }
 
-        private void DenyButton_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }

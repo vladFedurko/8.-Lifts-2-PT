@@ -16,5 +16,16 @@ namespace _8.Lifts_2__PT
         {
             InitializeComponent();
         }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            //TO DO
+            this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
