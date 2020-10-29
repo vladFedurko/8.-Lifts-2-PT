@@ -379,7 +379,6 @@
             this.MinimumSize = new System.Drawing.Size(1261, 728);
             this.Name = "SimulationForm";
             this.Text = "SimuLifts";
-            this.Load += new System.EventHandler(this.SimulationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.speedSelecter)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
