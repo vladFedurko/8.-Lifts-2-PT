@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HumanGenerationForm));
             this.humanGenerationTable = new System.Windows.Forms.TableLayoutPanel();
             this.timeLabel = new System.Windows.Forms.Label();
             this.num_of_humansLabel = new System.Windows.Forms.Label();
@@ -105,13 +106,13 @@
             this.initial_floorLabel.TabIndex = 2;
             this.initial_floorLabel.Text = "Начальный этаж";
             this.initial_floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            //
             // addButton
             // 
             this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.addButton.Location = new System.Drawing.Point(362, 198);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(122, 23);
+            this.addButton.Size = new System.Drawing.Size(163, 28);
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Добавить правило...";
             this.addButton.UseVisualStyleBackColor = true;
@@ -122,7 +123,7 @@
             this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.saveButton.Location = new System.Drawing.Point(521, 198);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.Size = new System.Drawing.Size(100, 28);
             this.saveButton.TabIndex = 2;
             this.saveButton.Text = "Сохранить";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -133,7 +134,7 @@
             this.denyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.denyButton.Location = new System.Drawing.Point(642, 197);
             this.denyButton.Name = "denyButton";
-            this.denyButton.Size = new System.Drawing.Size(75, 23);
+            this.denyButton.Size = new System.Drawing.Size(100, 28);
             this.denyButton.TabIndex = 3;
             this.denyButton.Text = "Отмена";
             this.denyButton.UseVisualStyleBackColor = true;
@@ -141,15 +142,19 @@
             // 
             // HumanGenerationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 233);
             this.Controls.Add(this.denyButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.humanGenerationTable);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HumanGenerationForm";
             this.Text = "HumanGenerationForm";
+            this.Deactivate += new System.EventHandler(this.HumanGenerationForm_Deactivate);
+            this.Load += new System.EventHandler(this.HumanGenerationForm_Load);
             this.humanGenerationTable.ResumeLayout(false);
             this.humanGenerationTable.PerformLayout();
             this.ResumeLayout(false);

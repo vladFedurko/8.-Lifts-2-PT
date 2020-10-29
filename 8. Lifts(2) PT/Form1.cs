@@ -9,18 +9,22 @@ namespace _8.Lifts_2__PT
         public SimulationForm()
         {
             InitializeComponent();
+            InitSimulationTable();
         }
+
         private Label CreateTableLabel(string str)
         {
             Label label = new Label();
             label.Text = str;
             label.TextAlign = ContentAlignment.MiddleCenter;
-            label.Dock = DockStyle.Fill;
+            //label.Dock = DockStyle.Fill;
+            label.Anchor = AnchorStyles.Right | AnchorStyles.Left;
             return label;
         }
-        private void Form1_Load(object sender, EventArgs e)
+
+        private void InitSimulationTable()
         {
-            for (int j = 1; j < this.simulationTable.RowCount; j++)
+            for(int j = 1; j < this.simulationTable.RowCount; j++)
                 this.simulationTable.Controls.Add(CreateTableLabel(j.ToString()), 0, this.simulationTable.RowCount - j);
             this.simulationTable.Controls.Add(CreateTableLabel("Floor"), 0, 0);
             this.simulationTable.Controls.Add(CreateTableLabel("People on floors"), 1, 0);
@@ -29,8 +33,6 @@ namespace _8.Lifts_2__PT
             for (int i = 1; i < this.simulationTable.RowCount; i++)
                 for (int j = 1; j < this.simulationTable.ColumnCount; j++)
                     this.simulationTable.Controls.Add(CreateTableLabel("0"), j, i);
-            fireAlarmButton.BackColor = Color.IndianRed;
-            pauseToolStripMenuItem.Enabled = false;
         }
 
         private void StartButton_Click(object sender, EventArgs e)
@@ -65,10 +67,10 @@ namespace _8.Lifts_2__PT
 
         private void CreateHumanButton_Click(object sender, EventArgs e)
         {
-            // TO DO
-            CreateHumanForm form = new CreateHumanForm();
-            form.Show();
+            CreateHumanForm createHumanForm = new CreateHumanForm();
+            createHumanForm.Show();
         }
+
 
         private void FireAlarmButton_Click(object sender, EventArgs e)
         {
@@ -100,6 +102,11 @@ namespace _8.Lifts_2__PT
         {
             HumanGenerationForm form = new HumanGenerationForm();
             form.Show();
+        }
+
+        private void SimulationForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

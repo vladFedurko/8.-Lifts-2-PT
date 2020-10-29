@@ -22,9 +22,19 @@ namespace _8.Lifts_2__PT
             this.Close();
         }
 
-        private void denyButton_Click(object sender, EventArgs e)
+        private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CreateHumanForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateHumanForm_Deactivate(object sender, EventArgs e)
+        {
+            this.Activate();
         }
     }
 }
