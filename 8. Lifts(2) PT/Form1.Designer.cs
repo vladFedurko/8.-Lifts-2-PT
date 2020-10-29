@@ -70,9 +70,10 @@
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.simulationTable.Location = new System.Drawing.Point(101, 41);
+            this.simulationTable.Location = new System.Drawing.Point(0, 30);
             this.simulationTable.Margin = new System.Windows.Forms.Padding(2);
             this.simulationTable.Name = "simulationTable";
+            this.simulationTable.Padding = new System.Windows.Forms.Padding(135, 20, 50, 50);
             this.simulationTable.RowCount = 6;
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -80,7 +81,7 @@
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.simulationTable.Size = new System.Drawing.Size(561, 370);
+            this.simulationTable.Size = new System.Drawing.Size(932, 523);
             this.simulationTable.TabIndex = 0;
             this.simulationTable.Paint += new System.Windows.Forms.PaintEventHandler(this.SimulationTable_Paint);
             // 
@@ -341,7 +342,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 449);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(932, 553);
             this.Controls.Add(this.createHumanButton);
             this.Controls.Add(this.simulationSpeedLabel);
             this.Controls.Add(this.speedSelecter);
@@ -351,7 +353,7 @@
             this.Controls.Add(this.simulationTable);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "SimulationForm";
             this.Text = "SimuLifts";
             this.Load += new System.EventHandler(this.Form1_Load);
