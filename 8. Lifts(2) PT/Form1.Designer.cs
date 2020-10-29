@@ -70,7 +70,7 @@
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.simulationTable.Location = new System.Drawing.Point(101, 41);
+            this.simulationTable.Location = new System.Drawing.Point(0, 30);
             this.simulationTable.Margin = new System.Windows.Forms.Padding(2);
             this.simulationTable.Name = "simulationTable";
             this.simulationTable.Padding = new System.Windows.Forms.Padding(135, 20, 50, 50);
