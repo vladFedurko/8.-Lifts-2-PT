@@ -16,5 +16,29 @@ namespace _8.Lifts_2__PT
         {
             InitializeComponent();
         }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            //TO DO
+            this.humanGenerationTable.RowCount++;
+            for (int i = 0; i < this.humanGenerationTable.ColumnCount; i++)
+            {
+                System.Windows.Forms.NumericUpDown numericUpDown = new NumericUpDown();
+                ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+                this.humanGenerationTable.Controls.Add(numericUpDown, i, this.humanGenerationTable.RowCount);
+            }
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            //TO DO
+            this.Close();
+
+        }
+
+        private void DenyButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -95,5 +95,11 @@ namespace _8.Lifts_2__PT
         {
 
         }
+
+        private void humanGenerationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HumanGenerationForm form = new HumanGenerationForm();
+            form.Show();
+        }
     }
 }
