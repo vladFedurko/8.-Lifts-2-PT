@@ -33,22 +33,23 @@
             this.num_of_humansLabel = new System.Windows.Forms.Label();
             this.finite_floorLabel = new System.Windows.Forms.Label();
             this.initial_floorLabel = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
             this.addButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.denyButton = new System.Windows.Forms.Button();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.humanGenerationTable.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             this.SuspendLayout();
             // 
             // humanGenerationTable
             // 
+            this.humanGenerationTable.AutoScroll = true;
             this.humanGenerationTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.humanGenerationTable.ColumnCount = 4;
             this.humanGenerationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -63,13 +64,14 @@
             this.humanGenerationTable.Controls.Add(this.numericUpDown2, 1, 1);
             this.humanGenerationTable.Controls.Add(this.numericUpDown3, 2, 1);
             this.humanGenerationTable.Controls.Add(this.numericUpDown4, 3, 1);
-            this.humanGenerationTable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.humanGenerationTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.humanGenerationTable.Location = new System.Drawing.Point(0, 0);
             this.humanGenerationTable.Name = "humanGenerationTable";
+            this.humanGenerationTable.Padding = new System.Windows.Forms.Padding(0, 0, 0, 208);
             this.humanGenerationTable.RowCount = 2;
             this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.humanGenerationTable.Size = new System.Drawing.Size(805, 48);
+            this.humanGenerationTable.Size = new System.Drawing.Size(805, 256);
             this.humanGenerationTable.TabIndex = 0;
             // 
             // timeLabel
@@ -116,6 +118,73 @@
             this.initial_floorLabel.Text = "Начальный этаж";
             this.initial_floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDown1.Location = new System.Drawing.Point(4, 25);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(194, 20);
+            this.numericUpDown1.TabIndex = 5;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDown2.Location = new System.Drawing.Point(205, 25);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(194, 20);
+            this.numericUpDown2.TabIndex = 6;
+            this.numericUpDown2.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown3
+            // 
+            this.numericUpDown3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDown3.Location = new System.Drawing.Point(406, 25);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Name = "numericUpDown3";
+            this.numericUpDown3.Size = new System.Drawing.Size(194, 20);
+            this.numericUpDown3.TabIndex = 7;
+            this.numericUpDown3.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // numericUpDown4
+            // 
+            this.numericUpDown4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericUpDown4.Location = new System.Drawing.Point(607, 25);
+            this.numericUpDown4.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.numericUpDown4.Name = "numericUpDown4";
+            this.numericUpDown4.Size = new System.Drawing.Size(194, 20);
+            this.numericUpDown4.TabIndex = 8;
+            // 
             // addButton
             // 
             this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -149,73 +218,6 @@
             this.denyButton.UseVisualStyleBackColor = true;
             this.denyButton.Click += new System.EventHandler(this.DenyButton_Click);
             // 
-            // numericUpDown4
-            // 
-            this.numericUpDown4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown4.Location = new System.Drawing.Point(607, 25);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
-            600,
-            0,
-            0,
-            0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(194, 20);
-            this.numericUpDown4.TabIndex = 8;
-            // 
-            // numericUpDown3
-            // 
-            this.numericUpDown3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown3.Location = new System.Drawing.Point(406, 25);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(194, 20);
-            this.numericUpDown3.TabIndex = 7;
-            this.numericUpDown3.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown2.Location = new System.Drawing.Point(205, 25);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(194, 20);
-            this.numericUpDown2.TabIndex = 6;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericUpDown1.Location = new System.Drawing.Point(4, 25);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(194, 20);
-            this.numericUpDown1.TabIndex = 5;
-            // 
             // HumanGenerationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,10 +231,10 @@
             this.Text = "HumanGenerationForm";
             this.humanGenerationTable.ResumeLayout(false);
             this.humanGenerationTable.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -20,9 +20,10 @@ namespace _8.Lifts_2__PT
         private void AddButton_Click(object sender, EventArgs e)
         {
             //TO DO
-            //this.humanGenerationTable.RowCount++;
-            this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.humanGenerationTable.Size= new Size(this.humanGenerationTable.Size.Width, this.humanGenerationTable.Size.Height+24);
+            this.humanGenerationTable.RowCount++;
+            //this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            //this.humanGenerationTable.Padding = new Padding(0,0,0, this.humanGenerationTable.Padding.Bottom-24);
+            //this.humanGenerationTable.Size= new Size(this.humanGenerationTable.Size.Width, this.humanGenerationTable.Size.Height+24);
             for (int i = 0; i < this.humanGenerationTable.ColumnCount; i++)
             {
                 System.Windows.Forms.NumericUpDown numericUpDown = new NumericUpDown();
@@ -35,9 +36,9 @@ namespace _8.Lifts_2__PT
                     numericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
                     numericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
                 }
-                if(i==4)
-                numericUpDown.Maximum = new decimal(new int[] { 600, 0, 0, 0 });
-                ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+                if (i == 3)
+                    numericUpDown.Maximum = new decimal(new int[] { 600, 0, 0, 0 });
+                ((System.ComponentModel.ISupportInitialize)(numericUpDown)).BeginInit();
                 this.humanGenerationTable.Controls.Add(numericUpDown, i, this.humanGenerationTable.RowCount);
             }
         }
@@ -53,6 +54,5 @@ namespace _8.Lifts_2__PT
         {
             this.Close();
         }
-
     }
 }
