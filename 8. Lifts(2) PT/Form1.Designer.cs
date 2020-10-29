@@ -57,8 +57,11 @@
             this.planFireAlarmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.speedSelecter)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // simulationTable
@@ -78,10 +81,10 @@
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.81482F));
-            this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.18518F));
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.simulationTable.Size = new System.Drawing.Size(1243, 653);
+            this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.simulationTable.Size = new System.Drawing.Size(1109, 654);
             this.simulationTable.TabIndex = 0;
             this.simulationTable.Paint += new System.Windows.Forms.PaintEventHandler(this.SimulationTable_Paint);
             // 
@@ -191,7 +194,7 @@
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.StartButton_Click);
             // 
@@ -199,29 +202,30 @@
             // 
             this.pauseToolStripMenuItem.Enabled = false;
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // fireAlarmToolStripMenuItem
             // 
             this.fireAlarmToolStripMenuItem.Name = "fireAlarmToolStripMenuItem";
-            this.fireAlarmToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.fireAlarmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fireAlarmToolStripMenuItem.Text = "Fire alarm";
             this.fireAlarmToolStripMenuItem.Click += new System.EventHandler(this.FireAlarmButton_Click);
             // 
             // systemParametersToolStripMenuItem1
             // 
             this.systemParametersToolStripMenuItem1.Name = "systemParametersToolStripMenuItem1";
-            this.systemParametersToolStripMenuItem1.Size = new System.Drawing.Size(218, 26);
+            this.systemParametersToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.systemParametersToolStripMenuItem1.Text = "System parameters";
+            this.systemParametersToolStripMenuItem1.Click += new System.EventHandler(this.systemParametersToolStripMenuItem1_Click);
             // 
             // humanControllingToolStripMenuItem
             // 
@@ -236,21 +240,21 @@
             // createHumanToolStripMenuItem
             // 
             this.createHumanToolStripMenuItem.Name = "createHumanToolStripMenuItem";
-            this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.createHumanToolStripMenuItem.Text = "Create human";
             this.createHumanToolStripMenuItem.Click += new System.EventHandler(this.CreateHumanButton_Click);
             // 
             // humanGenerationToolStripMenuItem
             // 
             this.humanGenerationToolStripMenuItem.Name = "humanGenerationToolStripMenuItem";
-            this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.humanGenerationToolStripMenuItem.Text = "Human generation";
             this.humanGenerationToolStripMenuItem.Click += new System.EventHandler(this.humanGenerationToolStripMenuItem_Click);
             // 
             // humanStatusToolStripMenuItem
             // 
             this.humanStatusToolStripMenuItem.Name = "humanStatusToolStripMenuItem";
-            this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.humanStatusToolStripMenuItem.Text = "Human status";
             // 
             // configurationToolStripMenuItem
@@ -335,17 +339,34 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1243, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1109, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 656);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1109, 22);
+            this.statusStrip1.TabIndex = 8;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel1.Text = "Status";
             // 
             // SimulationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1243, 681);
+            this.ClientSize = new System.Drawing.Size(1109, 678);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.createHumanButton);
             this.Controls.Add(this.simulationSpeedLabel);
             this.Controls.Add(this.speedSelecter);
@@ -362,6 +383,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.speedSelecter)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,6 +420,8 @@
         private System.Windows.Forms.ToolStripMenuItem planFireAlarmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

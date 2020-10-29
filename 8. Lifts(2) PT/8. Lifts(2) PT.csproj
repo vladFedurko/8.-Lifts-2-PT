@@ -72,15 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CreateHumanForm.asa-TZ.resx">
-      <DependentUpon>CreateHumanForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreateHumanForm.en-US.resx">
-      <DependentUpon>CreateHumanForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreateHumanForm.ja-JP.resx">
-      <DependentUpon>CreateHumanForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="SystemParametersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemParametersForm.Designer.cs">
+      <DependentUpon>SystemParametersForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CreateHumanForm.resx">
       <DependentUpon>CreateHumanForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +99,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SystemParametersForm.resx">
+      <DependentUpon>SystemParametersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
