@@ -104,9 +104,10 @@ namespace _8.Lifts_2__PT
             form.Show();
         }
 
-        private void SimulationForm_Load(object sender, EventArgs e)
+        private void PlanFireAlarmToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            PlanFireAlarmForm form = new PlanFireAlarmForm();
+            form.Show();
         }
     }
 }
