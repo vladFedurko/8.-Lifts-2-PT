@@ -190,35 +190,35 @@
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // fireAlarmToolStripMenuItem
             // 
             this.fireAlarmToolStripMenuItem.Name = "fireAlarmToolStripMenuItem";
-            this.fireAlarmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fireAlarmToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.fireAlarmToolStripMenuItem.Text = "Fire alarm";
             this.fireAlarmToolStripMenuItem.Click += new System.EventHandler(this.FireAlarmButton_Click);
             // 
             // systemParametersToolStripMenuItem1
             // 
             this.systemParametersToolStripMenuItem1.Name = "systemParametersToolStripMenuItem1";
-            this.systemParametersToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.systemParametersToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
             this.systemParametersToolStripMenuItem1.Text = "System parameters";
             // 
             // humanControllingToolStripMenuItem
@@ -236,6 +236,7 @@
             this.createHumanToolStripMenuItem.Name = "createHumanToolStripMenuItem";
             this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createHumanToolStripMenuItem.Text = "Create human";
+            this.createHumanToolStripMenuItem.Click += new System.EventHandler(this.CreateHumanButton_Click);
             // 
             // humanGenerationToolStripMenuItem
             // 
@@ -272,13 +273,13 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // liftConifurationsToolStripMenuItem

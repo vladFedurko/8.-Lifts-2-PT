@@ -46,14 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateHumanForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateHumanForm.Designer.cs">
+      <DependentUpon>CreateHumanForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HumanGenerationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HumanGenerationForm.Designer.cs">
+      <DependentUpon>HumanGenerationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreateHumanForm.resx">
+      <DependentUpon>CreateHumanForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

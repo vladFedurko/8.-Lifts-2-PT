@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace _8.Lifts_2__PT
@@ -56,7 +49,7 @@ namespace _8.Lifts_2__PT
                 pauseToolStripMenuItem.Enabled = false;
                 startToolStripMenuItem.Enabled = true;
             }
-            
+
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -73,6 +66,8 @@ namespace _8.Lifts_2__PT
         private void CreateHumanButton_Click(object sender, EventArgs e)
         {
             // TO DO
+            CreateHumanForm form = new CreateHumanForm();
+            form.Show();
         }
 
         private void FireAlarmButton_Click(object sender, EventArgs e)
@@ -100,6 +95,5 @@ namespace _8.Lifts_2__PT
         {
 
         }
-
     }
 }
