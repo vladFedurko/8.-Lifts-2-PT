@@ -104,6 +104,12 @@ namespace _8.Lifts_2__PT
             form.Show();
         }
         
+        private void PlanFireAlarmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlanFireAlarmForm form = new PlanFireAlarmForm();
+            form.Show();
+        }
+        
         private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 

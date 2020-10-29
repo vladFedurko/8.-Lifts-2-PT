@@ -19,6 +19,7 @@ namespace _8.Lifts_2__PT
         private void AddButton_Click(object sender, EventArgs e)
         {
             //TO DO
+
            //this.humanGenerationTable.SuspendLayout();
            // this.humanGenerationTable.RowCount++;
            //this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));

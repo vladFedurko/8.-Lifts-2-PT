@@ -120,6 +120,7 @@
             // 
             // saveButton
             // 
+
             this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.saveButton.Location = new System.Drawing.Point(521, 198);
             this.saveButton.Name = "saveButton";
@@ -131,6 +132,7 @@
             // 
             // cancelButton
             // 
+
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cancelButton.Location = new System.Drawing.Point(642, 197);
             this.cancelButton.Name = "cancelButton";
