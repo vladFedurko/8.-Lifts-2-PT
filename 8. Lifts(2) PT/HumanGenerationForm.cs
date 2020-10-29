@@ -45,5 +45,10 @@ namespace _8.Lifts_2__PT
         {
 
         }
+
+        private void HumanGenerationForm_Deactivate(object sender, EventArgs e)
+        {
+            this.Activate();
+        }
     }
 }

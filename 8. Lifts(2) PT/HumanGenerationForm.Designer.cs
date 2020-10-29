@@ -238,6 +238,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HumanGenerationForm";
             this.Text = "HumanGenerationForm";
+            this.Deactivate += new System.EventHandler(this.HumanGenerationForm_Deactivate);
             this.Load += new System.EventHandler(this.HumanGenerationForm_Load);
             this.humanGenerationTable.ResumeLayout(false);
             this.humanGenerationTable.PerformLayout();

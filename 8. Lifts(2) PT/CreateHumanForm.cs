@@ -31,5 +31,10 @@ namespace _8.Lifts_2__PT
         {
 
         }
+
+        private void CreateHumanForm_Deactivate(object sender, EventArgs e)
+        {
+            this.Activate();
+        }
     }
 }

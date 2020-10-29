@@ -63,16 +63,16 @@
             // 
             // simulationTable
             // 
-            this.simulationTable.AutoSize = true;
+            this.simulationTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.simulationTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.simulationTable.ColumnCount = 4;
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.simulationTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.simulationTable.Location = new System.Drawing.Point(0, 28);
-            this.simulationTable.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.simulationTable.Margin = new System.Windows.Forms.Padding(0);
             this.simulationTable.Name = "simulationTable";
             this.simulationTable.Padding = new System.Windows.Forms.Padding(130, 20, 50, 50);
             this.simulationTable.RowCount = 6;
@@ -113,6 +113,7 @@
             // 
             // fireAlarmButton
             // 
+            this.fireAlarmButton.BackColor = System.Drawing.Color.IndianRed;
             this.fireAlarmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fireAlarmButton.Location = new System.Drawing.Point(13, 458);
             this.fireAlarmButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -120,7 +121,7 @@
             this.fireAlarmButton.Size = new System.Drawing.Size(101, 48);
             this.fireAlarmButton.TabIndex = 3;
             this.fireAlarmButton.Text = "Fire alarm";
-            this.fireAlarmButton.UseVisualStyleBackColor = true;
+            this.fireAlarmButton.UseVisualStyleBackColor = false;
             this.fireAlarmButton.Click += new System.EventHandler(this.FireAlarmButton_Click);
             // 
             // speedSelecter
@@ -197,6 +198,7 @@
             // 
             // pauseToolStripMenuItem
             // 
+            this.pauseToolStripMenuItem.Enabled = false;
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
             this.pauseToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
             this.pauseToolStripMenuItem.Text = "Pause";
@@ -235,21 +237,21 @@
             // createHumanToolStripMenuItem
             // 
             this.createHumanToolStripMenuItem.Name = "createHumanToolStripMenuItem";
-            this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.createHumanToolStripMenuItem.Text = "Create human";
             this.createHumanToolStripMenuItem.Click += new System.EventHandler(this.CreateHumanButton_Click);
             // 
             // humanGenerationToolStripMenuItem
             // 
             this.humanGenerationToolStripMenuItem.Name = "humanGenerationToolStripMenuItem";
-            this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.humanGenerationToolStripMenuItem.Text = "Human generation";
             this.humanGenerationToolStripMenuItem.Click += new System.EventHandler(this.humanGenerationToolStripMenuItem_Click);
             // 
             // humanStatusToolStripMenuItem
             // 
             this.humanStatusToolStripMenuItem.Name = "humanStatusToolStripMenuItem";
-            this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.humanStatusToolStripMenuItem.Text = "Human status";
             // 
             // configurationToolStripMenuItem
@@ -342,7 +344,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1243, 681);
             this.Controls.Add(this.createHumanButton);
             this.Controls.Add(this.simulationSpeedLabel);
@@ -353,11 +354,10 @@
             this.Controls.Add(this.simulationTable);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1261, 728);
             this.Name = "SimulationForm";
             this.Text = "SimuLifts";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.speedSelecter)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
