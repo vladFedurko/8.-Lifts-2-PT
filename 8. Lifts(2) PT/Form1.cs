@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,30 +17,78 @@ namespace _8.Lifts_2__PT
         {
             InitializeComponent();
         }
-
+        private Label CreateTableLabel(string str)
+        {
+            Label label = new Label();
+            label.Text = str;
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Dock = DockStyle.Fill;
+            return label;
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            for (int j = 1; j < this.simulationTable.RowCount; j++)
+                this.simulationTable.Controls.Add(CreateTableLabel(j.ToString()), 0, this.simulationTable.RowCount - j);
+            this.simulationTable.Controls.Add(CreateTableLabel("Floor"), 0, 0);
+            this.simulationTable.Controls.Add(CreateTableLabel("People on floors"), 1, 0);
+            for (int j = 2; j < this.simulationTable.ColumnCount; j++)
+                this.simulationTable.Controls.Add(CreateTableLabel("Lift " + (j - 1)), j, 0);
+            for (int i = 1; i < this.simulationTable.RowCount; i++)
+                for (int j = 1; j < this.simulationTable.ColumnCount; j++)
+                    this.simulationTable.Controls.Add(CreateTableLabel("0"), j, i);
+            fireAlarmButton.BackColor = Color.IndianRed;
+            pauseToolStripMenuItem.Enabled = false;
         }
 
         private void StartButton_Click(object sender, EventArgs e)
         {
-
+            if (startButton.Text.Equals("Start"))
+            {
+                // TO DO
+                startButton.Text = "Pause";
+                pauseToolStripMenuItem.Enabled = true;
+                startToolStripMenuItem.Enabled = false;
+            }
+            else if (startButton.Text.Equals("Pause"))
+            {
+                // TO DO
+                startButton.Text = "Start";
+                pauseToolStripMenuItem.Enabled = false;
+                startToolStripMenuItem.Enabled = true;
+            }
+            
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-
+            if (startButton.Text.Equals("Pause"))
+            {
+                // TO DO
+                startButton.Text = "Start";
+                pauseToolStripMenuItem.Enabled = false;
+                startToolStripMenuItem.Enabled = true;
+            }
         }
 
         private void CreateHumanButton_Click(object sender, EventArgs e)
         {
-
+            // TO DO
         }
 
         private void FireAlarmButton_Click(object sender, EventArgs e)
         {
-
+            if (fireAlarmButton.Text.Equals("Fire alarm"))
+            {
+                // TO DO
+                fireAlarmButton.Text = "Stop alarm";
+                fireAlarmButton.BackColor = Color.DarkOrange;
+            }
+            else if (fireAlarmButton.Text.Equals("Stop alarm"))
+            {
+                // TO DO
+                fireAlarmButton.Text = "Fire alarm";
+                fireAlarmButton.BackColor = Color.IndianRed;
+            }
         }
 
         private void SpeedSelecter_ValueChanged(object sender, EventArgs e)
@@ -47,14 +96,10 @@ namespace _8.Lifts_2__PT
 
         }
 
-        private void StartToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void SimulationTable_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
     }
 }
