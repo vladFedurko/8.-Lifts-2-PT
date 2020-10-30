@@ -86,7 +86,6 @@
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.simulationTable.Size = new System.Drawing.Size(1109, 654);
             this.simulationTable.TabIndex = 0;
-            this.simulationTable.Paint += new System.Windows.Forms.PaintEventHandler(this.SimulationTable_Paint);
             // 
             // startButton
             // 
@@ -249,7 +248,7 @@
             this.humanGenerationToolStripMenuItem.Name = "humanGenerationToolStripMenuItem";
             this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.humanGenerationToolStripMenuItem.Text = "Human generation";
-            this.humanGenerationToolStripMenuItem.Click += new System.EventHandler(this.humanGenerationToolStripMenuItem_Click);
+            this.humanGenerationToolStripMenuItem.Click += new System.EventHandler(this.HumanGenerationToolStripMenuItem_Click);
             // 
             // humanStatusToolStripMenuItem
             // 
@@ -328,6 +327,7 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
