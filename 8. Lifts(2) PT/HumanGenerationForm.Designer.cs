@@ -37,13 +37,17 @@
             this.addButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.humanGenerationTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // humanGenerationTable
             // 
-            this.humanGenerationTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.humanGenerationTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.humanGenerationTable.AutoScroll = true;
+            this.humanGenerationTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.humanGenerationTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.humanGenerationTable.ColumnCount = 4;
             this.humanGenerationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -55,7 +59,7 @@
             this.humanGenerationTable.Controls.Add(this.finite_floorLabel, 2, 0);
             this.humanGenerationTable.Controls.Add(this.initial_floorLabel, 1, 0);
             this.humanGenerationTable.Location = new System.Drawing.Point(9, 10);
-            this.humanGenerationTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.humanGenerationTable.Margin = new System.Windows.Forms.Padding(2);
             this.humanGenerationTable.Name = "humanGenerationTable";
             this.humanGenerationTable.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.humanGenerationTable.RowCount = 2;
@@ -115,10 +119,10 @@
             // addButton
             // 
             this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.addButton.Location = new System.Drawing.Point(251, 161);
-            this.addButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addButton.Location = new System.Drawing.Point(255, 161);
+            this.addButton.Margin = new System.Windows.Forms.Padding(2);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(122, 23);
+            this.addButton.Size = new System.Drawing.Size(73, 23);
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Add rule...";
             this.addButton.UseVisualStyleBackColor = true;
@@ -126,10 +130,10 @@
             // 
             // saveButton
             // 
-
             this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.saveButton.Location = new System.Drawing.Point(391, 161);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+
+            this.saveButton.Location = new System.Drawing.Point(461, 161);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 2;
@@ -140,19 +144,32 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cancelButton.Location = new System.Drawing.Point(642, 197);
+            this.cancelButton.Location = new System.Drawing.Point(560, 161);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.Size = new System.Drawing.Size(56, 23);
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.deleteButton.Location = new System.Drawing.Point(353, 161);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 4;
+            this.deleteButton.Text = "Delete rule...";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
             // HumanGenerationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1119, 233);
+            this.ClientSize = new System.Drawing.Size(839, 189);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
@@ -178,5 +195,6 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
