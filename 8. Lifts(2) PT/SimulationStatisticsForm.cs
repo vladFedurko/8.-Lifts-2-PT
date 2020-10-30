@@ -16,5 +16,10 @@ namespace _8.Lifts_2__PT
         {
             InitializeComponent();
         }
+
+        private void CancelStatisticsButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
