@@ -70,6 +70,12 @@
     <Compile Include="HumanGenerationForm.Designer.cs">
       <DependentUpon>HumanGenerationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HumanStatusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HumanStatusForm.Designer.cs">
+      <DependentUpon>HumanStatusForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlanFireAlarmForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HumanGenerationForm.resx">
       <DependentUpon>HumanGenerationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HumanStatusForm.resx">
+      <DependentUpon>HumanStatusForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanFireAlarmForm.resx">
       <DependentUpon>PlanFireAlarmForm.cs</DependentUpon>
