@@ -312,9 +312,12 @@
             // 
             // statisticToolStripMenuItem
             // 
+            this.statisticToolStripMenuItem.Enabled = false;
             this.statisticToolStripMenuItem.Name = "statisticToolStripMenuItem";
-            this.statisticToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.statisticToolStripMenuItem.Text = "Export statistics";
+            this.statisticToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.statisticToolStripMenuItem.Text = "Show statistics";
+            this.statisticToolStripMenuItem.Click += new System.EventHandler(this.StatisticToolStripMenuItem_Click);
+
             // 
             // planFireAlarmToolStripMenuItem
             // 

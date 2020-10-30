@@ -51,7 +51,7 @@ namespace _8.Lifts_2__PT
                 pauseToolStripMenuItem.Enabled = false;
                 startToolStripMenuItem.Enabled = true;
             }
-
+            statisticToolStripMenuItem.Enabled = false;
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -63,6 +63,8 @@ namespace _8.Lifts_2__PT
                 pauseToolStripMenuItem.Enabled = false;
                 startToolStripMenuItem.Enabled = true;
             }
+            statisticToolStripMenuItem.Enabled = true;
+            StatisticToolStripMenuItem_Click(sender, e);
         }
 
         private void CreateHumanButton_Click(object sender, EventArgs e)
@@ -118,6 +120,12 @@ namespace _8.Lifts_2__PT
         private void systemParametersToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             SystemParametersForm form = new SystemParametersForm();
+            form.Show();
+        }
+
+        private void StatisticToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SimulationStatisticsForm form = new SimulationStatisticsForm();
             form.Show();
         }
 

@@ -84,6 +84,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimulationStatisticsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SimulationStatisticsForm.Designer.cs">
+      <DependentUpon>SimulationStatisticsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SystemParametersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SimulationStatisticsForm.resx">
+      <DependentUpon>SimulationStatisticsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SystemParametersForm.resx">
       <DependentUpon>SystemParametersForm.cs</DependentUpon>
     </EmbeddedResource>
