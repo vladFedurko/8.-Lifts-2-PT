@@ -36,7 +36,7 @@
             this.initial_floorLabel = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.denyButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.humanGenerationTable.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +73,7 @@
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Size = new System.Drawing.Size(198, 20);
             this.timeLabel.TabIndex = 4;
-            this.timeLabel.Text = "Через (секунд)";
+            this.timeLabel.Text = "In (seconds)";
             this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // num_of_humansLabel
@@ -85,7 +85,7 @@
             this.num_of_humansLabel.Name = "num_of_humansLabel";
             this.num_of_humansLabel.Size = new System.Drawing.Size(198, 20);
             this.num_of_humansLabel.TabIndex = 1;
-            this.num_of_humansLabel.Text = "Число создаваемых людей";
+            this.num_of_humansLabel.Text = "Number of generated people";
             this.num_of_humansLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // finite_floorLabel
@@ -97,7 +97,7 @@
             this.finite_floorLabel.Name = "finite_floorLabel";
             this.finite_floorLabel.Size = new System.Drawing.Size(198, 20);
             this.finite_floorLabel.TabIndex = 3;
-            this.finite_floorLabel.Text = "Конечный этаж";
+            this.finite_floorLabel.Text = "Finite floor";
             this.finite_floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // initial_floorLabel
@@ -109,7 +109,7 @@
             this.initial_floorLabel.Name = "initial_floorLabel";
             this.initial_floorLabel.Size = new System.Drawing.Size(198, 20);
             this.initial_floorLabel.TabIndex = 2;
-            this.initial_floorLabel.Text = "Начальный этаж";
+            this.initial_floorLabel.Text = "Initial floor";
             this.initial_floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // addButton
@@ -120,40 +120,40 @@
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(122, 23);
             this.addButton.TabIndex = 1;
-            this.addButton.Text = "Добавить правило...";
+            this.addButton.Text = "Add rule...";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // saveButton
             // 
+
             this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.saveButton.Location = new System.Drawing.Point(391, 161);
             this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
             this.saveButton.TabIndex = 2;
-            this.saveButton.Text = "Сохранить";
+            this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // denyButton
+            // cancelButton
             // 
-            this.denyButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.denyButton.Location = new System.Drawing.Point(482, 160);
-            this.denyButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.denyButton.Name = "denyButton";
-            this.denyButton.Size = new System.Drawing.Size(75, 23);
-            this.denyButton.TabIndex = 3;
-            this.denyButton.Text = "Отмена";
-            this.denyButton.UseVisualStyleBackColor = true;
-            this.denyButton.Click += new System.EventHandler(this.DenyButton_Click);
+            this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.cancelButton.Location = new System.Drawing.Point(642, 197);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 3;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // HumanGenerationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 189);
-            this.Controls.Add(this.denyButton);
+            this.ClientSize = new System.Drawing.Size(1119, 233);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.humanGenerationTable);
@@ -177,6 +177,6 @@
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Button denyButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }
