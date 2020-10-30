@@ -83,7 +83,6 @@
             this.simulationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.simulationTable.Size = new System.Drawing.Size(932, 523);
             this.simulationTable.TabIndex = 0;
-            this.simulationTable.Paint += new System.Windows.Forms.PaintEventHandler(this.SimulationTable_Paint);
             // 
             // startButton
             // 
@@ -191,35 +190,35 @@
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.StartButton_Click);
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // fireAlarmToolStripMenuItem
             // 
             this.fireAlarmToolStripMenuItem.Name = "fireAlarmToolStripMenuItem";
-            this.fireAlarmToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fireAlarmToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.fireAlarmToolStripMenuItem.Text = "Fire alarm";
             this.fireAlarmToolStripMenuItem.Click += new System.EventHandler(this.FireAlarmButton_Click);
             // 
             // systemParametersToolStripMenuItem1
             // 
             this.systemParametersToolStripMenuItem1.Name = "systemParametersToolStripMenuItem1";
-            this.systemParametersToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.systemParametersToolStripMenuItem1.Size = new System.Drawing.Size(174, 22);
             this.systemParametersToolStripMenuItem1.Text = "System parameters";
             // 
             // humanControllingToolStripMenuItem
@@ -235,21 +234,21 @@
             // createHumanToolStripMenuItem
             // 
             this.createHumanToolStripMenuItem.Name = "createHumanToolStripMenuItem";
-            this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.createHumanToolStripMenuItem.Text = "Create human";
             this.createHumanToolStripMenuItem.Click += new System.EventHandler(this.CreateHumanButton_Click);
             // 
             // humanGenerationToolStripMenuItem
             // 
             this.humanGenerationToolStripMenuItem.Name = "humanGenerationToolStripMenuItem";
-            this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.humanGenerationToolStripMenuItem.Text = "Human generation";
-            this.humanGenerationToolStripMenuItem.Click += new System.EventHandler(this.humanGenerationToolStripMenuItem_Click);
+            this.humanGenerationToolStripMenuItem.Click += new System.EventHandler(this.HumanGenerationToolStripMenuItem_Click);
             // 
             // humanStatusToolStripMenuItem
             // 
             this.humanStatusToolStripMenuItem.Name = "humanStatusToolStripMenuItem";
-            this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.humanStatusToolStripMenuItem.Text = "Human status";
             // 
             // configurationToolStripMenuItem
@@ -322,6 +321,7 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -334,7 +334,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(699, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(934, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -343,7 +343,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(932, 553);
+            this.ClientSize = new System.Drawing.Size(934, 561);
             this.Controls.Add(this.createHumanButton);
             this.Controls.Add(this.simulationSpeedLabel);
             this.Controls.Add(this.speedSelecter);

@@ -90,15 +90,15 @@ namespace _8.Lifts_2__PT
         {
 
         }
-
-        private void SimulationTable_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void humanGenerationToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HumanGenerationToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HumanGenerationForm form = new HumanGenerationForm();
+            form.Show();
+        }
+
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpForm form = new HelpForm();
             form.Show();
         }
     }
