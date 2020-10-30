@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HumanStatusForm));
             this.floorRadioButton = new System.Windows.Forms.RadioButton();
             this.statusGroupBox = new System.Windows.Forms.GroupBox();
+            this.chooseFloorOfLiftLabel = new System.Windows.Forms.Label();
             this.chooseFloorOrLiftSelecter = new System.Windows.Forms.NumericUpDown();
             this.liftRadioButton = new System.Windows.Forms.RadioButton();
-            this.chooseFloorOfLiftLabel = new System.Windows.Forms.Label();
             this.statusTable = new System.Windows.Forms.TableLayoutPanel();
             this.numberLabel = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
@@ -67,6 +67,15 @@
             this.statusGroupBox.TabIndex = 1;
             this.statusGroupBox.TabStop = false;
             this.statusGroupBox.Text = "Choose floor or lift";
+            // 
+            // chooseFloorOfLiftLabel
+            // 
+            this.chooseFloorOfLiftLabel.AutoSize = true;
+            this.chooseFloorOfLiftLabel.Location = new System.Drawing.Point(125, 34);
+            this.chooseFloorOfLiftLabel.Name = "chooseFloorOfLiftLabel";
+            this.chooseFloorOfLiftLabel.Size = new System.Drawing.Size(168, 20);
+            this.chooseFloorOfLiftLabel.TabIndex = 3;
+            this.chooseFloorOfLiftLabel.Text = "Number of floor or lift";
             // 
             // chooseFloorOrLiftSelecter
             // 
@@ -104,20 +113,11 @@
             this.liftRadioButton.Text = "LIft";
             this.liftRadioButton.UseVisualStyleBackColor = true;
             // 
-            // chooseFloorOfLiftLabel
-            // 
-            this.chooseFloorOfLiftLabel.AutoSize = true;
-            this.chooseFloorOfLiftLabel.Location = new System.Drawing.Point(125, 34);
-            this.chooseFloorOfLiftLabel.Name = "chooseFloorOfLiftLabel";
-            this.chooseFloorOfLiftLabel.Size = new System.Drawing.Size(168, 20);
-            this.chooseFloorOfLiftLabel.TabIndex = 3;
-            this.chooseFloorOfLiftLabel.Text = "Number of floor or lift";
-            // 
             // statusTable
             // 
             this.statusTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.statusTable.ColumnCount = 2;
-            this.statusTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.statusTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.statusTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.statusTable.Controls.Add(this.numberLabel, 0, 0);
             this.statusTable.Controls.Add(this.statusLabel, 1, 0);
@@ -133,20 +133,20 @@
             this.numberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.numberLabel.AutoSize = true;
             this.numberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numberLabel.Location = new System.Drawing.Point(4, 11);
+            this.numberLabel.Location = new System.Drawing.Point(4, 1);
             this.numberLabel.Name = "numberLabel";
-            this.numberLabel.Size = new System.Drawing.Size(34, 20);
+            this.numberLabel.Size = new System.Drawing.Size(84, 40);
             this.numberLabel.TabIndex = 0;
-            this.numberLabel.Text = "№";
+            this.numberLabel.Text = "Number of people";
             this.numberLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // statusLabel
             // 
             this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(45, 12);
+            this.statusLabel.Location = new System.Drawing.Point(95, 12);
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(264, 17);
+            this.statusLabel.Size = new System.Drawing.Size(214, 17);
             this.statusLabel.TabIndex = 1;
             this.statusLabel.Text = "Status";
             this.statusLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
