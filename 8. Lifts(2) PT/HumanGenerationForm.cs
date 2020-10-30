@@ -11,24 +11,27 @@ namespace _8.Lifts_2__PT
 {
     public partial class HumanGenerationForm : Form
     {
+        public int Row { get; set; }
         public HumanGenerationForm()
         {
             InitializeComponent();
+            Row = 0;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
+            Row++;
             //TO DO
-           //this.humanGenerationTable.SuspendLayout();
-           // this.humanGenerationTable.RowCount++;
-           //this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            //this.humanGenerationTable.SuspendLayout();
+            // this.humanGenerationTable.RowCount++;
+            //this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             //this.humanGenerationTable.Padding = new Padding(0,0,0, this.humanGenerationTable.Padding.Bottom-24);
             //this.humanGenerationTable.Size= new Size(this.humanGenerationTable.Size.Width, this.humanGenerationTable.Size.Height+30);
             for (int i = 0; i < this.humanGenerationTable.ColumnCount; i++)
             {
                 System.Windows.Forms.NumericUpDown numericUpDown = new NumericUpDown();
                 numericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-               // numericUpDown.Name = "numericUpDown";
+                // numericUpDown.Name = "numericUpDown";
                 numericUpDown.Size = new System.Drawing.Size(146, 20);
                 if (i == 1 || i == 2)
                 {
@@ -42,7 +45,7 @@ namespace _8.Lifts_2__PT
                 //((System.ComponentModel.ISupportInitialize)(numericUpDown)).BeginInit();
             }
             //this.humanGenerationTable.ResumeLayout(false);
-           // this.humanGenerationTable.PerformLayout();
+            // this.humanGenerationTable.PerformLayout();
 
         }
 
@@ -66,6 +69,14 @@ namespace _8.Lifts_2__PT
         private void HumanGenerationForm_Deactivate(object sender, EventArgs e)
         {
             this.Activate();
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (Row == 0) return;
+            for (int i = this.humanGenerationTable.ColumnCount - 1; i >= 0; i--)
+                this.humanGenerationTable.Controls.Remove(this.humanGenerationTable.GetControlFromPosition(i, Row));
+            Row--;
         }
     }
 }
