@@ -128,5 +128,11 @@ namespace _8.Lifts_2__PT
             SimulationStatisticsForm form = new SimulationStatisticsForm();
             form.Show();
         }
+
+        private void HumanStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HumanStatusForm form = new HumanStatusForm();
+            form.Show();
+        }
     }
 }

@@ -255,6 +255,7 @@
             this.humanStatusToolStripMenuItem.Name = "humanStatusToolStripMenuItem";
             this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.humanStatusToolStripMenuItem.Text = "Human status";
+            this.humanStatusToolStripMenuItem.Click += new System.EventHandler(this.HumanStatusToolStripMenuItem_Click);
             // 
             // configurationToolStripMenuItem
             // 
@@ -273,7 +274,7 @@
             this.saveToolStripMenuItem,
             this.loadToolStripMenuItem});
             this.humanGenerationToolStripMenuItem1.Name = "humanGenerationToolStripMenuItem1";
-            this.humanGenerationToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.humanGenerationToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.humanGenerationToolStripMenuItem1.Text = "Human generation";
             // 
             // saveToolStripMenuItem
@@ -294,7 +295,7 @@
             this.saveToolStripMenuItem1,
             this.loadToolStripMenuItem1});
             this.liftConifurationsToolStripMenuItem.Name = "liftConifurationsToolStripMenuItem";
-            this.liftConifurationsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.liftConifurationsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.liftConifurationsToolStripMenuItem.Text = "Lift conifurations";
             // 
             // saveToolStripMenuItem1
@@ -316,11 +317,12 @@
             this.statisticToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.statisticToolStripMenuItem.Text = "Show statistics";
             this.statisticToolStripMenuItem.Click += new System.EventHandler(this.StatisticToolStripMenuItem_Click);
+
             // 
             // planFireAlarmToolStripMenuItem
             // 
             this.planFireAlarmToolStripMenuItem.Name = "planFireAlarmToolStripMenuItem";
-            this.planFireAlarmToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.planFireAlarmToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.planFireAlarmToolStripMenuItem.Text = "Plan fire alarm";
             this.planFireAlarmToolStripMenuItem.Click += new System.EventHandler(this.PlanFireAlarmToolStripMenuItem_Click);
             // 
