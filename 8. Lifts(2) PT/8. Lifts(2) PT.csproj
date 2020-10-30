@@ -72,6 +72,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CreateHumanForm.asa-TZ.resx">
+      <DependentUpon>CreateHumanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateHumanForm.en-US.resx">
+      <DependentUpon>CreateHumanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateHumanForm.ja-JP.resx">
+      <DependentUpon>CreateHumanForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateHumanForm.resx">
       <DependentUpon>CreateHumanForm.cs</DependentUpon>
     </EmbeddedResource>
