@@ -178,7 +178,6 @@
             this.Name = "HumanGenerationForm";
             this.Text = "HumanGenerationForm";
             this.Deactivate += new System.EventHandler(this.HumanGenerationForm_Deactivate);
-            this.Load += new System.EventHandler(this.HumanGenerationForm_Load);
             this.humanGenerationTable.ResumeLayout(false);
             this.humanGenerationTable.PerformLayout();
             this.ResumeLayout(false);
