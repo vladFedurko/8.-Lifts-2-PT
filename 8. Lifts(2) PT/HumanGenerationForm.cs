@@ -21,8 +21,25 @@ namespace _8.Lifts_2__PT
             humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             humanGenerationDataGridView.AllowUserToAddRows = false;
             humanGenerationDataGridView.AllowUserToResizeRows = false;
+            humanGenerationDataGridView.EditingControlShowing += HumanGenerationDataGridView_EditingControlShowing;
         }
 
+        private void HumanGenerationDataGridView_EditingControlShowing1(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void HumanGenerationDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+
+            TextBox tb = (TextBox)e.Control;
+            tb.KeyPress += new KeyPressEventHandler(this.tb_KeyPress);
+        }
+
+        void tb_KeyPress(Object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back))
+                e.Handled = true;
+        }
         private void InitTable()
         {
             dTable = new DataTable();
