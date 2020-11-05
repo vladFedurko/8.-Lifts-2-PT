@@ -47,6 +47,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.humanGenerationTable.AutoScroll = true;
+            this.humanGenerationTable.AutoSize = true;
             this.humanGenerationTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.humanGenerationTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.humanGenerationTable.ColumnCount = 4;
@@ -65,7 +66,7 @@
             this.humanGenerationTable.RowCount = 2;
             this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.humanGenerationTable.Size = new System.Drawing.Size(821, 145);
+            this.humanGenerationTable.Size = new System.Drawing.Size(821, 48);
             this.humanGenerationTable.TabIndex = 0;
             // 
             // timeLabel
@@ -131,7 +132,6 @@
             // saveButton
             // 
             this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-
             this.saveButton.Location = new System.Drawing.Point(461, 161);
             this.saveButton.Margin = new System.Windows.Forms.Padding(2);
             this.saveButton.Name = "saveButton";
@@ -181,6 +181,7 @@
             this.humanGenerationTable.ResumeLayout(false);
             this.humanGenerationTable.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
