@@ -11,17 +11,35 @@ namespace _8.Lifts_2__PT
 {
     public partial class HumanGenerationForm : Form
     {
-        public int Row { get; set; }
+        DataTable dTable;
+
         public HumanGenerationForm()
         {
             InitializeComponent();
-            Row = 0;
+            InitTable();
+            humanGenerationDataGridView.DataSource = dTable;
+            humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            humanGenerationDataGridView.AllowUserToAddRows = false;
+            humanGenerationDataGridView.AllowUserToResizeRows = false;
+        }
+
+        private void InitTable()
+        {
+            dTable = new DataTable();
+            DataColumn numberOfGeneratedPeopleolumn = new DataColumn("Number of genetared humans", Type.GetType("System.Int32"));
+            DataColumn initialFloorColumn = new DataColumn("Initial floor", Type.GetType("System.Int32"));
+            DataColumn finiteFloorColumn = new DataColumn("Finite floor", Type.GetType("System.Int32"));
+            DataColumn inSecondsColumn = new DataColumn("In (seconds)", Type.GetType("System.Int32"));
+            dTable.Columns.AddRange(new DataColumn[] {numberOfGeneratedPeopleolumn,
+                initialFloorColumn,
+                finiteFloorColumn,
+                inSecondsColumn});
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            
-
+            DataRow row = dTable.NewRow();
+            dTable.Rows.Add(row);
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -42,7 +60,10 @@ namespace _8.Lifts_2__PT
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            
+            foreach (DataGridViewRow row in humanGenerationDataGridView.SelectedRows)
+            {
+                humanGenerationDataGridView.Rows.Remove(row);
+            }
         }
     }
 }
