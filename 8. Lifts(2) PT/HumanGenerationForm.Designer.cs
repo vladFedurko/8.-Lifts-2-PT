@@ -32,11 +32,7 @@
             this.addButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-
             this.deleteButton = new System.Windows.Forms.Button();
-            this.humanGenerationTable.SuspendLayout();
-            this.SuspendLayout();
-            
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.numberOfGeneratedPeopleolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.initialFloorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +44,7 @@
             // addButton
             // 
             this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.addButton.Location = new System.Drawing.Point(178, 198);
+            this.addButton.Location = new System.Drawing.Point(84, 198);
             this.addButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(163, 28);
@@ -60,11 +56,7 @@
             // saveButton
             // 
             this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-
-            this.saveButton.Location = new System.Drawing.Point(461, 161);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
-
-            this.saveButton.Location = new System.Drawing.Point(364, 198);
+            this.saveButton.Location = new System.Drawing.Point(450, 198);
             this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(100, 28);
@@ -76,9 +68,7 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cancelButton.Location = new System.Drawing.Point(560, 161);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
-            this.cancelButton.Location = new System.Drawing.Point(491, 198);
+            this.cancelButton.Location = new System.Drawing.Point(591, 198);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 28);
@@ -90,14 +80,14 @@
             // deleteButton
             // 
             this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.deleteButton.Location = new System.Drawing.Point(353, 161);
+            this.deleteButton.Location = new System.Drawing.Point(285, 198);
             this.deleteButton.Name = "deleteButton";
-            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.Size = new System.Drawing.Size(123, 28);
             this.deleteButton.TabIndex = 4;
             this.deleteButton.Text = "Delete rule...";
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            //
+            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -141,7 +131,6 @@
             this.inSecondsColumn.HeaderText = "In (seconds)";
             this.inSecondsColumn.MinimumWidth = 6;
             this.inSecondsColumn.Name = "inSecondsColumn";
-
             // 
             // HumanGenerationForm
             // 
@@ -152,8 +141,9 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
+            this.Controls.Add(this.deleteButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "HumanGenerationForm";
             this.Text = "HumanGenerationForm";
             this.Deactivate += new System.EventHandler(this.HumanGenerationForm_Deactivate);
