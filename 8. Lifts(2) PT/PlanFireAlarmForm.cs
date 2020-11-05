@@ -11,17 +11,39 @@ using System.Windows.Forms;
 namespace _8.Lifts_2__PT
 {
     public partial class PlanFireAlarmForm : Form
-    {
-        public int Row { get; set; }
+    { 
+        DataTable dataTable;
         public PlanFireAlarmForm()
         {
             InitializeComponent();
-            Row = 0;
+            dataTable = new DataTable();
+            DataColumn startColumn = new DataColumn("Start at(seconds)",Type.GetType("System.Int32"));
+            DataColumn finiteColumn = new DataColumn("Finite at(seconds)", Type.GetType("System.Int32"));
+            dataTable.Columns.Add(startColumn);
+            dataTable.Columns.Add(finiteColumn);
+            firePlanDataGridView.DataSource = dataTable;
+            firePlanDataGridView.AllowUserToAddRows = false;
+            firePlanDataGridView.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
+            firePlanDataGridView.EditingControlShowing += FirePlanDataGridView_EditingControlShowing;
         }
+
+        private void FirePlanDataGridView_EditingControlShowing(Object  sender, DataGridViewEditingControlShowingEventArgs  e)
+        {
+
+            TextBox  tb = (TextBox)e.Control;
+            tb.KeyPress += new KeyPressEventHandler(this.tb_KeyPress);
+        }
+
+        void tb_KeyPress(Object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back))
+                e.Handled = true;
+        }
+
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            Row++;
+            /*Row++;
             //TO DO
             //this.humanGenerationTable.SuspendLayout();
             // this.humanGenerationTable.RowCount++;
@@ -40,7 +62,9 @@ namespace _8.Lifts_2__PT
             }
             //this.humanGenerationTable.ResumeLayout(false);
             // this.humanGenerationTable.PerformLayout();
-
+            */
+            DataRow row = dataTable.NewRow();
+            dataTable.Rows.Add(row);
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
@@ -61,10 +85,15 @@ namespace _8.Lifts_2__PT
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (Row == 0) return;
+            /*if (Row == 0) return;
             for (int i = this.planFireAlarmTable.ColumnCount - 1; i >= 0; i--)
                 this.planFireAlarmTable.Controls.Remove(this.planFireAlarmTable.GetControlFromPosition(i, Row));
-            Row--;
+            Row--;*/
+            //dt.Rows.RemoveAt(dt.Rows.Count);
+            foreach (DataGridViewRow row in firePlanDataGridView.SelectedRows)
+            {
+                firePlanDataGridView.Rows.Remove(row);
+            }
         }
     }
 }
