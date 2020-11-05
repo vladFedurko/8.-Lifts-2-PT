@@ -32,6 +32,11 @@
             this.addButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.humanGenerationTable.SuspendLayout();
+            this.SuspendLayout();
+            
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.numberOfGeneratedPeopleolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.initialFloorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +60,10 @@
             // saveButton
             // 
             this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+
+            this.saveButton.Location = new System.Drawing.Point(461, 161);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(2);
+
             this.saveButton.Location = new System.Drawing.Point(364, 198);
             this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveButton.Name = "saveButton";
@@ -67,6 +76,8 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.cancelButton.Location = new System.Drawing.Point(560, 161);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(2);
             this.cancelButton.Location = new System.Drawing.Point(491, 198);
             this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelButton.Name = "cancelButton";
@@ -76,6 +87,17 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.deleteButton.Location = new System.Drawing.Point(353, 161);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 4;
+            this.deleteButton.Text = "Delete rule...";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            //
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -119,6 +141,7 @@
             this.inSecondsColumn.HeaderText = "In (seconds)";
             this.inSecondsColumn.MinimumWidth = 6;
             this.inSecondsColumn.Name = "inSecondsColumn";
+
             // 
             // HumanGenerationForm
             // 
@@ -143,6 +166,7 @@
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button deleteButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn numberOfGeneratedPeopleolumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn initialFloorColumn;
