@@ -24,10 +24,6 @@ namespace _8.Lifts_2__PT
             humanGenerationDataGridView.EditingControlShowing += HumanGenerationDataGridView_EditingControlShowing;
         }
 
-        private void HumanGenerationDataGridView_EditingControlShowing1(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
         private void HumanGenerationDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
 
