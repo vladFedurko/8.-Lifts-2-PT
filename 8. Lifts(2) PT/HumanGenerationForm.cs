@@ -60,6 +60,7 @@ namespace _8.Lifts_2__PT
         {
             this.Close();
         }
+
         private void HumanGenerationForm_Deactivate(object sender, EventArgs e)
         {
             this.Activate();
