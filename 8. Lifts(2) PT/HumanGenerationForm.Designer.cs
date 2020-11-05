@@ -29,96 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HumanGenerationForm));
-            this.humanGenerationTable = new System.Windows.Forms.TableLayoutPanel();
-            this.timeLabel = new System.Windows.Forms.Label();
-            this.num_of_humansLabel = new System.Windows.Forms.Label();
-            this.finite_floorLabel = new System.Windows.Forms.Label();
-            this.initial_floorLabel = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.humanGenerationTable.SuspendLayout();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.numberOfGeneratedPeopleolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.initialFloorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.finiteFloorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inSecondsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // humanGenerationTable
-            // 
-            this.humanGenerationTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.humanGenerationTable.AutoScroll = true;
-            this.humanGenerationTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.humanGenerationTable.ColumnCount = 4;
-            this.humanGenerationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.humanGenerationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.humanGenerationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.humanGenerationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.humanGenerationTable.Controls.Add(this.timeLabel, 3, 0);
-            this.humanGenerationTable.Controls.Add(this.num_of_humansLabel, 0, 0);
-            this.humanGenerationTable.Controls.Add(this.finite_floorLabel, 2, 0);
-            this.humanGenerationTable.Controls.Add(this.initial_floorLabel, 1, 0);
-            this.humanGenerationTable.Location = new System.Drawing.Point(9, 10);
-            this.humanGenerationTable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.humanGenerationTable.Name = "humanGenerationTable";
-            this.humanGenerationTable.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.humanGenerationTable.RowCount = 2;
-            this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.humanGenerationTable.Size = new System.Drawing.Size(821, 145);
-            this.humanGenerationTable.TabIndex = 0;
-            // 
-            // timeLabel
-            // 
-            this.timeLabel.AutoSize = true;
-            this.timeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timeLabel.Location = new System.Drawing.Point(612, 1);
-            this.timeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(198, 20);
-            this.timeLabel.TabIndex = 4;
-            this.timeLabel.Text = "In (seconds)";
-            this.timeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // num_of_humansLabel
-            // 
-            this.num_of_humansLabel.AutoSize = true;
-            this.num_of_humansLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.num_of_humansLabel.Location = new System.Drawing.Point(3, 1);
-            this.num_of_humansLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.num_of_humansLabel.Name = "num_of_humansLabel";
-            this.num_of_humansLabel.Size = new System.Drawing.Size(198, 20);
-            this.num_of_humansLabel.TabIndex = 1;
-            this.num_of_humansLabel.Text = "Number of generated people";
-            this.num_of_humansLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // finite_floorLabel
-            // 
-            this.finite_floorLabel.AutoSize = true;
-            this.finite_floorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.finite_floorLabel.Location = new System.Drawing.Point(409, 1);
-            this.finite_floorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.finite_floorLabel.Name = "finite_floorLabel";
-            this.finite_floorLabel.Size = new System.Drawing.Size(198, 20);
-            this.finite_floorLabel.TabIndex = 3;
-            this.finite_floorLabel.Text = "Finite floor";
-            this.finite_floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // initial_floorLabel
-            // 
-            this.initial_floorLabel.AutoSize = true;
-            this.initial_floorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.initial_floorLabel.Location = new System.Drawing.Point(206, 1);
-            this.initial_floorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.initial_floorLabel.Name = "initial_floorLabel";
-            this.initial_floorLabel.Size = new System.Drawing.Size(198, 20);
-            this.initial_floorLabel.TabIndex = 2;
-            this.initial_floorLabel.Text = "Initial floor";
-            this.initial_floorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // addButton
             // 
             this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.addButton.Location = new System.Drawing.Point(251, 161);
-            this.addButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addButton.Location = new System.Drawing.Point(178, 198);
+            this.addButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(122, 23);
+            this.addButton.Size = new System.Drawing.Size(163, 28);
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Add rule...";
             this.addButton.UseVisualStyleBackColor = true;
@@ -127,10 +55,10 @@
             // saveButton
             // 
             this.saveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.saveButton.Location = new System.Drawing.Point(391, 161);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saveButton.Location = new System.Drawing.Point(364, 198);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.Size = new System.Drawing.Size(100, 28);
             this.saveButton.TabIndex = 2;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -139,44 +67,86 @@
             // cancelButton
             // 
             this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cancelButton.Location = new System.Drawing.Point(486, 161);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cancelButton.Location = new System.Drawing.Point(491, 198);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(56, 23);
+            this.cancelButton.Size = new System.Drawing.Size(75, 28);
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numberOfGeneratedPeopleolumn,
+            this.initialFloorColumn,
+            this.finiteFloorColumn,
+            this.inSecondsColumn});
+            this.dataGridView1.Location = new System.Drawing.Point(13, 13);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(780, 150);
+            this.dataGridView1.TabIndex = 4;
+            // 
+            // numberOfGeneratedPeopleolumn
+            // 
+            this.numberOfGeneratedPeopleolumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.numberOfGeneratedPeopleolumn.HeaderText = "Number of generated people";
+            this.numberOfGeneratedPeopleolumn.MinimumWidth = 6;
+            this.numberOfGeneratedPeopleolumn.Name = "numberOfGeneratedPeopleolumn";
+            this.numberOfGeneratedPeopleolumn.ReadOnly = true;
+            // 
+            // initialFloorColumn
+            // 
+            this.initialFloorColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.initialFloorColumn.HeaderText = "Initial floor";
+            this.initialFloorColumn.MinimumWidth = 6;
+            this.initialFloorColumn.Name = "initialFloorColumn";
+            // 
+            // finiteFloorColumn
+            // 
+            this.finiteFloorColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.finiteFloorColumn.HeaderText = "Finite floor";
+            this.finiteFloorColumn.MinimumWidth = 6;
+            this.finiteFloorColumn.Name = "finiteFloorColumn";
+            // 
+            // inSecondsColumn
+            // 
+            this.inSecondsColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.inSecondsColumn.HeaderText = "In (seconds)";
+            this.inSecondsColumn.MinimumWidth = 6;
+            this.inSecondsColumn.Name = "inSecondsColumn";
+            // 
             // HumanGenerationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(839, 189);
+            this.ClientSize = new System.Drawing.Size(805, 233);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.humanGenerationTable);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "HumanGenerationForm";
             this.Text = "HumanGenerationForm";
             this.Deactivate += new System.EventHandler(this.HumanGenerationForm_Deactivate);
-            this.Load += new System.EventHandler(this.HumanGenerationForm_Load);
-            this.humanGenerationTable.ResumeLayout(false);
-            this.humanGenerationTable.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TableLayoutPanel humanGenerationTable;
-        private System.Windows.Forms.Label num_of_humansLabel;
-        private System.Windows.Forms.Label initial_floorLabel;
-        private System.Windows.Forms.Label finite_floorLabel;
-        private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numberOfGeneratedPeopleolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn initialFloorColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn finiteFloorColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inSecondsColumn;
     }
 }
