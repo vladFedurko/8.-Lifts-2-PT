@@ -11,49 +11,54 @@ namespace _8.Lifts_2__PT
 {
     public partial class HumanGenerationForm : Form
     {
-        public int Row { get; set; }
+        DataTable dTable;
+
         public HumanGenerationForm()
         {
             InitializeComponent();
-            Row = 0;
+            InitTable();
+            humanGenerationDataGridView.DataSource = dTable;
+            humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            humanGenerationDataGridView.AllowUserToAddRows = false;
+            humanGenerationDataGridView.AllowUserToResizeRows = false;
+            humanGenerationDataGridView.EditingControlShowing += HumanGenerationDataGridView_EditingControlShowing;
+        }
+
+        private void HumanGenerationDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+
+            TextBox tb = (TextBox)e.Control;
+            tb.KeyPress += new KeyPressEventHandler(this.tb_KeyPress);
+        }
+
+        void tb_KeyPress(Object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back))
+                e.Handled = true;
+        }
+        private void InitTable()
+        {
+            dTable = new DataTable();
+            DataColumn numberOfGeneratedPeopleolumn = new DataColumn("Number of genetared humans", Type.GetType("System.Int32"));
+            DataColumn initialFloorColumn = new DataColumn("Initial floor", Type.GetType("System.Int32"));
+            DataColumn finiteFloorColumn = new DataColumn("Finite floor", Type.GetType("System.Int32"));
+            DataColumn inSecondsColumn = new DataColumn("In (seconds)", Type.GetType("System.Int32"));
+            dTable.Columns.AddRange(new DataColumn[] {numberOfGeneratedPeopleolumn,
+                initialFloorColumn,
+                finiteFloorColumn,
+                inSecondsColumn});
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            Row++;
-            //TO DO
-            //this.humanGenerationTable.SuspendLayout();
-            // this.humanGenerationTable.RowCount++;
-            //this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            //this.humanGenerationTable.Padding = new Padding(0,0,0, this.humanGenerationTable.Padding.Bottom-24);
-            //this.humanGenerationTable.Size= new Size(this.humanGenerationTable.Size.Width, this.humanGenerationTable.Size.Height+30);
-            for (int i = 0; i < this.humanGenerationTable.ColumnCount; i++)
-            {
-                System.Windows.Forms.NumericUpDown numericUpDown = new NumericUpDown();
-                numericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-                // numericUpDown.Name = "numericUpDown";
-                numericUpDown.Size = new System.Drawing.Size(146, 20);
-                if (i == 1 || i == 2)
-                {
-                    numericUpDown.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-                    numericUpDown.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-                    numericUpDown.Value = new decimal(new int[] { 1, 0, 0, 0 });
-                }
-                if (i == 3)
-                    numericUpDown.Maximum = new decimal(new int[] { 600, 0, 0, 0 });
-                this.humanGenerationTable.Controls.Add(numericUpDown);
-                //((System.ComponentModel.ISupportInitialize)(numericUpDown)).BeginInit();
-            }
-            //this.humanGenerationTable.ResumeLayout(false);
-            // this.humanGenerationTable.PerformLayout();
-
+            DataRow row = dTable.NewRow();
+            dTable.Rows.Add(row);
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
             //TO DO
             this.Close();
-
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -68,10 +73,10 @@ namespace _8.Lifts_2__PT
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (Row == 0) return;
-            for (int i = this.humanGenerationTable.ColumnCount - 1; i >= 0; i--)
-                this.humanGenerationTable.Controls.Remove(this.humanGenerationTable.GetControlFromPosition(i, Row));
-            Row--;
+            foreach (DataGridViewRow row in humanGenerationDataGridView.SelectedRows)
+            {
+                humanGenerationDataGridView.Rows.Remove(row);
+            }
         }
     }
 }
