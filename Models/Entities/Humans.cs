@@ -7,23 +7,30 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
-    class Humans : IMovable
+    public class Humans : IMovable
     {
         Timer timer;
-        public Humans(int humanNumber,int initFloor,int finiteFloor) {
+        private void Initialize(int humanNumber, int initFloor, int finiteFloor)
+        {
             this.HumanNumber = humanNumber;
             this.InitFloor = initFloor;
             this.FiniteFloor = finiteFloor;
-            timer = new Timer(new TimerCallback(tick), (object)(this.InitFloor==this.FiniteFloor), 0, 3000);
+            timer = new Timer(new TimerCallback(tick), (object)(this.InitFloor == this.FiniteFloor), 0, 3000);
+        }
+        public Humans(int humanNumber,int initFloor,int finiteFloor) {
+            Initialize(humanNumber, initFloor, finiteFloor);
         }
         public int HumanNumber;
-        public int InitFloor { get; }
-        public int FiniteFloor { get; }
-        public void Move() { return; }
+        public int InitFloor { get; set; }
+        public int FiniteFloor { get; set; }
+        public void Move() { 
+            this.InitFloor = this.FiniteFloor;
+            timer.Dispose();
+        }
 
         private void tick(object state) {
             if ((bool)state)
-                timer = null;
+                timer.Dispose();
             Console.WriteLine("Hello  World!!!");
             return; 
         }
