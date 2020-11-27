@@ -10,6 +10,7 @@ namespace _8.Lifts_2__PT
         {
             InitializeComponent();
             InitSimulationTable();
+            
         }
 
         private Label CreateTableLabel(string str)
