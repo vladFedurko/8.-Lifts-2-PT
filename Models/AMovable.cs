@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public abstract class AMovable
+    abstract class AMovable
     {
-        public static int Speed { 
-            get=>Speed;
-            set 
-            { 
-                speedChanged = true;
-                Speed = value;
-            }
-        }
+        protected internal static int Speed
+        {
+            get;
+            protected set;
+        } = 1000;
         protected static bool speedChanged = false;
-        public abstract void Move();
+        internal static void SetSpeed(int newSpeed) { Speed = newSpeed; speedChanged = true; }
+        //internal delegate void setSpeed(int newSpeed);
+        //internal protected event setSpeed SpeedChanged;
+        internal abstract void Move();
     }
 }
