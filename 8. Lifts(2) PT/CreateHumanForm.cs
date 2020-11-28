@@ -7,13 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Models.Entities;
+
 
 namespace _8.Lifts_2__PT
 {
     public partial class CreateHumanForm : Form
     {
-        Humans a;
         public CreateHumanForm()
         {
             InitializeComponent();
@@ -21,16 +20,11 @@ namespace _8.Lifts_2__PT
         private void saveButton_Click(object sender, EventArgs e)
         {
             //TO DO
-            Console.WriteLine("hello world");
-            if (a == null)
-                a = new Humans(1, 0, 2);
             //this.Close();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            if (a != null)
-                a.Move();
             this.Close();
         }
 

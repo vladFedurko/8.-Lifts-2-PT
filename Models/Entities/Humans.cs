@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
-    public class Humans : IMovable
+    public class Humans : AMovable
     {
         Timer timer;
         private void Initialize(int humanNumber, int initFloor, int finiteFloor)
@@ -15,22 +15,25 @@ namespace Models.Entities
             this.HumanNumber = humanNumber;
             this.InitFloor = initFloor;
             this.FiniteFloor = finiteFloor;
-            timer = new Timer(new TimerCallback(tick), (object)(this.InitFloor == this.FiniteFloor), 0, 3000);
+            timer = new Timer(new TimerCallback(tick), (object)(this.InitFloor == this.FiniteFloor), 0, 3*Speed);
         }
+
         public Humans(int humanNumber,int initFloor,int finiteFloor) {
             Initialize(humanNumber, initFloor, finiteFloor);
         }
         public int HumanNumber;
         public int InitFloor { get; set; }
         public int FiniteFloor { get; set; }
-        public void Move() { 
+        public override void Move() { 
             this.InitFloor = this.FiniteFloor;
-            timer.Dispose();
+            tick((object)true);
         }
 
         private void tick(object state) {
             if ((bool)state)
                 timer.Dispose();
+            if(speedChanged)
+                timer = new Timer(new TimerCallback(tick), (object)(this.InitFloor == this.FiniteFloor), 0, 3 * Speed);
             Console.WriteLine("Hello  World!!!");
             return; 
         }
