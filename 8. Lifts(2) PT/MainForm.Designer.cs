@@ -33,33 +33,33 @@
             this.startButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.fireAlarmButton = new System.Windows.Forms.Button();
-            this.speedSelecter = new System.Windows.Forms.NumericUpDown();
+            this.SpeedSelecter = new System.Windows.Forms.NumericUpDown();
             this.simulationSpeedLabel = new System.Windows.Forms.Label();
             this.createHumanButton = new System.Windows.Forms.Button();
-            this.simulationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fireAlarmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.systemParametersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.humanControllingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createHumanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.humanGenerationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.humanStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SimulationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StartMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PauseMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StopMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.FireAlarmMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SystemParametersMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HumanControllingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreateHumanMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HumanGenerationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HumanStatusMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ConfigurationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.humanGenerationToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.liftConifurationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.statisticToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.planFireAlarmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatisticMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PlanFireAlarmMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HelpMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.speedSelecter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpeedSelecter)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -98,7 +98,7 @@
             this.startButton.TabIndex = 1;
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
-            this.startButton.Click += new System.EventHandler(this.StartButton_Click);
+            this.startButton.Click += new System.EventHandler(this.StartSimulationClick);
             // 
             // stopButton
             // 
@@ -110,7 +110,7 @@
             this.stopButton.TabIndex = 2;
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
-            this.stopButton.Click += new System.EventHandler(this.StopButton_Click);
+            this.stopButton.Click += new System.EventHandler(this.StopSimulationClick);
             // 
             // fireAlarmButton
             // 
@@ -123,39 +123,39 @@
             this.fireAlarmButton.TabIndex = 3;
             this.fireAlarmButton.Text = "Fire alarm";
             this.fireAlarmButton.UseVisualStyleBackColor = false;
-            this.fireAlarmButton.Click += new System.EventHandler(this.FireAlarmButton_Click);
+            this.fireAlarmButton.Click += new System.EventHandler(this.FireAlarmClick);
             // 
-            // speedSelecter
+            // SpeedSelecter
             // 
-            this.speedSelecter.DecimalPlaces = 2;
-            this.speedSelecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.speedSelecter.Increment = new decimal(new int[] {
+            this.SpeedSelecter.DecimalPlaces = 2;
+            this.SpeedSelecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SpeedSelecter.Increment = new decimal(new int[] {
             25,
             0,
             0,
             131072});
-            this.speedSelecter.Location = new System.Drawing.Point(13, 249);
-            this.speedSelecter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.speedSelecter.Maximum = new decimal(new int[] {
+            this.SpeedSelecter.Location = new System.Drawing.Point(13, 249);
+            this.SpeedSelecter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.SpeedSelecter.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.speedSelecter.Minimum = new decimal(new int[] {
+            this.SpeedSelecter.Minimum = new decimal(new int[] {
             25,
             0,
             0,
             131072});
-            this.speedSelecter.Name = "speedSelecter";
-            this.speedSelecter.Size = new System.Drawing.Size(101, 24);
-            this.speedSelecter.TabIndex = 4;
-            this.speedSelecter.Tag = "";
-            this.speedSelecter.Value = new decimal(new int[] {
+            this.SpeedSelecter.Name = "SpeedSelecter";
+            this.SpeedSelecter.Size = new System.Drawing.Size(101, 24);
+            this.SpeedSelecter.TabIndex = 4;
+            this.SpeedSelecter.Tag = "";
+            this.SpeedSelecter.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.speedSelecter.ValueChanged += new System.EventHandler(this.SpeedSelecter_ValueChanged);
+            this.SpeedSelecter.ValueChanged += new System.EventHandler(this.ChangeSimulationSpeed);
             // 
             // simulationSpeedLabel
             // 
@@ -176,118 +176,120 @@
             this.createHumanButton.TabIndex = 6;
             this.createHumanButton.Text = "Create human";
             this.createHumanButton.UseVisualStyleBackColor = true;
-            this.createHumanButton.Click += new System.EventHandler(this.CreateHumanButton_Click);
+            this.createHumanButton.Click += new System.EventHandler(this.CreateHumanClick);
             // 
-            // simulationToolStripMenuItem
+            // SimulationMenuItem
             // 
-            this.simulationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startToolStripMenuItem,
-            this.pauseToolStripMenuItem,
-            this.stopToolStripMenuItem,
-            this.fireAlarmToolStripMenuItem,
-            this.systemParametersToolStripMenuItem1});
-            this.simulationToolStripMenuItem.Name = "simulationToolStripMenuItem";
-            this.simulationToolStripMenuItem.Size = new System.Drawing.Size(94, 24);
-            this.simulationToolStripMenuItem.Text = "Simulation";
+            this.SimulationMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.StartMenuItem,
+            this.PauseMenuItem,
+            this.StopMenuItem,
+            this.FireAlarmMenuItem,
+            this.SystemParametersMenuItem});
+            this.SimulationMenuItem.Name = "SimulationMenuItem";
+            this.SimulationMenuItem.Size = new System.Drawing.Size(94, 24);
+            this.SimulationMenuItem.Text = "Simulation";
             // 
-            // startToolStripMenuItem
+            // StartMenuItem
             // 
-            this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
-            this.startToolStripMenuItem.Text = "Start";
-            this.startToolStripMenuItem.Click += new System.EventHandler(this.StartButton_Click);
+            this.StartMenuItem.Name = "StartMenuItem";
+            this.StartMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.StartMenuItem.Text = "Start";
+            this.StartMenuItem.Click += new System.EventHandler(this.StartSimulationClick);
             // 
-            // pauseToolStripMenuItem
+            // PauseMenuItem
             // 
-            this.pauseToolStripMenuItem.Enabled = false;
-            this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
-            this.pauseToolStripMenuItem.Text = "Pause";
-            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.StartButton_Click);
+            this.PauseMenuItem.Enabled = false;
+            this.PauseMenuItem.Name = "PauseMenuItem";
+            this.PauseMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.PauseMenuItem.Text = "Pause";
+            this.PauseMenuItem.Click += new System.EventHandler(this.StartSimulationClick);
             // 
-            // stopToolStripMenuItem
+            // StopMenuItem
             // 
-            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
-            this.stopToolStripMenuItem.Text = "Stop";
-            this.stopToolStripMenuItem.Click += new System.EventHandler(this.StopButton_Click);
+            this.StopMenuItem.Name = "StopMenuItem";
+            this.StopMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.StopMenuItem.Text = "Stop";
+            this.StopMenuItem.Click += new System.EventHandler(this.StopSimulationClick);
             // 
-            // fireAlarmToolStripMenuItem
+            // FireAlarmMenuItem
             // 
-            this.fireAlarmToolStripMenuItem.Name = "fireAlarmToolStripMenuItem";
-            this.fireAlarmToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
-            this.fireAlarmToolStripMenuItem.Text = "Fire alarm";
-            this.fireAlarmToolStripMenuItem.Click += new System.EventHandler(this.FireAlarmButton_Click);
+            this.FireAlarmMenuItem.Name = "FireAlarmMenuItem";
+            this.FireAlarmMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.FireAlarmMenuItem.Text = "Fire alarm";
+            this.FireAlarmMenuItem.Click += new System.EventHandler(this.FireAlarmClick);
             // 
-            // systemParametersToolStripMenuItem1
+            // SystemParametersMenuItem
             // 
-            this.systemParametersToolStripMenuItem1.Name = "systemParametersToolStripMenuItem1";
-            this.systemParametersToolStripMenuItem1.Size = new System.Drawing.Size(218, 26);
-            this.systemParametersToolStripMenuItem1.Text = "System parameters";
-            this.systemParametersToolStripMenuItem1.Click += new System.EventHandler(this.systemParametersToolStripMenuItem1_Click);
+            this.SystemParametersMenuItem.Name = "SystemParametersMenuItem";
+            this.SystemParametersMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.SystemParametersMenuItem.Text = "System parameters";
+            this.SystemParametersMenuItem.Click += new System.EventHandler(this.SystemParametersClick);
             // 
-            // humanControllingToolStripMenuItem
+            // HumanControllingMenuItem
             // 
-            this.humanControllingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createHumanToolStripMenuItem,
-            this.humanGenerationToolStripMenuItem,
-            this.humanStatusToolStripMenuItem});
-            this.humanControllingToolStripMenuItem.Name = "humanControllingToolStripMenuItem";
-            this.humanControllingToolStripMenuItem.Size = new System.Drawing.Size(147, 24);
-            this.humanControllingToolStripMenuItem.Text = "Human controlling";
+            this.HumanControllingMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CreateHumanMenuItem,
+            this.HumanGenerationMenuItem,
+            this.HumanStatusMenuItem});
+            this.HumanControllingMenuItem.Name = "HumanControllingMenuItem";
+            this.HumanControllingMenuItem.Size = new System.Drawing.Size(147, 24);
+            this.HumanControllingMenuItem.Text = "Human controlling";
             // 
-            // createHumanToolStripMenuItem
+            // CreateHumanMenuItem
             // 
-            this.createHumanToolStripMenuItem.Name = "createHumanToolStripMenuItem";
-            this.createHumanToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.createHumanToolStripMenuItem.Text = "Create human";
-            this.createHumanToolStripMenuItem.Click += new System.EventHandler(this.CreateHumanButton_Click);
+            this.CreateHumanMenuItem.Name = "CreateHumanMenuItem";
+            this.CreateHumanMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.CreateHumanMenuItem.Text = "Create human";
+            this.CreateHumanMenuItem.Click += new System.EventHandler(this.CreateHumanClick);
             // 
-            // humanGenerationToolStripMenuItem
+            // HumanGenerationMenuItem
             // 
-            this.humanGenerationToolStripMenuItem.Name = "humanGenerationToolStripMenuItem";
-            this.humanGenerationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.humanGenerationToolStripMenuItem.Text = "Human generation";
-            this.humanGenerationToolStripMenuItem.Click += new System.EventHandler(this.HumanGenerationToolStripMenuItem_Click);
+            this.HumanGenerationMenuItem.Name = "HumanGenerationMenuItem";
+            this.HumanGenerationMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.HumanGenerationMenuItem.Text = "Human generation";
+            this.HumanGenerationMenuItem.Click += new System.EventHandler(this.HumanGenerationClick);
             // 
-            // humanStatusToolStripMenuItem
+            // HumanStatusMenuItem
             // 
-            this.humanStatusToolStripMenuItem.Name = "humanStatusToolStripMenuItem";
-            this.humanStatusToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.humanStatusToolStripMenuItem.Text = "Human status";
-            this.humanStatusToolStripMenuItem.Click += new System.EventHandler(this.HumanStatusToolStripMenuItem_Click);
+            this.HumanStatusMenuItem.Name = "HumanStatusMenuItem";
+            this.HumanStatusMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.HumanStatusMenuItem.Text = "Human status";
+            this.HumanStatusMenuItem.Click += new System.EventHandler(this.HumanStatusClick);
             // 
-            // configurationToolStripMenuItem
+            // ConfigurationMenuItem
             // 
-            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ConfigurationMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.humanGenerationToolStripMenuItem1,
             this.liftConifurationsToolStripMenuItem,
-            this.statisticToolStripMenuItem,
-            this.planFireAlarmToolStripMenuItem});
-            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
-            this.configurationToolStripMenuItem.Text = "Configuration";
+            this.StatisticMenuItem,
+            this.PlanFireAlarmMenuItem});
+            this.ConfigurationMenuItem.Name = "ConfigurationMenuItem";
+            this.ConfigurationMenuItem.Size = new System.Drawing.Size(114, 24);
+            this.ConfigurationMenuItem.Text = "Configuration";
             // 
             // humanGenerationToolStripMenuItem1
             // 
             this.humanGenerationToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveToolStripMenuItem,
-            this.loadToolStripMenuItem});
+            this.SaveMenuItem,
+            this.LoadMenuItem});
             this.humanGenerationToolStripMenuItem1.Name = "humanGenerationToolStripMenuItem1";
-            this.humanGenerationToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
+            this.humanGenerationToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.humanGenerationToolStripMenuItem1.Text = "Human generation";
             // 
-            // saveToolStripMenuItem
+            // SaveMenuItem
             // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.SaveMenuItem.Name = "SaveMenuItem";
+            this.SaveMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.SaveMenuItem.Text = "Save";
+            this.SaveMenuItem.Click += new System.EventHandler(this.SaveHumanGenerationClick);
             // 
-            // loadToolStripMenuItem
+            // LoadMenuItem
             // 
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
-            this.loadToolStripMenuItem.Text = "Load";
+            this.LoadMenuItem.Name = "LoadMenuItem";
+            this.LoadMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.LoadMenuItem.Text = "Load";
+            this.LoadMenuItem.Click += new System.EventHandler(this.LoadHumanGenerationClick);
             // 
             // liftConifurationsToolStripMenuItem
             // 
@@ -295,51 +297,53 @@
             this.saveToolStripMenuItem1,
             this.loadToolStripMenuItem1});
             this.liftConifurationsToolStripMenuItem.Name = "liftConifurationsToolStripMenuItem";
-            this.liftConifurationsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.liftConifurationsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.liftConifurationsToolStripMenuItem.Text = "Lift conifurations";
             // 
             // saveToolStripMenuItem1
             // 
             this.saveToolStripMenuItem1.Name = "saveToolStripMenuItem1";
-            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(125, 26);
+            this.saveToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.saveToolStripMenuItem1.Text = "Save";
+            this.saveToolStripMenuItem1.Click += new System.EventHandler(this.SaveLiftConfigurationClick);
             // 
             // loadToolStripMenuItem1
             // 
             this.loadToolStripMenuItem1.Name = "loadToolStripMenuItem1";
-            this.loadToolStripMenuItem1.Size = new System.Drawing.Size(125, 26);
+            this.loadToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.loadToolStripMenuItem1.Text = "Load";
+            this.loadToolStripMenuItem1.Click += new System.EventHandler(this.LoadLiftConfiguration);
             // 
-            // statisticToolStripMenuItem
+            // StatisticMenuItem
             // 
-            this.statisticToolStripMenuItem.Enabled = false;
-            this.statisticToolStripMenuItem.Name = "statisticToolStripMenuItem";
-            this.statisticToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.statisticToolStripMenuItem.Text = "Show statistics";
-            this.statisticToolStripMenuItem.Click += new System.EventHandler(this.StatisticToolStripMenuItem_Click);
+            this.StatisticMenuItem.Enabled = false;
+            this.StatisticMenuItem.Name = "StatisticMenuItem";
+            this.StatisticMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.StatisticMenuItem.Text = "Show statistics";
+            this.StatisticMenuItem.Click += new System.EventHandler(this.StatisticsClick);
             // 
-            // planFireAlarmToolStripMenuItem
+            // PlanFireAlarmMenuItem
             // 
-            this.planFireAlarmToolStripMenuItem.Name = "planFireAlarmToolStripMenuItem";
-            this.planFireAlarmToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.planFireAlarmToolStripMenuItem.Text = "Plan fire alarm";
-            this.planFireAlarmToolStripMenuItem.Click += new System.EventHandler(this.PlanFireAlarmToolStripMenuItem_Click);
+            this.PlanFireAlarmMenuItem.Name = "PlanFireAlarmMenuItem";
+            this.PlanFireAlarmMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.PlanFireAlarmMenuItem.Text = "Plan fire alarm";
+            this.PlanFireAlarmMenuItem.Click += new System.EventHandler(this.PlanFireAlarmClick);
             // 
-            // helpToolStripMenuItem
+            // HelpMenuItem
             // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
-            this.helpToolStripMenuItem.Text = "Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
+            this.HelpMenuItem.Name = "HelpMenuItem";
+            this.HelpMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.HelpMenuItem.Text = "Help";
+            this.HelpMenuItem.Click += new System.EventHandler(this.HelpClick);
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.simulationToolStripMenuItem,
-            this.humanControllingToolStripMenuItem,
-            this.configurationToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.SimulationMenuItem,
+            this.HumanControllingMenuItem,
+            this.ConfigurationMenuItem,
+            this.HelpMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -374,19 +378,19 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.createHumanButton);
             this.Controls.Add(this.simulationSpeedLabel);
-            this.Controls.Add(this.speedSelecter);
+            this.Controls.Add(this.SpeedSelecter);
             this.Controls.Add(this.fireAlarmButton);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.simulationTable);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1261, 726);
             this.Name = "SimulationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SimuLifts";
-            ((System.ComponentModel.ISupportInitialize)(this.speedSelecter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SpeedSelecter)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -402,29 +406,29 @@
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Button fireAlarmButton;
-        private System.Windows.Forms.NumericUpDown speedSelecter;
+        private System.Windows.Forms.NumericUpDown SpeedSelecter;
         private System.Windows.Forms.Label simulationSpeedLabel;
         private System.Windows.Forms.Button createHumanButton;
-        private System.Windows.Forms.ToolStripMenuItem simulationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pauseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fireAlarmToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem systemParametersToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem humanControllingToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem createHumanToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem humanGenerationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem humanStatusToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SimulationMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StartMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PauseMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StopMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem FireAlarmMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SystemParametersMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HumanControllingMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CreateHumanMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HumanGenerationMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HumanStatusMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ConfigurationMenuItem;
         private System.Windows.Forms.ToolStripMenuItem humanGenerationToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem SaveMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LoadMenuItem;
         private System.Windows.Forms.ToolStripMenuItem liftConifurationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem statisticToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem planFireAlarmToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem StatisticMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem PlanFireAlarmMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HelpMenuItem;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;

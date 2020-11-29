@@ -1,16 +1,35 @@
-﻿using System;
+﻿using Presenters;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace _8.Lifts_2__PT
 {
-    public partial class SimulationForm : Form
+    public partial class SimulationForm : Form, IMainView
     {
         public SimulationForm()
         {
             InitializeComponent();
             InitSimulationTable();
         }
+
+        public event Action StartFireAlarm;
+        public event Action StopFireAlarm;
+        public event Action StopSimulation;
+        public event Action StartSimulation;
+        public event Action PauseSimulation;
+        public event Action<decimal> SetSimulationSpeed;
+        public event Action ShowCreateHumanForm;
+        public event Action ShowStatistics;
+        public event Action ShowHumanGenerationStrategy;
+        public event Action ShowPlanFireAlarmForm;
+        public event Action ShowParametres;
+        public event Action ShowHelp;
+        public event Action ShowHumanStatus;
+        public event Action SaveHumanGenerationStrategy;
+        public event Action SaveLiftConfigurationStrategy;
+        public event Action LoadHumanGenerationStrategy;
+        public event Action LoadLiftConfigurationStrategy;
 
         private Label CreateTableLabel(string str)
         {
@@ -35,104 +54,128 @@ namespace _8.Lifts_2__PT
                     this.simulationTable.Controls.Add(CreateTableLabel("0"), j, i);
         }
 
-        private void StartButton_Click(object sender, EventArgs e)
+        private void StartSimulationClick(object sender, EventArgs e)
         {
             if (startButton.Text.Equals("Start"))
             {
-                // TO DO
+                this.StartSimulation?.Invoke();
                 startButton.Text = "Pause";
-                pauseToolStripMenuItem.Enabled = true;
-                startToolStripMenuItem.Enabled = false;
+                PauseMenuItem.Enabled = true;
+                StartMenuItem.Enabled = false;
             }
             else if (startButton.Text.Equals("Pause"))
             {
-                // TO DO
+                this.PauseSimulation?.Invoke();
                 startButton.Text = "Start";
-                pauseToolStripMenuItem.Enabled = false;
-                startToolStripMenuItem.Enabled = true;
+                PauseMenuItem.Enabled = false;
+                StartMenuItem.Enabled = true;
             }
-            statisticToolStripMenuItem.Enabled = false;
+            StatisticMenuItem.Enabled = false;
         }
 
-        private void StopButton_Click(object sender, EventArgs e)
+        private void StopSimulationClick(object sender, EventArgs e)
         {
-            if (startButton.Text.Equals("Pause"))
+            this.StopSimulation?.Invoke();
+            /*if (startButton.Text.Equals("Pause"))
             {
-                // TO DO
                 startButton.Text = "Start";
-                pauseToolStripMenuItem.Enabled = false;
-                startToolStripMenuItem.Enabled = true;
+                PauseMenuItem.Enabled = false;
+                StartMenuItem.Enabled = true;
             }
-            statisticToolStripMenuItem.Enabled = true;
-            StatisticToolStripMenuItem_Click(sender, e);
+            StatisticMenuItem.Enabled = true;*/
         }
 
-        private void CreateHumanButton_Click(object sender, EventArgs e)
-        {
-            CreateHumanForm createHumanForm = new CreateHumanForm();
-            createHumanForm.Show();
-        }
-
-
-        private void FireAlarmButton_Click(object sender, EventArgs e)
+        private void FireAlarmClick(object sender, EventArgs e)
         {
             if (fireAlarmButton.Text.Equals("Fire alarm"))
             {
-                // TO DO
+                this.StartFireAlarm?.Invoke();
                 fireAlarmButton.Text = "Stop alarm";
                 fireAlarmButton.BackColor = Color.DarkOrange;
             }
             else if (fireAlarmButton.Text.Equals("Stop alarm"))
             {
-                // TO DO
+                this.StopFireAlarm?.Invoke();
                 fireAlarmButton.Text = "Fire alarm";
                 fireAlarmButton.BackColor = Color.IndianRed;
             }
         }
 
-        private void SpeedSelecter_ValueChanged(object sender, EventArgs e)
+        private void ChangeSimulationSpeed(object sender, EventArgs e)
         {
-
-        }
-        private void HumanGenerationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            HumanGenerationForm form = new HumanGenerationForm();
-            form.Show();
+            this.SetSimulationSpeed?.Invoke(SpeedSelecter.Value);
         }
 
-        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CreateHumanClick(object sender, EventArgs e)
         {
-            HelpForm form = new HelpForm();
-            form.Show();
+            this.ShowCreateHumanForm?.Invoke();
+        }
+
+        private void HumanGenerationClick(object sender, EventArgs e)
+        {
+            this.ShowHumanGenerationStrategy?.Invoke();
+        }
+
+        private void HelpClick(object sender, EventArgs e)
+        {
+            this.ShowHelp?.Invoke();
         }
         
-        private void PlanFireAlarmToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PlanFireAlarmClick(object sender, EventArgs e)
         {
-            PlanFireAlarmForm form = new PlanFireAlarmForm();
-            form.Show();
-        }
-        
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
+            this.ShowPlanFireAlarmForm?.Invoke();
         }
 
-        private void systemParametersToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void SystemParametersClick(object sender, EventArgs e)
         {
-            SystemParametersForm form = new SystemParametersForm();
-            form.Show();
+            this.ShowParametres?.Invoke();
         }
 
-        private void StatisticToolStripMenuItem_Click(object sender, EventArgs e)
+        private void StatisticsClick(object sender, EventArgs e)
         {
-            SimulationStatisticsForm form = new SimulationStatisticsForm();
-            form.Show();
+            this.ShowStatistics?.Invoke();
         }
 
-        private void HumanStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HumanStatusClick(object sender, EventArgs e)
         {
-            HumanStatusForm form = new HumanStatusForm();
-            form.Show();
+            this.ShowHumanStatus?.Invoke();
+        }
+
+        private void SaveHumanGenerationClick(object sender, EventArgs e)
+        {
+            this.SaveHumanGenerationStrategy?.Invoke();
+        }
+
+        private void LoadHumanGenerationClick(object sender, EventArgs e)
+        {
+            this.LoadHumanGenerationStrategy?.Invoke();
+        }
+
+        private void SaveLiftConfigurationClick(object sender, EventArgs e)
+        {
+            this.SaveLiftConfigurationStrategy?.Invoke();
+        }
+
+        private void LoadLiftConfiguration(object sender, EventArgs e)
+        {
+            this.LoadLiftConfigurationStrategy?.Invoke();
+        }
+
+        public void ShowForm() { }  //This is the initial form
+
+        public void CloseForm()
+        {
+            this.Close();
+        }
+
+        public void ShowState()
+        {
+            //TODO
+        }
+
+        public void SetParameters(int floors, int lifts)
+        {
+            //TODO
         }
     }
 }

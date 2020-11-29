@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Presenters
 {
-    interface IView
+    public interface IView
     {
-        void Show();
+        void ShowForm();
 
-        void Close();
+        void CloseForm();
     }
 }
