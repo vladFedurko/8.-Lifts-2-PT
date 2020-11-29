@@ -52,12 +52,6 @@
     <Compile Include="CreateHumanForm.Designer.cs">
       <DependentUpon>CreateHumanForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="HelpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +69,12 @@
     </Compile>
     <Compile Include="HumanStatusForm.Designer.cs">
       <DependentUpon>HumanStatusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanFireAlarmForm.cs">
       <SubType>Form</SubType>
@@ -99,9 +99,6 @@
     <EmbeddedResource Include="CreateHumanForm.resx">
       <DependentUpon>CreateHumanForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="HelpForm.resx">
       <DependentUpon>HelpForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HumanStatusForm.resx">
       <DependentUpon>HumanStatusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlanFireAlarmForm.resx">
       <DependentUpon>PlanFireAlarmForm.cs</DependentUpon>
