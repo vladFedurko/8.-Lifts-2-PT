@@ -20,6 +20,11 @@ namespace _8.Lifts_2__PT
         public HumanGenerationForm()
         {
             InitializeComponent();
+            humanGenerationDataGridView.DataSource = _dTable;
+            humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            humanGenerationDataGridView.AllowUserToAddRows = false;
+            humanGenerationDataGridView.AllowUserToResizeRows = false;
+            humanGenerationDataGridView.EditingControlShowing += HumanGenerationDataGridView_EditingControlShowing;
         }
 
         private void HumanGenerationDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -50,11 +55,6 @@ namespace _8.Lifts_2__PT
         public void LoadTable(DataTable dTable)
         {
             _dTable = dTable;
-            humanGenerationDataGridView.DataSource = _dTable;
-            humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            humanGenerationDataGridView.AllowUserToAddRows = false;
-            humanGenerationDataGridView.AllowUserToResizeRows = false;
-            humanGenerationDataGridView.EditingControlShowing += HumanGenerationDataGridView_EditingControlShowing;
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -96,6 +96,5 @@ namespace _8.Lifts_2__PT
         {
             this.Close();
         }
-
     }
 }

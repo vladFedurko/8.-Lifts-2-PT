@@ -7,29 +7,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Presenters;
 
 namespace _8.Lifts_2__PT
 {
-    public partial class PlanFireAlarmForm : Form
+    public partial class PlanFireAlarmForm : Form, IPlanFireView
     { 
         DataTable dataTable;
+
+        public event Action<DataTable> PlanFireAlarm;
+
         public PlanFireAlarmForm()
         {
             InitializeComponent();
-            dataTable = new DataTable();
-            DataColumn startColumn = new DataColumn("Start at(seconds)",Type.GetType("System.Int32"));
-            DataColumn finiteColumn = new DataColumn("Finite at(seconds)", Type.GetType("System.Int32"));
-            dataTable.Columns.Add(startColumn);
-            dataTable.Columns.Add(finiteColumn);
-            firePlanDataGridView.DataSource = dataTable;
             firePlanDataGridView.AllowUserToAddRows = false;
-            firePlanDataGridView.AutoSizeColumnsMode=DataGridViewAutoSizeColumnsMode.Fill;
+            firePlanDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             firePlanDataGridView.EditingControlShowing += FirePlanDataGridView_EditingControlShowing;
+        }
+
+        public void InitTable(out DataTable dTable)
+        {
+            dTable = new DataTable();
+            DataColumn startColumn = new DataColumn("Start at(seconds)", Type.GetType("System.Int32"));
+            DataColumn finiteColumn = new DataColumn("Finite at(seconds)", Type.GetType("System.Int32"));
+            dTable.Columns.Add(startColumn);
+            dTable.Columns.Add(finiteColumn);
+        }
+
+        public void LoadTable(DataTable dTable)
+        {
+            firePlanDataGridView.DataSource = dTable;
         }
 
         private void FirePlanDataGridView_EditingControlShowing(Object  sender, DataGridViewEditingControlShowingEventArgs  e)
         {
-
             TextBox  tb = (TextBox)e.Control;
             tb.KeyPress += new KeyPressEventHandler(this.tb_KeyPress);
         }
@@ -43,41 +54,21 @@ namespace _8.Lifts_2__PT
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            /*Row++;
-            //TO DO
-            //this.humanGenerationTable.SuspendLayout();
-            // this.humanGenerationTable.RowCount++;
-            //this.humanGenerationTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            //this.humanGenerationTable.Padding = new Padding(0,0,0, this.humanGenerationTable.Padding.Bottom-24);
-            //this.humanGenerationTable.Size= new Size(this.humanGenerationTable.Size.Width, this.humanGenerationTable.Size.Height+30);
-            for (int i = 0; i < this.planFireAlarmTable.ColumnCount; i++)
-            {
-                System.Windows.Forms.NumericUpDown numericUpDown = new NumericUpDown();
-                numericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-                // numericUpDown.Name = "numericUpDown";
-                numericUpDown.Size = new System.Drawing.Size(146, 20);
-                numericUpDown.Maximum = new decimal(new int[] { 600, 0, 0, 0 });
-                this.planFireAlarmTable.Controls.Add(numericUpDown);
-                //((System.ComponentModel.ISupportInitialize)(numericUpDown)).BeginInit();
-            }
-            //this.humanGenerationTable.ResumeLayout(false);
-            // this.humanGenerationTable.PerformLayout();
-            */
             DataRow row = dataTable.NewRow();
             dataTable.Rows.Add(row);
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            //TO DO
+            this.PlanFireAlarm?.Invoke(dataTable);
             this.Close();
-
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         private void HumanGenerationForm_Deactivate(object sender, EventArgs e)
         {
             this.Activate();
@@ -85,15 +76,20 @@ namespace _8.Lifts_2__PT
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            /*if (Row == 0) return;
-            for (int i = this.planFireAlarmTable.ColumnCount - 1; i >= 0; i--)
-                this.planFireAlarmTable.Controls.Remove(this.planFireAlarmTable.GetControlFromPosition(i, Row));
-            Row--;*/
-            //dt.Rows.RemoveAt(dt.Rows.Count);
             foreach (DataGridViewRow row in firePlanDataGridView.SelectedRows)
             {
                 firePlanDataGridView.Rows.Remove(row);
             }
+        }
+
+        public void ShowForm()
+        {
+            this.Show();
+        }
+
+        public void CloseForm()
+        {
+            this.Close();
         }
     }
 }

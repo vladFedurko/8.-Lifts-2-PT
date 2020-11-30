@@ -43,6 +43,7 @@
     <Compile Include="IHumanGenerationView.cs" />
     <Compile Include="IHumanStatusView.cs" />
     <Compile Include="IMainVIew.cs" />
+    <Compile Include="IPlanFireView.cs" />
     <Compile Include="ISystemParametersView.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="MainPresenter.cs" />
