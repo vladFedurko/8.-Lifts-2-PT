@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Presenters
 {
-    class MainPresenter
+    public interface IService
     {
 
     }

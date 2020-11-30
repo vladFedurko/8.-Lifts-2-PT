@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Presenters
 {
-    public interface IHumanStatusView : IView
+    public interface IHumanStatus : IService
     {
         decimal NumberOfFloorOrLift { get; }
 

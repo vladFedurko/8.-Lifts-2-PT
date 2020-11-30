@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Presenters
 {
-    public interface IMainView : IView
+    public interface IMainService : IService
     {
 
         void ShowState();

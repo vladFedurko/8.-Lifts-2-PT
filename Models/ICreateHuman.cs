@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Presenters
 {
-    public interface IView
+    public interface ICreateHuman : IService
     {
-        void ShowForm();
-
-        void CloseForm();
+        event Action CreateHuman;
     }
 }

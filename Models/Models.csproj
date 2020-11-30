@@ -42,17 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Humans.cs" />
-    <Compile Include="ICreateHumanView.cs" />
+    <Compile Include="AMovable.cs" />
+    <Compile Include="ICreateHuman.cs" />
+    <Compile Include="IHumanGenerationService.cs" />
     <Compile Include="IHumanGenerationView.cs" />
     <Compile Include="IHumanStatusView.cs" />
     <Compile Include="IKeepHuman.cs" />
-    <Compile Include="IMainVIew.cs" />
-    <Compile Include="IPlanFireView.cs" />
-    <Compile Include="ISystemParametersView.cs" />
-    <Compile Include="IView.cs" />
-    <Compile Include="MainPresenter.cs" />
+    <Compile Include="IMainService.cs" />
+    <Compile Include="IPlanFireAlarm.cs" />
+    <Compile Include="ISystemParameters.cs" />
+    <Compile Include="IService.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="AMovable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />

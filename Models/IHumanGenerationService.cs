@@ -7,9 +7,9 @@ using System.Data;
 
 namespace Presenters
 {
-    public interface IPlanFireView : IView
+    public interface IHumanGenerationService : IService
     {
-        event Action<DataTable> PlanFireAlarm;
+        event Action<DataTable> GenerateHumans;
 
         void InitTable(out DataTable dTable);
 

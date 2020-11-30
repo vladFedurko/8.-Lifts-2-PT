@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Presenters
 {
-    public interface ISystemParametersView : IView
+    public interface ISystemParameters : IService
     {
         //event Action<Systemparametres> ExportStatistics;
     }
