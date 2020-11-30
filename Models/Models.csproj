@@ -44,9 +44,8 @@
     <Compile Include="Entities\Humans.cs" />
     <Compile Include="AMovable.cs" />
     <Compile Include="ICreateHuman.cs" />
-    <Compile Include="IHumanGenerationService.cs" />
-    <Compile Include="IHumanGenerationView.cs" />
-    <Compile Include="IHumanStatusView.cs" />
+    <Compile Include="IHumanGeneration.cs" />
+    <Compile Include="IHumanStatus.cs" />
     <Compile Include="IKeepHuman.cs" />
     <Compile Include="IMainService.cs" />
     <Compile Include="IPlanFireAlarm.cs" />
