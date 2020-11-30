@@ -8,13 +8,13 @@ namespace Models
 {
     abstract class AMovable
     {
-        protected internal static int Speed
+        protected internal static int TickTime
         {
             get;
             protected set;
         } = 1000;
-        protected static bool speedChanged = false;
-        internal static void SetSpeed(int newSpeed) { Speed = newSpeed; speedChanged = true; }
+        protected static bool tickTimeChanged = false;
+        internal static void SetTickTime(int newSpeed) { TickTime = newSpeed; tickTimeChanged = true; }
         //internal delegate void setSpeed(int newSpeed);
         //internal protected event setSpeed SpeedChanged;
         internal abstract void Move();

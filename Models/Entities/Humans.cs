@@ -22,7 +22,7 @@ namespace Models.Entities
             this.HumanNumber = humanNumber;
             this.InitFloor = initFloor;
             this.FiniteFloor = finiteFloor;
-            timer = new Timer(Speed)
+            timer = new Timer(TickTime)
             {
                 AutoReset = true
             };
@@ -52,10 +52,10 @@ namespace Models.Entities
         private void tick(object source, ElapsedEventArgs e)
         {
             count++;
-            if (speedChanged)
+            if (tickTimeChanged)
             {
-                timer.Interval = Speed;
-                speedChanged = false;
+                timer.Interval = TickTime;
+                tickTimeChanged = false;
             }
             if (count == 3)
             {
