@@ -13,13 +13,11 @@ namespace Models.Entities
         Timer timer;
         //private bool speedChanged=false;
         //internal event setSpeed SpeedChanged
-        int floor;
         List<Humans> data = new List<Humans>();
 
         public Lift(int floor = 0)
         {
-   
-            this.floor = floor;
+            this.Floor = floor;
             timer = new Timer(TickTime)
             {
                 AutoReset = true
@@ -45,7 +43,7 @@ namespace Models.Entities
 
         internal override void MoveTo(int floor)
         {
-            throw new NotImplementedException();
+            this.Floor = floor;
         }
     }
 }

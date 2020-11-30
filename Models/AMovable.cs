@@ -13,6 +13,8 @@ namespace Models
             get;
             protected set;
         } = 1000;
+
+        public int Floor { get; protected set; }
         protected static bool tickTimeChanged = false;
         internal static void SetTickTime(int newSpeed) { TickTime = newSpeed; tickTimeChanged = true; }
         //internal delegate void setSpeed(int newSpeed);

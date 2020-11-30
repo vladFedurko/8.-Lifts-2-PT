@@ -9,14 +9,13 @@ namespace Models.Entities
 {
     class Humans : AMovable
     {
-        Stopwatch time;
+        Stopwatch time = new Stopwatch();
         Timer timer;
         private int count = 2;
         //private bool speedChanged=false;
         //internal event setSpeed SpeedChanged;
         public int HumanNumber;
         public int InitFloor { get; set; }
-        public int Floor { get; set; }
         public int FiniteFloor { get; set; }
         private void Initialize(int humanNumber, int initFloor, int finiteFloor)
         {
@@ -45,9 +44,6 @@ namespace Models.Entities
         internal override void MoveTo(int floor)
         {
             this.Floor = floor;
-            timer.Stop();
-            time.Stop();
-            timer.Dispose();
         }
 
         private void tick(object source, ElapsedEventArgs e)
@@ -60,7 +56,7 @@ namespace Models.Entities
             }
             if (count == 3)
             {
-                Console.WriteLine("Hello  World!!!");
+                Console.WriteLine("Hello  World,i am human!!!");
                 count = 0;
             }
         }
