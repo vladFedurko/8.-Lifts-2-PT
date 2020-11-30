@@ -99,6 +99,7 @@
             this.startButton.Text = "Start";
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.StartSimulationClick);
+
             // 
             // stopButton
             // 
@@ -111,6 +112,7 @@
             this.stopButton.Text = "Stop";
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.StopSimulationClick);
+
             // 
             // fireAlarmButton
             // 
@@ -130,18 +132,23 @@
             this.SpeedSelecter.DecimalPlaces = 2;
             this.SpeedSelecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SpeedSelecter.Increment = new decimal(new int[] {
+
             25,
             0,
             0,
             131072});
+
             this.SpeedSelecter.Location = new System.Drawing.Point(13, 249);
             this.SpeedSelecter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SpeedSelecter.Maximum = new decimal(new int[] {
+
             10,
             0,
             0,
             0});
+
             this.SpeedSelecter.Minimum = new decimal(new int[] {
+
             25,
             0,
             0,
@@ -151,11 +158,13 @@
             this.SpeedSelecter.TabIndex = 4;
             this.SpeedSelecter.Tag = "";
             this.SpeedSelecter.Value = new decimal(new int[] {
+
             1,
             0,
             0,
             0});
             this.SpeedSelecter.ValueChanged += new System.EventHandler(this.ChangeSimulationSpeed);
+
             // 
             // simulationSpeedLabel
             // 

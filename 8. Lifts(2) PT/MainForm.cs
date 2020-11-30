@@ -1,3 +1,4 @@
+
 ﻿using Presenters;
 using System;
 using System.Drawing;
@@ -5,6 +6,7 @@ using System.Windows.Forms;
 
 namespace _8.Lifts_2__PT
 {
+
     public partial class SimulationForm : Form, IMainView
     {
         public SimulationForm()
