@@ -17,6 +17,6 @@ namespace Models
         internal static void SetTickTime(int newSpeed) { TickTime = newSpeed; tickTimeChanged = true; }
         //internal delegate void setSpeed(int newSpeed);
         //internal protected event setSpeed SpeedChanged;
-        internal abstract void Move();
+        internal abstract void MoveTo(int floor);
     }
 }

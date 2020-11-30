@@ -16,6 +16,7 @@ namespace Models.Entities
         //internal event setSpeed SpeedChanged;
         public int HumanNumber;
         public int InitFloor { get; set; }
+        public int Floor { get; set; }
         public int FiniteFloor { get; set; }
         private void Initialize(int humanNumber, int initFloor, int finiteFloor)
         {
@@ -41,9 +42,9 @@ namespace Models.Entities
             Initialize(hum.HumanNumber, hum.InitFloor, hum.FiniteFloor);
         }
 
-        internal override void Move()
+        internal override void MoveTo(int floor)
         {
-            this.InitFloor = this.FiniteFloor;
+            this.Floor = floor;
             timer.Stop();
             time.Stop();
             timer.Dispose();

@@ -12,11 +12,10 @@ namespace Models
         static void Main() 
         { 
             Console.WriteLine("Hello world");
-            Humans a = new Humans(1, 0, 2);
+            Lift a = new Lift();
             string aaa = Console.ReadLine();
-
+            AMovable.SetTickTime(10000);
             aaa = Console.ReadLine();
-            a.Move();
             Console.WriteLine($"you wrote {aaa}");
             aaa = Console.ReadLine();
         }
