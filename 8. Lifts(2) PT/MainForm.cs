@@ -161,7 +161,10 @@ namespace _8.Lifts_2__PT
             this.LoadLiftConfigurationStrategy?.Invoke();
         }
 
-        public void ShowForm() { }  //This is the initial form
+        public void ShowForm()
+        {
+            this.Show();
+        }  
 
         public void CloseForm()
         {
