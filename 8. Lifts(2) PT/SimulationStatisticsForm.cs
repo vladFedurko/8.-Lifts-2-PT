@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Presenters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,16 +11,32 @@ using System.Windows.Forms;
 
 namespace _8.Lifts_2__PT
 {
-    public partial class SimulationStatisticsForm : Form
+    public partial class SimulationStatisticsForm : Form, IView
     {
-        public SimulationStatisticsForm()
+        public SimulationStatisticsForm(IEnumerable<int> stat)
         {
             InitializeComponent();
+            //TODO
         }
 
-        private void CancelStatisticsButton_Click(object sender, EventArgs e)
+        public void CloseForm()
+        {
+            this.Show();
+        }
+
+        public void ShowForm()
         {
             this.Close();
+        }
+
+        private void CancelStatistics(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ExportStatistics(object sender, EventArgs e)
+        {
+            //TODO
         }
     }
 }
