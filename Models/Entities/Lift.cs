@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,31 +9,65 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    class Lift :AMovable,IKeepHuman
+    internal class Lift : AMovable, IKeepHuman
     {
-        Timer timer;
-        //private bool speedChanged=false;
-        //internal event setSpeed SpeedChanged
+        private bool directionUp = false;
+        private bool directionDown = false;
+        private bool IsMoving = false;
         List<Humans> data = new List<Humans>();
+        private int HumanNumber;
 
-        public Lift(int floor = 0)
+        internal Lift(int floor = 0)
         {
             this.Floor = floor;
             timer = new Timer(TickTime)
             {
                 AutoReset = true
             };
-            timer.Elapsed += tick;
+            timer.Elapsed += Tick;
             timer.Start();
         }
 
-        private void tick(object source, ElapsedEventArgs e)
-        {
-            if (tickTimeChanged)
+        internal void ChangeDirection() {
+            if (IsMoving)
             {
-                timer.Interval = TickTime;
-                tickTimeChanged = false;
+                directionUp = !directionUp;
+                directionDown = !directionDown;
             }
+        }
+
+        internal int EndTrip(List<Humans> a)
+        {
+            int g = HumanNumber;
+            foreach (var b in a)
+            {
+                data.Remove(b);
+                HumanNumber -= b.HumanNumber;
+                b.Stop();
+                //b.Dispose();
+            }
+            return g;
+        }
+
+        internal void AddHumans(Humans a)
+        {
+            if ((Humans)a != null)
+                data.Add(a);
+            HumanNumber += a.HumanNumber;
+        }
+        internal void AddHumans(List<Humans> a)
+        {
+            if (a != null)
+                data.AddRange(a);
+            foreach(var humans in a)
+                HumanNumber+=humans.HumanNumber;
+        }
+        internal override void SetTickTime(int newTickTime)
+        {
+            timer.Interval = newTickTime;
+        }
+        protected override void Tick(object source, ElapsedEventArgs e)
+        {
             Console.WriteLine("Hello  World,i am lift!!!");
         }
 

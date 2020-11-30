@@ -7,14 +7,15 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    class Humans : AMovable
+    internal class Humans : AMovable
     {
-        Stopwatch time = new Stopwatch();
-        Timer timer;
+        internal int Time { get; private set; }
         private int count = 2;
-        //private bool speedChanged=false;
-        //internal event setSpeed SpeedChanged;
+        private bool stop = false;
+        private bool dispose = false;
         public int HumanNumber;
+        private bool free;
+
         public int InitFloor { get; set; }
         public int FiniteFloor { get; set; }
         private void Initialize(int humanNumber, int initFloor, int finiteFloor)
@@ -22,40 +23,48 @@ namespace Models.Entities
             this.HumanNumber = humanNumber;
             this.InitFloor = initFloor;
             this.FiniteFloor = finiteFloor;
+            if (initFloor == finiteFloor)
+                dispose = true;
             timer = new Timer(TickTime)
             {
                 AutoReset = true
             };
-            timer.Elapsed += tick;
+            timer.Elapsed += Tick;
             timer.Start();
-            time.Start();
+            Time = 0;
+            free = true;
         }
-
+        internal override void SetTickTime(int newTickTime)
+        {
+            timer.Interval = newTickTime;
+            Time += newTickTime - TickTime;
+            TickTime = newTickTime;
+        }
+        internal void Stop() { stop = true; }
+        internal void Dispose() { dispose = true; }
+        internal void Start() { stop = false; timer.Start(); }
         public Humans(int humanNumber, int initFloor, int finiteFloor)
         {
             Initialize(humanNumber, initFloor, finiteFloor);
         }
-
-        public Humans(Humans hum)//происходит с запуском другого таймера,то есть технически другие люди
-        {
-            Initialize(hum.HumanNumber, hum.InitFloor, hum.FiniteFloor);
-        }
-
         internal override void MoveTo(int floor)
         {
             this.Floor = floor;
+            if(free)
+            free = false;
         }
 
-        private void tick(object source, ElapsedEventArgs e)
+        protected override void Tick(object source, ElapsedEventArgs e)
         {
             count++;
-            if (tickTimeChanged)
-            {
-                timer.Interval = TickTime;
-                tickTimeChanged = false;
-            }
+            if(free)
+            Time += TickTime;
+            if (stop)
+                timer.Stop();
             if (count == 3)
             {
+                if (dispose)
+                    timer.Dispose();
                 Console.WriteLine("Hello  World,i am human!!!");
                 count = 0;
             }

@@ -13,14 +13,18 @@ namespace Models
         { 
             Console.WriteLine("Hello world");
             Lift a = new Lift();
-            Humans b = new Humans(1, 0, 2);
+            List<Humans> list= new List<Humans>();
+            
+            Humans b1 = new Humans(1, 0, 2);
+            Humans b2 = new Humans(2, 0, 2);
+            Humans b3 = new Humans(3, 0, 2);
+            list.Add(b1);
+            list.Add(b3);
             string aaa = Console.ReadLine();
-            a.MoveTo(5);
-            Console.WriteLine(a.Floor);
-            Console.WriteLine(b.Floor);
-            b.MoveTo(6);
-            Console.WriteLine(b.Floor);
-            Console.WriteLine(a.Floor);
+            a.AddHumans(b1);
+            a.AddHumans(b2);
+            a.AddHumans(b3);
+            Console.WriteLine(a.EndTrip(list));
             aaa = Console.ReadLine();
             Console.WriteLine($"you wrote {aaa}");
             aaa = Console.ReadLine();
