@@ -136,7 +136,6 @@
             this.Controls.Add(this.initialFlootLabel);
             this.Name = "CreateHumanForm";
             this.Deactivate += new System.EventHandler(this.CreateHumanForm_Deactivate);
-            this.Load += new System.EventHandler(this.CreateHumanForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.initialFloorSelector)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.finiteFloorSelector)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inSecondsSelector)).EndInit();

@@ -7,17 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Presenters;
+
 namespace _8.Lifts_2__PT
 {
-    public partial class HumanGenerationForm : Form
+    public partial class HumanGenerationForm : Form, IHumanGenerationView
     {
-        DataTable dTable;
+        DataTable _dTable;
+
+        public event Action<DataTable> GenerateHumans;
 
         public HumanGenerationForm()
         {
             InitializeComponent();
-            InitTable();
-            humanGenerationDataGridView.DataSource = dTable;
+            humanGenerationDataGridView.DataSource = _dTable;
             humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             humanGenerationDataGridView.AllowUserToAddRows = false;
             humanGenerationDataGridView.AllowUserToResizeRows = false;
@@ -26,7 +29,6 @@ namespace _8.Lifts_2__PT
 
         private void HumanGenerationDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-
             TextBox tb = (TextBox)e.Control;
             tb.KeyPress += new KeyPressEventHandler(this.tb_KeyPress);
         }
@@ -36,7 +38,8 @@ namespace _8.Lifts_2__PT
             if (!(Char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back))
                 e.Handled = true;
         }
-        private void InitTable()
+
+        public void InitTable(out DataTable dTable)
         {
             dTable = new DataTable();
             DataColumn numberOfGeneratedPeopleolumn = new DataColumn("Number of genetared humans", Type.GetType("System.Int32"));
@@ -49,15 +52,20 @@ namespace _8.Lifts_2__PT
                 inSecondsColumn});
         }
 
+        public void LoadTable(DataTable dTable)
+        {
+            _dTable = dTable;
+        }
+
         private void AddButton_Click(object sender, EventArgs e)
         {
-            DataRow row = dTable.NewRow();
-            dTable.Rows.Add(row);
+            DataRow row = _dTable.NewRow();
+            _dTable.Rows.Add(row);
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            //TO DO
+            this.GenerateHumans?.Invoke(_dTable);
             this.Close();
         }
 
@@ -77,6 +85,16 @@ namespace _8.Lifts_2__PT
             {
                 humanGenerationDataGridView.Rows.Remove(row);
             }
+        }
+
+        public void ShowForm()
+        {
+            this.Show();
+        }
+
+        public void CloseForm()
+        {
+            this.Close();
         }
     }
 }

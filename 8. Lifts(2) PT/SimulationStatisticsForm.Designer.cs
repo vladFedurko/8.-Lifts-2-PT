@@ -215,6 +215,7 @@
             this.exportStatisticsButton.TabIndex = 1;
             this.exportStatisticsButton.Text = "Export";
             this.exportStatisticsButton.UseVisualStyleBackColor = true;
+            this.exportStatisticsButton.Click += new System.EventHandler(this.ExportStatistics);
             // 
             // cancelStatisticsButton
             // 
@@ -224,7 +225,7 @@
             this.cancelStatisticsButton.TabIndex = 2;
             this.cancelStatisticsButton.Text = "Cancel";
             this.cancelStatisticsButton.UseVisualStyleBackColor = true;
-            this.cancelStatisticsButton.Click += new System.EventHandler(this.CancelStatisticsButton_Click);
+            this.cancelStatisticsButton.Click += new System.EventHandler(this.CancelStatistics);
             // 
             // SimulationStatisticsForm
             // 

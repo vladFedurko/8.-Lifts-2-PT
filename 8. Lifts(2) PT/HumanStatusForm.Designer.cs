@@ -29,37 +29,38 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HumanStatusForm));
-            this.floorRadioButton = new System.Windows.Forms.RadioButton();
+            this.FloorRadioButton = new System.Windows.Forms.RadioButton();
             this.statusGroupBox = new System.Windows.Forms.GroupBox();
             this.chooseFloorOfLiftLabel = new System.Windows.Forms.Label();
-            this.chooseFloorOrLiftSelecter = new System.Windows.Forms.NumericUpDown();
-            this.liftRadioButton = new System.Windows.Forms.RadioButton();
+            this.NumberOfLiftOrFloorSelecter = new System.Windows.Forms.NumericUpDown();
+            this.LiftRadioButton = new System.Windows.Forms.RadioButton();
             this.statusTable = new System.Windows.Forms.TableLayoutPanel();
             this.numberLabel = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.statusGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chooseFloorOrLiftSelecter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberOfLiftOrFloorSelecter)).BeginInit();
             this.statusTable.SuspendLayout();
             this.SuspendLayout();
             // 
-            // floorRadioButton
+            // FloorRadioButton
             // 
-            this.floorRadioButton.AutoSize = true;
-            this.floorRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.floorRadioButton.Location = new System.Drawing.Point(6, 34);
-            this.floorRadioButton.Name = "floorRadioButton";
-            this.floorRadioButton.Size = new System.Drawing.Size(68, 24);
-            this.floorRadioButton.TabIndex = 0;
-            this.floorRadioButton.TabStop = true;
-            this.floorRadioButton.Text = "Floor";
-            this.floorRadioButton.UseVisualStyleBackColor = true;
+            this.FloorRadioButton.AutoSize = true;
+            this.FloorRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FloorRadioButton.Location = new System.Drawing.Point(6, 34);
+            this.FloorRadioButton.Name = "FloorRadioButton";
+            this.FloorRadioButton.Size = new System.Drawing.Size(68, 24);
+            this.FloorRadioButton.TabIndex = 0;
+            this.FloorRadioButton.TabStop = true;
+            this.FloorRadioButton.Text = "Floor";
+            this.FloorRadioButton.UseVisualStyleBackColor = true;
+            this.FloorRadioButton.CheckedChanged += new System.EventHandler(this.TypeChanged);
             // 
             // statusGroupBox
             // 
             this.statusGroupBox.Controls.Add(this.chooseFloorOfLiftLabel);
-            this.statusGroupBox.Controls.Add(this.chooseFloorOrLiftSelecter);
-            this.statusGroupBox.Controls.Add(this.liftRadioButton);
-            this.statusGroupBox.Controls.Add(this.floorRadioButton);
+            this.statusGroupBox.Controls.Add(this.NumberOfLiftOrFloorSelecter);
+            this.statusGroupBox.Controls.Add(this.LiftRadioButton);
+            this.statusGroupBox.Controls.Add(this.FloorRadioButton);
             this.statusGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.statusGroupBox.Location = new System.Drawing.Point(55, 22);
             this.statusGroupBox.Name = "statusGroupBox";
@@ -77,41 +78,41 @@
             this.chooseFloorOfLiftLabel.TabIndex = 3;
             this.chooseFloorOfLiftLabel.Text = "Number of floor or lift";
             // 
-            // chooseFloorOrLiftSelecter
+            // NumberOfLiftOrFloorSelecter
             // 
-            this.chooseFloorOrLiftSelecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.chooseFloorOrLiftSelecter.Location = new System.Drawing.Point(152, 57);
-            this.chooseFloorOrLiftSelecter.Maximum = new decimal(new int[] {
+            this.NumberOfLiftOrFloorSelecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NumberOfLiftOrFloorSelecter.Location = new System.Drawing.Point(152, 57);
+            this.NumberOfLiftOrFloorSelecter.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.chooseFloorOrLiftSelecter.Minimum = new decimal(new int[] {
+            this.NumberOfLiftOrFloorSelecter.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.chooseFloorOrLiftSelecter.Name = "chooseFloorOrLiftSelecter";
-            this.chooseFloorOrLiftSelecter.Size = new System.Drawing.Size(120, 27);
-            this.chooseFloorOrLiftSelecter.TabIndex = 2;
-            this.chooseFloorOrLiftSelecter.Value = new decimal(new int[] {
+            this.NumberOfLiftOrFloorSelecter.Name = "NumberOfLiftOrFloorSelecter";
+            this.NumberOfLiftOrFloorSelecter.Size = new System.Drawing.Size(120, 27);
+            this.NumberOfLiftOrFloorSelecter.TabIndex = 2;
+            this.NumberOfLiftOrFloorSelecter.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.chooseFloorOrLiftSelecter.ValueChanged += new System.EventHandler(this.NumericUpDown1_ValueChanged);
+            this.NumberOfLiftOrFloorSelecter.ValueChanged += new System.EventHandler(this.NumberOfLiftOrFloorChanged);
             // 
-            // liftRadioButton
+            // LiftRadioButton
             // 
-            this.liftRadioButton.AutoSize = true;
-            this.liftRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.liftRadioButton.Location = new System.Drawing.Point(6, 61);
-            this.liftRadioButton.Name = "liftRadioButton";
-            this.liftRadioButton.Size = new System.Drawing.Size(54, 24);
-            this.liftRadioButton.TabIndex = 1;
-            this.liftRadioButton.TabStop = true;
-            this.liftRadioButton.Text = "LIft";
-            this.liftRadioButton.UseVisualStyleBackColor = true;
+            this.LiftRadioButton.AutoSize = true;
+            this.LiftRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LiftRadioButton.Location = new System.Drawing.Point(6, 61);
+            this.LiftRadioButton.Name = "LiftRadioButton";
+            this.LiftRadioButton.Size = new System.Drawing.Size(54, 24);
+            this.LiftRadioButton.TabIndex = 1;
+            this.LiftRadioButton.TabStop = true;
+            this.LiftRadioButton.Text = "LIft";
+            this.LiftRadioButton.UseVisualStyleBackColor = true;
             // 
             // statusTable
             // 
@@ -164,7 +165,7 @@
             this.Text = "HumanStatusForm";
             this.statusGroupBox.ResumeLayout(false);
             this.statusGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chooseFloorOrLiftSelecter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumberOfLiftOrFloorSelecter)).EndInit();
             this.statusTable.ResumeLayout(false);
             this.statusTable.PerformLayout();
             this.ResumeLayout(false);
@@ -173,10 +174,10 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton floorRadioButton;
+        private System.Windows.Forms.RadioButton FloorRadioButton;
         private System.Windows.Forms.GroupBox statusGroupBox;
-        private System.Windows.Forms.NumericUpDown chooseFloorOrLiftSelecter;
-        private System.Windows.Forms.RadioButton liftRadioButton;
+        private System.Windows.Forms.NumericUpDown NumberOfLiftOrFloorSelecter;
+        private System.Windows.Forms.RadioButton LiftRadioButton;
         private System.Windows.Forms.Label chooseFloorOfLiftLabel;
         private System.Windows.Forms.TableLayoutPanel statusTable;
         private System.Windows.Forms.Label numberLabel;
