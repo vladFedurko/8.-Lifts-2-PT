@@ -12,12 +12,13 @@ namespace Models
         static void Main() 
         { 
             Console.WriteLine("Hello world");
-            Lift a = new Lift();
+            Floor a = new Floor(0);
             List<Humans> list= new List<Humans>();
             
-            Humans b1 = new Humans(1, 0, 2);
-            Humans b2 = new Humans(2, 0, 2);
-            Humans b3 = new Humans(3, 0, 2);
+            Humans b1 = new Humans(1, 2, a);
+            Humans b2 = new Humans(2, 2, a);
+            Humans b3 = new Humans(3, 2, a);
+            Lift b = new Lift(0);
             list.Add(b1);
             list.Add(b3);
             string aaa = Console.ReadLine();

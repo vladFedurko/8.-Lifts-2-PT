@@ -7,24 +7,39 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    internal class Humans : AMovable
+    internal class Humans : IMovable
     {
-        internal int Time { get; private set; }
+        protected Timer timer;
+        
+        private bool free;
         private bool stop = false;
         private bool dispose = false;
-        public int HumanNumber;
-        private bool free;
 
-        public int InitFloor { get; set; }
+
+        public int HumanNumber;
         public int FiniteFloor { get; set; }
-        private void Initialize(int humanNumber, int initFloor, int finiteFloor)
+        internal int Time { get; private set; }
+
+
+        IKeepHuman _keeper;
+
+        internal void SetInterval(int newInterval) => timer.Interval = newInterval;
+        internal void Stop() { stop = true; }
+        internal void Dispose() { 
+            if (_keeper.getKeeperFloor() == FiniteFloor) 
+                dispose = true; 
+            Time = 0;
+        }
+        internal void Start() { stop = false; timer.Start(); }
+        internal Humans(int humanNumber, int finiteFloor, Floor keeper)
         {
+            _keeper = keeper;
+            _keeper.AddHumans(this);
             this.HumanNumber = humanNumber;
-            this.InitFloor = initFloor;
             this.FiniteFloor = finiteFloor;
-            if (initFloor == finiteFloor)
+            if (_keeper.getKeeperNumber() == finiteFloor)
                 dispose = true;
-            timer = new Timer(TickTime)
+            timer = new Timer(1000)//1000 milliseconds
             {
                 AutoReset = true
             };
@@ -33,25 +48,21 @@ namespace Models.Entities
             Time = 0;
             free = true;
         }
-        internal override void SetTickTime(int newTickTime)
+
+        internal void changeKeeper(IKeepHuman _newKeeper) 
         {
-            timer.Interval = newTickTime;
-        }
-        internal void Stop() { stop = true; }
-        internal void Dispose() { dispose = true; }
-        internal void Start() { stop = false; timer.Start(); }
-        public Humans(int humanNumber, int initFloor, int finiteFloor)
-        {
-            Initialize(humanNumber, initFloor, finiteFloor);
-        }
-        internal override void MoveTo(int floor)
-        {
-            this.Floor = floor;
+            if (_newKeeper == null)
+                Dispose();
+            _keeper = _newKeeper;
             if(free)
             free = false;
         }
+        void IMovable.MoveTo(int floor)
+        {
 
-        protected override void Tick(object source, ElapsedEventArgs e)
+        }
+
+        protected void Tick(object source, ElapsedEventArgs e)
         {
             if (stop)
                 timer.Stop();
@@ -64,6 +75,5 @@ namespace Models.Entities
             if (free)
                 Time++;
         }
-
     }
 }

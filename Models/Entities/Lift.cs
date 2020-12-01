@@ -10,23 +10,24 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    internal class Lift : AMovable, IKeepHuman
+    internal class Lift : IMovable, IKeepHuman
     {
         private bool directionUp = false;
         private bool directionDown = false;
         private bool IsMoving = false;
         List<Humans> data = new List<Humans>();
-        private int HumanNumber;
+        internal int HumanNumber { get; private set; }
 
-        internal Lift(int floor = 0)
+        internal int LiftNumber
         {
-            this.Floor = floor;
-            timer = new Timer(TickTime)
-            {
-                AutoReset = true
-            };
-            timer.Elapsed += Tick;
-            timer.Start();
+            get; private set;
+        }
+        internal int Floor { get; private set; }
+
+        internal Lift(int liftNumber, int floor = 0)
+        {
+            this.LiftNumber = liftNumber;
+            Floor = floor;
         }
 
         internal void ChangeDirection()
@@ -57,8 +58,8 @@ namespace Models.Entities
 
         internal void MoveDown()
         {
-
-            Floor--;
+            if (Floor > 0)
+                Floor--;
             if (IsMoving)
             {
                 if (directionUp)
@@ -88,6 +89,7 @@ namespace Models.Entities
         {
             if ((Humans)a != null)
                 data.Add(a);
+            a.changeKeeper(this);
             HumanNumber += a.HumanNumber;
         }
         public void AddRangeHumans(List<Humans> a)
@@ -95,15 +97,10 @@ namespace Models.Entities
             if (a != null)
                 data.AddRange(a);
             foreach (var humans in a)
+            {
+                humans.changeKeeper(this);
                 HumanNumber += humans.HumanNumber;
-        }
-        internal override void SetTickTime(int newTickTime)
-        {
-            timer.Interval = newTickTime;
-        }
-        protected override void Tick(object source, ElapsedEventArgs e)
-        {
-            Console.WriteLine("Hello  World,i am lift!!!");
+            }
         }
 
         public IEnumerable<Humans> getHumans()
@@ -111,9 +108,18 @@ namespace Models.Entities
             return new List<Humans>(data);
         }
 
-        internal override void MoveTo(int floor)
+        void IMovable.MoveTo(int floor)
         {
-            this.Floor = floor;
+
+        }
+
+        public int getKeeperNumber()
+        {
+            return LiftNumber;
+        }
+        public int getKeeperFloor()
+        {
+            return Floor;
         }
     }
 }

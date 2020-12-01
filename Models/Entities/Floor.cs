@@ -8,8 +8,12 @@ namespace Models.Entities
 {
     internal class Floor : IKeepHuman
     {
-        List<Humans> humans;
-
+        List<Humans> humans = new List<Humans>();
+        int FloorNumber;
+        internal Floor(int FloorNumber)
+        {
+            this.FloorNumber = FloorNumber;
+        }
         public IEnumerable<Humans> getHumans()
         {
             return new List<Humans>(humans);
@@ -20,10 +24,14 @@ namespace Models.Entities
             if (humans != null)
                 this.humans.Add(humans);
         }
-        public void AddRangeHumans(List<Humans> humans)
+
+        public int getKeeperNumber()
         {
-            if (humans!= null)
-                this.humans.AddRange(humans);
+            return FloorNumber;
+        }
+        public int getKeeperFloor()
+        {
+            return FloorNumber;
         }
     }
 }
