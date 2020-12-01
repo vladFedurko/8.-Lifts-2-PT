@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
-    class Floor : IKeepHuman
+    internal class Floor : IKeepHuman
     {
         List<Humans> humans;
 
@@ -15,12 +15,12 @@ namespace Models.Entities
             return new List<Humans>(humans);
         }
 
-        internal void AddHumans(Humans humans)
+        public void AddHumans(Humans humans)
         {
             if (humans != null)
                 this.humans.Add(humans);
         }
-        internal void AddRangeHumans(List<Humans> humans)
+        public void AddRangeHumans(List<Humans> humans)
         {
             if (humans!= null)
                 this.humans.AddRange(humans);

@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Models
 {
-    abstract class AMovable
+     abstract class AMovable
     {
         protected Timer timer;
         protected internal static int TickTime

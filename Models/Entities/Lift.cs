@@ -84,13 +84,13 @@ namespace Models.Entities
             return g;
         }
 
-        internal void AddHumans(Humans a)
+        public void AddHumans(Humans a)
         {
             if ((Humans)a != null)
                 data.Add(a);
             HumanNumber += a.HumanNumber;
         }
-        internal void AddRangeHumans(List<Humans> a)
+        public void AddRangeHumans(List<Humans> a)
         {
             if (a != null)
                 data.AddRange(a);
