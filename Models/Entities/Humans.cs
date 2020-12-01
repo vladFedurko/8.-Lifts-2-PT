@@ -10,7 +10,6 @@ namespace Models.Entities
     internal class Humans : AMovable
     {
         internal int Time { get; private set; }
-        private int count = 2;
         private bool stop = false;
         private bool dispose = false;
         public int HumanNumber;
@@ -37,8 +36,6 @@ namespace Models.Entities
         internal override void SetTickTime(int newTickTime)
         {
             timer.Interval = newTickTime;
-            Time += newTickTime - TickTime;
-            TickTime = newTickTime;
         }
         internal void Stop() { stop = true; }
         internal void Dispose() { dispose = true; }
@@ -56,18 +53,16 @@ namespace Models.Entities
 
         protected override void Tick(object source, ElapsedEventArgs e)
         {
-            count++;
-            if(free)
-            Time += TickTime;
             if (stop)
                 timer.Stop();
-            if (count == 3)
+            if (Time % 3 == 0)
             {
                 if (dispose)
                     timer.Dispose();
                 Console.WriteLine("Hello  World,i am human!!!");
-                count = 0;
             }
+            if (free)
+                Time++;
         }
 
     }

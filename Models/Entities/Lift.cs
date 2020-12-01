@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -28,11 +29,45 @@ namespace Models.Entities
             timer.Start();
         }
 
-        internal void ChangeDirection() {
+        internal void ChangeDirection()
+        {
+            directionUp = !directionUp;
+            directionDown = !directionDown;
+        }
+        internal void Wait()
+        {
+            IsMoving = false;
+            directionDown = false;
+            directionUp = false;
+        }
+        internal void MoveUp()
+        {
+            Floor++;
             if (IsMoving)
             {
-                directionUp = !directionUp;
-                directionDown = !directionDown;
+                if (directionDown)
+                    ChangeDirection();
+            }
+            else
+            {
+                IsMoving = true;
+                directionUp = true;
+            }
+        }
+
+        internal void MoveDown()
+        {
+
+            Floor--;
+            if (IsMoving)
+            {
+                if (directionUp)
+                    ChangeDirection();
+            }
+            else
+            {
+                IsMoving = true;
+                directionDown = true;
             }
         }
 
@@ -55,12 +90,12 @@ namespace Models.Entities
                 data.Add(a);
             HumanNumber += a.HumanNumber;
         }
-        internal void AddHumans(List<Humans> a)
+        internal void AddRangeHumans(List<Humans> a)
         {
             if (a != null)
                 data.AddRange(a);
-            foreach(var humans in a)
-                HumanNumber+=humans.HumanNumber;
+            foreach (var humans in a)
+                HumanNumber += humans.HumanNumber;
         }
         internal override void SetTickTime(int newTickTime)
         {

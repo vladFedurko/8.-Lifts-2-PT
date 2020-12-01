@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 
-namespace Presenters
+namespace Models
 {
     public interface IPlanFireAlarm : IService
     {
