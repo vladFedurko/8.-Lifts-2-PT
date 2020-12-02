@@ -9,13 +9,13 @@ namespace Models.Entities
 {
     public class Humans : IMovable
     { 
-        private int state;
+        private State state;
 
         enum State 
         {
             Created,
             InLift,
-            Disposing,
+            Disposing
         }
         //ISimulationStatistics _stat;
 
@@ -31,22 +31,23 @@ namespace Models.Entities
             this.HumanNumber = humanNumber;
             this.FiniteFloor = finiteFloor;
             Time = 0;
-            state = State.Created;
+            state = (int)State.Created;
             if (_keeper.getKeeperNumber() == finiteFloor)
-                free = false;
+                state = State.Disposing;
         }
 
         internal void changeKeeper(IKeepHuman _newKeeper) 
         {
-            if (free)
-                free = false;
+            if (state == State.InLift)
+                state = State.Disposing;
+            if (state == State.Created)
+               state = State.InLift;
             if (_newKeeper == null)
                 return; 
             _keeper = _newKeeper;
             //_stat.addWaitTime(Time);
             Time = 0;
-            if (_newKeeper.GetType().Name.Equals("Floor"))
-                free = true;
+            
             _keeper.AddHumans(this);
         }
         public void Move()
@@ -56,7 +57,9 @@ namespace Models.Entities
 
         protected void Tick()
         {
-            if (free)
+            switch(state)
+            {
+                case State.Disposing:
             {
                 Time++;
                 if (Time == 3)
@@ -64,8 +67,10 @@ namespace Models.Entities
                     Console.WriteLine("Hello  World,i am human!!!");
                 }
             }
-            if (free)
+            if (state == State.Created)
                 Time++;
+        }
+            
         }
     }
 }
