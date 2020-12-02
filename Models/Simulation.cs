@@ -26,8 +26,8 @@ namespace Models
 
         public void StopSimulation()
         {
-            //if() is empty
-            observer.Stop();
+            if(systemData.IsEverythingEmpty())
+                observer.Stop();
         }
 
         public void doTick()

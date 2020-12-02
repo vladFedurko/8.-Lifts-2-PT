@@ -88,7 +88,7 @@ namespace Models.Entities
             HumanNumber += a.HumanNumber;
         }
         public void AddRangeHumans(List<Humans> a)
-        {)
+        {
             foreach (var humans in a)
             {
                 humans.changeKeeper(this);
@@ -98,7 +98,7 @@ namespace Models.Entities
 
         public IEnumerable<Humans> getHumans()
         {
-            return new List<Humans>(data);
+            return data;
         }
 
         public void Move()
