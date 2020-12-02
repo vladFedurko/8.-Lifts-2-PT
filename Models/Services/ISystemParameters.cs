@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Models.Entities;
 
-namespace Models
+namespace Models.Services
 {
-    class Program
+    public interface ISystemParameters : IService
     {
-        static void Main() 
-        {
-        }
+        //event Action<Systemparametres> ExportStatistics;
     }
 }

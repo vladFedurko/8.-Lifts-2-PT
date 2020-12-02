@@ -7,9 +7,10 @@ using System.Timers;
 
 namespace Models
 {
-    class Observer
+    public class Observer
     {
         protected Timer timer;
+        protected ISimulation simulation;
         public Observer()
         {
             timer = new Timer(1000)//1000 milliseconds
@@ -22,7 +23,12 @@ namespace Models
         internal void SetInterval(int newInterval) => timer.Interval = newInterval;
         protected void Tick(object source, ElapsedEventArgs e)
         {
-            
+            simulation.doTick();
+        }
+
+        public void Stop()
+        {
+            timer.Stop();
         }
     }
 }

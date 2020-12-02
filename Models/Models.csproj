@@ -43,28 +43,28 @@
   <ItemGroup>
     <Compile Include="Entities\Floor.cs" />
     <Compile Include="Entities\Humans.cs" />
+    <Compile Include="ISimulation.cs" />
+    <Compile Include="Observer.cs" />
+    <Compile Include="Simulation.cs" />
     <Compile Include="SystemData.cs" />
     <Compile Include="IMovable.cs" />
     <Compile Include="Entities\Lift.cs" />
-    <Compile Include="ICreateHuman.cs" />
-    <Compile Include="IHumanGeneration.cs" />
-    <Compile Include="IHumanStatus.cs" />
+    <Compile Include="Strategies\MinIdlingStrategy.cs" />
+    <Compile Include="Strategies\MinWaitingTimeStrategy.cs" />
+    <Compile Include="Services\ICreateHuman.cs" />
+    <Compile Include="Services\IHumanGeneration.cs" />
+    <Compile Include="Services\IHumanStatus.cs" />
     <Compile Include="IKeepHuman.cs" />
-    <Compile Include="IMainService.cs" />
-    <Compile Include="IPlanFireAlarm.cs" />
-    <Compile Include="ISystemParameters.cs" />
-    <Compile Include="IService.cs" />
-    <Compile Include="Observer.cs" />
+    <Compile Include="Services\IMainService.cs" />
+    <Compile Include="Services\IPlanFireAlarm.cs" />
+    <Compile Include="Services\ISystemParameters.cs" />
+    <Compile Include="Services\IService.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="IStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Collections.NonGeneric, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.NonGeneric.4.3.0\lib\net46\System.Collections.NonGeneric.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Data" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

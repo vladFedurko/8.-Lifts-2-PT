@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Models.Services
 {
-    public interface IService
+    public interface ICreateHuman : IService
     {
-
+        event Action CreateHuman;
     }
 }

@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public interface ISystemParameters : IService
+    public interface ISimulation
     {
-        //event Action<Systemparametres> ExportStatistics;
+        public void ChangeStrategy(IStrategy st);
+
+        public void doTick();
     }
 }

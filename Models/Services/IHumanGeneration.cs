@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 
-namespace Models
+namespace Models.Services
 {
     public interface IHumanGeneration : IService
     {

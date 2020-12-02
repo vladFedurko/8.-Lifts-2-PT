@@ -7,7 +7,7 @@ using Models.Entities;
 
 namespace Models
 {
-    class SystemData
+    public class SystemData
     {
         List<Floor> Floors;
         List<Lift> Lifts;
