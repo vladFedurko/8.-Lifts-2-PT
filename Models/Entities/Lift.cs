@@ -10,7 +10,7 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    internal class Lift : IMovable, IKeepHuman
+    public class Lift : IMovable, IKeepHuman
     {
         private bool directionUp = false;
         private bool IsMoving = false;

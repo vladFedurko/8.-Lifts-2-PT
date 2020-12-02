@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Strategies
+namespace Models
 {
-    interface IStrategy
+    public interface ISimulation
     {
-        public int ChooseNextFloor(SystemData data, int numOfLift);
+        public void ChangeStrategy(IStrategy st);
+
+        public void doTick();
     }
 }

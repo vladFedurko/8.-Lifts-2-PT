@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Models.Strategies
 {
-    class MinWaitingTimeStrategy : IStrategy
+    public class MinWaitingTimeStrategy : IStrategy
     {
         public int ChooseNextFloor(SystemData data, int numOfLift)
         {
-            
+            return 0;
         }
     }
 }

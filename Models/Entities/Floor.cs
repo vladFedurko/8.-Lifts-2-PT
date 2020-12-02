@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
-    internal class Floor : IKeepHuman
+    public class Floor : IKeepHuman
     {
         HashSet<Humans> Humans = new HashSet<Humans>();
         int FloorNumber;

@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="Entities\Floor.cs" />
     <Compile Include="Entities\Humans.cs" />
+    <Compile Include="ISimulation.cs" />
     <Compile Include="Observer.cs" />
+    <Compile Include="Simulation.cs" />
     <Compile Include="SystemData.cs" />
     <Compile Include="IMovable.cs" />
     <Compile Include="Entities\Lift.cs" />
@@ -52,13 +54,13 @@
     <Compile Include="Services\ICreateHuman.cs" />
     <Compile Include="Services\IHumanGeneration.cs" />
     <Compile Include="Services\IHumanStatus.cs" />
-    <Compile Include="Services\IKeepHuman.cs" />
+    <Compile Include="IKeepHuman.cs" />
     <Compile Include="Services\IMainService.cs" />
     <Compile Include="Services\IPlanFireAlarm.cs" />
     <Compile Include="Services\ISystemParameters.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Strategies\IStrategy.cs" />
+    <Compile Include="IStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />

@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    internal class Humans : IMovable
+    public class Humans : IMovable
     { 
         private bool free;
 
