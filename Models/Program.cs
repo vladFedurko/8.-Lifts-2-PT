@@ -12,11 +12,21 @@ namespace Models
         static void Main() 
         { 
             Console.WriteLine("Hello world");
-            Humans a = new Humans(1, 0, 2);
+            Floor a = new Floor(0);
+            List<Humans> list= new List<Humans>();
+            
+            Humans b1 = new Humans(1, 2, a);
+            Humans b2 = new Humans(2, 2, a);
+            Humans b3 = new Humans(3, 2, a);
+            Lift b = new Lift(0);
+            list.Add(b1);
+            list.Add(b3);
             string aaa = Console.ReadLine();
-
+            a.AddHumans(b1);
+            a.AddHumans(b2);
+            a.AddHumans(b3);
+            Console.WriteLine(a.EndTrip(list));
             aaa = Console.ReadLine();
-            a.Move();
             Console.WriteLine($"you wrote {aaa}");
             aaa = Console.ReadLine();
         }

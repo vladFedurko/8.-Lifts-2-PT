@@ -7,62 +7,64 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    class Humans : AMovable
+    internal class Humans : IMovable
     {
-        Stopwatch time;
-        Timer timer;
-        private int count = 2;
-        //private bool speedChanged=false;
-        //internal event setSpeed SpeedChanged;
+        
+        
+        private bool free;
+        private bool stop = false;
+        private bool dispose = false;
+
+
         public int HumanNumber;
-        public int InitFloor { get; set; }
         public int FiniteFloor { get; set; }
-        private void Initialize(int humanNumber, int initFloor, int finiteFloor)
+        internal int Time { get; private set; }
+
+
+        IKeepHuman _keeper;
+
+        
+        internal void Stop() { stop = true; }
+        internal void Dispose() { 
+            if (_keeper.getKeeperFloor() == FiniteFloor) 
+                dispose = true; 
+            Time = 0;
+        }
+        internal void Start() { stop = false; timer.Start(); }
+        internal Humans(int humanNumber, int finiteFloor, Floor keeper)
         {
+            _keeper = keeper;
+            _keeper.AddHumans(this);
             this.HumanNumber = humanNumber;
-            this.InitFloor = initFloor;
             this.FiniteFloor = finiteFloor;
-            timer = new Timer(Speed)
+            if (_keeper.getKeeperNumber() == finiteFloor)
+                dispose = true;
+            
+            Time = 0;
+            free = true;
+        }
+
+        internal void changeKeeper(IKeepHuman _newKeeper) 
+        {
+            if (_newKeeper == null)
+                Dispose();
+            _keeper = _newKeeper;
+            if(free)
+            free = false;
+        }
+        public void Move()
+        {
+            Tick();
+        }
+
+        protected void Tick()
+        {
+            if (Time % 3 == 0)
             {
-                AutoReset = true
-            };
-            timer.Elapsed += tick;
-            timer.Start();
-            time.Start();
-        }
-
-        public Humans(int humanNumber, int initFloor, int finiteFloor)
-        {
-            Initialize(humanNumber, initFloor, finiteFloor);
-        }
-
-        public Humans(Humans hum)//происходит с запуском другого таймера,то есть технически другие люди
-        {
-            Initialize(hum.HumanNumber, hum.InitFloor, hum.FiniteFloor);
-        }
-
-        internal override void Move()
-        {
-            this.InitFloor = this.FiniteFloor;
-            timer.Stop();
-            time.Stop();
-            timer.Dispose();
-        }
-
-        private void tick(object source, ElapsedEventArgs e)
-        {
-            count++;
-            if (speedChanged)
-            {
-                timer.Interval = Speed;
-                speedChanged = false;
+                Console.WriteLine("Hello  World,i am human!!!");
             }
-            if (count == 3)
-            {
-                Console.WriteLine("Hello  World!!!");
-                count = 0;
-            }
+            if (free)
+                Time++;
         }
-
     }
 }
