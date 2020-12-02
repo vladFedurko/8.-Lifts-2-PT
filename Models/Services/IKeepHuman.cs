@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Models.Entities;
 
-namespace Models
+namespace Models.Services
 {
     interface IKeepHuman
     {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Models.Strategies
 {
-    public interface ICreateHuman : IService
+    interface IStrategy
     {
-        event Action CreateHuman;
+        public int ChooseNextFloor(SystemData data, int numOfLift);
     }
 }

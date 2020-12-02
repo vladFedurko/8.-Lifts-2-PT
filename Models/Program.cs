@@ -10,8 +10,7 @@ namespace Models
     class Program
     {
         static void Main() 
-        { 
-            Console.WriteLine("Hello world");
+        {
             Floor a = new Floor(0);
             List<Humans> list= new List<Humans>();
             
@@ -25,10 +24,6 @@ namespace Models
             a.AddHumans(b1);
             a.AddHumans(b2);
             a.AddHumans(b3);
-            Console.WriteLine(a.EndTrip(list));
-            aaa = Console.ReadLine();
-            Console.WriteLine($"you wrote {aaa}");
-            aaa = Console.ReadLine();
         }
     }
 }
