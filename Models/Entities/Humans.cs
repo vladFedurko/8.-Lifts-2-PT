@@ -9,7 +9,7 @@ namespace Models.Entities
 {
     internal class Humans : IMovable
     {
-        protected Timer timer;
+        
         
         private bool free;
         private bool stop = false;
@@ -23,7 +23,7 @@ namespace Models.Entities
 
         IKeepHuman _keeper;
 
-        internal void SetInterval(int newInterval) => timer.Interval = newInterval;
+        
         internal void Stop() { stop = true; }
         internal void Dispose() { 
             if (_keeper.getKeeperFloor() == FiniteFloor) 
@@ -39,12 +39,7 @@ namespace Models.Entities
             this.FiniteFloor = finiteFloor;
             if (_keeper.getKeeperNumber() == finiteFloor)
                 dispose = true;
-            timer = new Timer(1000)//1000 milliseconds
-            {
-                AutoReset = true
-            };
-            timer.Elapsed += Tick;
-            timer.Start();
+            
             Time = 0;
             free = true;
         }
@@ -57,19 +52,15 @@ namespace Models.Entities
             if(free)
             free = false;
         }
-        void IMovable.MoveTo(int floor)
+        public void Move()
         {
-
+            Tick();
         }
 
-        protected void Tick(object source, ElapsedEventArgs e)
+        protected void Tick()
         {
-            if (stop)
-                timer.Stop();
             if (Time % 3 == 0)
             {
-                if (dispose)
-                    timer.Dispose();
                 Console.WriteLine("Hello  World,i am human!!!");
             }
             if (free)

@@ -53,6 +53,7 @@
     <Compile Include="IPlanFireAlarm.cs" />
     <Compile Include="ISystemParameters.cs" />
     <Compile Include="IService.cs" />
+    <Compile Include="Entities\Observer.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -108,7 +108,7 @@ namespace Models.Entities
             return new List<Humans>(data);
         }
 
-        void IMovable.MoveTo(int floor)
+        public void Move()
         {
 
         }

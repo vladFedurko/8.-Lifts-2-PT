@@ -7,8 +7,8 @@ using System.Timers;
 
 namespace Models
 {
-     interface IMovable
+    public interface IMovable
     {
-        internal void MoveTo(int floor);
+        void Move();
     }
 }
