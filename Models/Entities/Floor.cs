@@ -8,7 +8,7 @@ namespace Models.Entities
 {
     internal class Floor : IKeepHuman
     {
-        List<Humans> humans = new List<Humans>();
+        HashSet<Humans> Humans = new HashSet<Humans>();
         int FloorNumber;
         internal Floor(int FloorNumber)
         {
@@ -16,13 +16,17 @@ namespace Models.Entities
         }
         public IEnumerable<Humans> getHumans()
         {
-            return new List<Humans>(humans);
+            return new List<Humans>(Humans);
         }
 
         public void AddHumans(Humans humans)
         {
             if (humans != null)
-                this.humans.Add(humans);
+                this.Humans.Add(humans);
+        }
+        public void RemoveHumans(Humans humans)
+        {
+            Humans.Remove(humans);
         }
 
         public int getKeeperNumber()
@@ -33,5 +37,6 @@ namespace Models.Entities
         {
             return FloorNumber;
         }
+        
     }
 }

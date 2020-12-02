@@ -13,9 +13,8 @@ namespace Models.Entities
     internal class Lift : IMovable, IKeepHuman
     {
         private bool directionUp = false;
-        private bool directionDown = false;
         private bool IsMoving = false;
-        List<Humans> data = new List<Humans>();
+        HashSet<Humans> data = new HashSet<Humans>();
         internal int HumanNumber { get; private set; }
 
         internal int LiftNumber
@@ -33,12 +32,10 @@ namespace Models.Entities
         internal void ChangeDirection()
         {
             directionUp = !directionUp;
-            directionDown = !directionDown;
         }
         internal void Wait()
         {
             IsMoving = false;
-            directionDown = false;
             directionUp = false;
         }
         internal void MoveUp()
@@ -46,7 +43,7 @@ namespace Models.Entities
             Floor++;
             if (IsMoving)
             {
-                if (directionDown)
+                if (!directionUp)
                     ChangeDirection();
             }
             else
@@ -68,7 +65,7 @@ namespace Models.Entities
             else
             {
                 IsMoving = true;
-                directionDown = true;
+                directionUp = false;
             }
         }
 
@@ -79,8 +76,6 @@ namespace Models.Entities
             {
                 data.Remove(b);
                 HumanNumber -= b.HumanNumber;
-                b.Stop();
-                //b.Dispose();
             }
             return g;
         }
@@ -93,9 +88,7 @@ namespace Models.Entities
             HumanNumber += a.HumanNumber;
         }
         public void AddRangeHumans(List<Humans> a)
-        {
-            if (a != null)
-                data.AddRange(a);
+        {)
             foreach (var humans in a)
             {
                 humans.changeKeeper(this);

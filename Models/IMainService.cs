@@ -11,6 +11,8 @@ namespace Models
 
         void ShowState();
 
+        void setTime(int Time);
+
         void SetParameters(int floors, int lifts);
 
         event Action StartFireAlarm;
