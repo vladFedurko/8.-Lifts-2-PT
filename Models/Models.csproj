@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Entities\Floor.cs" />
     <Compile Include="Entities\Humans.cs" />
+    <Compile Include="SystemData.cs" />
     <Compile Include="IMovable.cs" />
     <Compile Include="Entities\Lift.cs" />
     <Compile Include="Strategies\MinIdlingStrategy.cs" />

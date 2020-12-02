@@ -13,6 +13,8 @@ namespace _8.Lifts_2__PT
             InitSimulationTable();
         }
 
+        public void setTime(int Time) { TimeStatusLabel.Text = "Time:" + Time; }
+
         public event Action StartFireAlarm;
         public event Action StopFireAlarm;
         public event Action StopSimulation;
