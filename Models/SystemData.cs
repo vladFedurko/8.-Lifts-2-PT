@@ -9,8 +9,8 @@ namespace Models
 {
     class SystemData
     {
-        List<Floor> Floors = new List<Floor>();
-        List<Lift> Lifts = new List<Lift>();
+        List<Floor> Floors;
+        List<Lift> Lifts;
         public SystemData(List<Floor> floors,List<Lift> lifts)
         {
             Floors = floors;
@@ -33,8 +33,8 @@ namespace Models
             Lifts.AddRange(lifts);
         }
 
-        public IEnumerable<Lift> GetLifts() => new List<Lift>(Lifts);
-        public IEnumerable<Floor> GetFloors() => new List<Floor>(Floors);
+        public IEnumerable<Lift> GetLifts() => Lifts;
+        public IEnumerable<Floor> GetFloors() => Floors;
 
         public void DeleteFloor(Floor floor)
         {
@@ -43,6 +43,13 @@ namespace Models
         public void RemoveLift(Lift lift)
         {
             Lifts.Remove(lift);
+        }
+
+        public bool IsEverythingEmpty()
+        {
+            if (Floors.Count == 0 && Lifts.Count == 0)
+                return true;
+            return false;
         }
     }
 }

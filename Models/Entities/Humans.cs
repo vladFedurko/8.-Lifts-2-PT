@@ -9,12 +9,19 @@ namespace Models.Entities
 {
     internal class Humans : IMovable
     { 
-        private bool free;
+        private int state;
+
+        enum State 
+        {
+            Created,
+            InLift,
+            Disposing,
+        }
+        //ISimulationStatistics _stat;
 
         public int HumanNumber;
         public int FiniteFloor { get; set; }
         internal int Time { get; private set; }
-
 
         IKeepHuman _keeper;
         internal Humans(int humanNumber, int finiteFloor, Floor keeper)
@@ -24,18 +31,23 @@ namespace Models.Entities
             this.HumanNumber = humanNumber;
             this.FiniteFloor = finiteFloor;
             Time = 0;
-            free = true;
+            state = State.Created;
             if (_keeper.getKeeperNumber() == finiteFloor)
-                free = true;
+                free = false;
         }
 
         internal void changeKeeper(IKeepHuman _newKeeper) 
         {
+            if (free)
+                free = false;
             if (_newKeeper == null)
-                free = true;
+                return; 
             _keeper = _newKeeper;
-            if(free)
-            free = false;
+            //_stat.addWaitTime(Time);
+            Time = 0;
+            if (_newKeeper.GetType().Name.Equals("Floor"))
+                free = true;
+            _keeper.AddHumans(this);
         }
         public void Move()
         {
@@ -44,9 +56,13 @@ namespace Models.Entities
 
         protected void Tick()
         {
-            if (Time % 3 == 0)
+            if (free)
             {
-                Console.WriteLine("Hello  World,i am human!!!");
+                Time++;
+                if (Time == 3)
+                {
+                    Console.WriteLine("Hello  World,i am human!!!");
+                }
             }
             if (free)
                 Time++;
