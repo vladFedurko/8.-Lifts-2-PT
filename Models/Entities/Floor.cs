@@ -16,7 +16,7 @@ namespace Models.Entities
         }
         public IEnumerable<Humans> getHumans()
         {
-            return new List<Humans>(Humans);
+            return Humans;
         }
 
         public void AddHumans(Humans humans)
