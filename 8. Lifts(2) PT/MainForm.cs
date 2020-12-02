@@ -35,11 +35,13 @@ namespace _8.Lifts_2__PT
 
         private Label CreateTableLabel(string str)
         {
-            Label label = new Label();
-            label.Text = str;
-            label.TextAlign = ContentAlignment.MiddleCenter;
-            //label.Dock = DockStyle.Fill;
-            label.Anchor = AnchorStyles.Right | AnchorStyles.Left;
+            Label label = new Label
+            {
+                Text = str,
+                TextAlign = ContentAlignment.MiddleCenter,
+                //label.Dock = DockStyle.Fill;
+                Anchor = AnchorStyles.Right | AnchorStyles.Left
+            };
             return label;
         }
 
