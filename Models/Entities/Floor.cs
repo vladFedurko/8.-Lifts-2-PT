@@ -23,6 +23,7 @@ namespace Models.Entities
         {
             if (humans != null)
                 this.Humans.Add(humans);
+            humans.ChangeState();
         }
         public void RemoveHumans(Humans humans)
         {
@@ -46,8 +47,17 @@ namespace Models.Entities
         {
             foreach (var humans in a)
             {
-                humans.changeState();
-                Humans.Add(humans);
+                this.AddHumans(humans);
+            }
+        }
+
+        public void DoTick()
+        {
+            foreach (var hum in Humans)
+            {
+                hum.DoTick();
+                if (hum.state == Entities.Humans.HumanState.DisposeNow)
+                    this.Humans.Remove(hum);
             }
         }
     }

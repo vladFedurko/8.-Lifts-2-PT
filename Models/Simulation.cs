@@ -37,10 +37,14 @@ namespace Models
         {
             //strategy.ChooseMovement(systemData);
             IEnumerable<Lift> lifts = systemData.GetLifts();
+            IEnumerable<Floor> floors = systemData.GetFloors();
+            foreach (var floor in floors)
+                floor.DoTick();
             foreach (var lift in lifts) 
             {
                 Floor floor = systemData.GetFloorByNumber(lift.getKeeperFloor());
-
+                HumansMover.ExitLift(floor, lift);
+                HumansMover.EnterLift(floor, lift);
             }
         }
     }

@@ -48,7 +48,7 @@
     <Compile Include="Observer.cs" />
     <Compile Include="Simulation.cs" />
     <Compile Include="SystemData.cs" />
-    <Compile Include="IMovable.cs" />
+    <Compile Include="AMovable.cs" />
     <Compile Include="Entities\Lift.cs" />
     <Compile Include="Strategies\MinIdlingStrategy.cs" />
     <Compile Include="Strategies\MinWaitingTimeStrategy.cs" />

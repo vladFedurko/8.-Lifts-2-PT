@@ -7,60 +7,56 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    public class Humans : IMovable
+    public class Humans : AMovable
     { 
-        private State state;
+        internal HumanState state { get; private set; }
 
-        enum State 
+        public void setStateToOnfloors() { state = HumanState.OnFloor; }//do not use this method in project
+        //only for testing
+
+        const int TICKS_TO_BREATHE = 30;
+        const int TICKS_TO_DISPOSE = 30;
+        internal enum HumanState 
         {
             Created,
+            OnFloor,
             InLift,
-            Disposing
+            Disposing,
+            DisposeNow
         }
         //ISimulationStatistics _stat;
 
         public int HumanNumber;
         public int FiniteFloor { get; set; }
 
-        internal Humans(int humanNumber, int finiteFloor)
+        internal Humans(int humanNumber, int finiteFloor) : base()
         {
             this.HumanNumber = humanNumber;
             this.FiniteFloor = finiteFloor;
-            state = State.Created;
+            state = HumanState.Created;
+            ticksToNotify = TICKS_TO_BREATHE;
         }
 
-        internal void changeState() 
+        internal void ChangeState() 
         {
-            if (state == State.InLift)
-                state = State.Disposing;
-            if (state == State.Created)
-               state = State.InLift;
+            if (state == HumanState.InLift)
+            { 
+                state = HumanState.Disposing;
+                CountPermission = true;
+                ticksToNotify = TICKS_TO_DISPOSE;
+            }
+            if (state == HumanState.OnFloor)
+               state = HumanState.InLift;
         }
 
-        public void Dispose()
+        protected override void Notify()
         {
-            //this._keeper. to delete
-        }
-
-        public void Notify(int tag)
-        {
-            switch (state)
+            if (state == HumanState.Disposing)
+                state = HumanState.DisposeNow;
+            if (state == HumanState.Created)
             {
-                case State.Disposing:
-                {
-                    this.Dispose();
-                    break;
-                }
-                case State.Created:
-                {
-                   // this.ChooseLift();
-                    break;
-                }
-                case State.InLift:
-                    {
-                        //TODO
-                        break;
-                    }
+                state = HumanState.OnFloor;
+                CountPermission = false;
             }
         }
     }

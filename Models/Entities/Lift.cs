@@ -10,11 +10,18 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    public class Lift : IMovable, IKeepHuman
+    public class Lift : AMovable, IKeepHuman
     {
-        public bool directionUp { get; private set; } = false;
-        public bool IsMoving { get; private set; } = false;
-        public bool IsDoorOpen { get; private set; } = false;
+        public bool directionUp { get; set; } = false;
+
+        internal LiftState liftState;
+        internal enum LiftState
+        {
+            WaitClosed,
+            WaitOpened,
+            Moving
+        }
+
         HashSet<Humans> data = new HashSet<Humans>();
         internal int HumanNumber { get; private set; }
 
@@ -26,53 +33,26 @@ namespace Models.Entities
         }
         internal int Floor { get; private set; }
 
-        internal Lift(int liftNumber, int floor = 0)
+        const int TICKS_TO_MOVE = 10;
+
+        internal Lift(int liftNumber, int floor = 0) : base()
         {
+            ticksToNotify = TICKS_TO_MOVE;
             this.LiftNumber = liftNumber;
             Floor = floor;
+            liftState = LiftState.WaitClosed;
         }
-
-        internal void ChangeDirection()
+        internal void Move()
         {
-            directionUp = !directionUp;
-        }
-        internal void Wait()
-        {
-            IsMoving = false;
-            directionUp = false;
-        }
-        internal void MoveUp()
-        {
-            Floor++;
-            if (IsMoving)
-            {
-                if (!directionUp)
-                    ChangeDirection();
-            }
-            else
-            {
-                IsMoving = true;
-                directionUp = true;
-            }
-        }
-
-        internal void MoveDown()
-        {
-            if (Floor > 0)
-                Floor--;
-            if (IsMoving)
+            if (liftState == LiftState.Moving)
             {
                 if (directionUp)
-                    ChangeDirection();
-            }
-            else
-            {
-                IsMoving = true;
-                directionUp = false;
+                    Floor += 2;
+                if (Floor > 0)
+                    Floor--;
             }
         }
-
-        internal int EndTrip(List<Humans> a)
+        internal int EndTrip(HashSet<Humans> a)
         {
             int g = HumanNumber;
             foreach (var b in a)
@@ -87,7 +67,7 @@ namespace Models.Entities
         {
             if ((Humans)a != null)
                 data.Add(a);
-            a.changeState();
+            a.ChangeState();
             HumanNumber += a.HumanNumber;
         }
 
@@ -95,9 +75,7 @@ namespace Models.Entities
         {
             foreach (var humans in a)
             {
-                humans.changeState();
-                data.Add(humans);
-                HumanNumber += humans.HumanNumber;
+                AddHumans(humans);
             }
         }
         public void RemoveAllHumans(Predicate<Humans> pred)
@@ -127,6 +105,11 @@ namespace Models.Entities
         public IKeepHuman GetKeeperByNumber(int number)
         {
             return this;
+        }
+
+        protected override void Notify()
+        {
+
         }
     }
 }
