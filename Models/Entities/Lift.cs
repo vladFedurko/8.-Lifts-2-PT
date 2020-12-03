@@ -17,6 +17,8 @@ namespace Models.Entities
         HashSet<Humans> data = new HashSet<Humans>();
         internal int HumanNumber { get; private set; }
 
+        Observer observer;
+
         internal int LiftNumber
         {
             get; private set;
@@ -87,6 +89,7 @@ namespace Models.Entities
             a.changeKeeper(this);
             HumanNumber += a.HumanNumber;
         }
+
         public void AddRangeHumans(List<Humans> a)
         {
             foreach (var humans in a)
@@ -96,14 +99,14 @@ namespace Models.Entities
             }
         }
 
+        public void RemoveHumans(Humans humans)
+        {
+            data.Remove(humans);
+        }
+
         public IEnumerable<Humans> getHumans()
         {
             return data;
-        }
-
-        public void Move()
-        {
-
         }
 
         public int getKeeperNumber()

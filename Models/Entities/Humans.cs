@@ -21,19 +21,12 @@ namespace Models.Entities
 
         public int HumanNumber;
         public int FiniteFloor { get; set; }
-        internal int Time { get; private set; }
 
-        IKeepHuman _keeper;
-        internal Humans(int humanNumber, int finiteFloor, Floor keeper)
+        internal Humans(int humanNumber, int finiteFloor)
         {
-            _keeper = keeper;
-            _keeper.AddHumans(this);
             this.HumanNumber = humanNumber;
             this.FiniteFloor = finiteFloor;
-            Time = 0;
             state = (int)State.Created;
-            if (_keeper.getKeeperNumber() == finiteFloor)
-                state = State.Disposing;
         }
 
         internal void changeKeeper(IKeepHuman _newKeeper) 
@@ -44,33 +37,33 @@ namespace Models.Entities
                state = State.InLift;
             if (_newKeeper == null)
                 return; 
-            _keeper = _newKeeper;
-            //_stat.addWaitTime(Time);
-            Time = 0;
-            
-            _keeper.AddHumans(this);
-        }
-        public void Move()
-        {
-            Tick();
         }
 
-        protected void Tick()
+        public void Dispose()
         {
-            switch(state)
+            //this._keeper. to delete
+        }
+
+        public void Notify(int tag)
+        {
+            switch (state)
             {
                 case State.Disposing:
-            {
-                Time++;
-                if (Time == 3)
                 {
-                    Console.WriteLine("Hello  World,i am human!!!");
+                    this.Dispose();
+                    break;
                 }
+                case State.Created:
+                {
+                    this.ChooseLift();
+                    break;
+                }
+                case State.InLift:
+                    {
+                        //TODO
+                        break;
+                    }
             }
-            if (state == State.Created)
-                Time++;
-        }
-            
         }
     }
 }
