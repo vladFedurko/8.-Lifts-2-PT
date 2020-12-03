@@ -9,6 +9,6 @@ namespace Models
 {
     public interface IMovable
     {
-        void Move();
+
     }
 }

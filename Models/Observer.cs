@@ -11,17 +11,19 @@ namespace Models
     {
         protected Timer timer;
         protected ISimulation simulation;
-        protected SortedDictionary<int, I> 
+
         public Observer()
         {
-            timer = new Timer(1000)//1000 milliseconds
+            timer = new Timer(100)//100 milliseconds
             {
                 AutoReset = true
             };
             timer.Elapsed += Tick;
             timer.Start();
         }
+
         internal void SetInterval(int newInterval) => timer.Interval = newInterval;
+
         protected void Tick(object source, ElapsedEventArgs e)
         {
             simulation.doTick();

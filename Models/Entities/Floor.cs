@@ -8,7 +8,7 @@ namespace Models.Entities
 {
     public class Floor : IKeepHuman
     {
-        HashSet<Humans> Humans = new HashSet<Humans>();
+        readonly HashSet<Humans> Humans = new HashSet<Humans>();
         int FloorNumber;
         internal Floor(int FloorNumber)
         {

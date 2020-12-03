@@ -30,6 +30,8 @@ namespace Models
                 observer.Stop();
         }
 
+        public SystemData GetData() => systemData;
+
         public void doTick()
         {
 
