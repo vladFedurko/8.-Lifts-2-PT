@@ -12,8 +12,9 @@ namespace Models.Entities
 {
     public class Lift : IMovable, IKeepHuman
     {
-        private bool directionUp = false;
-        private bool IsMoving = false;
+        public bool directionUp { get; private set; } = false;
+        public bool IsMoving { get; private set; } = false;
+        public bool IsDoorOpen { get; private set; } = false;
         HashSet<Humans> data = new HashSet<Humans>();
         internal int HumanNumber { get; private set; }
 
@@ -86,19 +87,23 @@ namespace Models.Entities
         {
             if ((Humans)a != null)
                 data.Add(a);
-            a.changeKeeper(this);
+            a.changeState();
             HumanNumber += a.HumanNumber;
         }
 
-        public void AddRangeHumans(List<Humans> a)
+        public void AddRangeHumans(IEnumerable<Humans> a)
         {
             foreach (var humans in a)
             {
-                humans.changeKeeper(this);
+                humans.changeState();
+                data.Add(humans);
                 HumanNumber += humans.HumanNumber;
             }
         }
-
+        public void RemoveAllHumans(Predicate<Humans> pred)
+        {
+            data.RemoveWhere(pred);
+        }
         public void RemoveHumans(Humans humans)
         {
             data.Remove(humans);

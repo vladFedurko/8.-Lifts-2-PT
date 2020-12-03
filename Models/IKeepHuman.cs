@@ -13,7 +13,5 @@ namespace Models
         void AddHumans(Humans humans);
         int getKeeperNumber();
         int getKeeperFloor();
-
-        IKeepHuman GetKeeperByNumber(int number);
     }
 }

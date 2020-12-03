@@ -26,17 +26,15 @@ namespace Models.Entities
         {
             this.HumanNumber = humanNumber;
             this.FiniteFloor = finiteFloor;
-            state = (int)State.Created;
+            state = State.Created;
         }
 
-        internal void changeKeeper(IKeepHuman _newKeeper) 
+        internal void changeState() 
         {
             if (state == State.InLift)
                 state = State.Disposing;
             if (state == State.Created)
                state = State.InLift;
-            if (_newKeeper == null)
-                return; 
         }
 
         public void Dispose()
@@ -55,7 +53,7 @@ namespace Models.Entities
                 }
                 case State.Created:
                 {
-                    this.ChooseLift();
+                   // this.ChooseLift();
                     break;
                 }
                 case State.InLift:

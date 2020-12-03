@@ -11,10 +11,11 @@ namespace Models
     {
         List<Floor> Floors;
         List<Lift> Lifts;
-        public SystemData(List<Floor> floors,List<Lift> lifts)
+        public SystemData(int floors,int lifts)
         {
-            Floors = floors;
-            Lifts = lifts;
+
+            Floors = new List<Floor>(floors);
+            Lifts = new List<Lift>(lifts);
         }
 
         public void AddFloor(Floor floor) {
@@ -44,7 +45,11 @@ namespace Models
         {
             Lifts.Remove(lift);
         }
-
+        
+        public Floor GetFloorByNumber(int number)
+        {
+            return Floors.FirstOrDefault(f => f.getKeeperNumber() == number);
+        }
         public bool IsEverythingEmpty()
         {
             if (Floors.Count == 0 && Lifts.Count == 0)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,13 @@ namespace Models
 
         public void doTick()
         {
-            SystemData.Get
+            //strategy.ChooseMovement(systemData);
+            IEnumerable<Lift> lifts = systemData.GetLifts();
+            foreach (var lift in lifts) 
+            {
+                Floor floor = systemData.GetFloorByNumber(lift.getKeeperFloor());
+
+            }
         }
     }
 }

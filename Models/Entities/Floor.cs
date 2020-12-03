@@ -29,6 +29,11 @@ namespace Models.Entities
             Humans.Remove(humans);
         }
 
+        public void RemoveAllHumans(Predicate<Humans> pred)
+        {
+            Humans.RemoveWhere(pred);
+        }
+
         public int getKeeperNumber()
         {
             return FloorNumber;
@@ -36,11 +41,14 @@ namespace Models.Entities
         public int getKeeperFloor()
         {
             return FloorNumber;
-
-        public Floor getKeeperByNumber()
-        {
-            return this;
         }
-
+        public void AddRangeHumans(IEnumerable<Humans> a)
+        {
+            foreach (var humans in a)
+            {
+                humans.changeState();
+                Humans.Add(humans);
+            }
+        }
     }
 }
