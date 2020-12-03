@@ -36,7 +36,11 @@ namespace Models.Entities
         public int getKeeperFloor()
         {
             return FloorNumber;
+
+        public Floor getKeeperByNumber()
+        {
+            return this;
         }
-        
+
     }
 }

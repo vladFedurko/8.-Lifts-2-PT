@@ -32,7 +32,7 @@ namespace Models
 
         public void doTick()
         {
-
+            SystemData.Get
         }
     }
 }

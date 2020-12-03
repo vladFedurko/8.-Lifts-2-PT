@@ -110,9 +110,15 @@ namespace Models.Entities
         {
             return LiftNumber;
         }
+
         public int getKeeperFloor()
         {
             return Floor;
+        }
+
+        public IKeepHuman GetKeeperByNumber(int number)
+        {
+            return this;
         }
     }
 }

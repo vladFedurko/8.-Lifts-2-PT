@@ -7,11 +7,13 @@ using Models.Entities;
 
 namespace Models
 {
-    interface IKeepHuman
+    public interface IKeepHuman
     {
         IEnumerable<Humans> getHumans();
         void AddHumans(Humans humans);
         int getKeeperNumber();
         int getKeeperFloor();
+
+        IKeepHuman GetKeeperByNumber(int number);
     }
 }
