@@ -11,9 +11,9 @@ namespace Models
     {
         public static void EnterLift(Floor floor, Lift lift)
         {
-            IEnumerable<Human> Floor_humans = floor.getHumans();
+            IEnumerable<Human> Floor_humans = floor?.getHumans();
             //int rem = 0;
-            lift.AddRangeHumans
+            lift?.AddRangeHumans
                 (
                 Floor_humans.Where(
                     h =>
@@ -23,7 +23,7 @@ namespace Models
                     &&
                     (
                     (
-                       lift.TargetFloor -lift .Floor > 0
+                       lift.TargetFloor -lift.Floor > 0
                        && 
                        (floor.getKeeperFloor() - h.FiniteFloor) < 0
                     )
@@ -39,7 +39,7 @@ namespace Models
                 );
             //Console.WriteLine(rem);
             //rem = 0;
-            floor.RemoveSomeHumans(
+            floor?.RemoveSomeHumans(
                 h =>
                 h.state == Entities.Human.HumanState.InLift
                 &&
@@ -60,8 +60,8 @@ namespace Models
 
         public static void ExitLift(Floor floor,Lift lift)
         {
-            IEnumerable<Human> Lift_humans = lift.getHumans();
-            floor.AddRangeHumans
+            IEnumerable<Human> Lift_humans = lift?.getHumans();
+            floor?.AddRangeHumans
                 (
                 Lift_humans.Where
                 (
@@ -71,7 +71,7 @@ namespace Models
                     (floor.getKeeperFloor() - h.FiniteFloor) == 0
                 )
                 );
-            lift.RemoveSomeHumans(
+            lift?.RemoveSomeHumans(
                 h =>
                 h.state == Entities.Human.HumanState.Disposing
                 &&

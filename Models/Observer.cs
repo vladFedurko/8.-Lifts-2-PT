@@ -26,7 +26,7 @@ namespace Models
 
         protected void Tick(object source, ElapsedEventArgs e)
         {
-            simulation.doTick();
+            simulation?.doTick();
         }
 
         public void Stop()
