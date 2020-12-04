@@ -45,20 +45,39 @@ namespace Models.Entities
         }
         public void AddRangeHumans(IEnumerable<Humans> a)
         {
-            foreach (var humans in a)
-            {
-                this.AddHumans(humans);
-            }
+            if (a != null)
+                foreach (var humans in a)
+                {
+                    this.AddHumans(humans);
+                }
+        }
+        internal void AddRangeFactories(IEnumerable<HumanFactory> a)
+        {
+            if (a != null)
+                foreach (var fact in a)
+                {
+                    this.AddHumanFactory(fact);
+                }
         }
 
         public void DoTick()
         {
-            foreach (var hum in Humans)
+            if (genTable != null)
+                foreach (var fact in genTable)
+            {
+                this.AddRangeHumans(fact.DoTick());
+            }
+            if (Humans != null)
+                foreach (var hum in Humans)
             {
                 hum.DoTick();
                 if (hum.state == Entities.Humans.HumanState.DisposeNow)
                     this.Humans.Remove(hum);
             }
         }
+
+        public int getHumanNumberUp() => HumanNumberUp;
+        public int getHumanNumberDown() => HumanNumberDown;
+        public int getHumanNumber() => HumanNumberUp + HumanNumberDown;
     }
 }
