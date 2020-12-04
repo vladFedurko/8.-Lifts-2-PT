@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,7 +15,13 @@ namespace Models
         
         static void Main() 
         {
-            Lift a = new Lift(0,2);
+            Floor a = new Floor(0);
+            HumanFactory c = new HumanFactory(5, 2, 30);
+            HumanFactory d = new HumanFactory(5, 2, 30);
+            a.AddHumanFactory(c);
+            a.DoTick();
+            a.AddHumanFactory(d);
+            /*Lift a = new Lift(0,2);
             Floor b1 = new Floor(1);
             Floor b0 = new Floor(0);
             Floor b2 = new Floor(2);
@@ -31,24 +38,24 @@ namespace Models
             /*c1.setStateToOnfloors();
             c2.setStateToOnfloors();
             c3.setStateToOnfloors();*/
-            Console.WriteLine("we are here");
+            /*Console.WriteLine("we are here");
             a.StartMoving();
-            a.SetDirection(false);
+            a.SetTargetFloor(1);
             th.Join(1100);
             a.liftState = Lift.LiftState.WaitOpened;
-            a.SetDirection(true);
+            a.SetTargetFloor(2);
             HumansMover.EnterLift(b1, a);
             IEnumerable<Humans> g = a.getHumans();
             foreach (Humans t in g)
-                Console.WriteLine(t.HumanNumber + " " + t.FiniteFloor);
+                Console.WriteLine(t. + " " + t.FiniteFloor);
             Console.WriteLine();
             a.StartMoving();
             th.Join(1100);
             a.liftState = Lift.LiftState.WaitOpened;
             HumansMover.ExitLift(b2, a);
             foreach (Humans t in b2.getHumans())
-                Console.WriteLine(t.HumanNumber + " " + t.FiniteFloor);
-            Console.ReadLine();
+                Console.WriteLine(t. + " " + t.FiniteFloor);
+            Console.ReadLine();*/
         }
         private static void tickb(object a)
         {

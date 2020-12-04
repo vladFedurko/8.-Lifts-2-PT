@@ -9,9 +9,10 @@ namespace Models
 {
     public interface IKeepHuman
     {
-        IEnumerable<Humans> getHumans();
-        void AddHumans(Humans humans);
+        IEnumerable<Human> getHumans();
+        void AddHumans(Human humans);
         int getKeeperNumber();
         int getKeeperFloor();
+        int getHumanNumber();
     }
 }

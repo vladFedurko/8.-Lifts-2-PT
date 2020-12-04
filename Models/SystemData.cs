@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,21 +22,39 @@ namespace Models
                 Lifts[i] = new Lift(i);
         }
 
+        internal void ParseDataTable(DataTable dataTable)
+        {
+            DataRowCollection rows = dataTable?.Rows;
+            foreach (DataRow row in rows)
+            {
+                object[] a = row.ItemArray;
+                if (a.Length != 4)
+                    return;
+                HumanFactory humanFactory = new HumanFactory((int)a[0], (int)a[2], ((int)a[3]) * 10);
+                Floor floor = GetFloorByNumber((int)a[1]);
+                floor.AddHumanFactory(humanFactory);
+            }
+        }
+
         public void AddFloor(Floor floor)
         {
-            Floors.Add(floor);
+            if (floor != null)
+                Floors.Add(floor);
         }
         public void AddLift(Lift lift)
         {
-            Lifts.Add(lift);
+            if (lift != null)
+                Lifts.Add(lift);
         }
         public void AddRangeFloors(List<Floor> floors)
         {
-            Floors.AddRange(floors);
+            if (floors != null)
+                Floors.AddRange(floors);
         }
         public void AddRangeLifts(List<Lift> lifts)
         {
-            Lifts.AddRange(lifts);
+            if (lifts != null)
+                Lifts.AddRange(lifts);
         }
 
         public IEnumerable<Lift> GetLifts() => Lifts;
@@ -43,11 +62,15 @@ namespace Models
 
         public void DeleteFloor(Floor floor)
         {
-            Floors.Remove(floor);
+            if (floor != null)
+                if(Floors.Contains(floor))
+                    Floors.Remove(floor);
         }
         public void RemoveLift(Lift lift)
         {
-            Lifts.Remove(lift);
+            if (lift != null)
+                if(Lifts.Contains(lift))
+                    Lifts.Remove(lift);
         }
 
         public Floor GetFloorByNumber(int number)
