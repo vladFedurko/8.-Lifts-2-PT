@@ -25,29 +25,34 @@ namespace Models
             b1.AddHumans(c3);
             b1.AddHumans(c2);
             System.Threading.Timer timer = new System.Threading.Timer(new TimerCallback(tick), b1, 0, 100);
+            System.Threading.Timer timera = new System.Threading.Timer(new TimerCallback(tickb), a, 0, 100);
             Thread th = Thread.CurrentThread;
-            th.Join(5000);
+            th.Join(3100);
             /*c1.setStateToOnfloors();
             c2.setStateToOnfloors();
             c3.setStateToOnfloors();*/
             Console.WriteLine("we are here");
-            a.directionUp = false;
-            a.liftState = Lift.LiftState.Moving;
-            a.Move();
+            a.StartMoving();
+            a.SetDirection(false);
+            th.Join(1100);
             a.liftState = Lift.LiftState.WaitOpened;
-            a.directionUp = true;
+            a.SetDirection(true);
             HumansMover.EnterLift(b1, a);
-            a.liftState = Lift.LiftState.Moving;
             IEnumerable<Humans> g = a.getHumans();
             foreach (Humans t in g)
                 Console.WriteLine(t.HumanNumber + " " + t.FiniteFloor);
             Console.WriteLine();
-            a.Move();
+            a.StartMoving();
+            th.Join(1100);
             a.liftState = Lift.LiftState.WaitOpened;
             HumansMover.ExitLift(b2, a);
             foreach (Humans t in b2.getHumans())
                 Console.WriteLine(t.HumanNumber + " " + t.FiniteFloor);
             Console.ReadLine();
+        }
+        private static void tickb(object a)
+        {
+            ((Lift)a).DoTick();
         }
 
         private static void tick(object a)
