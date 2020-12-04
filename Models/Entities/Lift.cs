@@ -12,7 +12,7 @@ namespace Models.Entities
 {
     public class Lift : AMovable, IKeepHuman
     {
-        public int TargetFloor { get; private set; }
+        internal int TargetFloor { get; private set; }
 
         internal LiftState liftState;
         internal enum LiftState
