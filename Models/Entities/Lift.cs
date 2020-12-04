@@ -31,7 +31,7 @@ namespace Models.Entities
         }
         internal int Floor { get; private set; }
 
-        const int TICKS_TO_MOVE = 10;
+        internal const int TICKS_TO_MOVE = 10;
 
         internal Lift(int liftNumber, int floor = 0) : base()
         {
@@ -53,11 +53,23 @@ namespace Models.Entities
             if (liftState == LiftState.Moving)
             {
                 if (TargetFloor - Floor > 0)
-                    Floor += 2;
-                if (Floor > 0)
+                    Floor++;
+                else if (Floor > 0)
                     Floor--;
             }
         }
+
+        internal int GetTickToMove()
+        {
+            return TICKS_TO_MOVE;
+        }
+
+        internal void OpenDoor()
+        {
+            this.liftState = LiftState.WaitOpened;
+            this.CountPermission = true;
+        }
+
         internal int EndTrip(HashSet<Humans> a)
         {
             int g = HumanNumber;
@@ -115,9 +127,14 @@ namespace Models.Entities
 
         protected override void Notify()
         {
-            Move();
-            CountPermission = false;
-            liftState = LiftState.WaitClosed;
+            if(liftState == LiftState.WaitOpened)
+            {
+                liftState = LiftState.WaitClosed;
+                CountPermission = false;
+            } else if(liftState == LiftState.Moving)
+            {
+                Move();
+            }
         }
     }
 }

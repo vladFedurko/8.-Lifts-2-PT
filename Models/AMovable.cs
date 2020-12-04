@@ -11,7 +11,7 @@ namespace Models
     {
         protected int ticksToNotify;
         private int currentTick;
-        public bool CountPermission { get; set; }
+        protected bool CountPermission { get; set; }
         public AMovable()
         {
             currentTick = 0;

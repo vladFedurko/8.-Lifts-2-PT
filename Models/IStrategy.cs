@@ -8,6 +8,6 @@ namespace Models
 {
     public interface IStrategy
     {
-        public int ChooseNextFloor(SystemData data, int numOfLift);
+        public void ManageLifts(SystemData data);
     }
 }
