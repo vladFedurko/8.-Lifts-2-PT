@@ -9,7 +9,9 @@ namespace Models.Entities
     public class Floor : IKeepHuman
     {
         readonly HashSet<Humans> Humans = new HashSet<Humans>();
+        HashSet<HumanFactory> genTable = new HashSet<HumanFactory>();
         int FloorNumber;
+        internal int HumanNumber;
         internal Floor(int FloorNumber)
         {
             this.FloorNumber = FloorNumber;
@@ -24,15 +26,31 @@ namespace Models.Entities
             if (humans != null)
                 this.Humans.Add(humans);
             humans.ChangeState();
+            HumanNumber += humans.HumanNumber;
+        }
+        internal void AddHumanFactory(HumanFactory fact)
+        {
+            if (fact != null)
+                this.genTable.Add(fact);
         }
         public void RemoveHumans(Humans humans)
         {
             Humans.Remove(humans);
+            HumanNumber -= humans.HumanNumber;
+        }
+        internal void RemoveHumanFactory(HumanFactory fact)
+        {
+            genTable.Remove(fact);
         }
 
-        public void RemoveAllHumans(Predicate<Humans> pred)
+        public void RemoveSomeHumans(Predicate<Humans> pred)
         {
             Humans.RemoveWhere(pred);
+        }
+
+        internal void RemoveSomeFactories(Predicate<HumanFactory> pred)
+        {
+            genTable.RemoveWhere(pred);
         }
 
         public int getKeeperNumber()
@@ -50,9 +68,20 @@ namespace Models.Entities
                 this.AddHumans(humans);
             }
         }
+        internal void AddRangeFactoriess(IEnumerable<HumanFactory> a)
+        {
+            foreach (var fact in a)
+            {
+                this.AddHumanFactory(fact);
+            }
+        }
 
         public void DoTick()
         {
+            foreach (var fact in genTable) 
+            {
+                this.AddHumans(fact.DoTick());
+            }
             foreach (var hum in Humans)
             {
                 hum.DoTick();

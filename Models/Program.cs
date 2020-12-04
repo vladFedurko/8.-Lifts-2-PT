@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,6 +15,7 @@ namespace Models
         
         static void Main() 
         {
+            DataTable dataTable;
             Lift a = new Lift(0,2);
             Floor b1 = new Floor(1);
             Floor b0 = new Floor(0);
@@ -33,10 +35,10 @@ namespace Models
             c3.setStateToOnfloors();*/
             Console.WriteLine("we are here");
             a.StartMoving();
-            a.SetDirection(false);
+            a.SetTargetFloor(1);
             th.Join(1100);
             a.liftState = Lift.LiftState.WaitOpened;
-            a.SetDirection(true);
+            a.SetTargetFloor(2);
             HumansMover.EnterLift(b1, a);
             IEnumerable<Humans> g = a.getHumans();
             foreach (Humans t in g)

@@ -23,13 +23,13 @@ namespace Models
                     &&
                     (
                     (
-                       lift.directionUp
+                       lift.TargetFloor -lift .Floor > 0
                        && 
                        (floor.getKeeperFloor() - h.FiniteFloor) < 0
                     )
             ||
             (
-                 !lift.directionUp
+                 lift.TargetFloor - lift.Floor < 0
                 &&
                  (floor.getKeeperFloor() - h.FiniteFloor) > 0
             )
@@ -39,18 +39,20 @@ namespace Models
                 );
             //Console.WriteLine(rem);
             //rem = 0;
-            floor.RemoveAllHumans(
+            floor.RemoveSomeHumans(
                 h =>
                 h.state == Entities.Humans.HumanState.InLift
                 &&
                 (
-                    (floor.getKeeperFloor() - h.FiniteFloor) < 0 && lift.directionUp
+                    (floor.getKeeperFloor() - h.FiniteFloor) < 0 
+                    && 
+                    lift.TargetFloor - lift.Floor > 0
                 )
             || 
             (
                 (floor.getKeeperFloor() - h.FiniteFloor) > 0 
-                && 
-                !lift.directionUp
+                &&
+                lift.TargetFloor - lift.Floor < 0
             )
             //&& ((rem+=h.HumanNumber) <Parameter_Max_Floor_count - lift.HumanNumber
             );
