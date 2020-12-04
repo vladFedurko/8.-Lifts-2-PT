@@ -13,5 +13,6 @@ namespace Models
         void AddHumans(Humans humans);
         int getKeeperNumber();
         int getKeeperFloor();
+        int getHumanNumber();
     }
 }

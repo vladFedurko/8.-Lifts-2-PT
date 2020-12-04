@@ -89,5 +89,7 @@ namespace Models.Entities
                     this.Humans.Remove(hum);
             }
         }
+
+        public int getHumanNumber() => HumanNumber;
     }
 }

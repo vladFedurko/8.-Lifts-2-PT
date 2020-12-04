@@ -26,8 +26,8 @@ namespace Models.Entities
         }
         //ISimulationStatistics _stat;
 
-        public int HumanNumber;
-        public int FiniteFloor { get;private set; }
+        internal int HumanNumber;
+        internal int FiniteFloor { get;private set; }
 
         internal Humans(int humanNumber, int finiteFloor) : base()
         {

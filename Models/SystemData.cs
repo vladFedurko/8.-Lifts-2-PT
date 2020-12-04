@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,20 @@ namespace Models
             Lifts = new List<Lift>(lifts);
             for (int i = 0; i < lifts; i++)
                 Lifts[i] = new Lift(i);
+        }
+
+        internal void ParseDataTable(DataTable dataTable)
+        {
+            DataRowCollection rows = dataTable.Rows;
+            foreach (DataRow row in rows)
+            {
+                object[] a = row.ItemArray;
+                if (a.Length != 4)
+                    return;
+                HumanFactory humanFactory = new HumanFactory((int)a[0], (int)a[2], ((int)a[3]) * 10);
+                Floor floor = GetFloorByNumber((int)a[1]);
+                floor.AddHumanFactory(humanFactory);
+            }
         }
 
         public void AddFloor(Floor floor)

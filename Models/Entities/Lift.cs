@@ -23,8 +23,8 @@ namespace Models.Entities
         }
 
         HashSet<Humans> data = new HashSet<Humans>();
-        internal int HumanNumber { get; private set; }
 
+        internal int HumanNumber;
         internal int LiftNumber
         {
             get; private set;
@@ -119,5 +119,7 @@ namespace Models.Entities
             CountPermission = false;
             liftState = LiftState.WaitClosed;
         }
+
+        public int getHumanNumber() => HumanNumber;
     }
 }
