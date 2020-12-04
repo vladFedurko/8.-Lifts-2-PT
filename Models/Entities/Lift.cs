@@ -12,7 +12,7 @@ namespace Models.Entities
 {
     public class Lift : AMovable, IKeepHuman
     {
-        public bool directionUp { get; set; } = false;
+        public bool directionUp { get; private set; } = false;
 
         internal LiftState liftState;
         internal enum LiftState
@@ -41,8 +41,15 @@ namespace Models.Entities
             this.LiftNumber = liftNumber;
             Floor = floor;
             liftState = LiftState.WaitClosed;
+            CountPermission = false;
         }
-        internal void Move()
+        internal void StartMoving()
+        {
+            CountPermission = true;
+            liftState = LiftState.Moving;
+        }
+        internal void SetDirection(bool up) => directionUp = up;
+        private void Move()
         {
             if (liftState == LiftState.Moving)
             {
@@ -109,7 +116,9 @@ namespace Models.Entities
 
         protected override void Notify()
         {
-
+            Move();
+            CountPermission = false;
+            liftState = LiftState.WaitClosed;
         }
     }
 }

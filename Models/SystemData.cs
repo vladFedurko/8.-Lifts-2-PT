@@ -13,9 +13,12 @@ namespace Models
         List<Lift> Lifts;
         public SystemData(int floors,int lifts)
         {
-
             Floors = new List<Floor>(floors);
+            for (int i=0;i<floors;i++)
+                Floors[i] = new Floor(i);
             Lifts = new List<Lift>(lifts);
+            for (int i = 0; i < lifts; i++)
+                Lifts[i] = new Lift(i);
         }
 
         public void AddFloor(Floor floor) {
