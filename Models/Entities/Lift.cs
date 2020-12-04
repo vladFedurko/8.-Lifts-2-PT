@@ -70,8 +70,6 @@ namespace Models.Entities
             this.CountPermission = true;
         }
 
-       
-
         public void AddHumans(Human a)
         {
             if ((Human)a != null)
@@ -84,6 +82,7 @@ namespace Models.Entities
 
         public void AddRangeHumans(IEnumerable<Human> a)
         {
+            if(a!=null)
             foreach (var humans in a)
             {
                 AddHumans(humans);
