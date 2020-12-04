@@ -8,31 +8,76 @@ namespace Models.Entities
 {
     public class Floor : IKeepHuman
     {
-        readonly HashSet<Humans> Humans = new HashSet<Humans>();
+        HashSet<Human> Humans = new HashSet<Human>();
+        HashSet<HumanFactory> genTable = new HashSet<HumanFactory>();
         int FloorNumber;
+        internal int HumanNumberUp;
+        internal int HumanNumberDown;
         internal Floor(int FloorNumber)
         {
             this.FloorNumber = FloorNumber;
         }
-        public IEnumerable<Humans> getHumans()
+        public IEnumerable<Human> getHumans()
         {
             return Humans;
         }
 
-        public void AddHumans(Humans humans)
+        public void AddHumans(Human humans)
         {
             if (humans != null)
+            {
                 this.Humans.Add(humans);
-            humans.ChangeState();
+                humans.ChangeState();
+                if (humans.FiniteFloor > FloorNumber)
+                    HumanNumberUp += 1;
+                else
+                    HumanNumberDown += 1;
+            }
         }
-        public void RemoveHumans(Humans humans)
+        internal void AddHumanFactory(HumanFactory fact)
         {
-            Humans.Remove(humans);
+            if (fact != null)
+                if (!genTable.Contains(fact))
+                    this.genTable.Add(fact);
+                else
+                    genTable.First(f => f == fact).humanNumber += fact.humanNumber;
+        }
+        public void RemoveHumans(Human humans)
+        {
+            if (humans != null)
+            {
+                Humans.Remove(humans);
+                if (humans.FiniteFloor > FloorNumber)
+                    HumanNumberUp -= 1;
+                else
+                    HumanNumberDown -= 1;
+            }
+        }
+        internal void RemoveHumanFactory(HumanFactory fact)
+        {
+            if (fact != null)
+                genTable.Remove(fact);
         }
 
-        public void RemoveAllHumans(Predicate<Humans> pred)
+        public void RemoveSomeHumans(Predicate<Human> pred)
         {
-            Humans.RemoveWhere(pred);
+            if (pred != null)
+            {
+                this.Humans.RemoveWhere(pred);
+                HumanNumberUp = 0;
+                HumanNumberDown = 0;
+                foreach (Human i in Humans)
+                    if (i.FiniteFloor > FloorNumber)
+                        HumanNumberUp += 1;
+                    else
+                        HumanNumberDown += 1;
+            }
+        }
+
+        internal void RemoveSomeFactories(Predicate<HumanFactory> pred)
+        {
+            if (pred != null)
+                genTable.RemoveWhere(pred);
         }
 
         public int getKeeperNumber()
@@ -43,7 +88,7 @@ namespace Models.Entities
         {
             return FloorNumber;
         }
-        public void AddRangeHumans(IEnumerable<Humans> a)
+        public void AddRangeHumans(IEnumerable<Human> a)
         {
             if (a != null)
                 foreach (var humans in a)
@@ -71,7 +116,7 @@ namespace Models.Entities
                 foreach (var hum in Humans)
             {
                 hum.DoTick();
-                if (hum.state == Entities.Humans.HumanState.DisposeNow)
+                if (hum.state == Entities.Human.HumanState.DisposeNow)
                     this.Humans.Remove(hum);
             }
         }

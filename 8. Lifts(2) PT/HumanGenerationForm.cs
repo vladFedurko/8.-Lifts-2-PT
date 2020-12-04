@@ -42,11 +42,11 @@ namespace _8.Lifts_2__PT
         public void InitTable(out DataTable dTable)
         {
             dTable = new DataTable();
-            DataColumn numberOfGeneratedPeopleolumn = new DataColumn("Number of genetared humans", Type.GetType("System.Int32"));
+            DataColumn numberOfGeneratedPeopleColumn = new DataColumn("Number of generated humans", Type.GetType("System.Int32"));
             DataColumn initialFloorColumn = new DataColumn("Initial floor", Type.GetType("System.Int32"));
             DataColumn finiteFloorColumn = new DataColumn("Finite floor", Type.GetType("System.Int32"));
             DataColumn inSecondsColumn = new DataColumn("In (seconds)", Type.GetType("System.Int32"));
-            dTable.Columns.AddRange(new DataColumn[] {numberOfGeneratedPeopleolumn,
+            dTable.Columns.AddRange(new DataColumn[] {numberOfGeneratedPeopleColumn,
                 initialFloorColumn,
                 finiteFloorColumn,
                 inSecondsColumn});
