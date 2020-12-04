@@ -26,7 +26,7 @@ namespace Models.Strategies
                     }
                 } else if(lift.liftState == Lift.LiftState.WaitClosed)
                 {
-                    if (lift.HumanNumber != 0)
+                    if (lift.humanNumber != 0)
                         lift.StartMoving();
                     else
                     {
@@ -43,7 +43,7 @@ namespace Models.Strategies
             decimal curEffTime = 0;
             foreach(var fl in data.GetFloors())
             {
-                if (fl.getHumanNumberUp() > getHumanNumberDown())
+                if (fl.getHumanNumberUp() > fl.getHumanNumberDown())
                     curEffTime = fl.getHumanNumberUp() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
                 else
                     curEffTime = fl.getHumanNumberDown() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
@@ -63,7 +63,7 @@ namespace Models.Strategies
             while (i != lift.TargetFloor)
             {
                 Floor fl = data.GetFloorByNumber(i);
-                if (isDirUp && fl.getHumanNumberUp() > 0 || !isDirUp && fl.getHumanNumberDown())
+                if (isDirUp && fl.getHumanNumberUp() > 0 || !isDirUp && fl.getHumanNumberDown() > 0)
                     lift.SetTargetFloor(i);
                 else
                     i += (isDirUp ? 1 : -1);
@@ -74,7 +74,7 @@ namespace Models.Strategies
                 while (i != lift.TargetFloor)
                 {
                     Floor fl = data.GetFloorByNumber(i);
-                    if (isDirUp && fl.getHumanNumberUp() > 0 || !isDirUp && fl.getHumanNumberDown())
+                    if (isDirUp && fl.getHumanNumberUp() > 0 || !isDirUp && fl.getHumanNumberDown() > 0)
                         lift.SetTargetFloor(i);
                     else
                         i += (isDirUp ? 1 : -1);
@@ -98,7 +98,7 @@ namespace Models.Strategies
 
         private int GetNearestFloor(Lift lift, Floor floor)
         {
-            if (lift.HumanNumber == 0)
+            if (lift.humanNumber == 0)
             {
                 int nearestFloorUp = int.MaxValue;
                 int nearestFloorDown = int.MinValue;
@@ -108,13 +108,13 @@ namespace Models.Strategies
                 {
                     if (floor.getKeeperFloor() - h.FiniteFloor < 0)
                     {
-                        countHumansUp += h.HumanNumber;
+                        countHumansUp ++;
                         if (nearestFloorUp > h.FiniteFloor)
                             nearestFloorUp = h.FiniteFloor;
                     }
                     else
                     {
-                        countHumansDown += h.HumanNumber;
+                        countHumansDown ++;
                         if (nearestFloorDown > h.FiniteFloor)
                             nearestFloorDown = h.FiniteFloor;
                     }
