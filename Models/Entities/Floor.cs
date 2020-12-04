@@ -11,7 +11,8 @@ namespace Models.Entities
         readonly HashSet<Humans> Humans = new HashSet<Humans>();
         HashSet<HumanFactory> genTable = new HashSet<HumanFactory>();
         int FloorNumber;
-        internal int HumanNumber;
+        internal int HumanNumberUp;
+        internal int HumanNumberDown;
         internal Floor(int FloorNumber)
         {
             this.FloorNumber = FloorNumber;
@@ -26,26 +27,44 @@ namespace Models.Entities
             if (humans != null)
                 this.Humans.Add(humans);
             humans.ChangeState();
-            HumanNumber += humans.HumanNumber;
+            if(humans.FiniteFloor >FloorNumber)
+                HumanNumberUp += humans.HumanNumber;
+            else
+                HumanNumberDown += humans.HumanNumber;
         }
         internal void AddHumanFactory(HumanFactory fact)
         {
             if (fact != null)
-                this.genTable.Add(fact);
+                if (!genTable.Contains(fact))
+                    this.genTable.Add(fact);
+                else
+                    genTable.First(f => f == fact).HumanNumber *= 2;
         }
         public void RemoveHumans(Humans humans)
         {
-            Humans.Remove(humans);
-            HumanNumber -= humans.HumanNumber;
+            if (humans != null)
+            {
+                Humans.Remove(humans);
+                if (humans.FiniteFloor > FloorNumber)
+                    HumanNumberUp -= humans.HumanNumber;
+                else
+                    HumanNumberDown -= humans.HumanNumber;
+            }
         }
         internal void RemoveHumanFactory(HumanFactory fact)
         {
-            genTable.Remove(fact);
+            if (fact != null)
+                genTable.Remove(fact);
         }
 
         public void RemoveSomeHumans(Predicate<Humans> pred)
         {
             Humans.RemoveWhere(pred);
+            foreach(Humans i in Humans)
+                if (i.FiniteFloor > FloorNumber)
+                    HumanNumberUp += i.HumanNumber;
+                else
+                    HumanNumberDown += i.HumanNumber;
         }
 
         internal void RemoveSomeFactories(Predicate<HumanFactory> pred)
@@ -90,6 +109,9 @@ namespace Models.Entities
             }
         }
 
-        public int getHumanNumber() => HumanNumber;
+        public int getHumanNumberUp() => HumanNumberUp;
+        public int getHumanNumberDown() => HumanNumberDown;
+
+        int IKeepHuman.getHumanNumber()=> HumanNumberUp + HumanNumberDown;
     }
 }

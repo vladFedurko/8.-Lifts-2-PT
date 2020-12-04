@@ -35,5 +35,31 @@ namespace Models.Entities
             }
             return null;
         }
+        public static bool operator==(HumanFactory fact,HumanFactory fact2) 
+        {
+            if (fact?.HumanNumber == fact2?.HumanNumber
+                &&
+                fact?.ticksToNotify == fact2?.ticksToNotify
+                &&
+                fact?.FiniteFloor == fact2?.FiniteFloor
+                &&
+                fact?.CurrentTick == fact2?.CurrentTick
+                )
+                return true;
+            return false;
+        }
+        public static bool operator !=(HumanFactory fact, HumanFactory fact2)
+        {
+            if (fact?.HumanNumber == fact2?.HumanNumber
+                &&
+                fact?.ticksToNotify == fact2?.ticksToNotify
+                &&
+                fact?.FiniteFloor == fact2?.FiniteFloor
+                &&
+                fact?.CurrentTick == fact2?.CurrentTick
+                )
+                return false;
+            return true;
+        }
     }
 }

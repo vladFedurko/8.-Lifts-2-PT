@@ -15,8 +15,12 @@ namespace Models
         
         static void Main() 
         {
-            DataTable dataTable;
-            Lift a = new Lift(0,2);
+            Floor a = new Floor(0);
+            HumanFactory c = new HumanFactory(5, 2, 30);
+            a.AddHumanFactory(null);
+            a.AddHumanFactory(c);
+            a.AddHumanFactory(c);
+            /*Lift a = new Lift(0,2);
             Floor b1 = new Floor(1);
             Floor b0 = new Floor(0);
             Floor b2 = new Floor(2);
@@ -33,7 +37,7 @@ namespace Models
             /*c1.setStateToOnfloors();
             c2.setStateToOnfloors();
             c3.setStateToOnfloors();*/
-            Console.WriteLine("we are here");
+            /*Console.WriteLine("we are here");
             a.StartMoving();
             a.SetTargetFloor(1);
             th.Join(1100);
@@ -50,7 +54,7 @@ namespace Models
             HumansMover.ExitLift(b2, a);
             foreach (Humans t in b2.getHumans())
                 Console.WriteLine(t.HumanNumber + " " + t.FiniteFloor);
-            Console.ReadLine();
+            Console.ReadLine();*/
         }
         private static void tickb(object a)
         {
