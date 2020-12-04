@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
-    class HumanFactory : AMovable
+    internal class HumanFactory : AMovable
     {
-        public int HumanNumber;
+        public int humanNumber;
         public int FiniteFloor;
 
         internal bool NewHumansReady = false;
 
         public HumanFactory(int humanNumber, int finiteFloor ,int ticksToNotify) 
         {
-            this.HumanNumber = humanNumber;
+            this.humanNumber = humanNumber;
             this.FiniteFloor = finiteFloor;
             this.ticksToNotify = ticksToNotify;
         }
@@ -25,20 +25,22 @@ namespace Models.Entities
             NewHumansReady = true;
         }
 
-        public new Humans DoTick() 
+        public new List<Human> DoTick() 
         {
             base.DoTick();
             if (NewHumansReady)
             {
                 NewHumansReady = false;
-                return new Humans(HumanNumber, FiniteFloor);
+                List<Human> humans = new List<Human>(humanNumber);
+                for (int i = 0; i < humanNumber; i++)
+                    humans[i] = new Human(FiniteFloor);
+                return humans;
             }
             return null;
         }
         public static bool operator==(HumanFactory fact,HumanFactory fact2) 
         {
-            if (fact?.HumanNumber == fact2?.HumanNumber
-                &&
+            if (
                 fact?.ticksToNotify == fact2?.ticksToNotify
                 &&
                 fact?.FiniteFloor == fact2?.FiniteFloor
@@ -50,8 +52,7 @@ namespace Models.Entities
         }
         public static bool operator !=(HumanFactory fact, HumanFactory fact2)
         {
-            if (fact?.HumanNumber == fact2?.HumanNumber
-                &&
+            if (
                 fact?.ticksToNotify == fact2?.ticksToNotify
                 &&
                 fact?.FiniteFloor == fact2?.FiniteFloor

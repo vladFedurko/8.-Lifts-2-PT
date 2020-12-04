@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    public class Humans : AMovable
+    public class Human : AMovable
     { 
         internal HumanState state { get; private set; }
 
@@ -26,17 +26,14 @@ namespace Models.Entities
         }
         //ISimulationStatistics _stat;
 
-        internal int HumanNumber;
         internal int FiniteFloor { get;private set; }
 
-        internal Humans(int humanNumber, int finiteFloor) : base()
+        internal Human(int finiteFloor) : base()
         {
-            this.HumanNumber = humanNumber;
             this.FiniteFloor = finiteFloor;
             state = HumanState.Created;
             ticksToNotify = TICKS_TO_BREATHE;
         }
-
         internal void ChangeState() 
         {
             if (state == HumanState.InLift)

@@ -8,7 +8,7 @@ namespace Models.Entities
 {
     public class Floor : IKeepHuman
     {
-        readonly HashSet<Humans> Humans = new HashSet<Humans>();
+        HashSet<Human> Humans = new HashSet<Human>();
         HashSet<HumanFactory> genTable = new HashSet<HumanFactory>();
         int FloorNumber;
         internal int HumanNumberUp;
@@ -17,20 +17,22 @@ namespace Models.Entities
         {
             this.FloorNumber = FloorNumber;
         }
-        public IEnumerable<Humans> getHumans()
+        public IEnumerable<Human> getHumans()
         {
             return Humans;
         }
 
-        public void AddHumans(Humans humans)
+        public void AddHumans(Human humans)
         {
             if (humans != null)
+            {
                 this.Humans.Add(humans);
-            humans.ChangeState();
-            if(humans.FiniteFloor >FloorNumber)
-                HumanNumberUp += humans.HumanNumber;
-            else
-                HumanNumberDown += humans.HumanNumber;
+                humans.ChangeState();
+                if (humans.FiniteFloor > FloorNumber)
+                    HumanNumberUp += 1;
+                else
+                    HumanNumberDown += 1;
+            }
         }
         internal void AddHumanFactory(HumanFactory fact)
         {
@@ -38,17 +40,17 @@ namespace Models.Entities
                 if (!genTable.Contains(fact))
                     this.genTable.Add(fact);
                 else
-                    genTable.First(f => f == fact).HumanNumber *= 2;
+                    genTable.First(f => f == fact).humanNumber += fact.humanNumber;
         }
-        public void RemoveHumans(Humans humans)
+        public void RemoveHumans(Human humans)
         {
             if (humans != null)
             {
                 Humans.Remove(humans);
                 if (humans.FiniteFloor > FloorNumber)
-                    HumanNumberUp -= humans.HumanNumber;
+                    HumanNumberUp -= 1;
                 else
-                    HumanNumberDown -= humans.HumanNumber;
+                    HumanNumberDown -= 1;
             }
         }
         internal void RemoveHumanFactory(HumanFactory fact)
@@ -57,19 +59,25 @@ namespace Models.Entities
                 genTable.Remove(fact);
         }
 
-        public void RemoveSomeHumans(Predicate<Humans> pred)
+        public void RemoveSomeHumans(Predicate<Human> pred)
         {
-            Humans.RemoveWhere(pred);
-            foreach(Humans i in Humans)
-                if (i.FiniteFloor > FloorNumber)
-                    HumanNumberUp += i.HumanNumber;
-                else
-                    HumanNumberDown += i.HumanNumber;
+            if (pred != null)
+            {
+                this.Humans.RemoveWhere(pred);
+                HumanNumberUp = 0;
+                HumanNumberDown = 0;
+                foreach (Human i in Humans)
+                    if (i.FiniteFloor > FloorNumber)
+                        HumanNumberUp += 1;
+                    else
+                        HumanNumberDown += 1;
+            }
         }
 
         internal void RemoveSomeFactories(Predicate<HumanFactory> pred)
         {
-            genTable.RemoveWhere(pred);
+            if (pred != null)
+                genTable.RemoveWhere(pred);
         }
 
         public int getKeeperNumber()
@@ -80,14 +88,14 @@ namespace Models.Entities
         {
             return FloorNumber;
         }
-        public void AddRangeHumans(IEnumerable<Humans> a)
+        public void AddRangeHumans(IEnumerable<Human> a)
         {
             foreach (var humans in a)
             {
                 this.AddHumans(humans);
             }
         }
-        internal void AddRangeFactoriess(IEnumerable<HumanFactory> a)
+        internal void AddRangeFactories(IEnumerable<HumanFactory> a)
         {
             foreach (var fact in a)
             {
@@ -99,19 +107,18 @@ namespace Models.Entities
         {
             foreach (var fact in genTable) 
             {
-                this.AddHumans(fact.DoTick());
+                this.AddRangeHumans(fact.DoTick());
             }
             foreach (var hum in Humans)
             {
                 hum.DoTick();
-                if (hum.state == Entities.Humans.HumanState.DisposeNow)
+                if (hum.state == Entities.Human.HumanState.DisposeNow)
                     this.Humans.Remove(hum);
             }
         }
 
         public int getHumanNumberUp() => HumanNumberUp;
         public int getHumanNumberDown() => HumanNumberDown;
-
-        int IKeepHuman.getHumanNumber()=> HumanNumberUp + HumanNumberDown;
+        public int getHumanNumber()=> HumanNumberUp + HumanNumberDown;
     }
 }

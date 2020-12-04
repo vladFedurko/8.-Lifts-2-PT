@@ -22,9 +22,9 @@ namespace Models.Entities
             Moving
         }
 
-        HashSet<Humans> data = new HashSet<Humans>();
+        HashSet<Human> data = new HashSet<Human>();
 
-        internal int HumanNumber;
+        internal int humanNumber;
         internal int LiftNumber
         {
             get; private set;
@@ -58,42 +58,36 @@ namespace Models.Entities
                     Floor--;
             }
         }
-        internal int EndTrip(HashSet<Humans> a)
+
+        public void AddHumans(Human a)
         {
-            int g = HumanNumber;
-            foreach (var b in a)
+            if ((Human)a != null)
             {
-                data.Remove(b);
-                HumanNumber -= b.HumanNumber;
-            }
-            return g;
-        }
-
-        public void AddHumans(Humans a)
-        {
-            if ((Humans)a != null)
                 data.Add(a);
-            a.ChangeState();
-            HumanNumber += a.HumanNumber;
+                a.ChangeState();
+                humanNumber += 1;
+            }
         }
 
-        public void AddRangeHumans(IEnumerable<Humans> a)
+        public void AddRangeHumans(IEnumerable<Human> a)
         {
             foreach (var humans in a)
             {
                 AddHumans(humans);
             }
         }
-        public void RemoveAllHumans(Predicate<Humans> pred)
+        public void RemoveSomeHumans(Predicate<Human> pred)
         {
-            data.RemoveWhere(pred);
+            if (pred != null)
+                data.RemoveWhere(pred);
         }
-        public void RemoveHumans(Humans humans)
+        public void RemoveHumans(Human humans)
         {
-            data.Remove(humans);
+            if (humans != null)
+                data.Remove(humans);
         }
 
-        public IEnumerable<Humans> getHumans()
+        public IEnumerable<Human> getHumans()
         {
             return data;
         }
@@ -108,11 +102,6 @@ namespace Models.Entities
             return Floor;
         }
 
-        public IKeepHuman GetKeeperByNumber(int number)
-        {
-            return this;
-        }
-
         protected override void Notify()
         {
             Move();
@@ -120,6 +109,6 @@ namespace Models.Entities
             liftState = LiftState.WaitClosed;
         }
 
-        public int getHumanNumber() => HumanNumber;
+        public int getHumanNumber() => humanNumber;
     }
 }

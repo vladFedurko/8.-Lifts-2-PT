@@ -11,13 +11,13 @@ namespace Models
     {
         public static void EnterLift(Floor floor, Lift lift)
         {
-            IEnumerable<Humans> Floor_humans = floor.getHumans();
+            IEnumerable<Human> Floor_humans = floor.getHumans();
             //int rem = 0;
             lift.AddRangeHumans
                 (
                 Floor_humans.Where(
                     h =>
-                    h.state == Entities.Humans.HumanState.OnFloor
+                    h.state == Entities.Human.HumanState.OnFloor
                     &&
                     lift.liftState == Lift.LiftState.WaitOpened
                     &&
@@ -34,14 +34,14 @@ namespace Models
                  (floor.getKeeperFloor() - h.FiniteFloor) > 0
             )
             )
-            //&& ((rem+=h.HumanNumber) <Parameter_Max_Floor_count - lift.HumanNumber
+            //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
             )
                 );
             //Console.WriteLine(rem);
             //rem = 0;
             floor.RemoveSomeHumans(
                 h =>
-                h.state == Entities.Humans.HumanState.InLift
+                h.state == Entities.Human.HumanState.InLift
                 &&
                 (
                     (floor.getKeeperFloor() - h.FiniteFloor) < 0 
@@ -54,26 +54,26 @@ namespace Models
                 &&
                 lift.TargetFloor - lift.Floor < 0
             )
-            //&& ((rem+=h.HumanNumber) <Parameter_Max_Floor_count - lift.HumanNumber
+            //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
             );
         }
 
         public static void ExitLift(Floor floor,Lift lift)
         {
-            IEnumerable<Humans> Lift_humans = lift.getHumans();
+            IEnumerable<Human> Lift_humans = lift.getHumans();
             floor.AddRangeHumans
                 (
                 Lift_humans.Where
                 (
                     h =>
-                    h.state == Entities.Humans.HumanState.InLift
+                    h.state == Entities.Human.HumanState.InLift
                     &&
                     (floor.getKeeperFloor() - h.FiniteFloor) == 0
                 )
                 );
-            lift.RemoveAllHumans(
+            lift.RemoveSomeHumans(
                 h =>
-                h.state == Entities.Humans.HumanState.Disposing
+                h.state == Entities.Human.HumanState.Disposing
                 &&
                 (floor.getKeeperFloor() == h.FiniteFloor)  
             );
