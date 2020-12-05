@@ -30,22 +30,18 @@ namespace Models
             if(systemData.IsEverythingEmpty())
                 observer.Stop();
         }
+        public void StartSimulation()
+        {
+            observer.Start();
+        }
 
         public SystemData GetData() => systemData;
 
         public void doTick()
         {
-            //strategy.ChooseMovement(systemData);
-            IEnumerable<Lift> lifts = systemData.GetLifts();
-            IEnumerable<Floor> floors = systemData.GetFloors();
-            foreach (var floor in floors)
+            strategy.ManageLifts(systemData);
+            foreach (var floor in systemData.GetFloors())
                 floor.DoTick();
-            foreach (var lift in lifts) 
-            {
-                Floor floor = systemData.GetFloorByNumber(lift.getKeeperFloor());
-                HumansMover.ExitLift(floor, lift);
-                HumansMover.EnterLift(floor, lift);
-            }
         }
     }
 }
