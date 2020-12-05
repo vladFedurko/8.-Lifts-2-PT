@@ -32,7 +32,15 @@ namespace Models.Strategies
                         lift.StartMoving();
                     else
                     {
-                        this.GetTargetFloorForMinWaitingTime(data, lift);
+                        lift.SetTargetFloor(this.GetTargetFloorForMinWaitingTime(data, lift));
+                        if (lift.TargetFloor == lift.getKeeperFloor())
+                        {
+                            lift.OpenDoor();
+                        }
+                        else
+                        {
+                            lift.StartMoving();
+                        }
                     }
                 }
             }
@@ -46,13 +54,14 @@ namespace Models.Strategies
             foreach (var fl in data.GetFloors())
             {
                 int distance = Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor());
-                if(distance != 0)
+                if (distance != 0)
                 {
-                    if (fl.getHumanNumberUp() > 0 && fl.getHumanNumberUp() > fl.getHumanNumberDown())
+                    if (fl.getHumanNumberUp() > fl.getHumanNumberDown())
                         curEffTime = fl.getHumanNumberUp() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
                     else
                         curEffTime = fl.getHumanNumberDown() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
-                } else
+                }
+                else if (fl.getHumanNumberUp() > 0 || fl.getHumanNumberDown() > 0)
                 {
                     numFloor = fl.getKeeperFloor();
                     break;
@@ -78,7 +87,8 @@ namespace Models.Strategies
                 else
                     i += (isDirUp ? 1 : -1);
             }
-            if (data.GetFloorByNumber(lift.TargetFloor).getHumans().All(h => (h.FiniteFloor - lift.TargetFloor > 0) != isDirUp))
+            if (data.GetFloorByNumber(lift.TargetFloor).getHumans()
+                .All(h => (h.FiniteFloor - lift.TargetFloor > 0) != isDirUp))
             {
                 lift.SetTargetFloor(this.GetNearestFloorForHumansInLift(lift));
                 while (i != lift.TargetFloor)
