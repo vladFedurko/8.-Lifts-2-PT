@@ -57,7 +57,7 @@ namespace Models
                 Console.WriteLine(t. + " " + t.FiniteFloor);
             Console.ReadLine();*/
         }
-        private static void tickb(object a)
+        /*private static void tickb(object a)
         {
             ((Lift)a).DoTick();
         }
@@ -65,7 +65,7 @@ namespace Models
         private static void tick(object a)
         {
             ((Floor)a).DoTick();
-        }
+        }*/
     }
 }
 /*

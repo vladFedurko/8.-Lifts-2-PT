@@ -10,7 +10,7 @@ namespace Models
     public abstract class AMovable
     {
         protected int ticksToNotify;
-        protected int CurrentTick { get; private set; }
+        private int CurrentTick;
         protected bool CountPermission { get; set; }
         public AMovable()
         {
@@ -18,6 +18,8 @@ namespace Models
             CountPermission = true;
         }
         protected abstract void Notify();
+
+        protected int getCurrentTick() => CurrentTick;
         public void DoTick()
         {
             if (CountPermission)

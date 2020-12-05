@@ -45,7 +45,7 @@ namespace Models.Entities
                 &&
                 fact?.FiniteFloor == fact2?.FiniteFloor
                 &&
-                fact?.CurrentTick == fact2?.CurrentTick
+                fact?.getCurrentTick() == fact2?.getCurrentTick()
                 )
                 return true;
             return false;
@@ -57,7 +57,7 @@ namespace Models.Entities
                 &&
                 fact?.FiniteFloor == fact2?.FiniteFloor
                 &&
-                fact?.CurrentTick == fact2?.CurrentTick
+                fact?.getCurrentTick() == fact2?.getCurrentTick()
                 )
                 return false;
             return true;
