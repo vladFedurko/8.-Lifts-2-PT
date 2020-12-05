@@ -11,9 +11,11 @@ namespace Models
     {
         protected Timer timer;
         protected ISimulation simulation;
+        private int currentTick;
 
-        public Observer()
+        public Observer(ISimulation simulation)
         {
+            this.simulation = simulation;
             timer = new Timer(100)//100 milliseconds
             {
                 AutoReset = true
@@ -26,12 +28,19 @@ namespace Models
 
         protected void Tick(object source, ElapsedEventArgs e)
         {
-            simulation.doTick();
+            currentTick++;
+            simulation?.doTick();
         }
 
         public void Stop()
         {
             timer.Stop();
         }
+        public void Start()
+        {
+            timer.Start();
+        }
+
+        internal int getCurrentTick() => currentTick;
     }
 }

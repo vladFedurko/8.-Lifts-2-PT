@@ -8,9 +8,9 @@ namespace Models.Strategies
 {
     public class MinIdlingStrategy : IStrategy
     {
-        public int ChooseNextFloor(SystemData data, int numOfLift)
+        public void ManageLifts(SystemData data)
         {
-            return 0;
+            
         }
     }
 }

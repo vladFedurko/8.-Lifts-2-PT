@@ -10,22 +10,24 @@ namespace Models
     public abstract class AMovable
     {
         protected int ticksToNotify;
-        private int currentTick;
+        private int CurrentTick;
         protected bool CountPermission { get; set; }
         public AMovable()
         {
-            currentTick = 0;
+            CurrentTick = 0;
             CountPermission = true;
         }
         protected abstract void Notify();
+
+        protected int getCurrentTick() => CurrentTick;
         public void DoTick()
         {
             if (CountPermission)
-                currentTick++;
-            if (currentTick >= ticksToNotify)
+                CurrentTick++;
+            if (CurrentTick >= ticksToNotify)
             {
                 this.Notify();
-                currentTick = 0;
+                CurrentTick = 0;
             }
         }
     }

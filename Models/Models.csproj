@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Entities\Floor.cs" />
     <Compile Include="Entities\HumanFactory.cs" />
-    <Compile Include="Entities\Humans.cs" />
+    <Compile Include="Entities\Human.cs" />
     <Compile Include="HumansMover.cs" />
     <Compile Include="ISimulation.cs" />
     <Compile Include="Observer.cs" />

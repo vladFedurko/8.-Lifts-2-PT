@@ -17,7 +17,7 @@ namespace Models
         {
             systemData = new SystemData(initialFloorsNumber, initialLiftNumber);
             strategy = _strategy;
-            observer = new Observer();
+            observer = new Observer(this);
         }
 
         public void ChangeStrategy(IStrategy st)
@@ -25,37 +25,28 @@ namespace Models
             strategy = st;
         }
 
-        public void StartSimulation()
-        {
-            //observer.Start();
-        }
-
-        public void PauseSimulation()
+        public void Pause()
         {
             observer.Stop();
         }
 
-        public void StopSimulation()
+        public void Stop()
         {
             if(systemData.IsEverythingEmpty())
                 observer.Stop();
+        }
+        public void Start()
+        {
+            observer.Start();
         }
 
         public SystemData GetData() => systemData;
 
         public void doTick()
         {
-            //strategy.ChooseMovement(systemData);
-            IEnumerable<Lift> lifts = systemData.GetLifts();
-            IEnumerable<Floor> floors = systemData.GetFloors();
-            foreach (var floor in floors)
+            //strategy.ManageLifts(systemData);
+            foreach (var floor in systemData.GetFloors())
                 floor.DoTick();
-            foreach (var lift in lifts) 
-            {
-                Floor floor = systemData.GetFloorByNumber(lift.getKeeperFloor());
-                HumansMover.ExitLift(floor, lift);
-                HumansMover.EnterLift(floor, lift);
-            }
         }
     }
 }
