@@ -25,6 +25,11 @@ namespace Models
             strategy = st;
         }
 
+        public void Pause()
+        {
+            observer.Stop();
+        }
+
         public void Stop()
         {
             if(systemData.IsEverythingEmpty())
