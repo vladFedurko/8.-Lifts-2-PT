@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Services
 {
-    public class MainService : IMainService
+    /*public class MainService : IMainService
     {
         private readonly ISimulation simulation;
 
@@ -44,5 +44,5 @@ namespace Models.Services
         {
             simulation.Stop();
         }
-    }
+    }*/
 }

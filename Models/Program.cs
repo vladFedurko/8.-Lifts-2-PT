@@ -16,7 +16,7 @@ namespace Models
         
         static void Main() 
         {
-            Simulation sim = new Simulation(2, 1, new MinWaitingTimeStrategy());
+            Simulation sim = new Simulation(3, 2, new MinWaitingTimeStrategy());
             SystemData data = sim.GetData();
             DataTable dataTable = new DataTable();
             DataColumn a1 = new DataColumn();

@@ -34,7 +34,7 @@ namespace Models.Entities
                 Console.WriteLine($"Humans created by fabric {humanNumber} {FiniteFloor} {ticksToNotify}");
                 List<Human> humans = new List<Human>(humanNumber);
                 for (int i = 0; i < humanNumber; i++)
-                    humans[i] = new Human(FiniteFloor);
+                    humans.Add(new Human(FiniteFloor));
                 return humans;
             }
             return null;
