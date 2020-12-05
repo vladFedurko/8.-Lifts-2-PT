@@ -18,6 +18,7 @@ namespace Models
             Floor a = new Floor(0);
             HumanFactory c = new HumanFactory(5, 2, 30);
             HumanFactory d = new HumanFactory(5, 2, 30);
+            SystemData data = new SystemData(1, 1);
             a.AddHumanFactory(c);
             a.DoTick();
             a.AddHumanFactory(d);
@@ -68,7 +69,3 @@ namespace Models
         }*/
     }
 }
-/*
-            Predicate<Floor> isPositive = delegate (Floor x) { return x.getKeeperFloor() == number; };
-            Floors.Find(isPositive);
-            */

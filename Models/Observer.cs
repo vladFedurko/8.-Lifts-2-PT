@@ -11,6 +11,7 @@ namespace Models
     {
         protected Timer timer;
         protected ISimulation simulation;
+        private int currentTick;
 
         public Observer()
         {
@@ -26,6 +27,7 @@ namespace Models
 
         protected void Tick(object source, ElapsedEventArgs e)
         {
+            currentTick++;
             simulation?.doTick();
         }
 
@@ -33,5 +35,11 @@ namespace Models
         {
             timer.Stop();
         }
+        public void Start()
+        {
+            timer.Start();
+        }
+
+        internal int getCurrentTick() => currentTick;
     }
 }

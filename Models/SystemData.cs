@@ -16,24 +16,27 @@ namespace Models
         {
             Floors = new List<Floor>(floors);
             for (int i = 0; i < floors; i++)
-                Floors[i] = new Floor(i);
+                Floors.Add(new Floor(i));
             Lifts = new List<Lift>(lifts);
             for (int i = 0; i < lifts; i++)
-                Lifts[i] = new Lift(i);
+                Lifts.Add(new Lift(i));
         }
 
         internal void ParseDataTable(DataTable dataTable)
         {
+            foreach (Floor floor in Floors)
+                floor.RemoveAllFactories();
             DataRowCollection rows = dataTable?.Rows;
-            foreach (DataRow row in rows)
-            {
-                object[] a = row.ItemArray;
-                if (a.Length != 4)
-                    return;
-                HumanFactory humanFactory = new HumanFactory((int)a[0], (int)a[2], ((int)a[3]) * 10);
-                Floor floor = GetFloorByNumber((int)a[1]);
-                floor.AddHumanFactory(humanFactory);
-            }
+            if (rows != null)
+                foreach (DataRow row in rows)
+                {
+                    object[] a = row.ItemArray;
+                    if (a.Length != 4)
+                        return;
+                    HumanFactory humanFactory = new HumanFactory((int)a[0], (int)a[2], ((int)a[3]) * 10);
+                    Floor floor = GetFloorByNumber((int)a[1]);
+                    floor.AddHumanFactory(humanFactory);
+                }
         }
 
         public void AddFloor(Floor floor)
@@ -63,13 +66,13 @@ namespace Models
         public void DeleteFloor(Floor floor)
         {
             if (floor != null)
-                if(Floors.Contains(floor))
+                if (Floors.Contains(floor))
                     Floors.Remove(floor);
         }
         public void RemoveLift(Lift lift)
         {
             if (lift != null)
-                if(Lifts.Contains(lift))
+                if (Lifts.Contains(lift))
                     Lifts.Remove(lift);
         }
 
