@@ -12,7 +12,7 @@ namespace Models.Entities
         internal HumanState state { get; private set; }
 
         public void setStateToOnfloors() { state = HumanState.OnFloor; }//do not use this method in project
-        //only for testing
+        //only for testing without timer
 
         const int TICKS_TO_BREATHE = 30;
         const int TICKS_TO_DISPOSE = 30;

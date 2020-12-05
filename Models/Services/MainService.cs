@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 
 namespace Models.Services
 {
-    public class MainService : IMainService
+    /*public class MainService : IMainService
     {
         private readonly ISimulation simulation;
 
         public MainService(ISimulation sim)
         {
             this.simulation = sim;
-        }
-
-        public void PauseSimulation()
-        {
-            sim.
         }
 
         public void SetSimulationSpeed(decimal speed)
@@ -44,5 +39,5 @@ namespace Models.Services
         {
             throw new NotImplementedException();
         }
-    }
+    }*/
 }

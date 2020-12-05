@@ -13,6 +13,7 @@ namespace Models
         {
             IEnumerable<Human> Floor_humans = floor?.getHumans();
             //int rem = 0;
+            Console.WriteLine($"try to enter lift{lift?.LiftNumber} on floor{lift?.Floor} with humanNumber {lift?.humanNumber}");
             lift?.AddRangeHumans
                 (
                 Floor_humans.Where(
@@ -56,11 +57,12 @@ namespace Models
             )
             //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
             );
-            Console.WriteLine($"Humans entered lift{lift}");
+            Console.WriteLine($"Humans entered lift {lift?.LiftNumber} on Floor {floor?.getKeeperFloor()}, remain numofHumans {lift?.humanNumber}");
         }
 
         public static void ExitLift(Floor floor,Lift lift)
         {
+            Console.WriteLine($"try to exit lift{lift?.LiftNumber} on floor{lift?.Floor} with humanNumber {lift?.humanNumber}");
             IEnumerable<Human> Lift_humans = lift?.getHumans();
             floor?.AddRangeHumans
                 (
@@ -78,6 +80,7 @@ namespace Models
                 &&
                 (floor.getKeeperFloor() == h.FiniteFloor)  
             );
+            Console.WriteLine($"Humans exit lift {lift?.LiftNumber} on Floor {floor?.getKeeperFloor()}, remain numofHumans {lift?.humanNumber}");
         }
     }
 }
