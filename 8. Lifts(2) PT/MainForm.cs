@@ -13,6 +13,8 @@ namespace _8.Lifts_2__PT
             InitSimulationTable();
         }
 
+        public void setTime(int Time) { TimeStatusLabel.Text = "Time:" + Time; }
+
         public event Action StartFireAlarm;
         public event Action StopFireAlarm;
         public event Action StopSimulation;
@@ -33,17 +35,19 @@ namespace _8.Lifts_2__PT
 
         private Label CreateTableLabel(string str)
         {
-            Label label = new Label();
-            label.Text = str;
-            label.TextAlign = ContentAlignment.MiddleCenter;
-            //label.Dock = DockStyle.Fill;
-            label.Anchor = AnchorStyles.Right | AnchorStyles.Left;
+            Label label = new Label
+            {
+                Text = str,
+                TextAlign = ContentAlignment.MiddleCenter,
+                //label.Dock = DockStyle.Fill;
+                Anchor = AnchorStyles.Right | AnchorStyles.Left
+            };
             return label;
         }
 
         private void InitSimulationTable()
         {
-            for(int j = 1; j < this.simulationTable.RowCount; j++)
+            for (int j = 1; j < this.simulationTable.RowCount; j++)
                 this.simulationTable.Controls.Add(CreateTableLabel(j.ToString()), 0, this.simulationTable.RowCount - j);
             this.simulationTable.Controls.Add(CreateTableLabel("Floor"), 0, 0);
             this.simulationTable.Controls.Add(CreateTableLabel("People on floors"), 1, 0);
@@ -120,7 +124,7 @@ namespace _8.Lifts_2__PT
         {
             this.ShowHelp?.Invoke();
         }
-        
+
         private void PlanFireAlarmClick(object sender, EventArgs e)
         {
             this.ShowPlanFireAlarmForm?.Invoke();
@@ -164,7 +168,7 @@ namespace _8.Lifts_2__PT
         public void ShowForm()
         {
             this.Show();
-        }  
+        }
 
         public void CloseForm()
         {

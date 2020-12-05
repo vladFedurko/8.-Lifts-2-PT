@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presenters
+namespace Models.Services
 {
-    public interface IMainView : IView
+    public interface IMainService : IService
     {
 
         void ShowState();
 
         void setTime(int Time);
+
         void SetParameters(int floors, int lifts);
 
         event Action StartFireAlarm;
