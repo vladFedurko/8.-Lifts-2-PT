@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models;
+using Models.Services;
 using System.Windows.Forms;
 
 namespace Presenters
@@ -47,22 +48,22 @@ namespace Presenters
 
         public void StopSimulation()
         {
-
+            _service.StopSimulation();
         }
 
         public void StartSimulation()
         {
-
+            _service.StartSimulation();
         }
 
         public void PauseSimulation()
         {
-
+            _service.PauseSimulation();
         }
 
         public void SetSimulationSpeed(decimal speed)
         {
-
+            _service.SetSimulationSpeed(speed);
         }
 
         public void ShowCreateHumanForm()
