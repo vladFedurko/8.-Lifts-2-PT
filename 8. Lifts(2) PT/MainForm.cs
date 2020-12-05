@@ -1,7 +1,13 @@
-﻿using Presenters;
+﻿using Models;
+using Models.Entities;
+using Presenters;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data;
+using System.Threading;
 
 namespace _8.Lifts_2__PT
 {
@@ -12,7 +18,34 @@ namespace _8.Lifts_2__PT
             InitializeComponent();
             InitSimulationTable();
         }
-
+        public void ShowState(SystemData systemData) //часть кода будет перенесена в presenter
+        {
+            int[] a = new int[systemData.GetFloors().Count()];
+            int[] b = new int[systemData.GetLifts().Count()];
+            int[] c = new int[systemData.GetLifts().Count()];
+            int i = 0;//перенести foreach в презентеры и обьявления массивов
+            foreach (Floor floor in systemData.GetFloors())
+            {
+                a[i] = floor.getHumanNumber();
+                i++;
+            }
+            i = 0;
+            foreach (Lift lift in systemData.GetLifts())
+            {
+                c[i] = lift.getKeeperFloor();
+                b[i] = lift.getHumanNumber();
+            }
+            for (int j = this.simulationTable.RowCount - 1; j > 0; j--)
+            {
+                Control control = this.simulationTable.GetControlFromPosition(1, j);
+                control.Text = a[this.simulationTable.RowCount - j - 1].ToString();
+            }
+            for (int j = 2; j < this.simulationTable.ColumnCount; j++)
+            {
+                Control control = this.simulationTable.GetControlFromPosition(j,this.simulationTable.RowCount - c[j - 2] - 1);
+                control.Text = b[j - 2].ToString();
+            }
+        }
         public void setTime(int Time) { TimeStatusLabel.Text = "Time:" + Time; }
 
         public event Action StartFireAlarm;
@@ -88,7 +121,10 @@ namespace _8.Lifts_2__PT
             }
             StatisticMenuItem.Enabled = true;*/
         }
-
+        void tick(object a) {
+            foreach (var c in (IEnumerable<Floor>)a)
+                c.DoTick();
+        }
         private void FireAlarmClick(object sender, EventArgs e)
         {
             if (fireAlarmButton.Text.Equals("Fire alarm"))

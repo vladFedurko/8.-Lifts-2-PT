@@ -92,7 +92,7 @@
             this.startButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.startButton.Location = new System.Drawing.Point(9, 87);
-            this.startButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.startButton.Margin = new System.Windows.Forms.Padding(2);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(77, 31);
             this.startButton.TabIndex = 1;
@@ -104,7 +104,7 @@
             // 
             this.stopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.stopButton.Location = new System.Drawing.Point(9, 135);
-            this.stopButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.stopButton.Margin = new System.Windows.Forms.Padding(2);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(77, 32);
             this.stopButton.TabIndex = 2;
@@ -117,7 +117,7 @@
             this.fireAlarmButton.BackColor = System.Drawing.Color.IndianRed;
             this.fireAlarmButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fireAlarmButton.Location = new System.Drawing.Point(10, 372);
-            this.fireAlarmButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fireAlarmButton.Margin = new System.Windows.Forms.Padding(2);
             this.fireAlarmButton.Name = "fireAlarmButton";
             this.fireAlarmButton.Size = new System.Drawing.Size(84, 38);
             this.fireAlarmButton.TabIndex = 3;
@@ -135,7 +135,7 @@
             0,
             131072});
             this.SpeedSelecter.Location = new System.Drawing.Point(10, 202);
-            this.SpeedSelecter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SpeedSelecter.Margin = new System.Windows.Forms.Padding(2);
             this.SpeedSelecter.Maximum = new decimal(new int[] {
             10,
             0,
@@ -171,7 +171,7 @@
             // 
             this.createHumanButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.createHumanButton.Location = new System.Drawing.Point(10, 311);
-            this.createHumanButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.createHumanButton.Margin = new System.Windows.Forms.Padding(2);
             this.createHumanButton.Name = "createHumanButton";
             this.createHumanButton.Size = new System.Drawing.Size(76, 46);
             this.createHumanButton.TabIndex = 6;
