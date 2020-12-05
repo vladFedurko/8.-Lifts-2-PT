@@ -30,10 +30,18 @@ namespace Models
             observer.Stop();
         }
 
+        public void SetSpeed(decimal speed)
+        {
+            observer.SetTimeAcceleration(speed);
+        }
+
         public void Stop()
         {
             if(systemData.IsEverythingEmpty())
+            {
                 observer.Stop();
+                observer.ResetTime();
+            }
         }
         public void Start()
         {
@@ -47,6 +55,11 @@ namespace Models
             //strategy.ManageLifts(systemData);
             foreach (var floor in systemData.GetFloors())
                 floor.DoTick();
+        }
+
+        public int GetCurrentTime()
+        {
+            return observer.getCurrentTime();
         }
     }
 }

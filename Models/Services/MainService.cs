@@ -17,32 +17,32 @@ namespace Models.Services
 
         public void PauseSimulation()
         {
-            sim.
+            simulation.Pause();
         }
 
         public void SetSimulationSpeed(decimal speed)
         {
-            throw new NotImplementedException();
+            simulation.SetSpeed(speed);
         }
 
-        public void ShowCurrentState(SystemData data)
+        public SystemData ShowCurrentState()
         {
-            throw new NotImplementedException();
+            return simulation.GetData();
         }
 
-        public void ShowCurrentTime(int seconds)
+        public int ShowCurrentTime()
         {
-            throw new NotImplementedException();
+            return simulation.GetCurrentTime();
         }
 
         public void StartSimulation()
         {
-            throw new NotImplementedException();
+            simulation.Start();
         }
 
         public void StopSimulation()
         {
-            throw new NotImplementedException();
+            simulation.Stop();
         }
     }
 }

@@ -8,9 +8,9 @@ namespace Models.Services
 {
     public interface IMainService : IService
     {
-        void ShowCurrentState(SystemData data);
+        SystemData ShowCurrentState();
 
-        void ShowCurrentTime(int seconds);
+        int ShowCurrentTime();
 
         void StartSimulation();
 

@@ -12,11 +12,14 @@ namespace Models
         protected Timer timer;
         protected ISimulation simulation;
         private int currentTick;
+        const int TICK_PER_SECOND = 100;
+        private decimal timeAcceleration;
 
         public Observer(ISimulation simulation)
         {
+            timeAcceleration = 1;
             this.simulation = simulation;
-            timer = new Timer(100)//100 milliseconds
+            timer = new Timer(TICK_PER_SECOND)
             {
                 AutoReset = true
             };
@@ -24,7 +27,27 @@ namespace Models
             timer.Start();
         }
 
-        internal void SetInterval(int newInterval) => timer.Interval = newInterval;
+        public decimal GetTimeAcceleration()
+        {
+            return timeAcceleration;
+        }
+
+        public void SetTimeAcceleration(decimal timeAcc)
+        {
+            this.timeAcceleration = timeAcc;
+            timer.Interval = (int)(timeAcceleration * TICK_PER_SECOND);
+        }
+
+        public void ResetTime()
+        {
+            timer.Stop();
+            currentTick = 0;
+        }
+
+        public int GetCurrentSecond()
+        {
+            return currentTick / TICK_PER_SECOND;
+        }
 
         protected void Tick(object source, ElapsedEventArgs e)
         {
@@ -41,6 +64,6 @@ namespace Models
             timer.Start();
         }
 
-        internal int getCurrentTick() => currentTick;
+        internal int getCurrentTime() => currentTick / TICK_PER_SECOND;
     }
 }
