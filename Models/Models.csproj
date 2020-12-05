@@ -44,9 +44,11 @@
     <Compile Include="Entities\Floor.cs" />
     <Compile Include="Entities\HumanFactory.cs" />
     <Compile Include="Entities\Human.cs" />
+    <Compile Include="Entities\HumanGenerationRule.cs" />
     <Compile Include="HumansMover.cs" />
     <Compile Include="ISimulation.cs" />
     <Compile Include="Observer.cs" />
+    <Compile Include="Services\HumanCreationService.cs" />
     <Compile Include="Services\MainService.cs" />
     <Compile Include="Simulation.cs" />
     <Compile Include="SystemData.cs" />
@@ -54,8 +56,7 @@
     <Compile Include="Entities\Lift.cs" />
     <Compile Include="Strategies\MinIdlingStrategy.cs" />
     <Compile Include="Strategies\MinWaitingTimeStrategy.cs" />
-    <Compile Include="Services\ICreateHuman.cs" />
-    <Compile Include="Services\IHumanGeneration.cs" />
+    <Compile Include="Services\IHumanCreationService.cs" />
     <Compile Include="Services\IHumanStatus.cs" />
     <Compile Include="IKeepHuman.cs" />
     <Compile Include="Services\IMainService.cs" />

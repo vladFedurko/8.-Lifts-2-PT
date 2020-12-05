@@ -8,6 +8,6 @@ namespace Presenters
 {
     public interface ICreateHumanView : IView
     {
-        event Action CreateHuman;
+        event Action<int, int, int> CreateHuman;
     }
 }
