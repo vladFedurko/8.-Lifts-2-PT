@@ -13,7 +13,7 @@ namespace Models
         {
             IEnumerable<Human> Floor_humans = floor?.getHumans();
             //int rem = 0;
-            Console.WriteLine($"try to enter lift{lift?.LiftNumber} on floor{lift?.Floor} with humanNumber {lift?.humanNumber}");
+            Console.WriteLine($"try to enter lift{lift?.LiftNumber} on floor{lift?.Floor} with humanNumberUp {floor?.getHumanNumberUp()} and with humanNumberDown {floor?.getHumanNumberDown()}");
             lift?.AddRangeHumans
                 (
                 Floor_humans.Where(

@@ -64,7 +64,9 @@ namespace Models
                 Console.WriteLine(t. + " " + t.FiniteFloor);
             Console.ReadLine();*/
             Thread th = Thread.CurrentThread;
-            th.Join(31000);
+            th.Join(10000);
+            Console.WriteLine("we are here");
+            th.Join(11000);
         }
         /*private static void tickb(object a)
         {
