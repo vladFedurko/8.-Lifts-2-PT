@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Services
 {
-    /*public class MainService : IMainService
+    public class MainService : IMainService
     {
         private readonly ISimulation simulation;
 
@@ -44,5 +44,18 @@ namespace Models.Services
         {
             simulation.Stop();
         }
-    }*/
+
+        void ShowDataInView(SystemData data)
+        {
+            this.UpdateSystemData.Invoke(data);
+        }
+
+        void UpdateClock(int time)
+        {
+            this.UpdateTime.Invoke(time);
+        }
+
+        public event Action<SystemData> UpdateSystemData;
+        public event Action<int> UpdateTime;
+    }
 }

@@ -39,6 +39,18 @@ namespace Presenters
             _view.LoadLiftConfigurationStrategy += this.LoadLiftConfigurationStrategy;
             _view.SaveHumanGenerationStrategy += this.SaveHumanGenerationStrategy;
             _view.SaveLiftConfigurationStrategy += this.SaveLiftConfigurationStrategy;
+            _service.UpdateSystemData += this.ShowData;
+            _service.UpdateTime += this.ShowTime;
+        }
+
+        public void ShowTime(int time)
+        {
+            _view.setTime(time);
+        }
+
+        public void ShowData(SystemData data)
+        {
+            
         }
 
         public void StartFireAlarm()
