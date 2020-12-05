@@ -34,7 +34,7 @@ namespace Models
 
         public void SetTimeAcceleration(decimal timeAcc)
         {
-            if (timeAcc > 4m && timeAcc < 0.1m)
+            if (timeAcc > 10m && timeAcc < 0.25m)
                 return;
             this.timeAcceleration = timeAcc;
             timer.Interval = (int)(TIME_OF_TICK / timeAcceleration);
@@ -48,7 +48,7 @@ namespace Models
 
         public int GetCurrentSecond()
         {
-            return currentTick / TIME_OF_TICK;
+            return currentTick * TIME_OF_TICK;
         }
 
         protected void Tick(object source, ElapsedEventArgs e)
@@ -66,6 +66,6 @@ namespace Models
             timer.Start();
         }
 
-        internal int getCurrentTime() => currentTick / TIME_OF_TICK;
+        internal int getCurrentTime() => currentTick * TIME_OF_TICK;
     }
 }
