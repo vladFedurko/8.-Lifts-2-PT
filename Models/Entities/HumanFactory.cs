@@ -31,6 +31,7 @@ namespace Models.Entities
             if (NewHumansReady)
             {
                 NewHumansReady = false;
+                Console.WriteLine($"Humans created by fabric {humanNumber} {FiniteFloor} {ticksToNotify}");
                 List<Human> humans = new List<Human>(humanNumber);
                 for (int i = 0; i < humanNumber; i++)
                     humans[i] = new Human(FiniteFloor);
@@ -45,7 +46,7 @@ namespace Models.Entities
                 &&
                 fact?.FiniteFloor == fact2?.FiniteFloor
                 &&
-                fact?.CurrentTick == fact2?.CurrentTick
+                fact?.getCurrentTick() == fact2?.getCurrentTick()
                 )
                 return true;
             return false;
@@ -57,7 +58,7 @@ namespace Models.Entities
                 &&
                 fact?.FiniteFloor == fact2?.FiniteFloor
                 &&
-                fact?.CurrentTick == fact2?.CurrentTick
+                fact?.getCurrentTick() == fact2?.getCurrentTick()
                 )
                 return false;
             return true;

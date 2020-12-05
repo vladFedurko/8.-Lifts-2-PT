@@ -79,6 +79,18 @@ namespace Models.Entities
             if (pred != null)
                 genTable.RemoveWhere(pred);
         }
+        internal void RemoveAllFactories()
+        {
+            if (genTable != null)
+                genTable.Clear();
+        }
+        internal void RemoveAllHumans()
+        {
+            if (Humans != null)
+                Humans.Clear();
+            HumanNumberDown = 0;
+            HumanNumberUp = 0;
+        }
 
         public int getKeeperNumber()
         {
