@@ -52,7 +52,7 @@ namespace Models
 
         public void doTick()
         {
-            //strategy.ManageLifts(systemData);
+            strategy.ManageLifts(systemData);
             foreach (var floor in systemData.GetFloors())
                 floor.DoTick();
         }
