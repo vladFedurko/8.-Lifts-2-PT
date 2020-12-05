@@ -17,7 +17,7 @@ namespace Models
         {
             systemData = new SystemData(initialFloorsNumber, initialLiftNumber);
             strategy = _strategy;
-            observer = new Observer();
+            observer = new Observer(this);
         }
 
         public void ChangeStrategy(IStrategy st)
@@ -25,12 +25,12 @@ namespace Models
             strategy = st;
         }
 
-        public void StopSimulation()
+        public void Stop()
         {
             if(systemData.IsEverythingEmpty())
                 observer.Stop();
         }
-        public void StartSimulation()
+        public void Start()
         {
             observer.Start();
         }
@@ -39,7 +39,7 @@ namespace Models
 
         public void doTick()
         {
-            strategy.ManageLifts(systemData);
+            //strategy.ManageLifts(systemData);
             foreach (var floor in systemData.GetFloors())
                 floor.DoTick();
         }

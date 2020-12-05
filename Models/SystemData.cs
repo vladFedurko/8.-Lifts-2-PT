@@ -33,9 +33,11 @@ namespace Models
                     object[] a = row.ItemArray;
                     if (a.Length != 4)
                         return;
-                    HumanFactory humanFactory = new HumanFactory((int)a[0], (int)a[2], ((int)a[3]) * 10);
-                    Floor floor = GetFloorByNumber((int)a[1]);
+                    HumanFactory humanFactory = new HumanFactory(Int32.Parse(a[0].ToString()),
+                        Int32.Parse(a[2].ToString()), Int32.Parse(a[3].ToString()+" "));
+                    Floor floor = GetFloorByNumber(Int32.Parse(a[1].ToString()));
                     floor.AddHumanFactory(humanFactory);
+                    Console.WriteLine($"Factory added {a[0]} {a[1]} {a[2]} {a[3]}");
                 }
         }
 

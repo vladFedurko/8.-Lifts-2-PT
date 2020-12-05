@@ -13,8 +13,9 @@ namespace Models
         protected ISimulation simulation;
         private int currentTick;
 
-        public Observer()
+        public Observer(ISimulation simulation)
         {
+            this.simulation = simulation;
             timer = new Timer(100)//100 milliseconds
             {
                 AutoReset = true

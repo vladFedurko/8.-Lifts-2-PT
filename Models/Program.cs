@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Models.Entities;
+using Models.Strategies;
 
 namespace Models
 {
@@ -15,13 +16,18 @@ namespace Models
         
         static void Main() 
         {
-            Floor a = new Floor(0);
-            HumanFactory c = new HumanFactory(5, 2, 30);
-            HumanFactory d = new HumanFactory(5, 2, 30);
-            SystemData data = new SystemData(1, 1);
-            a.AddHumanFactory(c);
-            a.DoTick();
-            a.AddHumanFactory(d);
+            Simulation sim = new Simulation(2, 1, new MinWaitingTimeStrategy());
+            SystemData data = sim.GetData();
+            DataTable dataTable = new DataTable();
+            DataColumn a1 = new DataColumn();
+            DataColumn a2 = new DataColumn();
+            DataColumn a3 = new DataColumn();
+            DataColumn a4 = new DataColumn();
+            dataTable.Columns.AddRange(new DataColumn[] { a1, a2, a3, a4 });
+            DataRow row = dataTable.NewRow();
+            row.ItemArray = new object[] { 1, 0, 1, 3 };
+            dataTable.Rows.Add(row);
+            data.ParseDataTable(dataTable);
             /*Lift a = new Lift(0,2);
             Floor b1 = new Floor(1);
             Floor b0 = new Floor(0);
@@ -57,6 +63,8 @@ namespace Models
             foreach (Humans t in b2.getHumans())
                 Console.WriteLine(t. + " " + t.FiniteFloor);
             Console.ReadLine();*/
+            Thread th = Thread.CurrentThread;
+            th.Join(31000);
         }
         /*private static void tickb(object a)
         {
