@@ -56,6 +56,7 @@ namespace Models
             )
             //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
             );
+            Console.WriteLine($"Humans entered lift{lift}");
         }
 
         public static void ExitLift(Floor floor,Lift lift)
