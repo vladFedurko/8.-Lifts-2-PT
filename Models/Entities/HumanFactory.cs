@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
-    internal class HumanFactory : AMovable
+    public class HumanFactory : AMovable
     {
         public int humanNumber;
         public int FiniteFloor;
@@ -39,7 +39,7 @@ namespace Models.Entities
             }
             return null;
         }
-        public static bool operator==(HumanFactory fact,HumanFactory fact2) 
+        public static bool operator==(HumanFactory fact, HumanFactory fact2) 
         {
             if (
                 fact?.ticksToNotify == fact2?.ticksToNotify

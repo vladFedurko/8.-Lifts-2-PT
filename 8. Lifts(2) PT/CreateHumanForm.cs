@@ -15,7 +15,7 @@ namespace _8.Lifts_2__PT
     public partial class CreateHumanForm : Form, ICreateHumanView
     {
 
-        public event Action CreateHuman;
+        public event Action<int, int, int> CreateHuman;
 
         public CreateHumanForm()
         {
@@ -24,7 +24,7 @@ namespace _8.Lifts_2__PT
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            this.CreateHuman?.Invoke();
+            this.CreateHuman?.Invoke((int)initialFloorSelector.Value, (int)finiteFloorSelector.Value, (int)inSecondsSelector.Value);
             this.Close();
         }
 

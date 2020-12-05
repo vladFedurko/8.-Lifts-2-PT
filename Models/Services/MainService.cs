@@ -45,12 +45,12 @@ namespace Models.Services
             simulation.Stop();
         }
 
-        void ShowDataInView(SystemData data)
+        public void ShowDataInView(SystemData data)
         {
             this.UpdateSystemData.Invoke(data);
         }
 
-        void UpdateClock(int time)
+        public void UpdateClock(int time)
         {
             this.UpdateTime.Invoke(time);
         }
