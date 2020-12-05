@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,10 @@ namespace Presenters
     public interface IMainView : IView
     {
 
-        void ShowState();
+        void ShowState(SystemData data);
 
         void setTime(int Time);
-        void SetParameters(int floors, int lifts);
+
 
         event Action StartFireAlarm;
         event Action StopFireAlarm;
