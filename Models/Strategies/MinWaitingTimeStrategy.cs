@@ -43,10 +43,11 @@ namespace Models.Strategies
             decimal curEffTime = 0;
             foreach(var fl in data.GetFloors())
             {
-                if (fl.getHumanNumberUp() > fl.getHumanNumberDown())
+                if (fl.getHumanNumberUp() > 0 && fl.getHumanNumberUp() > fl.getHumanNumberDown())
                     curEffTime = fl.getHumanNumberUp() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
                 else
-                    curEffTime = fl.getHumanNumberDown() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
+                    if(fl.getHumanNumberDown() > 0)
+                        curEffTime = fl.getHumanNumberDown() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
                 if (curEffTime < minTime)
                 {
                     minTime = curEffTime;
