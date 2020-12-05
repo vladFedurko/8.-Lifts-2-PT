@@ -25,6 +25,16 @@ namespace Models
             strategy = st;
         }
 
+        public void StartSimulation()
+        {
+            //observer.Start();
+        }
+
+        public void PauseSimulation()
+        {
+            observer.Stop();
+        }
+
         public void StopSimulation()
         {
             if(systemData.IsEverythingEmpty())
