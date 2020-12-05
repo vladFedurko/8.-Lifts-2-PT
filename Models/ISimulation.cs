@@ -10,6 +10,18 @@ namespace Models
     {
         public void ChangeStrategy(IStrategy st);
 
+        public void Pause();
+
+        public void SetSpeed(decimal speed);
+
+        public SystemData GetData();
+
+        public void Start();
+
+        public void Stop();
+
+        public int GetCurrentTime();
+
         public void doTick();
     }
 }

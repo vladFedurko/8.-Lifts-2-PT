@@ -10,14 +10,12 @@ namespace Models
 {
     public class SystemData
     {
-        List<Floor> Floors;
-        List<Lift> Lifts;
+        List<Floor> Floors = new List<Floor>();
+        List<Lift> Lifts = new List<Lift>();
         public SystemData(int floors, int lifts)
         {
-            Floors = new List<Floor>(floors);
             for (int i = 0; i < floors; i++)
                 Floors.Add(new Floor(i));
-            Lifts = new List<Lift>(lifts);
             for (int i = 0; i < lifts; i++)
                 Lifts.Add(new Lift(i));
         }
@@ -34,7 +32,7 @@ namespace Models
                     if (a.Length != 4)
                         return;
                     HumanFactory humanFactory = new HumanFactory(Int32.Parse(a[0].ToString()),
-                        Int32.Parse(a[2].ToString()), Int32.Parse(a[3].ToString()+" "));
+                        Int32.Parse(a[2].ToString()), Int32.Parse(a[3].ToString()+"0"));
                     Floor floor = GetFloorByNumber(Int32.Parse(a[1].ToString()));
                     floor.AddHumanFactory(humanFactory);
                     Console.WriteLine($"Factory added {a[0]} {a[1]} {a[2]} {a[3]}");

@@ -8,29 +8,17 @@ namespace Models.Services
 {
     public interface IMainService : IService
     {
+        SystemData ShowCurrentState();
 
-        void ShowState();
+        int ShowCurrentTime();
 
-        void setTime(int Time);
+        void StartSimulation();
 
-        void SetParameters(int floors, int lifts);
+        void PauseSimulation();
 
-        event Action StartFireAlarm;
-        event Action StopFireAlarm;
-        event Action StopSimulation;
-        event Action StartSimulation;
-        event Action PauseSimulation;
-        event Action<decimal> SetSimulationSpeed;
-        event Action ShowCreateHumanForm;
-        event Action ShowStatistics;
-        event Action ShowHumanGenerationStrategy;
-        event Action ShowPlanFireAlarmForm;
-        event Action ShowParametres;
-        event Action ShowHelp;
-        event Action ShowHumanStatus;
-        event Action LoadHumanGenerationStrategy;
-        event Action LoadLiftConfigurationStrategy;
-        event Action SaveHumanGenerationStrategy;
-        event Action SaveLiftConfigurationStrategy;
+        void StopSimulation();
+
+        void SetSimulationSpeed(decimal speed);
+
     }
 }

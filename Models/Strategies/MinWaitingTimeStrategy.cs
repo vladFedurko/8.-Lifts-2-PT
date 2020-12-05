@@ -12,19 +12,21 @@ namespace Models.Strategies
         public void ManageLifts(SystemData data)
         {
             this.MoveHumans(data);
-            foreach(Lift lift in data.GetLifts())
+            foreach (Lift lift in data.GetLifts())
             {
-                if(lift.liftState == Lift.LiftState.Moving)
+                if (lift.liftState == Lift.LiftState.Moving)
                 {
-                    if(lift.TargetFloor == lift.getKeeperFloor())
+                    if (lift.TargetFloor == lift.getKeeperFloor())
                     {
                         lift.SetTargetFloor(this.GetNearestFloor(lift, data.GetFloorByNumber(lift.getKeeperFloor())));
                         lift.OpenDoor();
-                    } else
+                    }
+                    else
                     {
                         this.ChangeTargetFloor(data, lift);
                     }
-                } else if(lift.liftState == Lift.LiftState.WaitClosed)
+                }
+                else if (lift.liftState == Lift.LiftState.WaitClosed)
                 {
                     if (lift.humanNumber != 0)
                         lift.StartMoving();
@@ -41,12 +43,20 @@ namespace Models.Strategies
             decimal minTime = int.MaxValue;
             int numFloor = 0;
             decimal curEffTime = 0;
-            foreach(var fl in data.GetFloors())
+            foreach (var fl in data.GetFloors())
             {
-                if (fl.getHumanNumberUp() > fl.getHumanNumberDown())
-                    curEffTime = fl.getHumanNumberUp() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
-                else
-                    curEffTime = fl.getHumanNumberDown() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
+                int distance = Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor());
+                if(distance != 0)
+                {
+                    if (fl.getHumanNumberUp() > 0 && fl.getHumanNumberUp() > fl.getHumanNumberDown())
+                        curEffTime = fl.getHumanNumberUp() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
+                    else
+                        curEffTime = fl.getHumanNumberDown() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
+                } else
+                {
+                    numFloor = fl.getKeeperFloor();
+                    break;
+                }
                 if (curEffTime < minTime)
                 {
                     minTime = curEffTime;
@@ -57,7 +67,7 @@ namespace Models.Strategies
         }
 
         private void ChangeTargetFloor(SystemData data, Lift lift)
-        { 
+        {
             bool isDirUp = lift.getKeeperFloor() < lift.TargetFloor;
             int i = lift.getKeeperFloor() + (isDirUp ? 1 : -1);
             while (i != lift.TargetFloor)
@@ -108,13 +118,13 @@ namespace Models.Strategies
                 {
                     if (floor.getKeeperFloor() - h.FiniteFloor < 0)
                     {
-                        countHumansUp ++;
+                        countHumansUp++;
                         if (nearestFloorUp > h.FiniteFloor)
                             nearestFloorUp = h.FiniteFloor;
                     }
                     else
                     {
-                        countHumansDown ++;
+                        countHumansDown++;
                         if (nearestFloorDown > h.FiniteFloor)
                             nearestFloorDown = h.FiniteFloor;
                     }
@@ -138,10 +148,10 @@ namespace Models.Strategies
             {
                 if (Math.Abs(lift.getKeeperFloor() - h.FiniteFloor) < Math.Abs(lift.getKeeperFloor() - nearestFloor))
                     nearestFloor = h.FiniteFloor;
-            #if DEBUG
+#if DEBUG
                 if (dir != (h.FiniteFloor > lift.getKeeperFloor()))
                     throw new Exception("MODEL: MinWaitingTimeStrategy: IsChoosenDirectionUp: Not all humans go in same direction!");
-            #endif
+#endif
             }
             return nearestFloor;
         }

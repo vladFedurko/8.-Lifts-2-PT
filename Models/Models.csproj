@@ -47,6 +47,7 @@
     <Compile Include="HumansMover.cs" />
     <Compile Include="ISimulation.cs" />
     <Compile Include="Observer.cs" />
+    <Compile Include="Services\MainService.cs" />
     <Compile Include="Simulation.cs" />
     <Compile Include="SystemData.cs" />
     <Compile Include="AMovable.cs" />
