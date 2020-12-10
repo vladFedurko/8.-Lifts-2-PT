@@ -13,6 +13,7 @@ namespace Models
         protected ISimulation simulation;
         private int currentTick;
         const int TIME_OF_TICK = 100;
+        const int TICKS_PER_SECOND = 10;
         private decimal timeAcceleration;
 
         public Observer(ISimulation simulation)
@@ -48,7 +49,7 @@ namespace Models
 
         public int GetCurrentSecond()
         {
-            return currentTick / 10;
+            return currentTick / TICKS_PER_SECOND;
         }
 
         protected void Tick(object source, ElapsedEventArgs e)
@@ -66,6 +67,6 @@ namespace Models
             timer.Start();
         }
 
-        internal int getCurrentTime() => currentTick / 10;
+        internal int getCurrentTime() => currentTick / TICKS_PER_SECOND;
     }
 }
