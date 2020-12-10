@@ -48,7 +48,7 @@ namespace Models
 
         public int GetCurrentSecond()
         {
-            return currentTick * TIME_OF_TICK;
+            return currentTick / 10;
         }
 
         protected void Tick(object source, ElapsedEventArgs e)
@@ -66,6 +66,6 @@ namespace Models
             timer.Start();
         }
 
-        internal int getCurrentTime() => currentTick * TIME_OF_TICK;
+        internal int getCurrentTime() => currentTick / 10;
     }
 }
