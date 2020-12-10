@@ -1,6 +1,5 @@
 ﻿using Models;
 using Models.Entities;
-using Models.Strategies;
 using Presenters;
 using System;
 using System.Drawing;
@@ -9,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Models.Services;
 using System.Threading;
+using Models.LiftManager;
 
 namespace _8.Lifts_2__PT
 {
@@ -26,7 +26,7 @@ namespace _8.Lifts_2__PT
         {
             if (!isSimulationLoaded)
             {
-                Simulation simulation = new Simulation(5, 2, new MinWaitingTimeStrategy());
+                Simulation simulation = new Simulation(5, 2, new MinWaitingTimeLiftManager());
                 MainPresenter pres = new MainPresenter(this, new MainService(simulation));
                 isSimulationLoaded = true;
             }

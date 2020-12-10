@@ -1,4 +1,5 @@
-﻿using Models.Services;
+﻿using Models.LiftManager;
+using Models.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Models
 {
     public interface ISimulation
     {
-        public void ChangeStrategy(IStrategy st);
+        public void ChangeStrategy(ILiftManager st);
 
         public void SetService(IMainService ser);
 
@@ -22,6 +23,10 @@ namespace Models
         public void Start();
 
         public void Stop();
+
+        public void TurnOnFireAlarm();
+
+        public void TurnOffFireAlarm();
 
         public int GetCurrentTime();
 

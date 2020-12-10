@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Strategies
+namespace Models.LiftManager
 {
-    public class MinIdlingStrategy : IStrategy
+    public class MinIdlingStrategy : ILiftManager
     {
         public void ManageLifts(SystemData data)
         {

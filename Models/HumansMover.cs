@@ -7,8 +7,22 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    static class HumansMover
+    static class HumansMover    //donot static
     {
+        public static void MoveHumans(SystemData data)
+        {
+            foreach (Lift lift in data.GetLifts())
+            {
+                if (lift.liftState == Lift.LiftState.WaitOpened)
+                {
+                    Floor floor = data.GetFloorByNumber(lift.getKeeperFloor());
+                    HumansMover.ExitLift(floor, lift);
+                    HumansMover.EnterLift(floor, lift);
+                    lift.StartMoving(); //пока без задержки
+                }
+            }
+        }
+
         public static void EnterLift(Floor floor, Lift lift)
         {
             IEnumerable<Human> Floor_humans = floor?.getHumans();

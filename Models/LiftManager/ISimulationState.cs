@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Models.LiftManager
 {
-    public interface IStrategy
+    public interface ISimulationState
     {
-        public void ManageLifts(SystemData data);
+        void ResetState(SystemData data);
     }
 }

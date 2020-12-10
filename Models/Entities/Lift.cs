@@ -70,6 +70,12 @@ namespace Models.Entities
             this.CountPermission = true;
         }
 
+        internal void WaitWithOpenedDoor()
+        {
+            this.liftState = LiftState.WaitOpened;
+            this.CountPermission = false;
+        }
+
         public void AddHumans(Human a)
         {
             if ((Human)a != null)

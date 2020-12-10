@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Strategies
+namespace Models.LiftManager
 {
-    public class MinWaitingTimeStrategy : IStrategy
+    public class MinWaitingTimeLiftManager : ILiftManager
     {
         public void ManageLifts(SystemData data)
         {
-            this.MoveHumans(data);
+            HumansMover.MoveHumans(data);
             foreach (Lift lift in data.GetLifts())
             {
                 if (lift.liftState == Lift.LiftState.Moving)
@@ -101,20 +101,6 @@ namespace Models.Strategies
                         lift.SetTargetFloor(i);
                     else
                         i += (isDirUp ? 1 : -1);
-                }
-            }
-        }
-
-        private void MoveHumans(SystemData data)
-        {
-            foreach (Lift lift in data.GetLifts())
-            {
-                if (lift.liftState == Lift.LiftState.WaitOpened)
-                {
-                    Floor floor = data.GetFloorByNumber(lift.getKeeperFloor());
-                    HumansMover.ExitLift(floor, lift);
-                    HumansMover.EnterLift(floor, lift);
-                    lift.StartMoving(); //пока без задержки
                 }
             }
         }
