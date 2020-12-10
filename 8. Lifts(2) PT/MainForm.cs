@@ -1,23 +1,37 @@
 ﻿using Models;
 using Models.Entities;
+using Models.Strategies;
 using Presenters;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data;
+using Models.Services;
 using System.Threading;
 
 namespace _8.Lifts_2__PT
 {
     public partial class SimulationForm : Form, IMainView
     {
+        private bool isSimulationLoaded = false;
+
         public SimulationForm()
         {
             InitializeComponent();
             InitSimulationTable();
         }
+
+        public void InitSimulation()
+        {
+            if (!isSimulationLoaded)
+            {
+                Simulation simulation = new Simulation(5, 2, new MinWaitingTimeStrategy());
+                MainPresenter pres = new MainPresenter(this, new MainService(simulation));
+                isSimulationLoaded = true;
+            }
+        }
+
         public void ShowState(SystemData systemData) //часть кода будет перенесена в presenter
         {
             int[] a = new int[systemData.GetFloors().Count()];
@@ -46,7 +60,18 @@ namespace _8.Lifts_2__PT
                 control.Text = b[j - 2].ToString();
             }
         }
-        public void setTime(int Time) { TimeStatusLabel.Text = "Time:" + Time; }
+
+        public void setTime(int Time)
+        {
+            try
+            {
+                TimeStatusLabel.Text = "Time:" + Time.ToString();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("exception");
+            }
+        }
 
         public event Action StartFireAlarm;
         public event Action StopFireAlarm;
@@ -93,6 +118,7 @@ namespace _8.Lifts_2__PT
 
         private void StartSimulationClick(object sender, EventArgs e)
         {
+            InitSimulation();
             if (startButton.Text.Equals("Start"))
             {
                 this.StartSimulation?.Invoke();
@@ -121,10 +147,12 @@ namespace _8.Lifts_2__PT
             }
             StatisticMenuItem.Enabled = true;*/
         }
+
         void tick(object a) {
             foreach (var c in (IEnumerable<Floor>)a)
                 c.DoTick();
         }
+
         private void FireAlarmClick(object sender, EventArgs e)
         {
             if (fireAlarmButton.Text.Equals("Fire alarm"))

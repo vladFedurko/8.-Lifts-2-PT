@@ -33,11 +33,11 @@ namespace Models.Strategies
                     else
                     {
                         lift.SetTargetFloor(this.GetTargetFloorForMinWaitingTime(data, lift));
-                        if (lift.TargetFloor == lift.getKeeperFloor())
+                        if (lift.TargetFloor == lift.getKeeperFloor() && data.GetFloorByNumber(lift.TargetFloor).getHumanNumber() != 0)
                         {
                             lift.OpenDoor();
                         }
-                        else
+                        else if (lift.TargetFloor != lift.getKeeperFloor())
                         {
                             lift.StartMoving();
                         }

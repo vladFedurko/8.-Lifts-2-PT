@@ -15,11 +15,16 @@ namespace Models
         protected Observer observer;
         protected IMainService mainService; //TODO class Service controller
 
-        internal Simulation(int initialFloorsNumber, int initialLiftNumber, IStrategy _strategy)
+        public Simulation(int initialFloorsNumber, int initialLiftNumber, IStrategy _strategy)
         {
             systemData = new SystemData(initialFloorsNumber, initialLiftNumber);
             strategy = _strategy;
             observer = new Observer(this);
+        }
+
+        public void SetService(IMainService ser)
+        {
+            this.mainService = ser;
         }
 
         public void ChangeStrategy(IStrategy st)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace Models
     public interface ISimulation
     {
         public void ChangeStrategy(IStrategy st);
+
+        public void SetService(IMainService ser);
 
         public void Pause();
 
