@@ -13,10 +13,10 @@ namespace Models
 {
     class Program
     {
-        
-        static void Main() 
+
+        static void Main()
         {
-            Simulation sim = new Simulation(3, 2, new MinWaitingTimeStrategy());
+            /*Simulation sim = new Simulation(3, 2, new MinWaitingTimeStrategy());
             SystemData data = sim.GetData();
             DataTable dataTable = new DataTable();
             DataColumn a1 = new DataColumn();
@@ -62,7 +62,7 @@ namespace Models
             HumansMover.ExitLift(b2, a);
             foreach (Humans t in b2.getHumans())
                 Console.WriteLine(t. + " " + t.FiniteFloor);
-            Console.ReadLine();*/
+            Console.ReadLine();
             Thread th = Thread.CurrentThread;
             th.Join(10000);
             Console.WriteLine("we are here");
@@ -77,5 +77,6 @@ namespace Models
         {
             ((Floor)a).DoTick();
         }*/
+        }
     }
 }

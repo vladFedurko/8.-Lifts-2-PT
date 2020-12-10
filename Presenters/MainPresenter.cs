@@ -9,15 +9,15 @@ using System.Windows.Forms;
 
 namespace Presenters
 {
-    class MainPresenter
+    public class MainPresenter
     {
         private IMainView _view;
-        private IMainService _service;
+        private IMainService _mainService;
 
         public MainPresenter(IMainView view, IMainService service)
         {
             _view = view;
-            _service = service;
+            _mainService = service;
             InitEvents();
         }
 
@@ -39,8 +39,8 @@ namespace Presenters
             _view.LoadLiftConfigurationStrategy += this.LoadLiftConfigurationStrategy;
             _view.SaveHumanGenerationStrategy += this.SaveHumanGenerationStrategy;
             _view.SaveLiftConfigurationStrategy += this.SaveLiftConfigurationStrategy;
-            _service.UpdateSystemData += this.ShowData;
-            _service.UpdateTime += this.ShowTime;
+            _mainService.UpdateSystemData += this.ShowData;
+            _mainService.UpdateTime += this.ShowTime;
         }
 
         public void ShowTime(int time)
@@ -60,22 +60,22 @@ namespace Presenters
 
         public void StopSimulation()
         {
-            _service.StopSimulation();
+            _mainService.StopSimulation();
         }
 
         public void StartSimulation()
         {
-            _service.StartSimulation();
+            _mainService.StartSimulation();
         }
 
         public void PauseSimulation()
         {
-            _service.PauseSimulation();
+            _mainService.PauseSimulation();
         }
 
         public void SetSimulationSpeed(decimal speed)
         {
-            _service.SetSimulationSpeed(speed);
+            _mainService.SetSimulationSpeed(speed);
         }
 
         public void ShowCreateHumanForm()

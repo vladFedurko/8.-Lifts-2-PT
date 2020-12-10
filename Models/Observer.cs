@@ -66,6 +66,6 @@ namespace Models
             timer.Start();
         }
 
-        internal int getCurrentTime() => currentTick / TIME_OF_TICK;
+        internal int getCurrentTime() => currentTick * TIME_OF_TICK / 1000;
     }
 }

@@ -13,6 +13,7 @@ namespace Models.Services
         public MainService(ISimulation sim)
         {
             this.simulation = sim;
+            simulation.SetService(this);
         }
 
         public void PauseSimulation()

@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Models;
+using Models.Services;
+using Models.Strategies;
+using Presenters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +20,8 @@ namespace _8.Lifts_2__PT
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SimulationForm());
+            SimulationForm form = new SimulationForm();
+            Application.Run(form);
         }
     }
 }
