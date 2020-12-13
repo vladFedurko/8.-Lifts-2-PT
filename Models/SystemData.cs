@@ -13,7 +13,7 @@ namespace Models
         List<Floor> Floors = new List<Floor>();
         List<Lift> Lifts = new List<Lift>();
         List<HumanFactory> factories = new List<HumanFactory>();
-        List<HumanCreator> creators;
+        List<HumanCreator> creators = new List<HumanCreator>();
         public SystemData(int floors, int lifts)
         {
             for (int i = 0; i < floors; i++)
@@ -128,7 +128,12 @@ namespace Models
 
         public Floor GetFloorByNumber(int number)
         {
-            return Floors.FirstOrDefault(f => f.getKeeperNumber() == number);
+            if (number >= 0 && number < Floors.Count)
+                return Floors.FirstOrDefault(f => f.getKeeperNumber() == number);
+            else {
+                Console.WriteLine("There is an Exception!");
+                throw new Exception("There is no such a floor"); 
+            }
         }
         public bool IsEverythingEmpty()
         {

@@ -89,11 +89,11 @@ namespace Models.Entities
         {
             if (Humans != null)
                 foreach (var hum in Humans)
-            {
-                hum.DoTick();
-                if (hum.state == Entities.Human.HumanState.DisposeNow)
-                    this.Humans.Remove(hum);
-            }
+                {
+                    hum.DoTick();
+                    if (hum.state == Entities.Human.HumanState.DisposeNow)
+                        RemoveHumans(hum);
+                }
         }
 
         public int getHumanNumberUp() => HumanNumberUp;

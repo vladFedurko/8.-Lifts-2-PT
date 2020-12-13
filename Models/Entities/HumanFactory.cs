@@ -26,6 +26,7 @@ namespace Models.Entities
             {
                 Human Human = new Human(FiniteFloor);
                 floor.AddHumans(Human);
+                Console.WriteLine("Human created " + i);
             }
         }
 

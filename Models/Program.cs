@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Models.Entities;
+using Models.Services;
 using Models.Strategies;
 
 namespace Models
@@ -26,7 +27,8 @@ namespace Models
             DataRow row = dataTable.NewRow();
             row.ItemArray = new object[] { 1, 0, 1, 3 };
             dataTable.Rows.Add(row);
-            data.ParseDataTable(dataTable);
+            HumanCreationService serv = new HumanCreationService(data);
+            serv.ParseDataTable(dataTable);
             System.Threading.Timer timer = new System.Threading.Timer(new TimerCallback(tick), data, 0, 100);
             Thread th = Thread.CurrentThread;
             th.Join(3100);
