@@ -7,7 +7,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Models.Entities;
-using Models.Strategies;
 
 namespace Models
 {

@@ -16,17 +16,20 @@ namespace _8.Lifts_2__PT
     {
         private bool isSimulationLoaded = false;
 
+        private ISimulation simulation;
+
         public SimulationForm()
         {
             InitializeComponent();
             InitSimulationTable();
+            InitSimulation();
         }
 
         public void InitSimulation()
         {
             if (!isSimulationLoaded)
             {
-                Simulation simulation = new Simulation(5, 2, new MinWaitingTimeLiftManager());
+                simulation = new Simulation(5, 2, new MinWaitingTimeLiftManager());
                 MainPresenter pres = new MainPresenter(this, new MainService(simulation));
                 isSimulationLoaded = true;
             }
@@ -118,7 +121,6 @@ namespace _8.Lifts_2__PT
 
         private void StartSimulationClick(object sender, EventArgs e)
         {
-            InitSimulation();
             if (startButton.Text.Equals("Start"))
             {
                 this.StartSimulation?.Invoke();
@@ -176,7 +178,9 @@ namespace _8.Lifts_2__PT
 
         private void CreateHumanClick(object sender, EventArgs e)
         {
-            this.ShowCreateHumanForm?.Invoke();
+            CreateHumanForm form = new CreateHumanForm();
+            new CreateHumanPresenter(form, new HumanCreationService(simulation.GetData()));
+            form.Show();
         }
 
         private void HumanGenerationClick(object sender, EventArgs e)

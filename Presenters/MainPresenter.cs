@@ -24,6 +24,7 @@ namespace Presenters
         private void InitEvents()
         {
             _view.StartFireAlarm += this.StartFireAlarm;
+            _view.StopFireAlarm += this.StopFireAlarm;
             _view.StopSimulation += this.StopSimulation;
             _view.StartSimulation += this.StartSimulation;
             _view.PauseSimulation += this.PauseSimulation;
@@ -55,7 +56,12 @@ namespace Presenters
 
         public void StartFireAlarm()
         {
+            _mainService.StartFireAlarm();
+        }
 
+        public void StopFireAlarm()
+        {
+            _mainService.StopFireAlarm();
         }
 
         public void StopSimulation()

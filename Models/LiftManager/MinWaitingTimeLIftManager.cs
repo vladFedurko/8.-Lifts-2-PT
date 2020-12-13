@@ -72,6 +72,8 @@ namespace Models.LiftManager
                     numFloor = fl.getKeeperFloor();
                 }
             }
+            if (numFloor == 0)
+                return lift.getKeeperFloor();
             return numFloor;
         }
 
@@ -109,6 +111,8 @@ namespace Models.LiftManager
         {
             if (lift.humanNumber == 0)
             {
+                if (floor.getHumanNumber() == 0)
+                    return lift.getKeeperFloor();
                 int nearestFloorUp = int.MaxValue;
                 int nearestFloorDown = int.MinValue;
                 int countHumansUp = 0;

@@ -66,6 +66,11 @@ namespace Models
             timer.Start();
         }
 
+        public bool isStoped()
+        {
+            return timer.Enabled;
+        }
+
         internal int getCurrentTime() => currentTick * TIME_OF_TICK / 1000;
     }
 }

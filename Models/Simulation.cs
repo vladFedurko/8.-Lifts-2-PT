@@ -84,7 +84,7 @@ namespace Models
 
         public void TurnOffFireAlarm()
         {
-            simulationState.ResetState(systemData);
+            simulationState?.ResetState(systemData);
             simulationState = null;
         }
     }
