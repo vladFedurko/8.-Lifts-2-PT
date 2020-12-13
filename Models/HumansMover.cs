@@ -18,7 +18,7 @@ namespace Models
                     Floor floor = data.GetFloorByNumber(lift.getKeeperFloor());
                     HumansMover.ExitLift(floor, lift);
                     HumansMover.EnterLift(floor, lift);
-                    lift.StartMoving(); //пока без задержки
+                    //lift.StartMoving();
                 }
             }
         }
@@ -32,7 +32,7 @@ namespace Models
                 (
                 Floor_humans.Where(
                     h =>
-                    h.state == Entities.Human.HumanState.OnFloor
+                    h.state == Human.HumanState.OnFloor
                     &&
                     lift.liftState == Lift.LiftState.WaitOpened
                     &&
@@ -56,7 +56,7 @@ namespace Models
             //rem = 0;
             floor?.RemoveSomeHumans(
                 h =>
-                h.state == Entities.Human.HumanState.InLift
+                h.state == Human.HumanState.InLift
                 &&
                 (
                     (floor.getKeeperFloor() - h.FiniteFloor) < 0 

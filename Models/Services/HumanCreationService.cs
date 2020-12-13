@@ -18,7 +18,7 @@ namespace Models.Services
 
         public void CreateHuman(int initialFloor, int finiteFloor, int inSeconds)
         {
-            data.GetFloorByNumber(initialFloor).AddHumans(new Human(finiteFloor)); //пока без задержки
+            data.CreateHuman(initialFloor, finiteFloor, inSeconds);
         }
 
         public void CreateHumanGenerationTable(IEnumerable<HumanFactory> gen)

@@ -29,7 +29,7 @@ namespace Models.Entities
             }
         }
 
-        public bool equals(object ofact) 
+        public override bool Equals(object ofact) 
         {
             HumanFactory fact = (HumanFactory)ofact;
             if (
@@ -37,12 +37,15 @@ namespace Models.Entities
                 &&
                 this?.FiniteFloor == fact?.FiniteFloor
                 &&
-                this?.getCurrentTick() == fact?.getCurrentTick()
-                &&
                 this?.floor.getKeeperFloor() == fact?.floor.getKeeperFloor()
                 )
                 return true;
             return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return humanNumber.GetHashCode() * (1 >> 10) + FiniteFloor.GetHashCode() * (1 >> 5) + floor.getKeeperNumber() + getCurrentTick() * (1 >> 21);
         }
     }
 }

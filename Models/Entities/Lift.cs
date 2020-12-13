@@ -97,12 +97,18 @@ namespace Models.Entities
         public void RemoveSomeHumans(Predicate<Human> pred)
         {
             if (pred != null)
+            {
                 data.RemoveWhere(pred);
+                humanNumber = data.Count;
+            }
         }
         public void RemoveHumans(Human humans)
         {
             if (humans != null)
+            {
                 data.Remove(humans);
+                humanNumber--;
+            }
         }
 
         public IEnumerable<Human> getHumans()

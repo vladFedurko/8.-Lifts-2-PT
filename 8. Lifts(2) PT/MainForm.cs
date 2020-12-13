@@ -92,7 +92,6 @@ namespace _8.Lifts_2__PT
         public event Action StartSimulation;
         public event Action PauseSimulation;
         public event Action<decimal> SetSimulationSpeed;
-        public event Action ShowCreateHumanForm;
         public event Action ShowStatistics;
         public event Action ShowHumanGenerationStrategy;
         public event Action ShowPlanFireAlarmForm;

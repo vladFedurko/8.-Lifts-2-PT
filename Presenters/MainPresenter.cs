@@ -29,7 +29,6 @@ namespace Presenters
             _view.StartSimulation += this.StartSimulation;
             _view.PauseSimulation += this.PauseSimulation;
             _view.SetSimulationSpeed += this.SetSimulationSpeed;
-            _view.ShowCreateHumanForm += this.ShowCreateHumanForm;
             _view.ShowStatistics += this.ShowStatistics;
             _view.ShowHumanGenerationStrategy += this.ShowHumanGenerationStrategy;
             _view.ShowPlanFireAlarmForm += this.ShowPlanFireAlarmForm;
@@ -82,11 +81,6 @@ namespace Presenters
         public void SetSimulationSpeed(decimal speed)
         {
             _mainService.SetSimulationSpeed(speed);
-        }
-
-        public void ShowCreateHumanForm()
-        {
-
         }
 
         public void ShowStatistics()
