@@ -35,8 +35,19 @@ namespace _8.Lifts_2__PT
             }
         }
 
-        public void ShowState(SystemData systemData) //часть кода будет перенесена в presenter
+        private delegate void UpdateState(SystemData systemData);
+
+        public void ShowState(SystemData systemData)
         {
+            if (simulationTable.InvokeRequired)
+                simulationTable.Invoke(new UpdateState(ShowStateInForm), systemData);
+            else
+                ShowStateInForm(systemData);
+        }
+
+        public void ShowStateInForm(SystemData systemData) //часть кода будет перенесена в presenter
+        {
+            this.simulationTable.SuspendLayout();
             int[] a = new int[systemData.GetFloors().Count()];
             int[] b = new int[systemData.GetLifts().Count()];
             int[] c = new int[systemData.GetLifts().Count()];
@@ -62,18 +73,17 @@ namespace _8.Lifts_2__PT
                 Control control = this.simulationTable.GetControlFromPosition(j,this.simulationTable.RowCount - c[j - 2] - 1);
                 control.Text = b[j - 2].ToString();
             }
+            this.simulationTable.PerformLayout();
         }
+
+        private delegate void UpdateTime(int Time);
 
         public void setTime(int Time)
         {
-            try
-            {
+            if (statusStrip1.InvokeRequired)
+                statusStrip1.Invoke(new UpdateTime((int Time) => { TimeStatusLabel.Text = "Time:" + Time.ToString(); }), Time);
+            else
                 TimeStatusLabel.Text = "Time:" + Time.ToString();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("exception");
-            }
         }
 
         public event Action StartFireAlarm;
@@ -148,11 +158,6 @@ namespace _8.Lifts_2__PT
                 StartMenuItem.Enabled = true;
             }
             StatisticMenuItem.Enabled = true;*/
-        }
-
-        void tick(object a) {
-            foreach (var c in (IEnumerable<Floor>)a)
-                c.DoTick();
         }
 
         private void FireAlarmClick(object sender, EventArgs e)

@@ -48,8 +48,8 @@ namespace Models.LiftManager
 
         private int GetTargetFloorForMinWaitingTime(SystemData data, Lift lift)
         {
-            decimal minTime = int.MaxValue;
-            int numFloor = 0;
+            decimal minEff = 0;
+            int numFloor = -1;
             decimal curEffTime = 0;
             foreach (var fl in data.GetFloors())
             {
@@ -57,22 +57,22 @@ namespace Models.LiftManager
                 if (distance != 0)
                 {
                     if (fl.getHumanNumberUp() > fl.getHumanNumberDown())
-                        curEffTime = fl.getHumanNumberUp() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
+                        curEffTime = (decimal)fl.getHumanNumberUp() / (lift.GetTickToMove() * distance);
                     else
-                        curEffTime = fl.getHumanNumberDown() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
+                        curEffTime = (decimal)fl.getHumanNumberDown() / (lift.GetTickToMove() * distance);
                 }
-                else
+                else if(fl.getHumanNumberUp() != 0 || fl.getHumanNumberDown() != 0)
                 {
                     numFloor = fl.getKeeperFloor();
                     break;
                 }
-                if (curEffTime < minTime)
+                if (curEffTime > minEff)
                 {
-                    minTime = curEffTime;
+                    minEff = curEffTime;
                     numFloor = fl.getKeeperFloor();
                 }
             }
-            if (numFloor == 0)
+            if (numFloor == -1)
                 return lift.getKeeperFloor();
             return numFloor;
         }
@@ -128,7 +128,7 @@ namespace Models.LiftManager
                     else
                     {
                         countHumansDown++;
-                        if (nearestFloorDown > h.FiniteFloor)
+                        if (nearestFloorDown < h.FiniteFloor)
                             nearestFloorDown = h.FiniteFloor;
                     }
                 }

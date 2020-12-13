@@ -165,7 +165,7 @@
       <Name>Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\Presenters\Presenters.csproj">
-      <Project>{3A913016-596D-4F10-A6C8-756A7F6A9608}</Project>
+      <Project>{3a913016-596d-4f10-a6c8-756a7f6a9608}</Project>
       <Name>Presenters</Name>
     </ProjectReference>
   </ItemGroup>

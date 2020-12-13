@@ -62,12 +62,8 @@ namespace Models
 
         public void doTick()
         {
-            if (simulationState != null && simulationState is ILiftManager)
-                ((ILiftManager)simulationState).ManageLifts(systemData);
-            else
-                strategy.ManageLifts(systemData);
-            foreach (var floor in systemData.GetFloors())
-                floor.DoTick();
+            strategy.ManageLifts(systemData);
+            systemData.DoTick();
             mainService.ShowDataInView(systemData);
             mainService.UpdateClock(observer.getCurrentTime());
         }

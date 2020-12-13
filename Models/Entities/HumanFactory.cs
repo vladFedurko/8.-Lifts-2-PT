@@ -10,58 +10,39 @@ namespace Models.Entities
     {
         public int humanNumber;
         public int FiniteFloor;
+        readonly Floor floor;
 
-        internal bool NewHumansReady = false;
-
-        public HumanFactory(int humanNumber, int finiteFloor ,int ticksToNotify) 
+        public HumanFactory(int humanNumber, int finiteFloor ,int ticksToNotify , Floor floor) 
         {
             this.humanNumber = humanNumber;
             this.FiniteFloor = finiteFloor;
             this.ticksToNotify = ticksToNotify;
+            this.floor = floor;
         }
 
         protected override void Notify()
         {
-            NewHumansReady = true;
+            for (int i = 0; i < humanNumber; i++)
+            {
+                Human Human = new Human(FiniteFloor);
+                floor.AddHumans(Human);
+            }
         }
 
-        public new List<Human> DoTick() 
+        public bool equals(object ofact) 
         {
-            base.DoTick();
-            if (NewHumansReady)
-            {
-                NewHumansReady = false;
-                Console.WriteLine($"Humans created by fabric {humanNumber} {FiniteFloor} {ticksToNotify}");
-                List<Human> humans = new List<Human>(humanNumber);
-                for (int i = 0; i < humanNumber; i++)
-                    humans.Add(new Human(FiniteFloor));
-                return humans;
-            }
-            return null;
-        }
-        public static bool operator==(HumanFactory fact, HumanFactory fact2) 
-        {
+            HumanFactory fact = (HumanFactory)ofact;
             if (
-                fact?.ticksToNotify == fact2?.ticksToNotify
+                this?.ticksToNotify == fact?.ticksToNotify
                 &&
-                fact?.FiniteFloor == fact2?.FiniteFloor
+                this?.FiniteFloor == fact?.FiniteFloor
                 &&
-                fact?.getCurrentTick() == fact2?.getCurrentTick()
+                this?.getCurrentTick() == fact?.getCurrentTick()
+                &&
+                this?.floor.getKeeperFloor() == fact?.floor.getKeeperFloor()
                 )
                 return true;
             return false;
-        }
-        public static bool operator !=(HumanFactory fact, HumanFactory fact2)
-        {
-            if (
-                fact?.ticksToNotify == fact2?.ticksToNotify
-                &&
-                fact?.FiniteFloor == fact2?.FiniteFloor
-                &&
-                fact?.getCurrentTick() == fact2?.getCurrentTick()
-                )
-                return false;
-            return true;
         }
     }
 }

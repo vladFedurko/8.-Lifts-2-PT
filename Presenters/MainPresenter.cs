@@ -51,7 +51,7 @@ namespace Presenters
 
         public void ShowData(SystemData data)
         {
-            
+            _view.ShowState(data);
         }
 
         public void StartFireAlarm()

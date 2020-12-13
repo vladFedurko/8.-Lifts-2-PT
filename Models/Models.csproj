@@ -44,7 +44,7 @@
     <Compile Include="Entities\Floor.cs" />
     <Compile Include="Entities\HumanFactory.cs" />
     <Compile Include="Entities\Human.cs" />
-    <Compile Include="Entities\HumanGenerationRule.cs" />
+    <Compile Include="Entities\HumanCreator.cs" />
     <Compile Include="HumansMover.cs" />
     <Compile Include="ISimulation.cs" />
     <Compile Include="LiftManager\FireAlarm.cs" />
