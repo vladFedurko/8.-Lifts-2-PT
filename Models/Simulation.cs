@@ -60,10 +60,9 @@ namespace Models
         public void doTick()
         {
             strategy.ManageLifts(systemData);
-            foreach (var floor in systemData.GetFloors())
-                floor.DoTick();
-            mainService.ShowDataInView(systemData);
-            mainService.UpdateClock(observer.getCurrentTime());
+            systemData.DoTick();
+           // mainService.ShowDataInView(systemData);
+            //mainService.UpdateClock(observer.getCurrentTime());
         }
 
         public int GetCurrentTime()

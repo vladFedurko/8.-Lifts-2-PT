@@ -11,6 +11,6 @@ namespace Models.Services
     {
         void CreateHuman(int initialFloor, int finiteFloor, int inSeconds);
 
-        void CreateHumanGenerationTable(IEnumerable<HumanGenerationRule> gen);
+        void CreateHumanGenerationTable(IEnumerable<HumanFactory> gen);
     }
 }

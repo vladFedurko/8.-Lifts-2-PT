@@ -21,7 +21,7 @@ namespace Models.Services
             data.GetFloorByNumber(initialFloor).AddHumans(new Entities.Human(finiteFloor)); //пока без задержки
         }
 
-        public void CreateHumanGenerationTable(IEnumerable<HumanGenerationRule> gen)
+        public void CreateHumanGenerationTable(IEnumerable<HumanFactory> gen)
         {
             
         }

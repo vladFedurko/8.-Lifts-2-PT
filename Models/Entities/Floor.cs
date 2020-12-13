@@ -9,7 +9,6 @@ namespace Models.Entities
     public class Floor : IKeepHuman
     {
         HashSet<Human> Humans = new HashSet<Human>();
-        HashSet<HumanFactory> genTable = new HashSet<HumanFactory>();
         int FloorNumber;
         internal int HumanNumberUp;
         internal int HumanNumberDown;
@@ -34,14 +33,7 @@ namespace Models.Entities
                     HumanNumberDown += 1;
             }
         }
-        internal void AddHumanFactory(HumanFactory fact)
-        {
-            if (fact != null)
-                if (!genTable.Contains(fact))
-                    this.genTable.Add(fact);
-                else
-                    genTable.First(f => f == fact).humanNumber += fact.humanNumber;
-        }
+
         public void RemoveHumans(Human humans)
         {
             if (humans != null)
@@ -52,11 +44,6 @@ namespace Models.Entities
                 else
                     HumanNumberDown -= 1;
             }
-        }
-        internal void RemoveHumanFactory(HumanFactory fact)
-        {
-            if (fact != null)
-                genTable.Remove(fact);
         }
 
         public void RemoveSomeHumans(Predicate<Human> pred)
@@ -72,17 +59,6 @@ namespace Models.Entities
                     else
                         HumanNumberDown += 1;
             }
-        }
-
-        internal void RemoveSomeFactories(Predicate<HumanFactory> pred)
-        {
-            if (pred != null)
-                genTable.RemoveWhere(pred);
-        }
-        internal void RemoveAllFactories()
-        {
-            if (genTable != null)
-                genTable.Clear();
         }
         internal void RemoveAllHumans()
         {
@@ -108,22 +84,9 @@ namespace Models.Entities
                     this.AddHumans(humans);
                 }
         }
-        internal void AddRangeFactories(IEnumerable<HumanFactory> a)
-        {
-            if (a != null)
-                foreach (var fact in a)
-                {
-                    this.AddHumanFactory(fact);
-                }
-        }
 
         public void DoTick()
         {
-            if (genTable != null)
-                foreach (var fact in genTable)
-            {
-                this.AddRangeHumans(fact.DoTick());
-            }
             if (Humans != null)
                 foreach (var hum in Humans)
             {
