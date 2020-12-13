@@ -70,6 +70,12 @@ namespace Models.Entities
             this.CountPermission = true;
         }
 
+        internal void WaitWithOpenedDoor()
+        {
+            this.liftState = LiftState.WaitOpened;
+            this.CountPermission = false;
+        }
+
         public void AddHumans(Human a)
         {
             if ((Human)a != null)
@@ -91,12 +97,18 @@ namespace Models.Entities
         public void RemoveSomeHumans(Predicate<Human> pred)
         {
             if (pred != null)
+            {
                 data.RemoveWhere(pred);
+                humanNumber = data.Count;
+            }
         }
         public void RemoveHumans(Human humans)
         {
             if (humans != null)
+            {
                 data.Remove(humans);
+                humanNumber--;
+            }
         }
 
         public IEnumerable<Human> getHumans()

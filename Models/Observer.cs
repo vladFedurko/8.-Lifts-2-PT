@@ -25,7 +25,7 @@ namespace Models
                 AutoReset = true
             };
             timer.Elapsed += Tick;
-            timer.Start();
+            timer.Stop();
         }
 
         public decimal GetTimeAcceleration()
@@ -65,6 +65,11 @@ namespace Models
         public void Start()
         {
             timer.Start();
+        }
+
+        public bool isStoped()
+        {
+            return timer.Enabled;
         }
 
         internal int getCurrentTime() => currentTick / TICKS_PER_SECOND;

@@ -24,6 +24,10 @@ namespace Models.Services
 
         void UpdateClock(int time);
 
+        void StartFireAlarm();
+
+        void StopFireAlarm();
+
         event Action<SystemData> UpdateSystemData;
         event Action<int> UpdateTime;
     }

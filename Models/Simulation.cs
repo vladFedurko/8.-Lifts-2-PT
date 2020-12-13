@@ -5,21 +5,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models.Services;
+using Models.LiftManager;
 
 namespace Models
 {
     public class Simulation : ISimulation
     {
         protected SystemData systemData;
-        protected IStrategy strategy;
+        protected ILiftManager strategy;
+        protected ISimulationState simulationState; 
         protected Observer observer;
         protected IMainService mainService; //TODO class Service controller
 
-        public Simulation(int initialFloorsNumber, int initialLiftNumber, IStrategy _strategy)
+        public Simulation(int initialFloorsNumber, int initialLiftNumber, ILiftManager _strategy)
         {
             systemData = new SystemData(initialFloorsNumber, initialLiftNumber);
             strategy = _strategy;
             observer = new Observer(this);
+            simulationState = null;
         }
 
         public void SetService(IMainService ser)
@@ -27,7 +30,7 @@ namespace Models
             this.mainService = ser;
         }
 
-        public void ChangeStrategy(IStrategy st)
+        public void ChangeStrategy(ILiftManager st)
         {
             strategy = st;
         }
@@ -61,13 +64,24 @@ namespace Models
         {
             strategy.ManageLifts(systemData);
             systemData.DoTick();
-           // mainService.ShowDataInView(systemData);
-            //mainService.UpdateClock(observer.getCurrentTime());
+            mainService.ShowDataInView(systemData);
+            mainService.UpdateClock(observer.getCurrentTime());
         }
 
         public int GetCurrentTime()
         {
             return observer.getCurrentTime();
+        }
+
+        public void TurnOnFireAlarm()
+        {
+            simulationState = new FireAlarm(systemData);
+        }
+
+        public void TurnOffFireAlarm()
+        {
+            simulationState?.ResetState(systemData);
+            simulationState = null;
         }
     }
 }

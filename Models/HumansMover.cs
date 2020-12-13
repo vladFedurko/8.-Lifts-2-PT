@@ -7,8 +7,22 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    static class HumansMover
+    static class HumansMover    //donot static
     {
+        public static void MoveHumans(SystemData data)
+        {
+            foreach (Lift lift in data.GetLifts())
+            {
+                if (lift.liftState == Lift.LiftState.WaitOpened)
+                {
+                    Floor floor = data.GetFloorByNumber(lift.getKeeperFloor());
+                    HumansMover.ExitLift(floor, lift);
+                    HumansMover.EnterLift(floor, lift);
+                    //lift.StartMoving();
+                }
+            }
+        }
+
         public static void EnterLift(Floor floor, Lift lift)
         {
             IEnumerable<Human> Floor_humans = floor?.getHumans();
@@ -18,7 +32,7 @@ namespace Models
                 (
                 Floor_humans.Where(
                     h =>
-                    h.state == Entities.Human.HumanState.OnFloor
+                    h.state == Human.HumanState.OnFloor
                     &&
                     lift.liftState == Lift.LiftState.WaitOpened
                     &&
@@ -42,7 +56,7 @@ namespace Models
             //rem = 0;
             floor?.RemoveSomeHumans(
                 h =>
-                h.state == Entities.Human.HumanState.InLift
+                h.state == Human.HumanState.InLift
                 &&
                 (
                     (floor.getKeeperFloor() - h.FiniteFloor) < 0 

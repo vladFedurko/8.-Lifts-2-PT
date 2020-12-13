@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Strategies
+namespace Models.LiftManager
 {
-    public class MinWaitingTimeStrategy : IStrategy
+    public class MinWaitingTimeLiftManager : ILiftManager
     {
         public void ManageLifts(SystemData data)
         {
-            this.MoveHumans(data);
+            HumansMover.MoveHumans(data);
             foreach (Lift lift in data.GetLifts())
             {
                 if (lift.liftState == Lift.LiftState.Moving)
@@ -48,8 +48,8 @@ namespace Models.Strategies
 
         private int GetTargetFloorForMinWaitingTime(SystemData data, Lift lift)
         {
-            decimal minTime = int.MaxValue;
-            int numFloor = 0;
+            decimal minEff = 0;
+            int numFloor = -1;
             decimal curEffTime = 0;
             foreach (var fl in data.GetFloors())
             {
@@ -57,21 +57,23 @@ namespace Models.Strategies
                 if (distance != 0)
                 {
                     if (fl.getHumanNumberUp() > fl.getHumanNumberDown())
-                        curEffTime = fl.getHumanNumberUp() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
+                        curEffTime = (decimal)fl.getHumanNumberUp() / (lift.GetTickToMove() * distance);
                     else
-                        curEffTime = fl.getHumanNumberDown() / (lift.GetTickToMove() * (Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor())));
+                        curEffTime = (decimal)fl.getHumanNumberDown() / (lift.GetTickToMove() * distance);
                 }
-                else
+                else if(fl.getHumanNumberUp() != 0 || fl.getHumanNumberDown() != 0)
                 {
                     numFloor = fl.getKeeperFloor();
                     break;
                 }
-                if (curEffTime < minTime)
+                if (curEffTime > minEff)
                 {
-                    minTime = curEffTime;
+                    minEff = curEffTime;
                     numFloor = fl.getKeeperFloor();
                 }
             }
+            if (numFloor == -1)
+                return lift.getKeeperFloor();
             return numFloor;
         }
 
@@ -105,24 +107,12 @@ namespace Models.Strategies
             }
         }
 
-        private void MoveHumans(SystemData data)
-        {
-            foreach (Lift lift in data.GetLifts())
-            {
-                if (lift.liftState == Lift.LiftState.WaitOpened)
-                {
-                    Floor floor = data.GetFloorByNumber(lift.getKeeperFloor());
-                    HumansMover.ExitLift(floor, lift);
-                    HumansMover.EnterLift(floor, lift);
-                    lift.StartMoving(); //пока без задержки
-                }
-            }
-        }
-
         private int GetNearestFloor(Lift lift, Floor floor)
         {
             if (lift.humanNumber == 0)
             {
+                if (floor.getHumanNumber() == 0)
+                    return lift.getKeeperFloor();
                 int nearestFloorUp = int.MaxValue;
                 int nearestFloorDown = int.MinValue;
                 int countHumansUp = 0;
@@ -138,7 +128,7 @@ namespace Models.Strategies
                     else
                     {
                         countHumansDown++;
-                        if (nearestFloorDown > h.FiniteFloor)
+                        if (nearestFloorDown < h.FiniteFloor)
                             nearestFloorDown = h.FiniteFloor;
                     }
                 }

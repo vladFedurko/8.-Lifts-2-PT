@@ -16,6 +16,7 @@ namespace Presenters
         {
             this._view = view;
             this._service = service;
+            InitEvents();
         }
 
         private void InitEvents()
@@ -25,7 +26,7 @@ namespace Presenters
 
         public void CreateHuman(int initialFloor, int finiteFloor, int inSeconds)
         {
-            _service.CreateHuman(initialFloor, finiteFloor, inSeconds);
+            _service.CreateHuman(initialFloor - 1, finiteFloor - 1, inSeconds); //отсчет с 0
         }
     }
 }

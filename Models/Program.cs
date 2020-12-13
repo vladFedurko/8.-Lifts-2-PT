@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Models.Entities;
-using Models.Strategies;
+using Models.LiftManager;
 
 namespace Models
 {
@@ -15,7 +15,7 @@ namespace Models
     {
         static void Main()
         {
-            Simulation sim = new Simulation(3, 2, new MinWaitingTimeStrategy());
+            /*Simulation sim = new Simulation(3, 2, new MinWaitingTimeStrategy());
             SystemData data = sim.GetData();
             DataTable dataTable = new DataTable();
             DataColumn a1 = new DataColumn();
@@ -33,7 +33,7 @@ namespace Models
             Console.WriteLine("We are here v1");
             th.Join(10000);
             Console.WriteLine("we are here");
-            th.Join(11000);
+            th.Join(11000);*/
         }
         private static void tick(object a)
         {

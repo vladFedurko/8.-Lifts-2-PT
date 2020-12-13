@@ -24,11 +24,11 @@ namespace Presenters
         private void InitEvents()
         {
             _view.StartFireAlarm += this.StartFireAlarm;
+            _view.StopFireAlarm += this.StopFireAlarm;
             _view.StopSimulation += this.StopSimulation;
             _view.StartSimulation += this.StartSimulation;
             _view.PauseSimulation += this.PauseSimulation;
             _view.SetSimulationSpeed += this.SetSimulationSpeed;
-            _view.ShowCreateHumanForm += this.ShowCreateHumanForm;
             _view.ShowStatistics += this.ShowStatistics;
             _view.ShowHumanGenerationStrategy += this.ShowHumanGenerationStrategy;
             _view.ShowPlanFireAlarmForm += this.ShowPlanFireAlarmForm;
@@ -50,12 +50,17 @@ namespace Presenters
 
         public void ShowData(SystemData data)
         {
-            
+            _view.ShowState(data);
         }
 
         public void StartFireAlarm()
         {
+            _mainService.StartFireAlarm();
+        }
 
+        public void StopFireAlarm()
+        {
+            _mainService.StopFireAlarm();
         }
 
         public void StopSimulation()
@@ -76,11 +81,6 @@ namespace Presenters
         public void SetSimulationSpeed(decimal speed)
         {
             _mainService.SetSimulationSpeed(speed);
-        }
-
-        public void ShowCreateHumanForm()
-        {
-
         }
 
         public void ShowStatistics()
