@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models.Strategies
+namespace Models.LiftManager
 {
-    public class MinWaitingTimeStrategy : IStrategy
+    public class MinWaitingTimeLiftManager : ILiftManager
     {
         public void ManageLifts(SystemData data)
         {
-            this.MoveHumans(data);
+            HumansMover.MoveHumans(data);
             foreach (Lift lift in data.GetLifts())
             {
                 if (lift.liftState == Lift.LiftState.Moving)
@@ -72,6 +72,8 @@ namespace Models.Strategies
                     numFloor = fl.getKeeperFloor();
                 }
             }
+            if (numFloor == 0)
+                return lift.getKeeperFloor();
             return numFloor;
         }
 
@@ -105,24 +107,12 @@ namespace Models.Strategies
             }
         }
 
-        private void MoveHumans(SystemData data)
-        {
-            foreach (Lift lift in data.GetLifts())
-            {
-                if (lift.liftState == Lift.LiftState.WaitOpened)
-                {
-                    Floor floor = data.GetFloorByNumber(lift.getKeeperFloor());
-                    HumansMover.ExitLift(floor, lift);
-                    HumansMover.EnterLift(floor, lift);
-                    lift.StartMoving(); //пока без задержки
-                }
-            }
-        }
-
         private int GetNearestFloor(Lift lift, Floor floor)
         {
             if (lift.humanNumber == 0)
             {
+                if (floor.getHumanNumber() == 0)
+                    return lift.getKeeperFloor();
                 int nearestFloorUp = int.MaxValue;
                 int nearestFloorDown = int.MinValue;
                 int countHumansUp = 0;

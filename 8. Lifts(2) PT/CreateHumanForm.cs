@@ -14,7 +14,6 @@ namespace _8.Lifts_2__PT
 {
     public partial class CreateHumanForm : Form, ICreateHumanView
     {
-
         public event Action<int, int, int> CreateHuman;
 
         public CreateHumanForm()

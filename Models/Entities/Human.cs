@@ -34,13 +34,22 @@ namespace Models.Entities
             state = HumanState.Created;
             ticksToNotify = TICKS_TO_BREATHE;
         }
-        internal void ChangeState() 
+
+        public void Dispose()
         {
-            if (state == HumanState.InLift)
-            { 
+            if (state != HumanState.DisposeNow)
+            {
                 state = HumanState.Disposing;
                 CountPermission = true;
                 ticksToNotify = TICKS_TO_DISPOSE;
+            }
+        }
+
+        internal void ChangeState() 
+        {
+            if (state == HumanState.InLift)
+            {
+                this.Dispose();
             }
             if (state == HumanState.OnFloor)
                state = HumanState.InLift;

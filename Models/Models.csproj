@@ -47,6 +47,8 @@
     <Compile Include="Entities\HumanCreator.cs" />
     <Compile Include="HumansMover.cs" />
     <Compile Include="ISimulation.cs" />
+    <Compile Include="LiftManager\FireAlarm.cs" />
+    <Compile Include="LiftManager\ISimulationState.cs" />
     <Compile Include="Observer.cs" />
     <Compile Include="Services\HumanCreationService.cs" />
     <Compile Include="Services\MainService.cs" />
@@ -54,8 +56,8 @@
     <Compile Include="SystemData.cs" />
     <Compile Include="AMovable.cs" />
     <Compile Include="Entities\Lift.cs" />
-    <Compile Include="Strategies\MinIdlingStrategy.cs" />
-    <Compile Include="Strategies\MinWaitingTimeStrategy.cs" />
+    <Compile Include="LiftManager\MinIdlingStrategy.cs" />
+    <Compile Include="LiftManager\MinWaitingTimeLIftManager.cs" />
     <Compile Include="Services\IHumanCreationService.cs" />
     <Compile Include="Services\IHumanStatus.cs" />
     <Compile Include="IKeepHuman.cs" />
@@ -64,7 +66,7 @@
     <Compile Include="Services\ISystemParameters.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="IStrategy.cs" />
+    <Compile Include="LiftManager\ILiftManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />

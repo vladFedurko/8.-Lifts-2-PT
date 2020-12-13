@@ -56,6 +56,16 @@ namespace Models.Services
             this.UpdateTime.Invoke(time);
         }
 
+        public void StartFireAlarm()
+        {
+            simulation.TurnOnFireAlarm();
+        }
+
+        public void StopFireAlarm()
+        {
+            simulation.TurnOffFireAlarm();
+        }
+
         public event Action<SystemData> UpdateSystemData;
         public event Action<int> UpdateTime;
     }
