@@ -25,7 +25,7 @@ namespace Models
                 AutoReset = true
             };
             timer.Elapsed += Tick;
-            timer.Start();
+            timer.Stop();
         }
 
         public decimal GetTimeAcceleration()

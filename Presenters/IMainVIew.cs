@@ -21,7 +21,6 @@ namespace Presenters
         event Action StartSimulation;
         event Action PauseSimulation;
         event Action<decimal> SetSimulationSpeed;
-        event Action ShowCreateHumanForm;
         event Action ShowStatistics;
         event Action ShowHumanGenerationStrategy;
         event Action ShowPlanFireAlarmForm;

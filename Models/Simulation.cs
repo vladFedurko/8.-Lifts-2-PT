@@ -67,8 +67,8 @@ namespace Models
             else
                 strategy.ManageLifts(systemData);
             systemData.DoTick();
-           // mainService.ShowDataInView(systemData);
-           // mainService.UpdateClock(observer.getCurrentTime());
+            mainService.ShowDataInView(systemData);
+            mainService.UpdateClock(observer.getCurrentTime());
         }
 
         public int GetCurrentTime()

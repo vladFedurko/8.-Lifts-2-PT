@@ -98,13 +98,15 @@ namespace Models.Entities
         {
             if (pred != null && data.Count > 0)
                 data.RemoveWhere(pred);
-            humanNumber = data.Count;
+                humanNumber = data.Count;
+            }
         }
         public void RemoveHumans(Human humans)
         {
             if (humans != null && data.Contains(humans))
                 data.Remove(humans);
-            humanNumber -= 1;
+                humanNumber--;
+            }
         }
 
         public IEnumerable<Human> getHumans()

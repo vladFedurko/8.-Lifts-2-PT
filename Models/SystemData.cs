@@ -50,18 +50,15 @@ namespace Models
 
         public void DoTick()
         {
-            foreach (var a in Lifts)
-                a.DoTick();
-            foreach (var b in Floors)
-                b.DoTick();
-            foreach (var c in factories)
-                c.DoTick();
+            foreach (var lift in Lifts)
+                lift.DoTick();
+            foreach (var floor in Floors)
+                floor.DoTick();
+            foreach (var fact in factories)
+                fact.DoTick();
             foreach (var creator in creators)
-            {
                 creator.DoTick();
-                if (creator.Disposing)
-                    creators.Remove(creator);
-            }
+            creators.RemoveAll(cr => cr.Disposing);
         }
 
         public void AddFloor(Floor floor)
@@ -80,7 +77,7 @@ namespace Models
                 if (!factories.Contains(fact))
                     this.factories.Add(fact);
                 else
-                    factories.First(f => f.equals(fact)).humanNumber += fact.humanNumber;
+                    factories.First(f => f.Equals(fact)).humanNumber += fact.humanNumber;
         }
         public void AddRangeFloors(List<Floor> floors)
         {
