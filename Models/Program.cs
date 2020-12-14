@@ -15,26 +15,17 @@ namespace Models
     {
         static void Main()
         {
-            /*Simulation sim = new Simulation(3, 2, new MinWaitingTimeStrategy());
-            SystemData data = sim.GetData();
-            DataTable dataTable = new DataTable();
-            DataColumn a1 = new DataColumn();
-            DataColumn a2 = new DataColumn();
-            DataColumn a3 = new DataColumn();
-            DataColumn a4 = new DataColumn();
-            dataTable.Columns.AddRange(new DataColumn[] { a1, a2, a3, a4 });
-            DataRow row = dataTable.NewRow();
-            row.ItemArray = new object[] { 1, 0, 1, 3 };
-            dataTable.Rows.Add(row);
-            HumanCreationService serv = new HumanCreationService(data);
-            serv.ParseDataTable(dataTable);
-            System.Threading.Timer timer = new System.Threading.Timer(new TimerCallback(tick), data, 0, 100);
+            SystemData data = new SystemData(2, 1);
+            data.CreateHuman(0, 1, 0);
+            
             Thread th = Thread.CurrentThread;
-            th.Join(3100);
-            Console.WriteLine("We are here v1");
-            th.Join(10000);
-            Console.WriteLine("we are here");
-            th.Join(11000);*/
+            System.Threading.Timer timer = new System.Threading.Timer(new TimerCallback(tick), data, 0, 100);
+            th.Join(5100);
+            timer.Dispose();
+            data.GetLifts().ToList().Find(l => l.Floor == 0).OpenDoor();
+            data.GetLifts().ToList().Find(l => l.Floor == 0).SetTargetFloor(1);
+            Console.WriteLine("hello world");
+            HumansMover.MoveHumans(data);
         }
         private static void tick(object a)
         {

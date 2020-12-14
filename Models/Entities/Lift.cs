@@ -97,6 +97,7 @@ namespace Models.Entities
         public void RemoveSomeHumans(Predicate<Human> pred)
         {
             if (pred != null && data.Count > 0)
+            {
                 data.RemoveWhere(pred);
                 humanNumber = data.Count;
             }
@@ -104,6 +105,7 @@ namespace Models.Entities
         public void RemoveHumans(Human humans)
         {
             if (humans != null && data.Contains(humans))
+            {
                 data.Remove(humans);
                 humanNumber--;
             }

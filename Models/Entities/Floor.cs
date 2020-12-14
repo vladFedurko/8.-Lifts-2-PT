@@ -29,7 +29,7 @@ namespace Models.Entities
                 humans.ChangeState();
                 if (humans.FiniteFloor > FloorNumber)
                     HumanNumberUp += 1;
-                else
+                else if (humans.FiniteFloor < FloorNumber)
                     HumanNumberDown += 1;
             }
         }
@@ -41,7 +41,7 @@ namespace Models.Entities
                 Humans.Remove(humans);
                 if (humans.FiniteFloor > FloorNumber)
                     HumanNumberUp -= 1;
-                else
+                else if (humans.FiniteFloor < FloorNumber)
                     HumanNumberDown -= 1;
             }
         }
@@ -56,7 +56,7 @@ namespace Models.Entities
                 foreach (Human i in Humans)
                     if (i.FiniteFloor > FloorNumber)
                         HumanNumberUp += 1;
-                    else
+                    else if (i.FiniteFloor < FloorNumber)
                         HumanNumberDown += 1;
             }
         }
@@ -99,5 +99,6 @@ namespace Models.Entities
         public int getHumanNumberUp() => HumanNumberUp;
         public int getHumanNumberDown() => HumanNumberDown;
         public int getHumanNumber() => HumanNumberUp + HumanNumberDown;
+        public int getFullHumanNumber() => Humans.Count;
     }
 }
