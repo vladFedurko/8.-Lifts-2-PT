@@ -132,6 +132,7 @@ namespace _8.Lifts_2__PT
             {
                 this.StartSimulation?.Invoke();
                 startButton.Text = "Pause";
+                this.SystemParametersMenuItem.Enabled = false;
                 PauseMenuItem.Enabled = true;
                 StartMenuItem.Enabled = false;
             }
@@ -148,6 +149,10 @@ namespace _8.Lifts_2__PT
         private void StopSimulationClick(object sender, EventArgs e)
         {
             this.StopSimulation?.Invoke();
+            SystemParametersMenuItem.Enabled = true;
+            PauseMenuItem.Enabled = false;
+            StartMenuItem.Enabled = true;
+            StatisticMenuItem.Enabled = true;
             /*if (startButton.Text.Equals("Pause"))
             {
                 startButton.Text = "Start";
@@ -203,7 +208,10 @@ namespace _8.Lifts_2__PT
 
         private void SystemParametersClick(object sender, EventArgs e)
         {
-            this.ShowParametres?.Invoke();
+            SystemParametersForm form = new SystemParametersForm();
+            SystemParametersPresenter pres = new SystemParametersPresenter(form, new SystemParametersService(simulation));
+            pres.GetParameters();
+            form.Show();
         }
 
         private void StatisticsClick(object sender, EventArgs e)
@@ -249,11 +257,6 @@ namespace _8.Lifts_2__PT
         }
 
         public void ShowState()
-        {
-            //TODO
-        }
-
-        public void SetParameters(int floors, int lifts)
         {
             //TODO
         }

@@ -39,7 +39,7 @@
             this.liftSpeedSelecter = new System.Windows.Forms.NumericUpDown();
             this.liftCapacitySelecter = new System.Windows.Forms.NumericUpDown();
             this.liftsCountSelecter = new System.Windows.Forms.NumericUpDown();
-            this.liftAccelerationSelecter = new System.Windows.Forms.NumericUpDown();
+            this.liftWaitingTimeSelecter = new System.Windows.Forms.NumericUpDown();
             this.StrategySelecter = new System.Windows.Forms.ListBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -47,7 +47,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.liftSpeedSelecter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.liftCapacitySelecter)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.liftsCountSelecter)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.liftAccelerationSelecter)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.liftWaitingTimeSelecter)).BeginInit();
             this.SuspendLayout();
             // 
             // liftStrategyLabel
@@ -66,9 +66,9 @@
             this.liftCapacityLabel.Location = new System.Drawing.Point(180, 11);
             this.liftCapacityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.liftCapacityLabel.Name = "liftCapacityLabel";
-            this.liftCapacityLabel.Size = new System.Drawing.Size(103, 17);
+            this.liftCapacityLabel.Size = new System.Drawing.Size(147, 17);
             this.liftCapacityLabel.TabIndex = 1;
-            this.liftCapacityLabel.Text = "Set lift capacity";
+            this.liftCapacityLabel.Text = "Lift capacity (humans)";
             // 
             // liftSpeedLabel
             // 
@@ -76,9 +76,9 @@
             this.liftSpeedLabel.Location = new System.Drawing.Point(348, 11);
             this.liftSpeedLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.liftSpeedLabel.Name = "liftSpeedLabel";
-            this.liftSpeedLabel.Size = new System.Drawing.Size(119, 17);
+            this.liftSpeedLabel.Size = new System.Drawing.Size(167, 17);
             this.liftSpeedLabel.TabIndex = 2;
-            this.liftSpeedLabel.Text = "Set max lift speed";
+            this.liftSpeedLabel.Text = "Lift speed (sec. per floor)";
             // 
             // liftAcelerationLabel
             // 
@@ -86,9 +86,9 @@
             this.liftAcelerationLabel.Location = new System.Drawing.Point(516, 11);
             this.liftAcelerationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.liftAcelerationLabel.Name = "liftAcelerationLabel";
-            this.liftAcelerationLabel.Size = new System.Drawing.Size(157, 17);
+            this.liftAcelerationLabel.Size = new System.Drawing.Size(171, 17);
             this.liftAcelerationLabel.TabIndex = 3;
-            this.liftAcelerationLabel.Text = "Set max lift acceleration";
+            this.liftAcelerationLabel.Text = "Waiting time of lift on floor";
             // 
             // liftCountLabel
             // 
@@ -96,9 +96,9 @@
             this.liftCountLabel.Location = new System.Drawing.Point(184, 59);
             this.liftCountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.liftCountLabel.Name = "liftCountLabel";
-            this.liftCountLabel.Size = new System.Drawing.Size(93, 17);
+            this.liftCountLabel.Size = new System.Drawing.Size(73, 17);
             this.liftCountLabel.TabIndex = 4;
-            this.liftCountLabel.Text = "Set lifts count";
+            this.liftCountLabel.Text = "Lifts count";
             // 
             // floorCountLabel
             // 
@@ -106,60 +106,119 @@
             this.floorCountLabel.Location = new System.Drawing.Point(348, 59);
             this.floorCountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.floorCountLabel.Name = "floorCountLabel";
-            this.floorCountLabel.Size = new System.Drawing.Size(107, 17);
+            this.floorCountLabel.Size = new System.Drawing.Size(86, 17);
             this.floorCountLabel.TabIndex = 5;
-            this.floorCountLabel.Text = "Set floors count";
+            this.floorCountLabel.Text = "Floors count";
             // 
             // floorsCountSelecter
             // 
             this.floorsCountSelecter.Location = new System.Drawing.Point(352, 79);
-            this.floorsCountSelecter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.floorsCountSelecter.Margin = new System.Windows.Forms.Padding(4);
+            this.floorsCountSelecter.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.floorsCountSelecter.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.floorsCountSelecter.Name = "floorsCountSelecter";
             this.floorsCountSelecter.Size = new System.Drawing.Size(160, 22);
             this.floorsCountSelecter.TabIndex = 6;
+            this.floorsCountSelecter.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // liftSpeedSelecter
             // 
             this.liftSpeedSelecter.Location = new System.Drawing.Point(352, 31);
-            this.liftSpeedSelecter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.liftSpeedSelecter.Margin = new System.Windows.Forms.Padding(4);
+            this.liftSpeedSelecter.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.liftSpeedSelecter.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.liftSpeedSelecter.Name = "liftSpeedSelecter";
             this.liftSpeedSelecter.Size = new System.Drawing.Size(160, 22);
             this.liftSpeedSelecter.TabIndex = 7;
+            this.liftSpeedSelecter.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // liftCapacitySelecter
             // 
             this.liftCapacitySelecter.Location = new System.Drawing.Point(184, 31);
-            this.liftCapacitySelecter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.liftCapacitySelecter.Margin = new System.Windows.Forms.Padding(4);
             this.liftCapacitySelecter.Name = "liftCapacitySelecter";
             this.liftCapacitySelecter.Size = new System.Drawing.Size(160, 22);
             this.liftCapacitySelecter.TabIndex = 8;
+            this.liftCapacitySelecter.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             // 
             // liftsCountSelecter
             // 
             this.liftsCountSelecter.Location = new System.Drawing.Point(184, 79);
-            this.liftsCountSelecter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.liftsCountSelecter.Margin = new System.Windows.Forms.Padding(4);
+            this.liftsCountSelecter.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.liftsCountSelecter.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.liftsCountSelecter.Name = "liftsCountSelecter";
             this.liftsCountSelecter.Size = new System.Drawing.Size(160, 22);
             this.liftsCountSelecter.TabIndex = 9;
+            this.liftsCountSelecter.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
-            // liftAccelerationSelecter
+            // liftWaitingTimeSelecter
             // 
-            this.liftAccelerationSelecter.Location = new System.Drawing.Point(520, 31);
-            this.liftAccelerationSelecter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.liftAccelerationSelecter.Name = "liftAccelerationSelecter";
-            this.liftAccelerationSelecter.Size = new System.Drawing.Size(160, 22);
-            this.liftAccelerationSelecter.TabIndex = 10;
+            this.liftWaitingTimeSelecter.Location = new System.Drawing.Point(520, 31);
+            this.liftWaitingTimeSelecter.Margin = new System.Windows.Forms.Padding(4);
+            this.liftWaitingTimeSelecter.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.liftWaitingTimeSelecter.Name = "liftWaitingTimeSelecter";
+            this.liftWaitingTimeSelecter.Size = new System.Drawing.Size(160, 22);
+            this.liftWaitingTimeSelecter.TabIndex = 10;
+            this.liftWaitingTimeSelecter.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // StrategySelecter
             // 
             this.StrategySelecter.FormattingEnabled = true;
             this.StrategySelecter.ItemHeight = 16;
             this.StrategySelecter.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c"});
+            "Minimum waiting time",
+            "Minimum idling trips"});
             this.StrategySelecter.Location = new System.Drawing.Point(16, 31);
-            this.StrategySelecter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StrategySelecter.Margin = new System.Windows.Forms.Padding(4);
             this.StrategySelecter.Name = "StrategySelecter";
             this.StrategySelecter.Size = new System.Drawing.Size(159, 116);
             this.StrategySelecter.TabIndex = 11;
@@ -167,7 +226,7 @@
             // saveButton
             // 
             this.saveButton.Location = new System.Drawing.Point(188, 121);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(156, 28);
             this.saveButton.TabIndex = 12;
@@ -178,7 +237,7 @@
             // cancelButton
             // 
             this.cancelButton.Location = new System.Drawing.Point(352, 121);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(160, 28);
             this.cancelButton.TabIndex = 13;
@@ -194,7 +253,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.StrategySelecter);
-            this.Controls.Add(this.liftAccelerationSelecter);
+            this.Controls.Add(this.liftWaitingTimeSelecter);
             this.Controls.Add(this.liftsCountSelecter);
             this.Controls.Add(this.liftCapacitySelecter);
             this.Controls.Add(this.liftSpeedSelecter);
@@ -206,7 +265,7 @@
             this.Controls.Add(this.liftCapacityLabel);
             this.Controls.Add(this.liftStrategyLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SystemParametersForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SystemParameters";
@@ -214,7 +273,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.liftSpeedSelecter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.liftCapacitySelecter)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.liftsCountSelecter)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.liftAccelerationSelecter)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.liftWaitingTimeSelecter)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,7 +291,7 @@
         private System.Windows.Forms.NumericUpDown liftSpeedSelecter;
         private System.Windows.Forms.NumericUpDown liftCapacitySelecter;
         private System.Windows.Forms.NumericUpDown liftsCountSelecter;
-        private System.Windows.Forms.NumericUpDown liftAccelerationSelecter;
+        private System.Windows.Forms.NumericUpDown liftWaitingTimeSelecter;
         private System.Windows.Forms.ListBox StrategySelecter;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;

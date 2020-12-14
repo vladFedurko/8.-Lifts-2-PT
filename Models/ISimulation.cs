@@ -10,8 +10,6 @@ namespace Models
 {
     public interface ISimulation
     {
-        public void ChangeStrategy(ILiftManager st);
-
         public void SetService(IMainService ser);
 
         public void Pause();

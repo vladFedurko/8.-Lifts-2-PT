@@ -48,27 +48,36 @@ namespace Models.LiftManager
 
         private int GetTargetFloorForMinWaitingTime(SystemData data, Lift lift)
         {
-            decimal minEff = 0;
+            decimal maxEff = 0;
             int numFloor = -1;
-            decimal curEffTime = 0;
+            decimal curEff = 0;
+            List<int> targetFloorForLifts = new List<int>(data.GetLifts().Count());
+            int it = 0;
+            foreach (var l in data.GetLifts())
+            {
+                targetFloorForLifts[it] = l.TargetFloor;
+                it++;
+            }
             foreach (var fl in data.GetFloors())
             {
+                if (targetFloorForLifts.Contains(fl.getKeeperNumber()) && fl.getHumanNumberUp() != 0 && fl.getHumanNumberDown() != 0)
+                    continue;
                 int distance = Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor());
                 if (distance != 0)
                 {
                     if (fl.getHumanNumberUp() > fl.getHumanNumberDown())
-                        curEffTime = (decimal)fl.getHumanNumberUp() / (lift.GetTickToMove() * distance);
+                        curEff = (decimal)fl.getHumanNumberUp() / (lift.GetTickToMove() * distance);
                     else
-                        curEffTime = (decimal)fl.getHumanNumberDown() / (lift.GetTickToMove() * distance);
+                        curEff = (decimal)fl.getHumanNumberDown() / (lift.GetTickToMove() * distance);
                 }
                 else if(fl.getHumanNumberUp() != 0 || fl.getHumanNumberDown() != 0)
                 {
                     numFloor = fl.getKeeperFloor();
                     break;
                 }
-                if (curEffTime > minEff)
+                if (curEff > maxEff)
                 {
-                    minEff = curEffTime;
+                    maxEff = curEff;
                     numFloor = fl.getKeeperFloor();
                 }
             }

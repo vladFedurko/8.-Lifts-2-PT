@@ -14,12 +14,37 @@ namespace Models
         List<Lift> Lifts = new List<Lift>();
         List<HumanFactory> factories = new List<HumanFactory>();
         List<HumanCreator> creators = new List<HumanCreator>();
-        public SystemData(int floors, int lifts)
+        private ISimulationParameters parameters;
+
+        public SystemData(ISimulationParameters parameters)
         {
-            for (int i = 0; i < floors; i++)
+            this.parameters = parameters;
+            this.CreateKeepers();
+        }
+
+        public void SetSimulationParameters(ISimulationParameters parameters)
+        {
+            Floors.Clear();
+            Lifts.Clear();
+            this.parameters = parameters;
+            Floors = new List<Floor>(parameters.FloorsCount);
+            Lifts = new List<Lift>(parameters.LiftsCount);
+            this.parameters = parameters;
+            this.CreateKeepers();
+        }
+
+        public void CreateKeepers()
+        {
+            for (int i = 0; i < parameters.FloorsCount; i++)
                 Floors.Add(new Floor(i));
-            for (int i = 0; i < lifts; i++)
-                Lifts.Add(new Lift(i));
+            for (int i = 0; i < parameters.LiftsCount; i++)
+                Lifts.Add(new Lift(i, parameters.SecondsToMove * Observer.TICKS_PER_SECOND,
+                    parameters.SevondsToWait * Observer.TICKS_PER_SECOND));
+        }
+
+        public ISimulationParameters GetParameters()
+        {
+            return parameters;
         }
 
         internal void ParseDataTable(DataTable dataTable)

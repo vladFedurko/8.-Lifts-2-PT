@@ -12,15 +12,20 @@ namespace Models
     public class Simulation : ISimulation
     {
         protected SystemData systemData;
-        protected ILiftManager strategy;
         protected ISimulationState simulationState; 
         protected Observer observer;
         protected IMainService mainService; //TODO class Service controller
 
         public Simulation(int initialFloorsNumber, int initialLiftNumber, ILiftManager _strategy)
         {
-            systemData = new SystemData(initialFloorsNumber, initialLiftNumber);
-            strategy = _strategy;
+            ISimulationParameters par = new SimulationParameters();
+            par.LiftsCount = initialLiftNumber;
+            par.FloorsCount = initialFloorsNumber;
+            par.SecondsToMove = 3;
+            par.SevondsToWait = 3;
+            par.LiftManager = _strategy;
+            par.LiftsCapacity = 10;
+            systemData = new SystemData(par);
             observer = new Observer(this);
             simulationState = null;
         }
@@ -28,11 +33,6 @@ namespace Models
         public void SetService(IMainService ser)
         {
             this.mainService = ser;
-        }
-
-        public void ChangeStrategy(ILiftManager st)
-        {
-            strategy = st;
         }
 
         public void Pause()
@@ -62,7 +62,7 @@ namespace Models
 
         public void doTick()
         {
-            strategy.ManageLifts(systemData);
+            systemData.GetParameters().LiftManager.ManageLifts(systemData);
             systemData.DoTick();
             mainService.ShowDataInView(systemData);
             mainService.UpdateClock(observer.getCurrentTime());
