@@ -22,24 +22,6 @@ namespace Models
                 Lifts.Add(new Lift(i));
         }
 
-        internal void ParseDataTable(DataTable dataTable)
-        {
-            DataRowCollection rows = dataTable?.Rows;
-            factories.Clear();
-            if (rows != null)
-                foreach (DataRow row in rows)
-                {
-                    object[] a = row.ItemArray;
-                    if (a.Length != 4)
-                        return;
-                    Floor floor = GetFloorByNumber(Int32.Parse(a[1].ToString()));
-                    HumanFactory humanFactory = new HumanFactory(Int32.Parse(a[0].ToString()),
-                        Int32.Parse(a[2].ToString()), Int32.Parse(a[3].ToString() + "0"), floor);
-                    AddHumanFactory(humanFactory);
-                    Console.WriteLine($"Factory added {a[0]} {a[1]} {a[2]} {a[3]}");
-                }
-        }
-
         /*internal void ParseDataTablev2(DataTable dataTable)
         {
             DataRowCollection rows = dataTable?.Rows;
@@ -143,7 +125,12 @@ namespace Models
 
         public Floor GetFloorByNumber(int number)
         {
-            return Floors.FirstOrDefault(f => f.getKeeperNumber() == number);
+            if (number >= 0 && number < Floors.Count)
+                return Floors.FirstOrDefault(f => f.getKeeperNumber() == number);
+            else {
+                Console.WriteLine("There is an Exception!");
+                throw new Exception("There is no such a floor"); 
+            }
         }
         public bool IsEverythingEmpty()
         {

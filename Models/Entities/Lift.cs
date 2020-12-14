@@ -88,15 +88,15 @@ namespace Models.Entities
 
         public void AddRangeHumans(IEnumerable<Human> a)
         {
-            if(a!=null)
-            foreach (var humans in a)
-            {
-                AddHumans(humans);
-            }
+            if (a != null)
+                foreach (var humans in a)
+                {
+                    AddHumans(humans);
+                }
         }
         public void RemoveSomeHumans(Predicate<Human> pred)
         {
-            if (pred != null)
+            if (pred != null && data.Count > 0)
             {
                 data.RemoveWhere(pred);
                 humanNumber = data.Count;
@@ -104,7 +104,7 @@ namespace Models.Entities
         }
         public void RemoveHumans(Human humans)
         {
-            if (humans != null)
+            if (humans != null && data.Contains(humans))
             {
                 data.Remove(humans);
                 humanNumber--;
@@ -128,11 +128,12 @@ namespace Models.Entities
 
         protected override void Notify()
         {
-            if(liftState == LiftState.WaitOpened)
+            if (liftState == LiftState.WaitOpened)
             {
                 liftState = LiftState.WaitClosed;
                 CountPermission = false;
-            } else if(liftState == LiftState.Moving)
+            }
+            else if (liftState == LiftState.Moving)
             {
                 Move();
             }
