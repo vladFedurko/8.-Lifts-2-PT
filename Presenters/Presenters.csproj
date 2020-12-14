@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateHumanPresenter.cs" />
+    <Compile Include="HumanGenerationPresenter.cs" />
     <Compile Include="ICreateHumanView.cs" />
     <Compile Include="IHumanGenerationView.cs" />
     <Compile Include="IHumanStatusView.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="ISystemParametersView.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="MainPresenter.cs" />
+    <Compile Include="PlanFirePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

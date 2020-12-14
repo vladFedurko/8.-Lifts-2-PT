@@ -10,7 +10,7 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    public class Lift : AMovable, IKeepHuman
+    public class Lift : AResettable, IKeepHuman
     {
         internal int TargetFloor { get; private set; }
 
@@ -140,5 +140,10 @@ namespace Models.Entities
         }
 
         public int getHumanNumber() => humanNumber;
+
+        public bool IsNotEmpty()
+        {
+            return data.Count>0;
+        }
     }
 }

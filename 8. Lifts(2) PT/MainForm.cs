@@ -185,13 +185,15 @@ namespace _8.Lifts_2__PT
         private void CreateHumanClick(object sender, EventArgs e)
         {
             CreateHumanForm form = new CreateHumanForm();
-            new CreateHumanPresenter(form, new HumanCreationService(simulation.GetData()));
+            new CreateHumanPresenter(form,HumanCreationService.GetInstance(simulation.GetData()));
             form.Show();
         }
 
         private void HumanGenerationClick(object sender, EventArgs e)
         {
-            this.ShowHumanGenerationStrategy?.Invoke();
+            HumanGenerationForm form = new HumanGenerationForm();
+            new HumanGenerationPresenter(form, HumanCreationService.GetInstance(simulation.GetData()));
+            form.Show();
         }
 
         private void HelpClick(object sender, EventArgs e)
@@ -201,7 +203,9 @@ namespace _8.Lifts_2__PT
 
         private void PlanFireAlarmClick(object sender, EventArgs e)
         {
-            this.ShowPlanFireAlarmForm?.Invoke();
+            PlanFireAlarmForm form = new PlanFireAlarmForm();
+            new PlanFirePresenter(form, FireAlarmService.GetInstance(simulation));
+            form.Show();
         }
 
         private void SystemParametersClick(object sender, EventArgs e)

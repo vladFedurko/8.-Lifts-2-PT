@@ -58,12 +58,12 @@ namespace Models.Services
 
         public void StartFireAlarm()
         {
-            simulation.TurnOnFireAlarm();
+            FireAlarmService.GetInstance(simulation).StartAlarm();
         }
 
         public void StopFireAlarm()
         {
-            simulation.TurnOffFireAlarm();
+            FireAlarmService.GetInstance(simulation).StopAlarm();
         }
 
         public event Action<SystemData> UpdateSystemData;

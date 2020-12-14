@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
-    public class Floor : IKeepHuman
+    public class Floor : IKeepHuman , ITickable
     {
         HashSet<Human> Humans = new HashSet<Human>();
         int FloorNumber;
@@ -89,16 +89,17 @@ namespace Models.Entities
         {
             if (Humans != null)
                 foreach (var hum in Humans)
-                {
                     hum.DoTick();
-                    if (hum.state == Entities.Human.HumanState.DisposeNow)
-                        RemoveHumans(hum);
-                }
+                RemoveSomeHumans(hum => hum.state == Human.HumanState.DisposeNow);
         }
 
         public int getHumanNumberUp() => HumanNumberUp;
         public int getHumanNumberDown() => HumanNumberDown;
         public int getHumanNumber() => HumanNumberUp + HumanNumberDown;
         public int getFullHumanNumber() => Humans.Count;
+        public bool IsNotEmpty()
+        {
+            return Humans.Count > 0;
+        }
     }
 }

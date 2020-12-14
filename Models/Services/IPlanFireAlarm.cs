@@ -9,10 +9,8 @@ namespace Models.Services
 {
     public interface IPlanFireAlarm : IService
     {
-        event Action<DataTable> PlanFireAlarm;
-
-        void InitTable(out DataTable dTable);
-
-        void LoadTable(DataTable dTable);
+        void StartAlarm();
+        void StopAlarm();
+        void CreateAlarmRule(DataTable data);
     }
 }

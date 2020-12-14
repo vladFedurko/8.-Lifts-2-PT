@@ -14,14 +14,14 @@ namespace Models
         protected SystemData systemData;
         protected ILiftManager strategy;
         protected ISimulationState simulationState; 
-        protected Observer observer;
+        protected TickTimer observer;
         protected IMainService mainService; //TODO class Service controller
 
         public Simulation(int initialFloorsNumber, int initialLiftNumber, ILiftManager _strategy)
         {
             systemData = new SystemData(initialFloorsNumber, initialLiftNumber);
             strategy = _strategy;
-            observer = new Observer(this);
+            observer = new TickTimer(this);
             simulationState = null;
         }
 
@@ -60,7 +60,7 @@ namespace Models
 
         public SystemData GetData() => systemData;
 
-        public void doTick()
+        public void DoTick()
         {
             if (simulationState != null && simulationState is ILiftManager)
                 ((ILiftManager)simulationState).ManageLifts(systemData);
