@@ -65,5 +65,43 @@ namespace Models.Entities
                 CountPermission = false;
             }
         }
+
+        public String GetStatus()
+        {
+            String status;
+            switch (this.state)
+            {
+                case HumanState.Created:
+                    {
+                        status = "Entering target floor";
+                        break;
+                    }
+                case HumanState.OnFloor:
+                    {
+                        status = "Waiting for lift " + getCurrentTick() / Observer.TICKS_PER_SECOND + " seconds";
+                        break;
+                    }
+                case HumanState.InLift:
+                    {
+                        status = "take the Elevator to the " + this.FiniteFloor + "th floor";
+                        break;
+                    }
+                case HumanState.Disposing:
+                    {
+                        status = "Delivered to the target floor";
+                        break;
+                    }
+                case HumanState.DisposeNow:
+                    {
+                        status = "Delivered to the target floor";
+                        break;
+                    }
+                default:
+                    {
+                        throw new Exception("No such state: " + this.state);
+                    }
+            }
+            return status;
+        }
     }
 }

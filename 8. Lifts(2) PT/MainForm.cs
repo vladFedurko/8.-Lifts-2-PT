@@ -96,8 +96,6 @@ namespace _8.Lifts_2__PT
         public event Action ShowHumanGenerationStrategy;
         public event Action ShowPlanFireAlarmForm;
         public event Action ShowParametres;
-        public event Action ShowHelp;
-        public event Action ShowHumanStatus;
         public event Action SaveHumanGenerationStrategy;
         public event Action SaveLiftConfigurationStrategy;
         public event Action LoadHumanGenerationStrategy;
@@ -194,7 +192,8 @@ namespace _8.Lifts_2__PT
 
         private void HelpClick(object sender, EventArgs e)
         {
-            this.ShowHelp?.Invoke();
+            Form form = new HelpForm();
+            form.Show();
         }
 
         private void PlanFireAlarmClick(object sender, EventArgs e)
@@ -214,7 +213,9 @@ namespace _8.Lifts_2__PT
 
         private void HumanStatusClick(object sender, EventArgs e)
         {
-            this.ShowHumanStatus?.Invoke();
+            HumanStatusForm form = new HumanStatusForm(simulation.GetData().GetLifts().Count(), simulation.GetData().GetFloors().Count());
+            new HumanStatusPresenter(form, new HumanCreationService(simulation.GetData()));
+            form.Show();
         }
 
         private void SaveHumanGenerationClick(object sender, EventArgs e)

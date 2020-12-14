@@ -33,8 +33,6 @@ namespace Presenters
             _view.ShowHumanGenerationStrategy += this.ShowHumanGenerationStrategy;
             _view.ShowPlanFireAlarmForm += this.ShowPlanFireAlarmForm;
             _view.ShowParametres += this.ShowParametres;
-            _view.ShowHelp += this.ShowHelp;
-            _view.ShowHumanStatus += this.ShowHumanStatus;
             _view.LoadHumanGenerationStrategy += this.LoadHumanGenerationStrategy;
             _view.LoadLiftConfigurationStrategy += this.LoadLiftConfigurationStrategy;
             _view.SaveHumanGenerationStrategy += this.SaveHumanGenerationStrategy;

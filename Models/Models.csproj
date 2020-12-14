@@ -59,7 +59,6 @@
     <Compile Include="LiftManager\MinIdlingStrategy.cs" />
     <Compile Include="LiftManager\MinWaitingTimeLIftManager.cs" />
     <Compile Include="Services\IHumanCreationService.cs" />
-    <Compile Include="Services\IHumanStatus.cs" />
     <Compile Include="IKeepHuman.cs" />
     <Compile Include="Services\IMainService.cs" />
     <Compile Include="Services\IPlanFireAlarm.cs" />

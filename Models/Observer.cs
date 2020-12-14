@@ -12,8 +12,8 @@ namespace Models
         protected Timer timer;
         protected ISimulation simulation;
         private int currentTick;
-        const int TIME_OF_TICK = 100;
-        const int TICKS_PER_SECOND = 10;
+        public static readonly int TIME_OF_TICK = 100;
+        public static readonly int TICKS_PER_SECOND = 10;
         private decimal timeAcceleration;
 
         public Observer(ISimulation simulation)

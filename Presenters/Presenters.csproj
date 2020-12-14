@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateHumanPresenter.cs" />
+    <Compile Include="HumanStatusPresenter.cs" />
     <Compile Include="ICreateHumanView.cs" />
     <Compile Include="IHumanGenerationView.cs" />
     <Compile Include="IHumanStatusView.cs" />

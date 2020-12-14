@@ -14,7 +14,7 @@ namespace Presenters
 
         event Action UpdateTable;
 
-        void LoadTable(IEnumerable<String> people);
+        void LoadTable(IDictionary<String, int> status);
 
     }
 }

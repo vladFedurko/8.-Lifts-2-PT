@@ -25,5 +25,15 @@ namespace Models.Services
         {
             
         }
+
+        public Floor GetFloorByNumber(int num)
+        {
+            return data.GetFloorByNumber(num);
+        }
+
+        public Lift GetLiftByNumber(int num)
+        {
+            return data.GetLifts().FirstOrDefault(l => l.getKeeperNumber() == num);
+        }
     }
 }
