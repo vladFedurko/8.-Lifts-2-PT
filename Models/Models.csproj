@@ -41,23 +41,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\AlarmCaller.cs" />
     <Compile Include="Entities\Floor.cs" />
     <Compile Include="Entities\HumanFactory.cs" />
     <Compile Include="Entities\Human.cs" />
     <Compile Include="Entities\HumanCreator.cs" />
     <Compile Include="HumansMover.cs" />
+    <Compile Include="ITickable.cs" />
     <Compile Include="ISimulation.cs" />
     <Compile Include="ISimulationParameters.cs" />
     <Compile Include="LiftManager\FireAlarm.cs" />
     <Compile Include="LiftManager\ISimulationState.cs" />
-    <Compile Include="Observer.cs" />
+    <Compile Include="TickTimer.cs" />
     <Compile Include="Services\HumanCreationService.cs" />
     <Compile Include="Services\MainService.cs" />
     <Compile Include="Services\SystemParametersService.cs" />
+    <Compile Include="Services\FireAlarmService.cs" />
     <Compile Include="Simulation.cs" />
     <Compile Include="SimulationParameters.cs" />
     <Compile Include="SystemData.cs" />
-    <Compile Include="AMovable.cs" />
+    <Compile Include="AResettable.cs" />
     <Compile Include="Entities\Lift.cs" />
     <Compile Include="LiftManager\MinIdlingTimeLiftManager.cs" />
     <Compile Include="LiftManager\MinWaitingTimeLIftManager.cs" />

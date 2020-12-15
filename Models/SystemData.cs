@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models.Entities;
+using Models.LiftManager;
 
 namespace Models
 {
     public class SystemData
     {
+        HashSet<ITickable> factories = new HashSet<ITickable>();
         List<Floor> Floors = new List<Floor>();
         List<Lift> Lifts = new List<Lift>();
-        List<HumanFactory> factories = new List<HumanFactory>();
-        List<HumanCreator> creators = new List<HumanCreator>();
         private ISimulationParameters parameters;
 
         public SystemData(ISimulationParameters parameters)
@@ -32,36 +32,17 @@ namespace Models
             this.CreateKeepers();
         }
 
-        public void CreateKeepers()
-        {
-            for (int i = 0; i < parameters.FloorsCount; i++)
-                Floors.Add(new Floor(i));
-            for (int i = 0; i < parameters.LiftsCount; i++)
-                Lifts.Add(new Lift(i, parameters.SecondsToMove * Observer.TICKS_PER_SECOND,
-                    parameters.SevondsToWait * Observer.TICKS_PER_SECOND));
-        }
-
         public ISimulationParameters GetParameters()
         {
             return parameters;
         }
 
-        internal void ParseDataTable(DataTable dataTable)
+        public void CreateKeepers()
         {
-            DataRowCollection rows = dataTable?.Rows;
-            factories.Clear();
-            if (rows != null)
-                foreach (DataRow row in rows)
-                {
-                    object[] a = row.ItemArray;
-                    if (a.Length != 4)
-                        return;
-                    Floor floor = GetFloorByNumber(Int32.Parse(a[1].ToString()));
-                    HumanFactory humanFactory = new HumanFactory(Int32.Parse(a[0].ToString()),
-                        Int32.Parse(a[2].ToString()), Int32.Parse(a[3].ToString() + "0"), floor);
-                    AddHumanFactory(humanFactory);
-                    Console.WriteLine($"Factory added {a[0]} {a[1]} {a[2]} {a[3]}");
-                }
+            for (int i = 0; i < parameters.FloorsCount; i++)
+                Floors.Add(new Floor(i));
+            for (int i = 0; i < parameters.LiftsCount; i++)
+                Lifts.Add(new Lift(i));
         }
 
         /*internal void ParseDataTablev2(DataTable dataTable)
@@ -87,20 +68,18 @@ namespace Models
         }*/
         public void CreateHuman(int initialFloor, int finitefloor, int inSec) {
             HumanCreator creator = new HumanCreator(finitefloor, inSec * 10, GetFloorByNumber(initialFloor));
-            creators.Add(creator);
+            factories.Add(creator);
         }
 
         public void DoTick()
         {
+            foreach (var fl in Floors)
+                fl.DoTick();
             foreach (var lift in Lifts)
                 lift.DoTick();
-            foreach (var floor in Floors)
-                floor.DoTick();
             foreach (var fact in factories)
                 fact.DoTick();
-            foreach (var creator in creators)
-                creator.DoTick();
-            creators.RemoveAll(cr => cr.Disposing);
+            factories.RemoveWhere(cr => cr is HumanCreator hcreator && hcreator.Disposing);
         }
 
         public void AddFloor(Floor floor)
@@ -108,57 +87,82 @@ namespace Models
             if (floor != null)
                 Floors.Add(floor);
         }
+
         public void AddLift(Lift lift)
         {
             if (lift != null)
                 Lifts.Add(lift);
         }
+
+        internal void AddFactory(ITickable fact)
+        {
+            if (fact != null)
+                factories.Add(fact);
+        }
+
         internal void AddHumanFactory(HumanFactory fact)
         {
             if (fact != null)
                 if (!factories.Contains(fact))
                     this.factories.Add(fact);
                 else
-                    factories.First(f => f.Equals(fact)).humanNumber += fact.humanNumber;
+                    ((HumanFactory)factories.First(f => ((HumanFactory)f).Equals(fact))).humanNumber += fact.humanNumber;
         }
-        public void AddRangeFloors(List<Floor> floors)
+
+        public void AddRangeFloors(IEnumerable<Floor> floors)
         {
             if (floors != null)
-                Floors.AddRange(floors);
+                foreach(var fl in floors)
+                    AddFloor(fl);
         }
-        public void AddRangeLifts(List<Lift> lifts)
+
+        public void AddRangeLifts(IEnumerable<Lift> lifts)
         {
             if (lifts != null)
-                Lifts.AddRange(lifts);
+                foreach (var lift in lifts)
+                    AddLift(lift);
         }
-        internal void AddRangeFactories(IEnumerable<HumanFactory> a)
+
+        internal void AddRangeFactories(IEnumerable<ITickable> a)
         {
             if (a != null)
                 foreach (var fact in a)
                 {
-                    this.AddHumanFactory(fact);
+                    if (fact is HumanFactory hfactory)
+                        this.AddHumanFactory(hfactory);
+                    else
+                        this.AddFactory(fact);
                 }
         }
+
         public IEnumerable<Lift> GetLifts() => Lifts;
         public IEnumerable<Floor> GetFloors() => Floors;
 
-        public void DeleteFloor(Floor floor)
+        public void RemoveFloor(Floor floor)
         {
             if (floor != null)
                 if (Floors.Contains(floor))
-                    Floors.Remove(floor);
+                    this.Floors.Remove(floor);
         }
+
         public void RemoveLift(Lift lift)
         {
             if (lift != null)
                 if (Lifts.Contains(lift))
-                    Lifts.Remove(lift);
+                    this.Lifts.Remove(lift);
         }
-        internal void RemoveHumanFactory(HumanFactory fact)
+
+        internal void RemoveFactory(ITickable fact)
         {
             if (fact != null)
                 factories.Remove(fact);
         }
+
+        internal void RemoveFactoriesOfType(Type type)
+        {
+            factories.RemoveWhere(fact1=> fact1.GetType() == type);
+        }
+
         internal void RemoveAllFactories()
         {
             if (factories != null)
@@ -167,15 +171,21 @@ namespace Models
 
         public Floor GetFloorByNumber(int number)
         {
-            return Floors.FirstOrDefault(f => f.getKeeperNumber() == number);
+            if (number >= 0 && number < GetFloors().Count())
+                return GetFloors().FirstOrDefault(f => f.getKeeperNumber() == number);
+            else
+            {
+                throw new Exception("There is no such a floor"); 
+            }
         }
+
         public bool IsEverythingEmpty()
         {
             foreach (var floor in Floors)
-                if (floor.HumanNumberDown != 0 || floor.HumanNumberUp != 0)
+                if (floor.IsNotEmpty())
                     return false;
             foreach (var lift in Lifts)
-                if (lift.humanNumber != 0)
+                if (lift.IsNotEmpty())
                     return false;
             return true;
         }

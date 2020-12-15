@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    public class Human : AMovable
+    public class Human : AResettable
     { 
         internal HumanState state { get; private set; }
 
@@ -78,7 +78,7 @@ namespace Models.Entities
                     }
                 case HumanState.OnFloor:
                     {
-                        status = "Waiting for lift " + getCurrentTick() / Observer.TICKS_PER_SECOND + " seconds";
+                        status = "Waiting for lift " + getCurrentTick() / TickTimer.TICKS_PER_SECOND + " seconds";
                         break;
                     }
                 case HumanState.InLift:

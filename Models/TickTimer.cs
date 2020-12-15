@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Models
 {
-    public class Observer
+    public class TickTimer
     {
         protected Timer timer;
         protected ISimulation simulation;
@@ -16,7 +16,7 @@ namespace Models
         public static readonly int TICKS_PER_SECOND = 10;
         private decimal timeAcceleration;
 
-        public Observer(ISimulation simulation)
+        public TickTimer(ISimulation simulation)
         {
             timeAcceleration = 1;
             this.simulation = simulation;
@@ -24,7 +24,7 @@ namespace Models
             {
                 AutoReset = true
             };
-            timer.Elapsed += Tick;
+            timer.Elapsed += DoTick;
             timer.Stop();
         }
 
@@ -52,10 +52,10 @@ namespace Models
             return currentTick / TICKS_PER_SECOND;
         }
 
-        protected void Tick(object source, ElapsedEventArgs e)
+        protected void DoTick(object source, ElapsedEventArgs e)
         {
             currentTick++;
-            simulation?.doTick();
+            simulation?.DoTick();
         }
 
         public void Stop()

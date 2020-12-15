@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using Models.Entities;
 using Models.LiftManager;
+using Models.Services;
 
 namespace Models
 {
@@ -15,25 +16,19 @@ namespace Models
     {
         static void Main()
         {
-            /*Simulation sim = new Simulation(3, 2, new MinWaitingTimeStrategy());
-            SystemData data = sim.GetData();
-            DataTable dataTable = new DataTable();
-            DataColumn a1 = new DataColumn();
-            DataColumn a2 = new DataColumn();
-            DataColumn a3 = new DataColumn();
-            DataColumn a4 = new DataColumn();
-            dataTable.Columns.AddRange(new DataColumn[] { a1, a2, a3, a4 });
+            DataTable dataTable =new DataTable();
+            DataColumn a = new DataColumn();
+            DataColumn b = new DataColumn();
+            dataTable.Columns.Add(a);
+            dataTable.Columns.Add(b);
             DataRow row = dataTable.NewRow();
-            row.ItemArray = new object[] { 1, 0, 1, 3 };
+            //row.ItemArray = new object[] { 1, 2 };
             dataTable.Rows.Add(row);
-            data.ParseDataTable(dataTable);
-            System.Threading.Timer timer = new System.Threading.Timer(new TimerCallback(tick), data, 0, 100);
-            Thread th = Thread.CurrentThread;
-            th.Join(3100);
-            Console.WriteLine("We are here v1");
-            th.Join(10000);
-            Console.WriteLine("we are here");
-            th.Join(11000);*/
+            Simulation sim = new Simulation(2, 1, new MinWaitingTimeLiftManager());
+            sim.GetData().AddFactory(new AlarmCaller(sim, 50, 30));
+            FireAlarmService serv = FireAlarmService.GetInstance(sim);
+            serv.ParseDataTable(dataTable);
+            sim.Start();
         }
         private static void tick(object a)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
-    public class HumanFactory : AMovable
+    public class HumanFactory : AResettable
     {
         public int humanNumber;
         public int FiniteFloor;
@@ -26,6 +26,7 @@ namespace Models.Entities
             {
                 Human Human = new Human(FiniteFloor);
                 floor.AddHumans(Human);
+                Console.WriteLine("Human created " + i + " on floor " + floor.getKeeperFloor());
             }
         }
 

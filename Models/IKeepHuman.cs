@@ -14,5 +14,6 @@ namespace Models
         int getKeeperNumber();
         int getKeeperFloor();
         int getHumanNumber();
+        bool IsNotEmpty();
     }
 }

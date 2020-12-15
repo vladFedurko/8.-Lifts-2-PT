@@ -14,7 +14,7 @@ namespace Models.LiftManager
             HumansMover.MoveHumans(data);
             foreach (var lift in data.GetLifts())
             {
-                lift.SetTargetFloor(1);
+                lift.SetTargetFloor(0);
             }
         }
 

@@ -28,7 +28,7 @@ namespace Models.LiftManager
                 }
                 else if (lift.liftState == Lift.LiftState.WaitClosed)
                 {
-                    if (lift.humanNumber != 0)
+                    if (lift.getHumanNumber() != 0)
                         lift.StartMoving();
                     else
                     {
@@ -116,7 +116,7 @@ namespace Models.LiftManager
 
         private int GetNearestFloor(Lift lift, Floor floor)
         {
-            if (lift.humanNumber == 0)
+            if (lift.getHumanNumber() == 0)
             {
                 if (floor.getHumanNumber() == 0)
                     return lift.getKeeperFloor();

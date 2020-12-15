@@ -20,6 +20,11 @@ namespace _8.Lifts_2__PT
         public PlanFireAlarmForm()
         {
             InitializeComponent();
+            firePlanDataGridView.AllowUserToResizeRows = false;
+            firePlanDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+            InitTable(out dataTable);
+            this.firePlanDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            firePlanDataGridView.DataSource = dataTable;
             firePlanDataGridView.AllowUserToAddRows = false;
             firePlanDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             firePlanDataGridView.EditingControlShowing += FirePlanDataGridView_EditingControlShowing;

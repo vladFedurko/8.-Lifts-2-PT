@@ -61,7 +61,7 @@ namespace _8.Lifts_2__PT
             int i = 0;    //перенести foreach в презентеры и обьявления массивов
             foreach (Floor floor in systemData.GetFloors())
             {
-                a[i] = floor.getHumanNumber();
+                a[i] = floor.getFullHumanNumber();
                 i++;
             }
             i = 0;
@@ -69,18 +69,19 @@ namespace _8.Lifts_2__PT
             {
                 c[i] = lift.getKeeperFloor();
                 b[i] = lift.getHumanNumber();
+                i++;
             }
             for (int j = this.simulationTable.RowCount - 1; j > 0; j--)
             {
                 Control control = this.simulationTable.GetControlFromPosition(1, j);
                 control.Text = a[this.simulationTable.RowCount - j - 1].ToString();
+                for (i = 2; i < this.simulationTable.ColumnCount; i++)
+                {
+                    Control controli = this.simulationTable.GetControlFromPosition(i,j);
+                    controli.Text =(this.simulationTable.RowCount - j - 1 == c[i-2]) ? b[i - 2].ToString() : "0";
+                }
             }
-            for (int j = 2; j < this.simulationTable.ColumnCount; j++)
-            {
-                Control control = this.simulationTable.GetControlFromPosition(j,this.simulationTable.RowCount - c[j - 2] - 1);
-                control.Text = b[j - 2].ToString();
-            }
-            //this.simulationTable.ResumeLayout(false);
+            
             //this.simulationTable.PerformLayout();
         }
 
@@ -261,7 +262,9 @@ namespace _8.Lifts_2__PT
 
         private void HumanGenerationClick(object sender, EventArgs e)
         {
-
+            HumanGenerationForm form = new HumanGenerationForm();
+            new HumanGenerationPresenter(form, new HumanCreationService(simulation.GetData()));
+            form.Show();
         }
 
         private void HelpClick(object sender, EventArgs e)
@@ -272,7 +275,9 @@ namespace _8.Lifts_2__PT
 
         private void PlanFireAlarmClick(object sender, EventArgs e)
         {
-
+            PlanFireAlarmForm form = new PlanFireAlarmForm();
+            new PlanFirePresenter(form, FireAlarmService.GetInstance(simulation));
+            form.Show();
         }
 
         private void SystemParametersClick(object sender, EventArgs e)
