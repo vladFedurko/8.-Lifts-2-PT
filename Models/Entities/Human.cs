@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Models.Entities
 {
-    public class Human : AMovable
+    public class Human : AResettable
     { 
         internal HumanState state { get; private set; }
 

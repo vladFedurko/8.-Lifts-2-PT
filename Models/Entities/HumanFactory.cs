@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.Entities
 {
-    public class HumanFactory : AMovable
+    public class HumanFactory : AResettable
     {
         public int humanNumber;
         public int FiniteFloor;

@@ -40,7 +40,7 @@ namespace Models
                             lift.liftState == Lift.LiftState.WaitOpened
                         &&
                             (
-                                lift.humanNumber == 0
+                                lift.getHumanNumber() == 0
                             ||
                                 (
                                    lift.getHumans().ElementAt(0).FiniteFloor - lift.Floor > 0
@@ -59,8 +59,8 @@ namespace Models
                 );
             //Console.WriteLine(rem);
             //rem = 0;
-            Console.WriteLine($"added to lift {lift?.LiftNumber} " +
-                $"with numberofhum in lift {lift?.humanNumber} " +
+            Console.WriteLine($"added to lift {lift?.getKeeperNumber()} " +
+                $"with numberofhum in lift {lift?.getHumanNumber()} " +
                 $"with humanNumberUp {floor?.getHumanNumberUp()} " +
                 $"and with humanNumberDown {floor?.getHumanNumberDown()}");
             floor?.RemoveSomeHumans(
@@ -71,29 +71,29 @@ namespace Models
                     (
                         (floor.getKeeperFloor() - h.FiniteFloor) < 0
                         &&
-                        lift.getHumans().ElementAt(0).FiniteFloor - lift.Floor > 0
+                        lift.getHumans().ElementAt(0).FiniteFloor - lift.getKeeperFloor() > 0
                     )
                 ||
                     (
                         (floor.getKeeperFloor() - h.FiniteFloor) > 0
                         &&
-                        lift.getHumans().ElementAt(0).FiniteFloor - lift.Floor < 0
+                        lift.getHumans().ElementAt(0).FiniteFloor - lift.getKeeperFloor() < 0
                     )
                 )
             //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
             );
             Console.WriteLine($"Humans entered lift {lift?.LiftNumber} " +
                 $"on Floor {floor?.getKeeperFloor()}, " +
-                $"remain numofHumans in lift {lift?.humanNumber} " +
+                $"remain numofHumans in lift {lift?.getHumanNumber()} " +
                 $"remain numofHumans on floor up {floor?.getHumanNumberUp()} " +
                 $"remain numofHumans on floor down {floor?.getHumanNumberDown()} ");
         }
 
         public static void ExitLift(Floor floor, Lift lift)
         {
-            Console.WriteLine($"try to exit lift {lift?.LiftNumber} " +
-                $"on floor {lift?.Floor} " +
-                $"with humanNumber {lift?.humanNumber}");
+            Console.WriteLine($"try to exit lift {lift?.getKeeperNumber()} " +
+                $"on floor {lift?.getKeeperFloor()} " +
+                $"with humanNumber {lift?.getHumanNumber()}");
             IEnumerable<Human> Lift_humans = lift?.getHumans();
             floor?.AddRangeHumans
                 (
@@ -111,9 +111,9 @@ namespace Models
                 &&
                     (floor.getKeeperFloor() == h.FiniteFloor)
             );
-            Console.WriteLine($"Humans exit lift {lift?.LiftNumber} " +
+            Console.WriteLine($"Humans exit lift {lift?.getKeeperNumber()} " +
                 $"on Floor {floor?.getKeeperFloor()}, " +
-                $"remain numofHumans {lift?.humanNumber}");
+                $"remain numofHumans {lift?.getHumanNumber()}");
         }
     }
 }

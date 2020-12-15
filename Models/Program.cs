@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Timers;
 using Models.Entities;
 using Models.LiftManager;
+using Models.Services;
 
 namespace Models
 {
@@ -15,17 +16,19 @@ namespace Models
     {
         static void Main()
         {
-            SystemData data = new SystemData(2, 1);
-            data.CreateHuman(0, 1, 0);
-            
-            Thread th = Thread.CurrentThread;
-            System.Threading.Timer timer = new System.Threading.Timer(new TimerCallback(tick), data, 0, 100);
-            th.Join(5100);
-            timer.Dispose();
-            data.GetLifts().ToList().Find(l => l.Floor == 0).OpenDoor();
-            data.GetLifts().ToList().Find(l => l.Floor == 0).SetTargetFloor(1);
-            Console.WriteLine("hello world");
-            HumansMover.MoveHumans(data);
+            DataTable dataTable =new DataTable();
+            DataColumn a = new DataColumn();
+            DataColumn b = new DataColumn();
+            dataTable.Columns.Add(a);
+            dataTable.Columns.Add(b);
+            DataRow row = dataTable.NewRow();
+            //row.ItemArray = new object[] { 1, 2 };
+            dataTable.Rows.Add(row);
+            Simulation sim = new Simulation(2, 1, new MinWaitingTimeLiftManager());
+            sim.GetData().AddFactory(new AlarmCaller(sim, 50, 30));
+            FireAlarmService serv = FireAlarmService.GetInstance(sim);
+            serv.ParseDataTable(dataTable);
+            sim.Start();
         }
         private static void tick(object a)
         {

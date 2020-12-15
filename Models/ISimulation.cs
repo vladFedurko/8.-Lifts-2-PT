@@ -30,6 +30,6 @@ namespace Models
 
         public int GetCurrentTime();
 
-        public void doTick();
+        public void DoTick();
     }
 }

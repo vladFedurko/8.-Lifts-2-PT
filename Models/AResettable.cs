@@ -7,12 +7,12 @@ using System.Timers;
 
 namespace Models
 {
-    public abstract class AMovable
+    public abstract class AResettable : ITickable
     {
         protected int ticksToNotify;
         private int CurrentTick;
         protected bool CountPermission { get; set; }
-        public AMovable()
+        public AResettable()
         {
             CurrentTick = 0;
             CountPermission = true;
