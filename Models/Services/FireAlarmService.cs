@@ -46,7 +46,12 @@ namespace Models.Services
                 foreach (DataRow row in rows)
                 {
                     object[] a = row.ItemArray;
+                    Console.WriteLine($"{a[0]} {a[1]}");
+                    Console.WriteLine($"{a[0].GetType()} {a[1].GetType()}");
                     if (a.Length != 2)
+                        return;
+                    if (a[0].GetType() == DBNull.Value.GetType() ||
+                        a[1].GetType() == DBNull.Value.GetType())
                         return;
                     AlarmCaller caller = new AlarmCaller(sim,Int32.Parse(a[0].ToString())*TickTimer.TICKS_PER_SECOND,
                         Int32.Parse(a[1].ToString()) * TickTimer.TICKS_PER_SECOND);

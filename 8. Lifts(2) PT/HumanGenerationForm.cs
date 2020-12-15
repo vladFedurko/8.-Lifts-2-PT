@@ -20,7 +20,9 @@ namespace _8.Lifts_2__PT
         public HumanGenerationForm()
         {
             InitializeComponent();
+            humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
             InitTable(out _dTable);
+            humanGenerationDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             humanGenerationDataGridView.DataSource = _dTable;
             humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             humanGenerationDataGridView.AllowUserToAddRows = false;

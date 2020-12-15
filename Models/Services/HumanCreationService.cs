@@ -42,6 +42,12 @@ namespace Models.Services
                     object[] a = row.ItemArray;
                     if (a.Length != 4)
                         return;
+                    if (a[0].GetType() == DBNull.Value.GetType() ||
+                        a[1].GetType() == DBNull.Value.GetType() ||
+                        a[2].GetType() == DBNull.Value.GetType() ||
+                        a[3].GetType() == DBNull.Value.GetType()
+                        )
+                        return;
                     Floor floor = data.GetFloorByNumber(Int32.Parse(a[1].ToString()));
                     HumanFactory humanFactory = new HumanFactory(Int32.Parse(a[0].ToString()),
                         Int32.Parse(a[2].ToString()), Int32.Parse(a[3].ToString()) * TickTimer.TICKS_PER_SECOND, floor);

@@ -22,7 +22,7 @@ namespace Models
             dataTable.Columns.Add(a);
             dataTable.Columns.Add(b);
             DataRow row = dataTable.NewRow();
-            row.ItemArray = new object[] { 1, 2 };
+            //row.ItemArray = new object[] { 1, 2 };
             dataTable.Rows.Add(row);
             Simulation sim = new Simulation(2, 1, new MinWaitingTimeLiftManager());
             sim.GetData().AddFactory(new AlarmCaller(sim, 50, 30));
