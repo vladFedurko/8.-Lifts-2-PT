@@ -29,7 +29,6 @@ namespace Models
             this.parameters = parameters;
             Floors = new List<Floor>(parameters.FloorsCount);
             Lifts = new List<Lift>(parameters.LiftsCount);
-            this.parameters = parameters;
             this.CreateKeepers();
         }
 

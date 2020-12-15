@@ -16,6 +16,11 @@ namespace Models.Services
             simulation.SetService(this);
         }
 
+        public SystemData GetData()
+        {
+            return simulation.GetData();
+        }
+
         public void PauseSimulation()
         {
             simulation.Pause();
@@ -64,6 +69,11 @@ namespace Models.Services
         public void StopFireAlarm()
         {
             simulation.TurnOffFireAlarm();
+        }
+
+        public bool isStoped()
+        {
+            return simulation.IsStoped();
         }
 
         public event Action<SystemData> UpdateSystemData;

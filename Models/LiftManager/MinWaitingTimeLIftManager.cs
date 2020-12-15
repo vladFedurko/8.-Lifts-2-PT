@@ -51,12 +51,10 @@ namespace Models.LiftManager
             decimal maxEff = 0;
             int numFloor = -1;
             decimal curEff = 0;
-            List<int> targetFloorForLifts = new List<int>(data.GetLifts().Count());
-            int it = 0;
+            List<int> targetFloorForLifts = new List<int>(data.GetParameters().LiftsCount);
             foreach (var l in data.GetLifts())
             {
-                targetFloorForLifts[it] = l.TargetFloor;
-                it++;
+                targetFloorForLifts.Add(l.TargetFloor);
             }
             foreach (var fl in data.GetFloors())
             {

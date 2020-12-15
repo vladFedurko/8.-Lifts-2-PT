@@ -53,6 +53,7 @@ namespace Models
                 observer.ResetTime();
             }
         }
+
         public void Start()
         {
             observer.Start();
@@ -82,6 +83,16 @@ namespace Models
         {
             simulationState?.ResetState(systemData);
             simulationState = null;
+        }
+
+        public IMainService GetMainService()
+        {
+            return mainService;
+        }
+
+        public bool IsStoped()
+        {
+            return observer.isStoped() && observer.getCurrentTime() == 0;
         }
     }
 }

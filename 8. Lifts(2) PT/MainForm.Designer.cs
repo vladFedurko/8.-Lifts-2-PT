@@ -385,7 +385,7 @@
             this.Controls.Add(this.simulationTable);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1261, 724);
             this.Name = "SimulationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

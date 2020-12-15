@@ -29,5 +29,9 @@ namespace Models
         public int GetCurrentTime();
 
         public void doTick();
+
+        IMainService GetMainService();
+
+        public bool IsStoped();
     }
 }

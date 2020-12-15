@@ -38,7 +38,10 @@ namespace _8.Lifts_2__PT
         public void LoadTableInForm(IDictionary<String, int> status)
         {
             this.statusTable.SuspendLayout();
+            if(status.Count() + 1 != this.statusTable.RowCount)
+                this.ClearTable();
             this.statusTable.RowCount = status.Count() + 1;
+            this.statusTable.Size = new Size(this.statusTable.Size.Width, 50 + 30 * status.Count());
             int row = 1;
             foreach (var stat in status.Keys)
             {
@@ -49,13 +52,26 @@ namespace _8.Lifts_2__PT
             this.statusTable.PerformLayout();
         }
 
+        private void ClearTable()
+        {
+            int rows = this.statusTable.RowCount;
+            for (int i = 1; i < rows; ++i)
+            {
+                Control c = statusTable.GetControlFromPosition(0, i);
+                statusTable.Controls.Remove(c);
+                c.Dispose();
+                c = statusTable.GetControlFromPosition(1, i);
+                statusTable.Controls.Remove(c);
+                c.Dispose();
+            }
+        }
+
         private void AddControlsIntoRow(int row, String status, int numberOfHumans)
         {
             Control control = this.statusTable.GetControlFromPosition(0, row);
             if (control == null)
             {
                 control = this.GetLabelForTable(numberOfHumans.ToString());
-                this.statusTable.Size = new Size(this.statusTable.Size.Width, this.statusTable.Size.Height + 30);
                 this.statusTable.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
                 this.statusTable.Controls.Add(control, 0, row);
             } else

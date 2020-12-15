@@ -47,11 +47,18 @@ namespace _8.Lifts_2__PT
 
         public void ShowStateInForm(SystemData systemData) //часть кода будет перенесена в presenter
         {
-            this.simulationTable.SuspendLayout();
-            int[] a = new int[systemData.GetFloors().Count()];
-            int[] b = new int[systemData.GetLifts().Count()];
-            int[] c = new int[systemData.GetLifts().Count()];
-            int i = 0;//перенести foreach в презентеры и обьявления массивов
+            //this.simulationTable.SuspendLayout();
+            int[] a = new int[systemData.GetParameters().FloorsCount];
+            int[] b = new int[systemData.GetParameters().LiftsCount];
+            int[] c = new int[systemData.GetParameters().LiftsCount];
+            if (this.simulationTable.RowCount != a.Length + 1 || this.simulationTable.ColumnCount != b.Length + 2)
+            {
+                this.simulationTable.SuspendLayout();
+                this.ResizeTable(a.Length + 1, b.Length + 2);
+                this.simulationTable.ResumeLayout(false);
+                this.simulationTable.PerformLayout();
+            }
+            int i = 0;    //перенести foreach в презентеры и обьявления массивов
             foreach (Floor floor in systemData.GetFloors())
             {
                 a[i] = floor.getHumanNumber();
@@ -73,7 +80,8 @@ namespace _8.Lifts_2__PT
                 Control control = this.simulationTable.GetControlFromPosition(j,this.simulationTable.RowCount - c[j - 2] - 1);
                 control.Text = b[j - 2].ToString();
             }
-            this.simulationTable.PerformLayout();
+            //this.simulationTable.ResumeLayout(false);
+            //this.simulationTable.PerformLayout();
         }
 
         private delegate void UpdateTime(int Time);
@@ -86,16 +94,81 @@ namespace _8.Lifts_2__PT
                 TimeStatusLabel.Text = "Time:" + Time.ToString();
         }
 
+        private void ResizeTable(int rows, int columns)
+        {
+            int tableColumns = this.simulationTable.ColumnCount;
+            int tableRows = this.simulationTable.RowCount;
+            if (columns < tableColumns)
+            {
+                for(int col = columns; col < tableColumns; ++col)
+                {
+                    for (int row = 0; row < tableRows; ++row)
+                    {
+                        Control c = simulationTable.GetControlFromPosition(col, row);
+                        simulationTable.Controls.Remove(c);
+                        c.Dispose();
+                    }
+                }
+                this.simulationTable.ColumnCount = columns;
+            } else if(columns > tableColumns)
+            {
+                this.simulationTable.ColumnCount = columns;
+                for (int col = tableColumns; col < columns; ++col)
+                {
+                    simulationTable.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+                    simulationTable.Controls.Add(CreateTableLabel("Lift " + (col - 1).ToString()), col, 0);
+                    for (int row = 1; row < tableRows; ++row)
+                    {
+                        simulationTable.Controls.Add(CreateTableLabel("0"), col, row);
+                    }
+                }
+            }
+            tableColumns = this.simulationTable.ColumnCount;
+
+            if (rows < tableRows)
+            {
+                for (int row = rows; row < tableRows; ++row)
+                {
+                    for (int col = 0; col < tableColumns; ++col)
+                    {
+                        Control c = simulationTable.GetControlFromPosition(col, row);
+                        simulationTable.Controls.Remove(c);
+                        c.Dispose();
+                    }
+                }
+                for (int row = 1; row < rows; ++row)
+                {
+                    Control c = simulationTable.GetControlFromPosition(0, row);
+                    c.Text = (rows - row).ToString();
+                }
+                this.simulationTable.RowCount = rows;
+            }
+            else if (rows > tableRows)
+            {
+                this.simulationTable.RowCount = rows;
+                for (int row = tableRows; row < rows; ++row)
+                {
+                    simulationTable.RowStyles.Add(new RowStyle(SizeType.Percent, 20));
+                    simulationTable.Controls.Add(CreateTableLabel("0"), 0, row);
+                    for (int col = 1; col < tableColumns; ++col)
+                    {
+                        simulationTable.Controls.Add(CreateTableLabel("0"), col, row);
+                    }
+                }
+                for (int row = 1; row < rows; ++row)
+                {
+                    Control c = simulationTable.GetControlFromPosition(0, row);
+                    c.Text = (rows - row).ToString();
+                }
+            }
+        }
+
         public event Action StartFireAlarm;
         public event Action StopFireAlarm;
         public event Action StopSimulation;
         public event Action StartSimulation;
         public event Action PauseSimulation;
         public event Action<decimal> SetSimulationSpeed;
-        public event Action ShowStatistics;
-        public event Action ShowHumanGenerationStrategy;
-        public event Action ShowPlanFireAlarmForm;
-        public event Action ShowParametres;
         public event Action SaveHumanGenerationStrategy;
         public event Action SaveLiftConfigurationStrategy;
         public event Action LoadHumanGenerationStrategy;
@@ -107,9 +180,11 @@ namespace _8.Lifts_2__PT
             {
                 Text = str,
                 TextAlign = ContentAlignment.MiddleCenter,
+                AutoSize = true,
                 //label.Dock = DockStyle.Fill;
                 Anchor = AnchorStyles.Right | AnchorStyles.Left
             };
+            label.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204)));
             return label;
         }
 
@@ -149,17 +224,11 @@ namespace _8.Lifts_2__PT
         private void StopSimulationClick(object sender, EventArgs e)
         {
             this.StopSimulation?.Invoke();
+            startButton.Text = "Start";
             SystemParametersMenuItem.Enabled = true;
             PauseMenuItem.Enabled = false;
             StartMenuItem.Enabled = true;
             StatisticMenuItem.Enabled = true;
-            /*if (startButton.Text.Equals("Pause"))
-            {
-                startButton.Text = "Start";
-                PauseMenuItem.Enabled = false;
-                StartMenuItem.Enabled = true;
-            }
-            StatisticMenuItem.Enabled = true;*/
         }
 
         private void FireAlarmClick(object sender, EventArgs e)
@@ -192,7 +261,7 @@ namespace _8.Lifts_2__PT
 
         private void HumanGenerationClick(object sender, EventArgs e)
         {
-            this.ShowHumanGenerationStrategy?.Invoke();
+
         }
 
         private void HelpClick(object sender, EventArgs e)
@@ -203,20 +272,21 @@ namespace _8.Lifts_2__PT
 
         private void PlanFireAlarmClick(object sender, EventArgs e)
         {
-            this.ShowPlanFireAlarmForm?.Invoke();
+
         }
 
         private void SystemParametersClick(object sender, EventArgs e)
         {
             SystemParametersForm form = new SystemParametersForm();
-            SystemParametersPresenter pres = new SystemParametersPresenter(form, new SystemParametersService(simulation));
+            SystemParametersPresenter pres = new SystemParametersPresenter(form,
+                new SystemParametersService(simulation), simulation.GetMainService());
             pres.GetParameters();
             form.Show();
         }
 
         private void StatisticsClick(object sender, EventArgs e)
         {
-            this.ShowStatistics?.Invoke();
+
         }
 
         private void HumanStatusClick(object sender, EventArgs e)
