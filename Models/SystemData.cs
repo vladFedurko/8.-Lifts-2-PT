@@ -11,14 +11,38 @@ namespace Models
 {
     public class SystemData
     {
-        HashSet<IKeepHuman> keepers = new HashSet<IKeepHuman>();
         HashSet<ITickable> factories = new HashSet<ITickable>();
-        public SystemData(int floors, int lifts)
+        List<Floor> Floors = new List<Floor>();
+        List<Lift> Lifts = new List<Lift>();
+        private ISimulationParameters parameters;
+
+        public SystemData(ISimulationParameters parameters)
         {
-            for (int i = 0; i < floors; i++)
-                keepers.Add(new Floor(i));
-            for (int i = 0; i < lifts; i++)
-                keepers.Add(new Lift(i));
+            this.parameters = parameters;
+            this.CreateKeepers();
+        }
+
+        public void SetSimulationParameters(ISimulationParameters parameters)
+        {
+            Floors.Clear();
+            Lifts.Clear();
+            this.parameters = parameters;
+            Floors = new List<Floor>(parameters.FloorsCount);
+            Lifts = new List<Lift>(parameters.LiftsCount);
+            this.CreateKeepers();
+        }
+
+        public ISimulationParameters GetParameters()
+        {
+            return parameters;
+        }
+
+        public void CreateKeepers()
+        {
+            for (int i = 0; i < parameters.FloorsCount; i++)
+                Floors.Add(new Floor(i));
+            for (int i = 0; i < parameters.LiftsCount; i++)
+                Lifts.Add(new Lift(i));
         }
 
         /*internal void ParseDataTablev2(DataTable dataTable)
@@ -49,23 +73,33 @@ namespace Models
 
         public void DoTick()
         {
-            foreach (var keeper in keepers)
-                ((ITickable)keeper).DoTick();
+            foreach (var fl in Floors)
+                fl.DoTick();
+            foreach (var lift in Lifts)
+                lift.DoTick();
             foreach (var fact in factories)
                 fact.DoTick();
             factories.RemoveWhere(cr => cr is HumanCreator hcreator && hcreator.Disposing);
         }
 
-        public void AddKeeper(IKeepHuman keeper)
+        public void AddFloor(Floor floor)
         {
-            if (keeper != null)
-                keepers.Add(keeper);
+            if (floor != null)
+                Floors.Add(floor);
         }
+
+        public void AddLift(Lift lift)
+        {
+            if (lift != null)
+                Lifts.Add(lift);
+        }
+
         internal void AddFactory(ITickable fact)
         {
             if (fact != null)
                 factories.Add(fact);
         }
+
         internal void AddHumanFactory(HumanFactory fact)
         {
             if (fact != null)
@@ -74,12 +108,21 @@ namespace Models
                 else
                     ((HumanFactory)factories.First(f => ((HumanFactory)f).Equals(fact))).humanNumber += fact.humanNumber;
         }
-        public void AddRangeKeepers(IEnumerable<IKeepHuman> keepers)
+
+        public void AddRangeFloors(IEnumerable<Floor> floors)
         {
-            if (keepers != null)
-                foreach(var keeper in keepers)
-                    AddKeeper(keeper);
+            if (floors != null)
+                foreach(var fl in floors)
+                    AddFloor(fl);
         }
+
+        public void AddRangeLifts(IEnumerable<Lift> lifts)
+        {
+            if (lifts != null)
+                foreach (var lift in lifts)
+                    AddLift(lift);
+        }
+
         internal void AddRangeFactories(IEnumerable<ITickable> a)
         {
             if (a != null)
@@ -92,24 +135,34 @@ namespace Models
                 }
         }
 
-        public IEnumerable<Lift> GetLifts() => keepers.Where<IKeepHuman>(kep => kep is Lift).Cast<Lift>();
-        public IEnumerable<Floor> GetFloors() => keepers.Where<IKeepHuman>(kep => kep is Floor).Cast<Floor>();
+        public IEnumerable<Lift> GetLifts() => Lifts;
+        public IEnumerable<Floor> GetFloors() => Floors;
 
-        public void RemoveKeeper(IKeepHuman keeper)
+        public void RemoveFloor(Floor floor)
         {
-            if (keeper != null)
-                if (keepers.Contains(keeper))
-                    this.keepers.Remove(keeper);
+            if (floor != null)
+                if (Floors.Contains(floor))
+                    this.Floors.Remove(floor);
         }
+
+        public void RemoveLift(Lift lift)
+        {
+            if (lift != null)
+                if (Lifts.Contains(lift))
+                    this.Lifts.Remove(lift);
+        }
+
         internal void RemoveFactory(ITickable fact)
         {
             if (fact != null)
                 factories.Remove(fact);
         }
+
         internal void RemoveFactoriesOfType(Type type)
         {
             factories.RemoveWhere(fact1=> fact1.GetType() == type);
         }
+
         internal void RemoveAllFactories()
         {
             if (factories != null)
@@ -120,15 +173,19 @@ namespace Models
         {
             if (number >= 0 && number < GetFloors().Count())
                 return GetFloors().FirstOrDefault(f => f.getKeeperNumber() == number);
-            else {
-                Console.WriteLine("There is an Exception!");
+            else
+            {
                 throw new Exception("There is no such a floor"); 
             }
         }
+
         public bool IsEverythingEmpty()
         {
-            foreach (var keeper in keepers)
-                if (keeper.IsNotEmpty())
+            foreach (var floor in Floors)
+                if (floor.IsNotEmpty())
+                    return false;
+            foreach (var lift in Lifts)
+                if (lift.IsNotEmpty())
                     return false;
             return true;
         }

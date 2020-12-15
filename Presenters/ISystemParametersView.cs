@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace Presenters
 {
     public interface ISystemParametersView : IView
     {
-        //event Action<Systemparametres> ExportStatistics;
+        event Action<ISimulationParameters> SaveSystemParameters;
+
+        public void LoadCurrentParameters(ISimulationParameters par);
     }
 }

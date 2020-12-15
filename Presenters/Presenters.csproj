@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="CreateHumanPresenter.cs" />
     <Compile Include="HumanGenerationPresenter.cs" />
+    <Compile Include="HumanStatusPresenter.cs" />
     <Compile Include="ICreateHumanView.cs" />
     <Compile Include="IHumanGenerationView.cs" />
     <Compile Include="IHumanStatusView.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="MainPresenter.cs" />
     <Compile Include="PlanFirePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemParametersPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />

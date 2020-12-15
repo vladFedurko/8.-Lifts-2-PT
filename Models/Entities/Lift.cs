@@ -31,10 +31,13 @@ namespace Models.Entities
         }
         internal int Floor { get; private set; }
 
-        internal const int TICKS_TO_MOVE = 10;
+        internal readonly int TICKS_TO_MOVE;
 
-        internal Lift(int liftNumber, int floor = 0) : base()
+        internal readonly int TICK_TO_WAIT;
+
+        internal Lift(int liftNumber, int ticksToMove = 30, int ticksToWait = 30, int floor = 0) : base()
         {
+            TICKS_TO_MOVE = ticksToMove;
             ticksToNotify = TICKS_TO_MOVE;
             this.LiftNumber = liftNumber;
             Floor = floor;

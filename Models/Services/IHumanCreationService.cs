@@ -13,5 +13,9 @@ namespace Models.Services
         void CreateHuman(int initialFloor, int finiteFloor, int inSeconds);
 
         void CreateHumanGenerationTable(DataTable dataTable);
+
+        Floor GetFloorByNumber(int num);
+
+        Lift GetLiftByNumber(int num);
     }
 }

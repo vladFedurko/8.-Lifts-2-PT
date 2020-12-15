@@ -11,17 +11,12 @@ namespace Models.Services
     public class HumanCreationService : IHumanCreationService
     {
         private SystemData data;
-        private static HumanCreationService instance;
 
-        private HumanCreationService(SystemData data)
+        public HumanCreationService(SystemData data)
         {
             this.data = data;
         }
-        public static HumanCreationService GetInstance(SystemData data) {
-            if (instance == null)
-                instance = new HumanCreationService(data);
-            return instance;
-        }
+
         public void CreateHuman(int initialFloor, int finiteFloor, int inSeconds)
         {
             data.CreateHuman(initialFloor, finiteFloor, inSeconds);
@@ -54,6 +49,16 @@ namespace Models.Services
                     data.AddHumanFactory(humanFactory);
                     Console.WriteLine($"Factory added {a[0]} {a[1]} {a[2]} {a[3]}");
                 }
+        }
+
+        public Floor GetFloorByNumber(int num)
+        {
+            return data.GetFloorByNumber(num);
+        }
+
+        public Lift GetLiftByNumber(int num)
+        {
+            return data.GetLifts().FirstOrDefault(l => l.getKeeperNumber() == num);
         }
     }
 }

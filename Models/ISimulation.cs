@@ -10,8 +10,6 @@ namespace Models
 {
     public interface ISimulation
     {
-        public void ChangeStrategy(ILiftManager st);
-
         public void SetService(IMainService ser);
 
         public void Pause();
@@ -31,5 +29,9 @@ namespace Models
         public int GetCurrentTime();
 
         public void DoTick();
+
+        IMainService GetMainService();
+
+        public bool IsStoped();
     }
 }

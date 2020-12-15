@@ -28,6 +28,10 @@ namespace Models.Services
 
         void StopFireAlarm();
 
+        SystemData GetData();
+
+        bool isStoped();
+
         event Action<SystemData> UpdateSystemData;
         event Action<int> UpdateTime;
     }

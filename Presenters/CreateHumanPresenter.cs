@@ -10,12 +10,12 @@ namespace Presenters
     public class CreateHumanPresenter
     {
         private ICreateHumanView _view;
-        private IHumanCreationService _service;
+        private IHumanCreationService _humanService;
 
         public CreateHumanPresenter(ICreateHumanView view, IHumanCreationService service)
         {
             this._view = view;
-            this._service = service;
+            this._humanService = service;
             InitEvents();
         }
 
@@ -26,7 +26,7 @@ namespace Presenters
 
         public void CreateHuman(int initialFloor, int finiteFloor, int inSeconds)
         {
-            _service.CreateHuman(initialFloor - 1, finiteFloor - 1, inSeconds); //отсчет с 0
+            _humanService.CreateHuman(initialFloor - 1, finiteFloor - 1, inSeconds); //отсчет с 0
         }
     }
 }

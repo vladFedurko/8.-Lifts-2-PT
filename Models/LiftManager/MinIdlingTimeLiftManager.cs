@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models.LiftManager
 {
-    public class MinIdlingStrategy : ILiftManager
+    public class MinIdlingTimeLiftManager : ILiftManager
     {
         public void ManageLifts(SystemData data)
         {
