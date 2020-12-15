@@ -98,7 +98,9 @@ namespace Models.Entities
                     }
                 default:
                     {
+                        Console.WriteLine("Hello from human");
                         throw new Exception("No such state: " + this.state);
+                        
                     }
             }
             return status;

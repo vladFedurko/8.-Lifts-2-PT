@@ -30,6 +30,7 @@ namespace Models.LiftManager
                 if (lift.liftState == Lift.LiftState.Moving && lift.TargetFloor == lift.getKeeperFloor())
                 {
                     lift.WaitWithOpenedDoor();
+                    lift.RemoveAllHumans();
                 }
             }
         }
@@ -44,12 +45,10 @@ namespace Models.LiftManager
 
         private void DisposeHumanOnFloors(SystemData data)
         {
+            //data.RemoveFactoriesOfType(new HumanFactory(0, 0, 1, null).GetType());
             foreach (var floor in data.GetFloors())
             {
-                foreach (var hum in floor.getHumans())
-                {
-                    hum.Dispose();
-                }
+                floor.RemoveAllHumans();
             }
         }
     }

@@ -46,9 +46,9 @@ namespace Models.Services
             simulation.Start();
         }
 
-        public void StopSimulation()
+        public bool StopSimulation()
         {
-            simulation.Stop();
+            return simulation.Stop();
         }
 
         public void ShowDataInView(SystemData data)
@@ -60,15 +60,19 @@ namespace Models.Services
         {
             this.UpdateTime.Invoke(time);
         }
+        public void UpdateFireAlarm()
+        {
+            this.UpdateAlarm.Invoke();
+        }
 
         public void StartFireAlarm()
         {
-            FireAlarmService.GetInstance(simulation).StartAlarm();
+            simulation.TurnOnFireAlarm();
         }
 
         public void StopFireAlarm()
         {
-            FireAlarmService.GetInstance(simulation).StopAlarm();
+            simulation.TurnOffFireAlarm();
         }
 
         public bool isStoped()
@@ -78,5 +82,6 @@ namespace Models.Services
 
         public event Action<SystemData> UpdateSystemData;
         public event Action<int> UpdateTime;
+        public event Action UpdateAlarm;
     }
 }

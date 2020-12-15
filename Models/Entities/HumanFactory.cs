@@ -17,6 +17,8 @@ namespace Models.Entities
             this.humanNumber = humanNumber;
             this.FiniteFloor = finiteFloor;
             this.ticksToNotify = ticksToNotify;
+            if (floor == null)
+                return;
             this.floor = floor;
         }
 

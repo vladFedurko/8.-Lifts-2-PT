@@ -20,11 +20,11 @@ namespace Models
 
         public void Start();
 
-        public void Stop();
+        public bool Stop();
 
-        public void TurnOnFireAlarm();
+        public bool TurnOnFireAlarm();
 
-        public void TurnOffFireAlarm();
+        public bool TurnOffFireAlarm();
 
         public int GetCurrentTime();
 

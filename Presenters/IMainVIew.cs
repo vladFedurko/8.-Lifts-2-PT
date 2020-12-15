@@ -13,11 +13,13 @@ namespace Presenters
         void ShowState(SystemData data);
 
         void setTime(int Time);
+        void updateAlarm();
 
+        public delegate bool State();
 
         event Action StartFireAlarm;
         event Action StopFireAlarm;
-        event Action StopSimulation;
+        event State StopSimulation;
         event Action StartSimulation;
         event Action PauseSimulation;
         event Action<decimal> SetSimulationSpeed;

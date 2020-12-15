@@ -44,13 +44,14 @@ namespace _8.Lifts_2__PT
             else
                 ShowStateInForm(systemData);
         }
-
+        //public delegate bool State();
         public void ShowStateInForm(SystemData systemData) //часть кода будет перенесена в presenter
         {
             //this.simulationTable.SuspendLayout();
             int[] a = new int[systemData.GetParameters().FloorsCount];
             int[] b = new int[systemData.GetParameters().LiftsCount];
             int[] c = new int[systemData.GetParameters().LiftsCount];
+            Color[] d = new Color[b.Length];
             if (this.simulationTable.RowCount != a.Length + 1 || this.simulationTable.ColumnCount != b.Length + 2)
             {
                 this.simulationTable.SuspendLayout();
@@ -69,16 +70,21 @@ namespace _8.Lifts_2__PT
             {
                 c[i] = lift.getKeeperFloor();
                 b[i] = lift.getHumanNumber();
+                d[i] = lift.liftState == Lift.LiftState.WaitOpened ? Color.Yellow : Color.Red;
                 i++;
             }
             for (int j = this.simulationTable.RowCount - 1; j > 0; j--)
             {
                 Control control = this.simulationTable.GetControlFromPosition(1, j);
-                control.Text = a[this.simulationTable.RowCount - j - 1].ToString();
+                if (control != null)
+                    control.Text = a[this.simulationTable.RowCount - j - 1].ToString();
+                else throw new Exception("Hello world from form");
                 for (i = 2; i < this.simulationTable.ColumnCount; i++)
                 {
                     Control controli = this.simulationTable.GetControlFromPosition(i,j);
                     controli.Text =(this.simulationTable.RowCount - j - 1 == c[i-2]) ? b[i - 2].ToString() : "0";
+                    controli.Dock = DockStyle.Fill;
+                    controli.BackColor = (this.simulationTable.RowCount - j - 1 == c[i - 2]) ? d[i-2] : Color.Transparent;
                 }
             }
             
@@ -93,6 +99,38 @@ namespace _8.Lifts_2__PT
                 statusStrip1.Invoke(new UpdateTime((int Time) => { TimeStatusLabel.Text = "Time:" + Time.ToString(); }), Time);
             else
                 TimeStatusLabel.Text = "Time:" + Time.ToString();
+        }
+
+        private delegate void UpdateAlarm();
+
+        public void updateAlarm()
+        {
+            if (statusStrip1.InvokeRequired)
+                statusStrip1.Invoke(new UpdateAlarm(() => {
+                    if (fireAlarmButton.Text.Equals("Fire alarm"))
+                    {
+                        fireAlarmButton.Text = "Stop alarm";
+                        fireAlarmButton.BackColor = Color.DarkOrange;
+                    }
+                    else if (fireAlarmButton.Text.Equals("Stop alarm"))
+                    {
+                        fireAlarmButton.Text = "Fire alarm";
+                        fireAlarmButton.BackColor = Color.IndianRed;
+                    }
+                }));
+            else
+                if (fireAlarmButton.Text.Equals("Fire alarm"))
+            {
+                this.StartFireAlarm?.Invoke();
+                fireAlarmButton.Text = "Stop alarm";
+                fireAlarmButton.BackColor = Color.DarkOrange;
+            }
+            else if (fireAlarmButton.Text.Equals("Stop alarm"))
+            {
+                this.StopFireAlarm?.Invoke();
+                fireAlarmButton.Text = "Fire alarm";
+                fireAlarmButton.BackColor = Color.IndianRed;
+            }
         }
 
         private void ResizeTable(int rows, int columns)
@@ -166,7 +204,7 @@ namespace _8.Lifts_2__PT
 
         public event Action StartFireAlarm;
         public event Action StopFireAlarm;
-        public event Action StopSimulation;
+        public event IMainView.State StopSimulation;
         public event Action StartSimulation;
         public event Action PauseSimulation;
         public event Action<decimal> SetSimulationSpeed;
@@ -224,7 +262,7 @@ namespace _8.Lifts_2__PT
 
         private void StopSimulationClick(object sender, EventArgs e)
         {
-            this.StopSimulation?.Invoke();
+            if(StopSimulation.Invoke())
             startButton.Text = "Start";
             SystemParametersMenuItem.Enabled = true;
             PauseMenuItem.Enabled = false;
@@ -276,7 +314,7 @@ namespace _8.Lifts_2__PT
         private void PlanFireAlarmClick(object sender, EventArgs e)
         {
             PlanFireAlarmForm form = new PlanFireAlarmForm();
-            new PlanFirePresenter(form, FireAlarmService.GetInstance(simulation));
+            new PlanFirePresenter(form, new FireAlarmService(simulation));
             form.Show();
         }
 

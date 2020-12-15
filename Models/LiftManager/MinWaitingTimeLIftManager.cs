@@ -162,7 +162,11 @@ namespace Models.LiftManager
                         nearestFloor = h.FiniteFloor;
 #if DEBUG
                     if (dir != (h.FiniteFloor > lift.getKeeperFloor()))
+                    {
+                        Console.WriteLine("Hello world from LiftMan");
                         throw new Exception("MODEL: MinWaitingTimeStrategy: IsChoosenDirectionUp: Not all humans go in same direction!");
+                        
+                    }
 #endif
                 }
                 return nearestFloor;

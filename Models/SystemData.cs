@@ -67,7 +67,7 @@ namespace Models
             factories.Union(newFactories);
         }*/
         public void CreateHuman(int initialFloor, int finitefloor, int inSec) {
-            HumanCreator creator = new HumanCreator(finitefloor, inSec * 10, GetFloorByNumber(initialFloor));
+            HumanCreator creator = new HumanCreator(finitefloor, inSec * TickTimer.TICKS_PER_SECOND, GetFloorByNumber(initialFloor));
             factories.Add(creator);
         }
 
@@ -78,7 +78,7 @@ namespace Models
             foreach (var lift in Lifts)
                 lift.DoTick();
             foreach (var fact in factories)
-                fact.DoTick();
+                    fact.DoTick();
             factories.RemoveWhere(cr => cr is HumanCreator hcreator && hcreator.Disposing);
         }
 
@@ -175,7 +175,9 @@ namespace Models
                 return GetFloors().FirstOrDefault(f => f.getKeeperNumber() == number);
             else
             {
-                throw new Exception("There is no such a floor"); 
+                Console.WriteLine("Heloo worlddata");
+                throw new Exception("There is no such a floor");
+                
             }
         }
 
