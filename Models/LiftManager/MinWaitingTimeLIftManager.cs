@@ -165,7 +165,6 @@ namespace Models.LiftManager
                     {
                         Console.WriteLine("Hello world from LiftMan");
                         throw new Exception("MODEL: MinWaitingTimeStrategy: IsChoosenDirectionUp: Not all humans go in same direction!");
-                        
                     }
 #endif
                 }

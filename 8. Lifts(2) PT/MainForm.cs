@@ -82,7 +82,7 @@ namespace _8.Lifts_2__PT
                 for (i = 2; i < this.simulationTable.ColumnCount; i++)
                 {
                     Control controli = this.simulationTable.GetControlFromPosition(i,j);
-                    controli.Text =(this.simulationTable.RowCount - j - 1 == c[i-2]) ? b[i - 2].ToString() : "0";
+                    controli.Text =(this.simulationTable.RowCount - j - 1 == c[i-2]) ? b[i - 2].ToString() : null;
                     controli.Dock = DockStyle.Fill;
                     controli.BackColor = (this.simulationTable.RowCount - j - 1 == c[i - 2]) ? d[i-2] : Color.Transparent;
                 }

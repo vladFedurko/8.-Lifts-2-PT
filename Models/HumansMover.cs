@@ -27,10 +27,6 @@ namespace Models
         {
             IEnumerable<Human> Floor_humans = floor?.getHumans();
             //int rem = 0;
-            Console.WriteLine($"try to enter lift {lift?.LiftNumber} " +
-                $"on floor {lift?.Floor} " +
-                $"with humanNumberUp {floor?.getHumanNumberUp()} " +
-                $"and with humanNumberDown {floor?.getHumanNumberDown()}");
             lift?.AddRangeHumans
                 (
                     Floor_humans.Where<Human>(
@@ -59,10 +55,6 @@ namespace Models
                 );
             //Console.WriteLine(rem);
             //rem = 0;
-            Console.WriteLine($"added to lift {lift?.getKeeperNumber()} " +
-                $"with numberofhum in lift {lift?.getHumanNumber()} " +
-                $"with humanNumberUp {floor?.getHumanNumberUp()} " +
-                $"and with humanNumberDown {floor?.getHumanNumberDown()}");
             floor?.RemoveSomeHumans(
                 h =>
                 h.state == Human.HumanState.InLift
@@ -82,18 +74,10 @@ namespace Models
                 )
             //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
             );
-            Console.WriteLine($"Humans entered lift {lift?.LiftNumber} " +
-                $"on Floor {floor?.getKeeperFloor()}, " +
-                $"remain numofHumans in lift {lift?.getHumanNumber()} " +
-                $"remain numofHumans on floor up {floor?.getHumanNumberUp()} " +
-                $"remain numofHumans on floor down {floor?.getHumanNumberDown()} ");
         }
 
         public static void ExitLift(Floor floor, Lift lift)
         {
-            Console.WriteLine($"try to exit lift {lift?.getKeeperNumber()} " +
-                $"on floor {lift?.getKeeperFloor()} " +
-                $"with humanNumber {lift?.getHumanNumber()}");
             IEnumerable<Human> Lift_humans = lift?.getHumans();
             floor?.AddRangeHumans
                 (
@@ -111,9 +95,6 @@ namespace Models
                 &&
                     (floor.getKeeperFloor() == h.FiniteFloor)
             );
-            Console.WriteLine($"Humans exit lift {lift?.getKeeperNumber()} " +
-                $"on Floor {floor?.getKeeperFloor()}, " +
-                $"remain numofHumans {lift?.getHumanNumber()}");
         }
     }
 }

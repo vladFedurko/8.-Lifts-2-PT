@@ -42,7 +42,10 @@ namespace Models
             for (int i = 0; i < parameters.FloorsCount; i++)
                 Floors.Add(new Floor(i));
             for (int i = 0; i < parameters.LiftsCount; i++)
-                Lifts.Add(new Lift(i));
+                Lifts.Add(new Lift(i,
+                    parameters.SecondsToMove*TickTimer.TICKS_PER_SECOND,
+                    parameters.SevondsToWait*TickTimer.TICKS_PER_SECOND)
+                    );
         }
 
         /*internal void ParseDataTablev2(DataTable dataTable)
@@ -175,9 +178,7 @@ namespace Models
                 return GetFloors().FirstOrDefault(f => f.getKeeperNumber() == number);
             else
             {
-                Console.WriteLine("Heloo worlddata");
                 throw new Exception("There is no such a floor");
-                
             }
         }
 
