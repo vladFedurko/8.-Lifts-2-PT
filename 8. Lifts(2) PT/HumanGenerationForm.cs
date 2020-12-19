@@ -33,6 +33,7 @@ namespace _8.Lifts_2__PT
         private void HumanGenerationDataGridView_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             TextBox tb = (TextBox)e.Control;
+            tb.MaxLength = 2;
             tb.KeyPress += new KeyPressEventHandler(this.tb_KeyPress);
         }
 

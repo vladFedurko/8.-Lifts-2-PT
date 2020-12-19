@@ -45,13 +45,15 @@ namespace Models
             observer.SetTimeAcceleration(speed);
         }
 
-        public void Stop()
+        public bool Stop()
         {
             if(systemData.IsEverythingEmpty())
             {
                 observer.Stop();
                 observer.ResetTime();
+                return true;
             }
+            return false;
         }
 
         public void Start()
@@ -63,11 +65,11 @@ namespace Models
 
         public void DoTick()
         {
+            systemData.DoTick();
             if (simulationState != null && simulationState is ILiftManager)
                 ((ILiftManager)simulationState).ManageLifts(systemData);
             else
                 systemData.GetParameters().LiftManager.ManageLifts(systemData);
-            systemData.DoTick();
             mainService.ShowDataInView(systemData);
             mainService.UpdateClock(observer.getCurrentTime());
         }
@@ -77,15 +79,25 @@ namespace Models
             return observer.getCurrentTime();
         }
 
-        public void TurnOnFireAlarm()
+        public bool TurnOnFireAlarm()
         {
-            simulationState = new FireAlarm(systemData);
+            if (simulationState == null)
+            {
+                simulationState = new FireAlarm(systemData);
+                return true;
+            }
+            return false;
         }
 
-        public void TurnOffFireAlarm()
+        public bool TurnOffFireAlarm()
         {
-            simulationState?.ResetState(systemData);
-            simulationState = null;
+            if (simulationState != null)
+            {
+                simulationState?.ResetState(systemData);
+                simulationState = null;
+                return true;
+            }
+            return false;
         }
 
         public IMainService GetMainService()

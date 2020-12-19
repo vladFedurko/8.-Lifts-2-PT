@@ -35,11 +35,16 @@ namespace Presenters
             _view.SaveLiftConfigurationStrategy += this.SaveLiftConfigurationStrategy;
             _mainService.UpdateSystemData += this.ShowData;
             _mainService.UpdateTime += this.ShowTime;
+            _mainService.UpdateAlarm += this.updateAlarm;
         }
 
         public void ShowTime(int time)
         {
             _view.setTime(time);
+        }
+        public void updateAlarm()
+        {
+            _view.updateAlarm();
         }
 
         public void ShowData(SystemData data)
@@ -57,9 +62,9 @@ namespace Presenters
             _mainService.StopFireAlarm();
         }
 
-        public void StopSimulation()
+        public bool StopSimulation()
         {
-            _mainService.StopSimulation();
+            return _mainService.StopSimulation();
         }
 
         public void StartSimulation()

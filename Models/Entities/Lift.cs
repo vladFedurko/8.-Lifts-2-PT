@@ -14,8 +14,8 @@ namespace Models.Entities
     {
         internal int TargetFloor { get; private set; }
 
-        internal LiftState liftState;
-        internal enum LiftState
+        public LiftState liftState;
+        public enum LiftState
         {
             WaitClosed,
             WaitOpened,
@@ -113,7 +113,12 @@ namespace Models.Entities
                 humanNumber--;
             }
         }
-
+        internal void RemoveAllHumans()
+        {
+            if (data != null)
+                data.Clear();
+            humanNumber = 0;
+        }
         public IEnumerable<Human> getHumans()
         {
             return data;

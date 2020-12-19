@@ -8,6 +8,6 @@ namespace Models
 {
     interface ITickable
     {
-        public void DoTick();
+        void DoTick();
     }
 }
