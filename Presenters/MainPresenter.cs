@@ -29,10 +29,6 @@ namespace Presenters
             _view.StartSimulation += this.StartSimulation;
             _view.PauseSimulation += this.PauseSimulation;
             _view.SetSimulationSpeed += this.SetSimulationSpeed;
-            _view.LoadHumanGenerationStrategy += this.LoadHumanGenerationStrategy;
-            _view.LoadLiftConfigurationStrategy += this.LoadLiftConfigurationStrategy;
-            _view.SaveHumanGenerationStrategy += this.SaveHumanGenerationStrategy;
-            _view.SaveLiftConfigurationStrategy += this.SaveLiftConfigurationStrategy;
             _mainService.UpdateSystemData += this.ShowData;
             _mainService.UpdateTime += this.ShowTime;
             _mainService.UpdateAlarm += this.updateAlarm;
@@ -80,26 +76,6 @@ namespace Presenters
         public void SetSimulationSpeed(decimal speed)
         {
             _mainService.SetSimulationSpeed(speed);
-        }
-
-        public void LoadHumanGenerationStrategy()
-        {
-
-        }
-
-        public void LoadLiftConfigurationStrategy()
-        {
-
-        }
-
-        public void SaveHumanGenerationStrategy()
-        {
-
-        }
-
-        public void SaveLiftConfigurationStrategy()
-        {
-
         }
     }
 }

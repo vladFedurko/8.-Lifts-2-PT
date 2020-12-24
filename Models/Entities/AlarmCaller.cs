@@ -9,8 +9,8 @@ namespace Models.Entities
     class AlarmCaller : AResettable
     {
         ISimulation sim;
-        int ticksToContinue;
-        bool started = false;
+        internal int ticksToContinue { get; private set; }
+        internal bool started = false;
         public AlarmCaller(ISimulation sim, int ticksToStart, int ticksToContinue) 
         {
             if (sim == null)
@@ -23,7 +23,10 @@ namespace Models.Entities
         {
             if (!started)
             {
+                int a;
+                a = ticksToNotify;
                 ticksToNotify = ticksToContinue;
+                ticksToContinue = a;
                 if(sim.TurnOnFireAlarm())
                     sim.GetMainService().UpdateFireAlarm();
                 started = true;

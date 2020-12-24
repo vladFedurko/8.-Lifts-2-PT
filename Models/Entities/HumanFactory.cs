@@ -10,7 +10,7 @@ namespace Models.Entities
     {
         public int humanNumber;
         public int FiniteFloor;
-        readonly Floor floor;
+        public readonly Floor floor;
 
         public HumanFactory(int humanNumber, int finiteFloor ,int ticksToNotify , Floor floor) 
         {

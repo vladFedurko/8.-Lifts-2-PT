@@ -20,28 +20,19 @@ namespace _8.Lifts_2__PT
         public PlanFireAlarmForm()
         {
             InitializeComponent();
+            firePlanDataGridView.AllowUserToAddRows = false;
             firePlanDataGridView.AllowUserToResizeRows = false;
             firePlanDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            InitTable(out dataTable);
-            this.firePlanDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            firePlanDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             firePlanDataGridView.DataSource = dataTable;
-            firePlanDataGridView.AllowUserToAddRows = false;
             firePlanDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             firePlanDataGridView.EditingControlShowing += FirePlanDataGridView_EditingControlShowing;
         }
 
-        public void InitTable(out DataTable dTable)
-        {
-            dTable = new DataTable();
-            DataColumn startColumn = new DataColumn("Start at(seconds)", Type.GetType("System.Int32"));
-            DataColumn finiteColumn = new DataColumn("Finite at(seconds)", Type.GetType("System.Int32"));
-            dTable.Columns.Add(startColumn);
-            dTable.Columns.Add(finiteColumn);
-        }
-
         public void LoadTable(DataTable dTable)
         {
-            firePlanDataGridView.DataSource = dTable;
+            dataTable = dTable;
+            firePlanDataGridView.DataSource = dataTable;
         }
 
         private void FirePlanDataGridView_EditingControlShowing(Object  sender, DataGridViewEditingControlShowingEventArgs  e)
@@ -74,10 +65,6 @@ namespace _8.Lifts_2__PT
             this.Close();
         }
 
-        private void HumanGenerationForm_Deactivate(object sender, EventArgs e)
-        {
-            this.Activate();
-        }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {

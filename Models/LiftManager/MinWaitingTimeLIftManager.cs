@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Models.LiftManager
 {
+    [Serializable]
     public class MinWaitingTimeLiftManager : ILiftManager
     {
         public void ManageLifts(SystemData data)
