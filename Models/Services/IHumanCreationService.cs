@@ -13,7 +13,7 @@ namespace Models.Services
         void CreateHuman(int initialFloor, int finiteFloor, int inSeconds);
 
         void CreateHumanGenerationTable(DataTable dataTable);
-
+        DataTable GetHumanGenerationTable();
         Floor GetFloorByNumber(int num);
 
         Lift GetLiftByNumber(int num);

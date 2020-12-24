@@ -28,5 +28,9 @@ namespace Presenters
         {
             _serv.CreateAlarmRule(dataTable); 
         }
+        public DataTable LoadTable()
+        {
+            return _serv.GetFireAlarmTable();
+        }
     }
 }

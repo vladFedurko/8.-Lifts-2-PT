@@ -44,7 +44,7 @@ namespace Models
             for (int i = 0; i < parameters.LiftsCount; i++)
                 Lifts.Add(new Lift(i,
                     parameters.SecondsToMove*TickTimer.TICKS_PER_SECOND,
-                    parameters.SevondsToWait*TickTimer.TICKS_PER_SECOND)
+                    parameters.SecondsToWait*TickTimer.TICKS_PER_SECOND)
                     );
         }
 
@@ -140,6 +140,10 @@ namespace Models
 
         public IEnumerable<Lift> GetLifts() => Lifts;
         public IEnumerable<Floor> GetFloors() => Floors;
+        public IEnumerable<ITickable> GetFactoriesOfType(Type type)
+        {
+            return factories.Where<ITickable>(fact => fact.GetType() == type);
+        }
 
         public void RemoveFloor(Floor floor)
         {

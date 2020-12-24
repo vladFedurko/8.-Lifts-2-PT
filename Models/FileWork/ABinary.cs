@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Models.FileWork
 {
-    public interface ITickable
+    abstract class ABinary : IFileFormat
     {
-        void DoTick();
+        public const string Filter = "Bin files(*.bin)|*.bin";
     }
 }

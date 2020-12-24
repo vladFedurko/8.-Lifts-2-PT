@@ -20,6 +20,7 @@ namespace Models
         protected abstract void Notify();
 
         protected int getCurrentTick() => CurrentTick;
+        internal int getTicksToNotify() => ticksToNotify;
         public void DoTick()
         {
             if (CountPermission)

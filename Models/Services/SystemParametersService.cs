@@ -8,21 +8,21 @@ namespace Models.Services
 {
     public class SystemParametersService : ISystemParametersService
     {
-        private ISimulation simulation;
+        private SystemData data;
 
-        public SystemParametersService(ISimulation sim)
+        public SystemParametersService(SystemData data)
         {
-            simulation = sim;
+            this.data = data;
         }
 
         public void SaveSystemParameters(ISimulationParameters par)
         {
-            simulation.GetData().SetSimulationParameters(par);
+            data.SetSimulationParameters(par);
         }
 
         public ISimulationParameters GetSystemParameters()
         {
-            return simulation.GetData().GetParameters();
+            return data.GetParameters();
         }
     }
 }
