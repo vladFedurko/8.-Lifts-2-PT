@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Models.Entities;
+using Models.Entities.Statistics;
 using Models.LiftManager;
 
 namespace Models
@@ -15,11 +16,13 @@ namespace Models
         List<Floor> Floors = new List<Floor>();
         List<Lift> Lifts = new List<Lift>();
         private ISimulationParameters parameters;
+        private IHumanFullStatistics statistics;
 
         public SystemData(ISimulationParameters parameters)
         {
             this.parameters = parameters;
             this.CreateKeepers();
+            this.statistics = new HumanFullStatistics();
         }
 
         public void SetSimulationParameters(ISimulationParameters parameters)
@@ -66,9 +69,15 @@ namespace Models
                 }
             factories.Union(newFactories);
         }*/
+
         public void CreateHuman(int initialFloor, int finitefloor, int inSec) {
             HumanCreator creator = new HumanCreator(finitefloor, inSec * 10, GetFloorByNumber(initialFloor));
             factories.Add(creator);
+        }
+
+        public IHumanFullStatistics GetHumanFullStatistics()
+        {
+            return statistics;
         }
 
         public void DoTick()

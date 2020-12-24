@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models.Entities.Statistics;
 
 namespace Models
 {
-    static class HumansMover    //donot static
+    static class HumansMover    //do non static
     {
         public static void MoveHumans(SystemData data)
         {
@@ -17,52 +18,38 @@ namespace Models
                 {
                     Floor floor = data.GetFloorByNumber(lift.getKeeperFloor());
                     HumansMover.ExitLift(floor, lift);
-                    HumansMover.EnterLift(floor, lift);
-                    //lift.StartMoving();
+                    HumansMover.EnterLift(floor, lift, data.GetHumanFullStatistics());
                 }
             }
         }
 
-        public static void EnterLift(Floor floor, Lift lift)
+        public static void EnterLift(Floor floor, Lift lift, IHumanFullStatistics stats)
         {
-            IEnumerable<Human> Floor_humans = floor?.getHumans();
-            //int rem = 0;
-            Console.WriteLine($"try to enter lift {lift?.LiftNumber} " +
-                $"on floor {lift?.Floor} " +
-                $"with humanNumberUp {floor?.getHumanNumberUp()} " +
-                $"and with humanNumberDown {floor?.getHumanNumberDown()}");
-            lift?.AddRangeHumans
-                (
-                    Floor_humans.Where<Human>(
-                        h =>
-                            h.state == Human.HumanState.OnFloor
-                        &&
-                            lift.liftState == Lift.LiftState.WaitOpened
-                        &&
-                            (
-                                lift.getHumanNumber() == 0
-                            ||
-                                (
-                                   lift.getHumans().ElementAt(0).FiniteFloor - lift.Floor > 0
+            IEnumerable<Human> HumansToMove = floor?.getHumans().Where<Human>(h =>
+                           h.state == Human.HumanState.OnFloor
+                       &&
+                           lift.liftState == Lift.LiftState.WaitOpened
+                       &&
+                           (
+                               lift.getHumanNumber() == 0
+                           ||
+                               (
+                                  lift.getHumans().ElementAt(0).FiniteFloor - lift.Floor > 0
+                                  &&
+                                  (floor.getKeeperFloor() - h.FiniteFloor) < 0
+                               )
+                           ||
+                               (
+                                    lift.getHumans().ElementAt(0).FiniteFloor - lift.Floor < 0
                                    &&
-                                   (floor.getKeeperFloor() - h.FiniteFloor) < 0
-                                )
-                            ||
-                                (
-                                     lift.getHumans().ElementAt(0).FiniteFloor - lift.Floor < 0
-                                    &&
-                                     (floor.getKeeperFloor() - h.FiniteFloor) > 0
-                                )
-                            )
+                                    (floor.getKeeperFloor() - h.FiniteFloor) > 0
+                               )
+                           )
             //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
-                        )
-                );
-            //Console.WriteLine(rem);
-            //rem = 0;
-            Console.WriteLine($"added to lift {lift?.getKeeperNumber()} " +
-                $"with numberofhum in lift {lift?.getHumanNumber()} " +
-                $"with humanNumberUp {floor?.getHumanNumberUp()} " +
-                $"and with humanNumberDown {floor?.getHumanNumberDown()}");
+                        );
+            foreach (var h in HumansToMove)
+                stats.AddWaitingTime(h.GetWaitingTime());
+            lift?.AddRangeHumans(HumansToMove);
             floor?.RemoveSomeHumans(
                 h =>
                 h.state == Human.HumanState.InLift
@@ -82,18 +69,10 @@ namespace Models
                 )
             //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
             );
-            Console.WriteLine($"Humans entered lift {lift?.LiftNumber} " +
-                $"on Floor {floor?.getKeeperFloor()}, " +
-                $"remain numofHumans in lift {lift?.getHumanNumber()} " +
-                $"remain numofHumans on floor up {floor?.getHumanNumberUp()} " +
-                $"remain numofHumans on floor down {floor?.getHumanNumberDown()} ");
         }
 
         public static void ExitLift(Floor floor, Lift lift)
         {
-            Console.WriteLine($"try to exit lift {lift?.getKeeperNumber()} " +
-                $"on floor {lift?.getKeeperFloor()} " +
-                $"with humanNumber {lift?.getHumanNumber()}");
             IEnumerable<Human> Lift_humans = lift?.getHumans();
             floor?.AddRangeHumans
                 (
@@ -111,9 +90,6 @@ namespace Models
                 &&
                     (floor.getKeeperFloor() == h.FiniteFloor)
             );
-            Console.WriteLine($"Humans exit lift {lift?.getKeeperNumber()} " +
-                $"on Floor {floor?.getKeeperFloor()}, " +
-                $"remain numofHumans {lift?.getHumanNumber()}");
         }
     }
 }

@@ -49,11 +49,13 @@
     <Compile Include="IHumanStatusView.cs" />
     <Compile Include="IMainVIew.cs" />
     <Compile Include="IPlanFireView.cs" />
+    <Compile Include="ISimulationStatisticsView.cs" />
     <Compile Include="ISystemParametersView.cs" />
     <Compile Include="IView.cs" />
     <Compile Include="MainPresenter.cs" />
     <Compile Include="PlanFirePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatisticsPresenter.cs" />
     <Compile Include="SystemParametersPresenter.cs" />
   </ItemGroup>
   <ItemGroup>

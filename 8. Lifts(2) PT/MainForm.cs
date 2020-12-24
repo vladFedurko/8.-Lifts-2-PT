@@ -291,7 +291,9 @@ namespace _8.Lifts_2__PT
 
         private void StatisticsClick(object sender, EventArgs e)
         {
-
+            SimulationStatisticsForm form = new SimulationStatisticsForm();
+            new StatisticsPresenter(form, new StatisticsService(simulation.GetData()));
+            form.Show();
         }
 
         private void HumanStatusClick(object sender, EventArgs e)

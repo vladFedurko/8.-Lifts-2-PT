@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Models.Entities.Statistics;
 
 namespace Models.Entities
 {
@@ -15,6 +16,9 @@ namespace Models.Entities
         internal int TargetFloor { get; private set; }
 
         internal LiftState liftState;
+
+        private ILiftStatistics statistics;
+
         internal enum LiftState
         {
             WaitClosed,
@@ -43,14 +47,28 @@ namespace Models.Entities
             Floor = floor;
             TargetFloor = floor;
             liftState = LiftState.WaitClosed;
+            statistics = new LiftStatistics();
             CountPermission = false;
         }
+
         internal void StartMoving()
         {
             CountPermission = true;
             liftState = LiftState.Moving;
         }
-        internal void SetTargetFloor(int floor) => TargetFloor = floor;
+
+        internal void SetTargetFloor(int floor)
+        {
+            bool isDirUp = (this.TargetFloor - this.getKeeperFloor()) > 0;
+            this.TargetFloor = floor;
+            if (isDirUp != ((this.TargetFloor - this.getKeeperFloor()) > 0))
+            {
+                statistics.DirectionChanged();
+                if (!this.IsNotEmpty())
+                    statistics.MovedWithoutHumans();
+            }
+        }
+
         private void Move()
         {
             if (liftState == LiftState.Moving)
@@ -81,7 +99,7 @@ namespace Models.Entities
 
         public void AddHumans(Human a)
         {
-            if ((Human)a != null)
+            if (a != null)
             {
                 data.Add(a);
                 a.ChangeState();
@@ -97,18 +115,23 @@ namespace Models.Entities
                     AddHumans(humans);
                 }
         }
+
         public void RemoveSomeHumans(Predicate<Human> pred)
         {
             if (pred != null && data.Count > 0)
             {
+                int humansBefore = data.Count;
                 data.RemoveWhere(pred);
                 humanNumber = data.Count;
+                statistics.HumansCarried(humansBefore - data.Count);
             }
         }
+
         public void RemoveHumans(Human humans)
         {
             if (humans != null && data.Contains(humans))
             {
+                statistics.HumansCarried(1);
                 data.Remove(humans);
                 humanNumber--;
             }
@@ -142,11 +165,13 @@ namespace Models.Entities
             }
         }
 
+        public ILiftStatistics GetStatistics() => statistics;
+
         public int getHumanNumber() => humanNumber;
 
         public bool IsNotEmpty()
         {
-            return data.Count>0;
+            return data.Count > 0;
         }
     }
 }
