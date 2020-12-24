@@ -11,17 +11,10 @@ namespace Models.Services
     public class FireAlarmService : IPlanFireAlarm
     {
         private ISimulation sim;
-        private static FireAlarmService instance;
 
-        private FireAlarmService(ISimulation sim)
+        public FireAlarmService(ISimulation sim)
         {
             this.sim = sim;
-        }
-        public static FireAlarmService GetInstance(ISimulation sim)
-        {
-            if (instance == null)
-                instance = new FireAlarmService(sim);
-            return instance;
         }
         public void StartAlarm()
         {

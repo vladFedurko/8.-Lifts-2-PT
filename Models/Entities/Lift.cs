@@ -136,7 +136,12 @@ namespace Models.Entities
                 humanNumber--;
             }
         }
-
+        internal void RemoveAllHumans()
+        {
+            if (data != null)
+                data.Clear();
+            humanNumber = 0;
+        }
         public IEnumerable<Human> getHumans()
         {
             return data;

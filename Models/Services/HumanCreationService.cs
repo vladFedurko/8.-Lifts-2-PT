@@ -43,9 +43,9 @@ namespace Models.Services
                         a[3].GetType() == DBNull.Value.GetType()
                         )
                         return;
-                    Floor floor = data.GetFloorByNumber(Int32.Parse(a[1].ToString()));
+                    Floor floor = data.GetFloorByNumber(Int32.Parse(a[1].ToString())-1);
                     HumanFactory humanFactory = new HumanFactory(Int32.Parse(a[0].ToString()),
-                        Int32.Parse(a[2].ToString()), Int32.Parse(a[3].ToString()) * TickTimer.TICKS_PER_SECOND, floor);
+                        Int32.Parse(a[2].ToString())-1, Int32.Parse(a[3].ToString()) * TickTimer.TICKS_PER_SECOND, floor);
                     data.AddHumanFactory(humanFactory);
                     Console.WriteLine($"Factory added {a[0]} {a[1]} {a[2]} {a[3]}");
                 }

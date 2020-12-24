@@ -26,7 +26,7 @@ namespace Models
             dataTable.Rows.Add(row);
             Simulation sim = new Simulation(2, 1, new MinWaitingTimeLiftManager());
             sim.GetData().AddFactory(new AlarmCaller(sim, 50, 30));
-            FireAlarmService serv = FireAlarmService.GetInstance(sim);
+            FireAlarmService serv = new FireAlarmService(sim);
             serv.ParseDataTable(dataTable);
             sim.Start();
         }

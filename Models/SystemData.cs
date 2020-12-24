@@ -45,7 +45,10 @@ namespace Models
             for (int i = 0; i < parameters.FloorsCount; i++)
                 Floors.Add(new Floor(i));
             for (int i = 0; i < parameters.LiftsCount; i++)
-                Lifts.Add(new Lift(i));
+                Lifts.Add(new Lift(i,
+                    parameters.SecondsToMove*TickTimer.TICKS_PER_SECOND,
+                    parameters.SevondsToWait*TickTimer.TICKS_PER_SECOND)
+                    );
         }
 
         /*internal void ParseDataTablev2(DataTable dataTable)
@@ -71,7 +74,7 @@ namespace Models
         }*/
 
         public void CreateHuman(int initialFloor, int finitefloor, int inSec) {
-            HumanCreator creator = new HumanCreator(finitefloor, inSec * 10, GetFloorByNumber(initialFloor));
+            HumanCreator creator = new HumanCreator(finitefloor, inSec * TickTimer.TICKS_PER_SECOND, GetFloorByNumber(initialFloor));
             factories.Add(creator);
         }
 
@@ -87,7 +90,7 @@ namespace Models
             foreach (var lift in Lifts)
                 lift.DoTick();
             foreach (var fact in factories)
-                fact.DoTick();
+                    fact.DoTick();
             factories.RemoveWhere(cr => cr is HumanCreator hcreator && hcreator.Disposing);
         }
 
@@ -184,7 +187,7 @@ namespace Models
                 return GetFloors().FirstOrDefault(f => f.getKeeperNumber() == number);
             else
             {
-                throw new Exception("There is no such a floor"); 
+                throw new Exception("There is no such a floor");
             }
         }
 

@@ -24,12 +24,14 @@ namespace Models.Entities
             if (!started)
             {
                 ticksToNotify = ticksToContinue;
-                sim.TurnOnFireAlarm();
+                if(sim.TurnOnFireAlarm())
+                    sim.GetMainService().UpdateFireAlarm();
                 started = true;
             }
             else
             {
-                sim.TurnOffFireAlarm();
+                if(sim.TurnOffFireAlarm())
+                    sim.GetMainService().UpdateFireAlarm();
                 CountPermission = false;
             }
         }
