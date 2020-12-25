@@ -46,7 +46,9 @@
     <Compile Include="Entities\HumanFactory.cs" />
     <Compile Include="Entities\Human.cs" />
     <Compile Include="Entities\HumanCreator.cs" />
+    <Compile Include="Entities\Statistics\FireAlarmStatistics.cs" />
     <Compile Include="Entities\Statistics\HumanFullStatistics.cs" />
+    <Compile Include="Entities\Statistics\IFireAlarmStatistics.cs" />
     <Compile Include="Entities\Statistics\IHumanFullStatistics.cs" />
     <Compile Include="Entities\Statistics\ILiftStatistics.cs" />
     <Compile Include="Entities\Statistics\IStatistic.cs" />

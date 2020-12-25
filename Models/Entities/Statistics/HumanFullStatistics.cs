@@ -33,6 +33,11 @@ namespace Models.Entities.Statistics
 
         public decimal GetTotalWaitingTime() => totalWatingTime;
 
-        public decimal GetMeanWaitingTime() => totalWatingTime / countOfHumans;
+        public decimal GetMeanWaitingTime()
+        {
+            if(countOfHumans != 0)
+                return totalWatingTime / countOfHumans;
+            return 0;
+        }
     }
 }

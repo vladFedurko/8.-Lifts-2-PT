@@ -15,11 +15,11 @@ namespace Models.Entities
     {
         internal int TargetFloor { get; private set; }
 
-        internal LiftState liftState;
+        public LiftState liftState;
 
         private ILiftStatistics statistics;
 
-        internal enum LiftState
+        public enum LiftState
         {
             WaitClosed,
             WaitOpened,
@@ -37,13 +37,14 @@ namespace Models.Entities
 
         internal readonly int TICKS_TO_MOVE;
 
-        internal readonly int TICK_TO_WAIT;
+        internal readonly int TICKS_TO_WAIT;
 
         internal Lift(int liftNumber, int ticksToMove = 30, int ticksToWait = 30, int floor = 0) : base()
         {
             TICKS_TO_MOVE = ticksToMove;
             ticksToNotify = TICKS_TO_MOVE;
             this.LiftNumber = liftNumber;
+            TICKS_TO_WAIT = ticksToWait;
             Floor = floor;
             TargetFloor = floor;
             liftState = LiftState.WaitClosed;
@@ -54,19 +55,13 @@ namespace Models.Entities
         internal void StartMoving()
         {
             CountPermission = true;
+            this.ticksToNotify = TICKS_TO_MOVE;
             liftState = LiftState.Moving;
         }
 
         internal void SetTargetFloor(int floor)
         {
-            bool isDirUp = (this.TargetFloor - this.getKeeperFloor()) > 0;
             this.TargetFloor = floor;
-            if (isDirUp != ((this.TargetFloor - this.getKeeperFloor()) > 0))
-            {
-                statistics.DirectionChanged();
-                if (!this.IsNotEmpty())
-                    statistics.MovedWithoutHumans();
-            }
         }
 
         private void Move()
@@ -87,7 +82,11 @@ namespace Models.Entities
 
         internal void OpenDoor()
         {
+            statistics.DirectionChanged();
+            if (!this.IsNotEmpty())
+                statistics.MovedWithoutHumans();
             this.liftState = LiftState.WaitOpened;
+            this.ticksToNotify = TICKS_TO_WAIT;
             this.CountPermission = true;
         }
 

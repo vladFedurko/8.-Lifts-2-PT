@@ -18,7 +18,7 @@ namespace Models
                 {
                     Floor floor = data.GetFloorByNumber(lift.getKeeperFloor());
                     HumansMover.ExitLift(floor, lift);
-                    HumansMover.EnterLift(floor, lift, data.GetHumanFullStatistics());
+                    HumansMover.EnterLift(floor, lift, data.GetHumanStatistics());
                 }
             }
         }

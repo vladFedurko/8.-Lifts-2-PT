@@ -24,6 +24,14 @@ namespace Models.Services
         public IEnumerable<string> GetStatistics()
         {
             List<string> stats = new List<string>(10);
+            this.SetLiftStatistics(stats);
+            this.SetHumanStatistics(stats);
+            this.SetFireAlarmStatistics(stats);
+            return stats;
+        }
+
+        private void SetLiftStatistics(List<string> stats)
+        {
             string trips = "";
             string countOfCarriedHumans = "";
             decimal idleTrips = 0;
@@ -39,22 +47,35 @@ namespace Models.Services
                 countOfCarriedHumans += stat.GetCountOfCarriedHumans() + ", ";
                 idleTrips += stat.GetCountOfIdleMoves();
             }
-            idleTrips = idleTrips * 100 / totalTrips;
             stat = data.GetLifts().Last().GetStatistics();
             trips += stat.GetCountOfTrips() + ".";
+            totalTrips += stat.GetCountOfTrips();
+            totalCarriedHumans += stat.GetCountOfCarriedHumans();
             countOfCarriedHumans += stat.GetCountOfCarriedHumans() + ".";
+            idleTrips += stat.GetCountOfIdleMoves();
+            if (totalTrips != 0)
+                idleTrips = idleTrips * 100 / totalTrips;
+            else
+                idleTrips = 0;
 
             stats.Add(totalTrips.ToString());
             stats.Add(idleTrips.ToString());
             stats.Add(countOfCarriedHumans);
             stats.Add(trips);
             stats.Add(totalCarriedHumans.ToString());
-            stats.Add(data.GetHumanFullStatistics().GetMeanWaitingTime().ToString());
-            stats.Add(data.GetHumanFullStatistics().GetMaxWaitingTime().ToString());
-            stats.Add(data.GetHumanFullStatistics().GetTotalWaitingTime().ToString());
-            stats.Add("");
-            stats.Add("");
-            return stats;
+        }
+
+        private void SetHumanStatistics(List<string> stats)
+        {
+            stats.Add(data.GetHumanStatistics().GetMeanWaitingTime().ToString());
+            stats.Add(data.GetHumanStatistics().GetMaxWaitingTime().ToString());
+            stats.Add(data.GetHumanStatistics().GetTotalWaitingTime().ToString());
+        }
+
+        private void SetFireAlarmStatistics(List<string> stats)
+        {
+            stats.Add(data.GetFireAlarmStatistics().GetCountOfAlarms().ToString());
+            stats.Add(data.GetFireAlarmStatistics().GetTotalTimeOfAlarms().ToString());
         }
     }
 }

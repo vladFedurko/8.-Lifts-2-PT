@@ -16,13 +16,15 @@ namespace Models
         List<Floor> Floors = new List<Floor>();
         List<Lift> Lifts = new List<Lift>();
         private ISimulationParameters parameters;
-        private IHumanFullStatistics statistics;
+        private IHumanFullStatistics humanStatistics;
+        private IFireAlarmStatistics fireAlarmStatistics;
 
         public SystemData(ISimulationParameters parameters)
         {
             this.parameters = parameters;
             this.CreateKeepers();
-            this.statistics = new HumanFullStatistics();
+            this.humanStatistics = new HumanFullStatistics();
+            this.fireAlarmStatistics = new FireAlarmStatistics();
         }
 
         public void SetSimulationParameters(ISimulationParameters parameters)
@@ -78,10 +80,9 @@ namespace Models
             factories.Add(creator);
         }
 
-        public IHumanFullStatistics GetHumanFullStatistics()
-        {
-            return statistics;
-        }
+        public IHumanFullStatistics GetHumanStatistics() => humanStatistics;
+
+        public IFireAlarmStatistics GetFireAlarmStatistics() => fireAlarmStatistics;
 
         public void DoTick()
         {

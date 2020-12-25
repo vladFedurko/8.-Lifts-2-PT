@@ -16,10 +16,12 @@ namespace Models.Services
         {
             this.sim = sim;
         }
+
         public void StartAlarm()
         {
             sim.TurnOnFireAlarm();
         }
+
         public void StopAlarm()
         {
             sim.TurnOffFireAlarm();
