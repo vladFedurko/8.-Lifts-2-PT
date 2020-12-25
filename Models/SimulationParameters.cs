@@ -13,9 +13,9 @@ namespace Models
         public int LiftsCapacity { get; set; }
 
         public int LiftsCount { get; set; }
-
+        
         public int FloorsCount { get; set; }
-
+        
         public ILiftManager LiftManager { get; set; }
 
         public int SecondsToMove { get; set; }

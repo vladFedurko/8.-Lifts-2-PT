@@ -25,12 +25,12 @@ namespace Models.Services
         public void openGenerationTable(string filename)
         {
             string format = getFormat(filename);
-            if (format.Equals("txt"))
+            if (format.Equals(AText.Format))
             {
                 TextLoadGenTable textLoader = new TextLoadGenTable();
                 HumanCreationService.CreateHumanGenerationTable((DataTable)textLoader.Load(filename));
             }
-            else if (format.Equals("bin"))
+            else if (format.Equals(ABinary.Format))
             {
                 BinaryDeserializer binLoader = new BinaryDeserializer();
                 HumanCreationService.CreateHumanGenerationTable((DataTable)binLoader.Load(filename));
@@ -40,12 +40,12 @@ namespace Models.Services
         public void openLiftConfig(string filename)
         {
             string format = getFormat(filename);
-            if (format.Equals("txt"))
+            if (format.Equals(AText.Format))
             {
                 TextLoadLiftConf textLoader = new TextLoadLiftConf();
                 systemParametersService.SaveSystemParameters((SimulationParameters)textLoader.Load(filename));
             }
-            else if (format.Equals("bin"))
+            else if (format.Equals(ABinary.Format))
             {
                 BinaryDeserializer binLoader = new BinaryDeserializer();
                 systemParametersService.SaveSystemParameters((SimulationParameters)binLoader.Load(filename));
@@ -55,30 +55,26 @@ namespace Models.Services
         public void saveGenerationTable(string filename)
         {
             string format = getFormat(filename);
-            if (format.Equals("txt"))
+            if (format.Equals(AText.Format))
             {
-                TextSaveGenTable textLoader = new TextSaveGenTable();
-                textLoader.Save(filename,HumanCreationService.GetHumanGenerationTable());
+                new TextSaveGenTable().Save(filename,HumanCreationService.GetHumanGenerationTable());
             }
-            else if (format.Equals("bin"))
+            else if (format.Equals(ABinary.Format))
             {
-                BinarySerializer binLoader = new BinarySerializer();
-                binLoader.Save(filename, HumanCreationService.GetHumanGenerationTable());
+                new BinarySerializer().Save(filename, HumanCreationService.GetHumanGenerationTable());
             }
         }
 
         public void saveLiftConfig(string filename)
         {
             string format = getFormat(filename);
-            if (format.Equals("txt"))
+            if (format.Equals(AText.Format))
             {
-                TextSaveLiftConf textSaver = new TextSaveLiftConf();
-                textSaver.Save(filename, systemParametersService.GetSystemParameters());
+                new TextSaveLiftConf().Save(filename, systemParametersService.GetSystemParameters());
             }
-            else if (format.Equals("bin"))
+            else if (format.Equals(ABinary.Format))
             {
-                BinarySerializer binSaver = new BinarySerializer();
-                binSaver.Save(filename,systemParametersService.GetSystemParameters());
+                new BinarySerializer().Save(filename,systemParametersService.GetSystemParameters());
             }
         }
 

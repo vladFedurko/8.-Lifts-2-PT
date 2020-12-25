@@ -37,8 +37,6 @@ namespace Models.FileWork
                     {
                         DataRow row = dataTable.NewRow();
                         row.ItemArray = line.Split(' ');
-                        if (row.ItemArray.Length != 4)
-                            return null;
                         dataTable.Rows.Add(row);
                     }
                 }

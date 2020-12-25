@@ -9,5 +9,6 @@ namespace Models.FileWork
     abstract class ABinary : IFileFormat
     {
         public const string Filter = "Bin files(*.bin)|*.bin";
+        public const string Format = "bin";
     }
 }
