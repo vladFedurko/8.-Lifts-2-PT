@@ -25,7 +25,7 @@ namespace Models.FileWork
                         + dataTable.LiftsCapacity + " " 
                         + dataTable.LiftsCount+" "
                         +dataTable.SecondsToMove+" "
-                        +dataTable.SecondsToWait+" "
+                        +dataTable.SecondsToWait
                         );
                     Console.WriteLine("Save added "+ 
                         dataTable.FloorsCount+" "
@@ -33,7 +33,7 @@ namespace Models.FileWork
                         + dataTable.LiftsCapacity + " "
                         + dataTable.LiftsCount + " "
                         + dataTable.SecondsToMove + " "
-                        + dataTable.SecondsToWait + " ");
+                        + dataTable.SecondsToWait);
                 }
             }
         }

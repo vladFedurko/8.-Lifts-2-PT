@@ -10,6 +10,7 @@ using Models.Entities;
 using Models.FileWork;
 using Models.LiftManager;
 using Models.Services;
+using System.Reflection;
 
 namespace Models
 {
@@ -17,18 +18,27 @@ namespace Models
     {
         static void Main()
         {
-            DataTable dat;
-            InitTable(out dat);
-            DataRow row = dat.NewRow();
-            row.ItemArray = new object[] { 12, 23, 34, 45 };
-            dat.Rows.Add(row);
-            TextSaveGenTable b = new TextSaveGenTable();
-            b.Save("Ass.txt", dat);
-            TextLoadGenTable d = new TextLoadGenTable();
-            DataTable c = (DataTable)d.Load("Ass.txt");
-            foreach (DataRow row1 in c.Rows)
-                foreach (object a in row.ItemArray)
-                    Console.WriteLine(a);
+            Assembly a = Assembly.GetExecutingAssembly();
+            Assembly b = Assembly.GetEntryAssembly();
+            Assembly c = Assembly.GetCallingAssembly();
+            Assembly d = Assembly.GetAssembly(typeof(MinIdlingTimeLiftManager));
+            Assembly e = Assembly.Load("Models");
+            foreach(Type type in a.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            foreach (Type type in b.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            foreach (Type type in c.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            foreach (Type type in d.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            foreach (Type type in e.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            Console.ReadLine();
         }
         public static void InitTable(out DataTable dTable)
         {

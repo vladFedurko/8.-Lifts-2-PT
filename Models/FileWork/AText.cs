@@ -9,5 +9,6 @@ namespace Models.FileWork
     abstract class AText : IFileFormat
     {
         public const string Filter = "Text files(*.txt)|*.txt";
+        public const string Format = "txt";
     }
 }
