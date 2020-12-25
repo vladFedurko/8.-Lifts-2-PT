@@ -66,7 +66,14 @@ namespace Models.Entities
             }
         }
 
-        public String GetStatus()
+        public void OnFire() { FiniteFloor = 0; }
+
+        public decimal GetWaitingTime()
+        {
+            return (decimal)this.getCurrentTick() / TickTimer.TICKS_PER_SECOND;
+        }
+
+        public String GetStatus() //change to pattern State
         {
             String status;
             switch (this.state)
@@ -88,12 +95,12 @@ namespace Models.Entities
                     }
                 case HumanState.Disposing:
                     {
-                        status = "Delivered to the target floor";
+                        status = "Delivered to the target floor1";
                         break;
                     }
                 case HumanState.DisposeNow:
                     {
-                        status = "Delivered to the target floor";
+                        status = "Delivered to the target floor2";
                         break;
                     }
                 default:

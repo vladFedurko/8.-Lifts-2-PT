@@ -21,6 +21,7 @@ namespace Models.LiftManager
         public void ManageLifts(SystemData data)
         {
             this.DisposeHumanOnFloors(data);
+            HumansMover.MoveHumans(data);
             foreach (var lift in data.GetLifts())
             {
                 if (lift.liftState == Lift.LiftState.WaitClosed)
@@ -30,7 +31,7 @@ namespace Models.LiftManager
                 if (lift.liftState == Lift.LiftState.Moving && lift.TargetFloor == lift.getKeeperFloor())
                 {
                     lift.WaitWithOpenedDoor();
-                    lift.RemoveAllHumans();
+                    lift.RemoveFireHumans();
                 }
             }
         }
@@ -48,7 +49,7 @@ namespace Models.LiftManager
             //data.RemoveFactoriesOfType(new HumanFactory(0, 0, 1, null).GetType());
             foreach (var floor in data.GetFloors())
             {
-                floor.RemoveAllHumans();
+                floor.RemoveFireHumans();
             }
         }
     }

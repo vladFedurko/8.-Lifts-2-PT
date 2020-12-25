@@ -60,10 +60,13 @@ namespace Models.Entities
                         HumanNumberDown += 1;
             }
         }
-        internal void RemoveAllHumans()
+        internal void RemoveFireHumans()
         {
             if (Humans != null)
-                Humans.Clear();
+                foreach (Human h in Humans)
+                {
+                    h.Dispose();
+                }
             HumanNumberDown = 0;
             HumanNumberUp = 0;
         }

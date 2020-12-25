@@ -15,6 +15,7 @@ namespace Models
         protected ISimulationState simulationState; 
         protected TickTimer observer;
         protected IMainService mainService; //TODO class Service controller
+        bool stopped = true;
 
         public Simulation(int initialFloorsNumber, int initialLiftNumber, ILiftManager _strategy)
         {
@@ -51,6 +52,11 @@ namespace Models
             {
                 observer.Stop();
                 observer.ResetTime();
+                foreach (Lift lift in GetData().GetLifts())
+                    lift.Reset();
+                mainService.ShowDataInView(systemData);
+                TurnOffFireAlarm();
+                stopped = true;
                 return true;
             }
             return false;
@@ -59,6 +65,11 @@ namespace Models
         public void Start()
         {
             observer.Start();
+            if (stopped)
+            {
+                GetData().RemoveAllStatistics();
+                stopped = false;
+            }
         }
 
         public SystemData GetData() => systemData;
@@ -84,6 +95,8 @@ namespace Models
             if (simulationState == null)
             {
                 simulationState = new FireAlarm(systemData);
+                this.GetData().GetFireAlarmStatistics().SetStartTime(this.GetCurrentTime());
+                mainService.UpdateFireAlarm();
                 return true;
             }
             return false;
@@ -93,7 +106,9 @@ namespace Models
         {
             if (simulationState != null)
             {
-                simulationState?.ResetState(systemData);
+                simulationState.ResetState(systemData);
+                this.GetData().GetFireAlarmStatistics().SetEndTime(this.GetCurrentTime());
+                mainService.UpdateFireAlarm();
                 simulationState = null;
                 return true;
             }

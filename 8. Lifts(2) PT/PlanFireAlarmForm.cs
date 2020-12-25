@@ -56,7 +56,14 @@ namespace _8.Lifts_2__PT
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            this.PlanFireAlarm?.Invoke(dataTable);
+            try
+            {
+                this.PlanFireAlarm?.Invoke(dataTable);
+            }
+            catch (Exception exc) 
+            {
+                MessageBox.Show(exc.Message);
+            }
             this.Close();
         }
 

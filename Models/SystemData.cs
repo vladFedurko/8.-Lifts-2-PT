@@ -176,13 +176,20 @@ namespace Models
                 factories.Clear();
         }
 
+        internal void RemoveAllStatistics() {
+            this.humanStatistics = new HumanFullStatistics();
+            this.fireAlarmStatistics = new FireAlarmStatistics();
+            foreach (Lift lift in Lifts)
+                lift.RemoveStatistics();
+        }
+
         public Floor GetFloorByNumber(int number)
         {
             if (number >= 0 && number < GetFloors().Count())
                 return GetFloors().FirstOrDefault(f => f.getKeeperNumber() == number);
             else
             {
-                throw new Exception("There is no such a floor");
+                throw new Exception($"There is no such a floor:{number+1}");
             }
         }
 

@@ -36,7 +36,12 @@ namespace _8.Lifts_2__PT
 
         private void ExportStatistics(object sender, EventArgs e)
         {
-            //TODO
+            if(saveStatFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = saveStatFileDialog.FileName;
+            // сохраняем текст в файл
+            this.ExportToFile?.Invoke(filename);
         }
     }
 }

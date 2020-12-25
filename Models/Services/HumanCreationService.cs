@@ -24,7 +24,7 @@ namespace Models.Services
         public void CreateHuman(int initialFloor, int finiteFloor, int inSeconds)
         {
             if (initialFloor == finiteFloor)
-                return;//throw new Exception("Person is already on the destination floor!");
+                throw new Exception("Person is already on the destination floor!");
             data.CreateHuman(initialFloor, finiteFloor, inSeconds);
         }
         public void InitTable(out DataTable dTable)
@@ -50,6 +50,7 @@ namespace Models.Services
         {
             DataRowCollection rows = dataTable?.Rows;
             int ExcCount = 0;
+            string Exceptions = "";
             data.RemoveFactoriesOfType(type);
             if (rows != null)
                 foreach (DataRow row in rows)
@@ -64,6 +65,7 @@ namespace Models.Services
                         )
                     {
                         ExcCount++;
+                        Exceptions += "Some data is missed!\n";
                         continue;
                     }
                     int a0 = Int32.Parse(a[0].ToString());
@@ -73,15 +75,25 @@ namespace Models.Services
                     if (a1 == a2)
                     {
                         ExcCount++;
+                        Exceptions +="Person is already on the destination floor!\n";
                         continue;
                     }
-                    Floor floor = data.GetFloorByNumber(a1 - 1);
-                    HumanFactory humanFactory = new HumanFactory(a0,
-                        a2 - 1, a3 * TickTimer.TICKS_PER_SECOND, floor);
-                    data.AddHumanFactory(humanFactory);
-                    Console.WriteLine($"Factory added {a[0]} {a[1]} {a[2]} {a[3]}");
+                    try
+                    {
+                        Floor floor = data.GetFloorByNumber(a1 - 1);
+                        Floor Finitefloor = data.GetFloorByNumber(a2 - 1);
+                        HumanFactory humanFactory = new HumanFactory(a0,
+                            a2 - 1, a3 * TickTimer.TICKS_PER_SECOND, floor);
+                        data.AddHumanFactory(humanFactory);
+                        Console.WriteLine($"Factory added {a[0]} {a[1]} {a[2]} {a[3]}");
+                    }
+                    catch (Exception e) {
+                        Exceptions += e.Message;
+                        Exceptions += "\n";
+                    }
                 }
-            //throw new Exception($"{ExcCount} rows deleted according to rules");
+            if(!(Exceptions.Equals("") && ExcCount==0))
+                throw new Exception($"{ExcCount} rows deleted according to rules:\n"+ Exceptions);
         }
 
         public Floor GetFloorByNumber(int num)

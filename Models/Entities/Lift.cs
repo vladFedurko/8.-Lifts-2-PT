@@ -50,7 +50,13 @@ namespace Models.Entities
             CountPermission = true;
             liftState = LiftState.Moving;
         }
-        internal void SetTargetFloor(int floor) => TargetFloor = floor;
+        internal void Reset() { if(data.Count == 0) Floor = 0; }
+
+        internal void SetTargetFloor(int floor)
+        {
+            this.TargetFloor = floor;
+        }
+
         private void Move()
         {
             if (liftState == LiftState.Moving)
@@ -113,11 +119,12 @@ namespace Models.Entities
                 humanNumber--;
             }
         }
-        internal void RemoveAllHumans()
+        internal void RemoveStatistics() { statistics = new LiftStatistics(); }
+        internal void RemoveFireHumans()
         {
             if (data != null)
-                data.Clear();
-            humanNumber = 0;
+                foreach (Human h in data)
+                    h.OnFire();
         }
         public IEnumerable<Human> getHumans()
         {

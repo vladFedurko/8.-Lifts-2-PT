@@ -47,6 +47,7 @@ namespace Models.Services
             DataRowCollection rows = dataTable?.Rows;
             SystemData data = sim.GetData();
             int ExcCount = 0;
+            string Exceptions = "";
             data.RemoveFactoriesOfType(type);
             if (rows != null)
                 foreach (DataRow row in rows)
@@ -58,6 +59,7 @@ namespace Models.Services
                         a[1].GetType() == DBNull.Value.GetType())
                     {
                         ExcCount++;
+                        Exceptions += "Person is already on the destination floor!\n";
                         continue;
                     }
                     int a0 = Int32.Parse(a[0].ToString());
@@ -67,7 +69,8 @@ namespace Models.Services
                     data.AddFactory(caller);
                     Console.WriteLine($"Caller added {a[0]} {a[1]}");
                 }
-            //throw new Exception($"{ExcCount} rows deleted according to rules");
+            if(!(ExcCount==0 && Exceptions.Equals("")))
+                throw new Exception($"{ExcCount} rows deleted according to reasons:\n"+ Exceptions);
         }
 
         public DataTable GetFireAlarmTable()

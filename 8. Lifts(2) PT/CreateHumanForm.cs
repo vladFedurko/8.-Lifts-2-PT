@@ -23,7 +23,11 @@ namespace _8.Lifts_2__PT
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            this.CreateHuman?.Invoke((int)initialFloorSelector.Value, (int)finiteFloorSelector.Value, (int)inSecondsSelector.Value);
+            try
+            {
+                this.CreateHuman?.Invoke((int)initialFloorSelector.Value, (int)finiteFloorSelector.Value, (int)inSecondsSelector.Value);
+            }
+            catch (Exception exc) { MessageBox.Show(exc.Message); }
             this.Close();
         }
 

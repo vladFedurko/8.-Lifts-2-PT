@@ -12,14 +12,16 @@ namespace Models.Services
     {
         IHumanCreationService HumanCreationService;
         ISystemParametersService systemParametersService;
+        IStatisticsService statisticsService;
         public FileWorkService(SystemData data)
         {
             HumanCreationService = new HumanCreationService(data);
             systemParametersService = new SystemParametersService(data);
+            statisticsService = new StatisticsService(data);
         }
         public string getFilter()
         {
-            return AText.Filter +"|"+ ABinary.Filter;
+            return AText.Filter + "|" + ABinary.Filter;
         }
 
         public void openGenerationTable(string filename)
@@ -57,7 +59,7 @@ namespace Models.Services
             string format = getFormat(filename);
             if (format.Equals(AText.Format))
             {
-                new TextSaveGenTable().Save(filename,HumanCreationService.GetHumanGenerationTable());
+                new TextSaveGenTable().Save(filename, HumanCreationService.GetHumanGenerationTable());
             }
             else if (format.Equals(ABinary.Format))
             {
@@ -74,7 +76,20 @@ namespace Models.Services
             }
             else if (format.Equals(ABinary.Format))
             {
-                new BinarySerializer().Save(filename,systemParametersService.GetSystemParameters());
+                new BinarySerializer().Save(filename, systemParametersService.GetSystemParameters());
+            }
+        }
+
+        public void saveStatistics(string filename)
+        {
+            string format = getFormat(filename);
+            if (format.Equals(AText.Format))
+            {
+                new TextSaveStatistics().Save(filename, statisticsService.GetStatistics());
+            }
+            else if (format.Equals(ABinary.Format))
+            {
+                new BinarySerializer().Save(filename, statisticsService.GetStatistics());
             }
         }
 
