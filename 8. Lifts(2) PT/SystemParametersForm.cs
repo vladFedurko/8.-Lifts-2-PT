@@ -28,7 +28,7 @@ namespace _8.Lifts_2__PT
             par.FloorsCount = (int)floorsCountSelecter.Value;
             par.LiftsCount = (int)liftsCountSelecter.Value;
             par.SecondsToMove = (int)liftSpeedSelecter.Value;
-            par.SevondsToWait = (int)liftWaitingTimeSelecter.Value;
+            par.SecondsToWait = (int)liftWaitingTimeSelecter.Value;
             par.LiftsCapacity = (int)liftCapacitySelecter.Value;
             if(StrategySelecter.SelectedIndex == 0)
             {
@@ -62,7 +62,7 @@ namespace _8.Lifts_2__PT
             floorsCountSelecter.Value = par.FloorsCount;
             liftsCountSelecter.Value = par.LiftsCount;
             liftSpeedSelecter.Value = par.SecondsToMove;
-            liftWaitingTimeSelecter.Value = par.SevondsToWait;
+            liftWaitingTimeSelecter.Value = par.SecondsToWait;
             liftCapacitySelecter.Value = par.LiftsCapacity;
             if(par.LiftManager is MinWaitingTimeLiftManager)
             {

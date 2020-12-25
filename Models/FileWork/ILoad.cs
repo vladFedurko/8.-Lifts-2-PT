@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace Models.FileWork
 {
-    public interface ITickable
+    interface ILoad : IFileWork
     {
-        void DoTick();
+        object Load(string path);
     }
 }

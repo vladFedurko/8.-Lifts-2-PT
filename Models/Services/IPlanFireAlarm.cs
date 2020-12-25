@@ -12,5 +12,6 @@ namespace Models.Services
         void StartAlarm();
         void StopAlarm();
         void CreateAlarmRule(DataTable data);
+        DataTable GetFireAlarmTable();
     }
 }

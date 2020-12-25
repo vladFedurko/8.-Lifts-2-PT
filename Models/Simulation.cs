@@ -22,7 +22,7 @@ namespace Models
             par.LiftsCount = initialLiftNumber;
             par.FloorsCount = initialFloorsNumber;
             par.SecondsToMove = 3;
-            par.SevondsToWait = 3;
+            par.SecondsToWait = 3;
             par.LiftManager = _strategy;
             par.LiftsCapacity = 10;
             systemData = new SystemData(par);

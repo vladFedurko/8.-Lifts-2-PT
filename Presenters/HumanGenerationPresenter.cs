@@ -29,6 +29,10 @@ namespace Presenters
         {
             _service.CreateHumanGenerationTable(dataTable); //отсчет с 0
         }
+        public DataTable LoadTable()
+        {
+           return _service.GetHumanGenerationTable();
+        }
 
     }
 }

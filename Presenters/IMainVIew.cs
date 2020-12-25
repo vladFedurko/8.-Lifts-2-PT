@@ -23,9 +23,5 @@ namespace Presenters
         event Action StartSimulation;
         event Action PauseSimulation;
         event Action<decimal> SetSimulationSpeed;
-        event Action LoadHumanGenerationStrategy;
-        event Action LoadLiftConfigurationStrategy;
-        event Action SaveHumanGenerationStrategy;
-        event Action SaveLiftConfigurationStrategy;
     }
 }

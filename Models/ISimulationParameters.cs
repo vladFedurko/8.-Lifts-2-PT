@@ -19,6 +19,6 @@ namespace Models
 
         int SecondsToMove { get; set; }
 
-        int SevondsToWait { get; set; }
+        int SecondsToWait { get; set; }
     }
 }

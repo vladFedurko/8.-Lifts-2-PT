@@ -9,10 +9,11 @@ using System.Linq;
 using Models.Services;
 using System.Threading;
 using Models.LiftManager;
+using System.Data;
 
 namespace _8.Lifts_2__PT
 {
-    public partial class SimulationForm : Form, IMainView
+    public partial class SimulationForm : Form, IMainView, IFileWorkView
     {
         private bool isSimulationLoaded = false;
 
@@ -30,7 +31,8 @@ namespace _8.Lifts_2__PT
             if (!isSimulationLoaded)
             {
                 simulation = new Simulation(5, 2, new MinWaitingTimeLiftManager());
-                MainPresenter pres = new MainPresenter(this, new MainService(simulation));
+                _ = new MainPresenter(this, new MainService(simulation));
+                _ = new FileWorkPresenter(this,simulation.GetData());
                 isSimulationLoaded = true;
             }
         }
@@ -95,8 +97,8 @@ namespace _8.Lifts_2__PT
 
         public void setTime(int Time)
         {
-            if (statusStrip1.InvokeRequired)
-                statusStrip1.Invoke(new UpdateTime((int Time) => { TimeStatusLabel.Text = "Time:" + Time.ToString(); }), Time);
+            if (statusStrip.InvokeRequired)
+                statusStrip.Invoke(new UpdateTime((int Time) => { TimeStatusLabel.Text = "Time:" + Time.ToString(); }), Time);
             else
                 TimeStatusLabel.Text = "Time:" + Time.ToString();
         }
@@ -105,8 +107,8 @@ namespace _8.Lifts_2__PT
 
         public void updateAlarm()
         {
-            if (statusStrip1.InvokeRequired)
-                statusStrip1.Invoke(new UpdateAlarm(() => {
+            if (statusStrip.InvokeRequired)
+                statusStrip.Invoke(new UpdateAlarm(() => {
                     if (fireAlarmButton.Text.Equals("Fire alarm"))
                     {
                         fireAlarmButton.Text = "Stop alarm";
@@ -208,10 +210,10 @@ namespace _8.Lifts_2__PT
         public event Action StartSimulation;
         public event Action PauseSimulation;
         public event Action<decimal> SetSimulationSpeed;
-        public event Action SaveHumanGenerationStrategy;
-        public event Action SaveLiftConfigurationStrategy;
-        public event Action LoadHumanGenerationStrategy;
-        public event Action LoadLiftConfigurationStrategy;
+        public event Action<string> SaveHumanGenerationStrategy;
+        public event Action<string> SaveLiftConfigurationStrategy;
+        public event Action<string> LoadHumanGenerationStrategy;
+        public event Action<string> LoadLiftConfigurationStrategy;
 
         private Label CreateTableLabel(string str)
         {
@@ -303,7 +305,7 @@ namespace _8.Lifts_2__PT
         private void HumanGenerationClick(object sender, EventArgs e)
         {
             HumanGenerationForm form = new HumanGenerationForm();
-            new HumanGenerationPresenter(form, new HumanCreationService(simulation.GetData()));
+            form.LoadTable(new HumanGenerationPresenter(form, new HumanCreationService(simulation.GetData()))?.LoadTable());
             form.Show();
         }
 
@@ -316,7 +318,7 @@ namespace _8.Lifts_2__PT
         private void PlanFireAlarmClick(object sender, EventArgs e)
         {
             PlanFireAlarmForm form = new PlanFireAlarmForm();
-            new PlanFirePresenter(form, new FireAlarmService(simulation));
+            form.LoadTable(new PlanFirePresenter(form, new FireAlarmService(simulation))?.LoadTable());
             form.Show();
         }
 
@@ -324,7 +326,7 @@ namespace _8.Lifts_2__PT
         {
             SystemParametersForm form = new SystemParametersForm();
             SystemParametersPresenter pres = new SystemParametersPresenter(form,
-                new SystemParametersService(simulation), simulation.GetMainService());
+                new SystemParametersService(simulation.GetData()), simulation.GetMainService());
             pres.GetParameters();
             form.Show();
         }
@@ -342,25 +344,52 @@ namespace _8.Lifts_2__PT
             new HumanStatusPresenter(form, new HumanCreationService(simulation.GetData()));
             form.Show();
         }
+        public void setFilter(string filter) 
+        {
+            saveGeneratedFileDialog.Filter += filter;
+            saveLiftFileDialog.Filter += filter;
+            openGenerationFileDialog.Filter += filter;
+            openLiftFileDialog.Filter += filter;
+        }
 
         private void SaveHumanGenerationClick(object sender, EventArgs e)
         {
-            this.SaveHumanGenerationStrategy?.Invoke();
+            if (saveGeneratedFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = saveGeneratedFileDialog.FileName;
+            // сохраняем текст в файл
+            this.SaveHumanGenerationStrategy?.Invoke(filename);
         }
 
         private void LoadHumanGenerationClick(object sender, EventArgs e)
         {
-            this.LoadHumanGenerationStrategy?.Invoke();
+            if (openGenerationFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = openGenerationFileDialog.FileName;
+            // читаем файл в строку
+            this.LoadHumanGenerationStrategy?.Invoke(filename);
         }
 
         private void SaveLiftConfigurationClick(object sender, EventArgs e)
         {
-            this.SaveLiftConfigurationStrategy?.Invoke();
+            if (saveLiftFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = saveLiftFileDialog.FileName;
+            // читаем файл в строку
+            this.SaveLiftConfigurationStrategy?.Invoke(filename);
         }
 
         private void LoadLiftConfiguration(object sender, EventArgs e)
         {
-            this.LoadLiftConfigurationStrategy?.Invoke();
+            if (openLiftFileDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // получаем выбранный файл
+            string filename = openLiftFileDialog.FileName;
+            // читаем файл в строку
+            this.LoadLiftConfigurationStrategy?.Invoke(filename);
         }
 
         public void ShowForm()

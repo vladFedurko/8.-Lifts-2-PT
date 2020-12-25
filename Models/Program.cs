@@ -7,8 +7,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Models.Entities;
+using Models.FileWork;
 using Models.LiftManager;
 using Models.Services;
+using System.Reflection;
 
 namespace Models
 {
@@ -16,23 +18,39 @@ namespace Models
     {
         static void Main()
         {
-            DataTable dataTable =new DataTable();
-            DataColumn a = new DataColumn();
-            DataColumn b = new DataColumn();
-            dataTable.Columns.Add(a);
-            dataTable.Columns.Add(b);
-            DataRow row = dataTable.NewRow();
-            //row.ItemArray = new object[] { 1, 2 };
-            dataTable.Rows.Add(row);
-            Simulation sim = new Simulation(2, 1, new MinWaitingTimeLiftManager());
-            sim.GetData().AddFactory(new AlarmCaller(sim, 50, 30));
-            FireAlarmService serv = new FireAlarmService(sim);
-            serv.ParseDataTable(dataTable);
-            sim.Start();
+            Assembly a = Assembly.GetExecutingAssembly();
+            Assembly b = Assembly.GetEntryAssembly();
+            Assembly c = Assembly.GetCallingAssembly();
+            Assembly d = Assembly.GetAssembly(typeof(MinIdlingTimeLiftManager));
+            Assembly e = Assembly.Load("Models");
+            foreach(Type type in a.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            foreach (Type type in b.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            foreach (Type type in c.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            foreach (Type type in d.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            foreach (Type type in e.GetTypes())
+                Console.WriteLine(type.FullName);
+            Console.WriteLine();
+            Console.ReadLine();
         }
-        private static void tick(object a)
+        public static void InitTable(out DataTable dTable)
         {
-            ((SystemData)a).DoTick();
+            dTable = new DataTable();
+            DataColumn numberOfGeneratedPeopleColumn = new DataColumn("Number of generated humans", Type.GetType("System.Int32"));
+            DataColumn initialFloorColumn = new DataColumn("Initial floor", Type.GetType("System.Int32"));
+            DataColumn finiteFloorColumn = new DataColumn("Finite floor", Type.GetType("System.Int32"));
+            DataColumn inSecondsColumn = new DataColumn("In (seconds)", Type.GetType("System.Int32"));
+            dTable.Columns.AddRange(new DataColumn[] {numberOfGeneratedPeopleColumn,
+                initialFloorColumn,
+                finiteFloorColumn,
+                inSecondsColumn});
         }
     }
 }
