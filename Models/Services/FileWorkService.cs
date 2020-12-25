@@ -87,7 +87,7 @@ namespace Models.Services
             {
                 new TextSaveStatistics().Save(filename, statisticsService.GetStatistics());
             }
-            else if (format.Equals(ABinary.Format))
+            else if (format.Equals(ABinary.Format))//не прочитаем,нету метода LoadStatistics, поэтому не использовать
             {
                 new BinarySerializer().Save(filename, statisticsService.GetStatistics());
             }

@@ -83,6 +83,7 @@ namespace Models
                 systemData.GetParameters().LiftManager.ManageLifts(systemData);
             mainService.ShowDataInView(systemData);
             mainService.UpdateClock(observer.getCurrentTime());
+            mainService.UpdateCarriedHumans(GetData().getCarriedHumansNumber());
         }
 
         public decimal GetCurrentTime()

@@ -161,15 +161,17 @@ namespace Models.LiftManager
                 {
                     if (Math.Abs(lift.getKeeperFloor() - h.FiniteFloor) < Math.Abs(lift.getKeeperFloor() - nearestFloor))
                         nearestFloor = h.FiniteFloor;
-#if DEBUG
+
                     if (dir != (h.FiniteFloor > lift.getKeeperFloor()))
                     {
                         Console.WriteLine("Hello world from LiftMan");
+#if DEBUG
                         throw new Exception("MODEL: MinWaitingTimeStrategy: IsChoosenDirectionUp: Not all humans go in same direction!");
-                    }
 #endif
+                    }
+
                 }
-                return nearestFloor;
+                    return nearestFloor;
             }
             return lift.getKeeperFloor();
         }

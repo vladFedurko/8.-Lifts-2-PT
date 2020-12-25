@@ -63,6 +63,7 @@
             this.saveLiftFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openGenerationFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveGeneratedFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.HumanStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSelecter)).BeginInit();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -187,7 +188,8 @@
             // 
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TimeStatusLabel});
+            this.TimeStatusLabel,
+            this.HumanStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 538);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
@@ -379,6 +381,12 @@
             // 
             this.openGenerationFileDialog.FileName = "openFileDialog1";
             // 
+            // HumanStatusLabel
+            // 
+            this.HumanStatusLabel.Name = "HumanStatusLabel";
+            this.HumanStatusLabel.Size = new System.Drawing.Size(97, 17);
+            this.HumanStatusLabel.Text = "StatusOfHumans";
+            // 
             // SimulationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,6 +453,7 @@
         private System.Windows.Forms.SaveFileDialog saveLiftFileDialog;
         private System.Windows.Forms.OpenFileDialog openGenerationFileDialog;
         private System.Windows.Forms.SaveFileDialog saveGeneratedFileDialog;
+        private System.Windows.Forms.ToolStripStatusLabel HumanStatusLabel;
     }
 }
 

@@ -36,6 +36,15 @@ namespace Models
             Lifts = new List<Lift>(parameters.LiftsCount);
             this.CreateKeepers();
         }
+        public int getCarriedHumansNumber() 
+        { 
+            int i = 0;
+            foreach (Lift lift in Lifts) 
+            {
+                i += lift.GetStatistics().GetCountOfCarriedHumans();
+            }
+            return i;
+        }
 
         public ISimulationParameters GetParameters()
         {

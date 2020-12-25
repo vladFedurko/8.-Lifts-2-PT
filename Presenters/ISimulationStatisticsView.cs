@@ -11,5 +11,6 @@ namespace Presenters
         event Action<string> ExportToFile;
 
         void LoadStatistics(IEnumerable<string> stats);
+        public void setFilter(string filter);
     }
 }

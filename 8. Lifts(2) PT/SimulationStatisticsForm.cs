@@ -41,7 +41,10 @@ namespace _8.Lifts_2__PT
         {
             this.Show();
         }
-
+        public void setFilter(string filter)
+        {
+            saveStatFileDialog.Filter += filter;
+        }
         private void CancelStatistics(object sender, EventArgs e)
         {
             this.Close();

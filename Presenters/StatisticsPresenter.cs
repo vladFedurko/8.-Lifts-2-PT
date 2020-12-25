@@ -9,17 +9,18 @@ namespace Presenters
 {
     public class StatisticsPresenter
     {
-        private ISimulationStatisticsView _veiw;
+        private ISimulationStatisticsView _view;
         private IStatisticsService _statisticsService;
         private IFileWorkService _fileWorkService;
 
         public StatisticsPresenter(ISimulationStatisticsView veiw, IStatisticsService statisticsService,IFileWorkService fileWorkService)
         {
-            _veiw = veiw;
+            _view = veiw;
             _statisticsService = statisticsService;
             _fileWorkService = fileWorkService;
-            _veiw.LoadStatistics(statisticsService.GetStatistics());
-            _veiw.ExportToFile += this.ExportToFile;
+            _view.LoadStatistics(statisticsService.GetStatistics());
+            _view.setFilter(_fileWorkService.getFilter());
+            _view.ExportToFile += this.ExportToFile;
         }
 
         public void ExportToFile(string path)

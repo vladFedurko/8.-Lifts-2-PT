@@ -60,6 +60,10 @@ namespace Models.Services
         {
             this.UpdateTime.Invoke(time);
         }
+        public void UpdateCarriedHumans(int number)
+        {
+            this.UpdateNumberOfCarriedHumans.Invoke(number);
+        }
         public void UpdateFireAlarm()
         {
             this.UpdateAlarm.Invoke();
@@ -82,6 +86,7 @@ namespace Models.Services
 
         public event Action<SystemData> UpdateSystemData;
         public event Action<int> UpdateTime;
+        public event Action<int> UpdateNumberOfCarriedHumans;
         public event Action UpdateAlarm;
     }
 }
