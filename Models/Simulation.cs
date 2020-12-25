@@ -51,6 +51,7 @@ namespace Models
             {
                 observer.Stop();
                 observer.ResetTime();
+                TurnOffFireAlarm();
                 return true;
             }
             return false;
@@ -74,7 +75,7 @@ namespace Models
             mainService.UpdateClock(observer.getCurrentTime());
         }
 
-        public int GetCurrentTime()
+        public decimal GetCurrentTime()
         {
             return observer.getCurrentTime();
         }
@@ -84,6 +85,7 @@ namespace Models
             if (simulationState == null)
             {
                 simulationState = new FireAlarm(systemData);
+                this.GetData().GetFireAlarmStatistics().SetStartTime(this.GetCurrentTime());
                 return true;
             }
             return false;
@@ -93,7 +95,8 @@ namespace Models
         {
             if (simulationState != null)
             {
-                simulationState?.ResetState(systemData);
+                simulationState.ResetState(systemData);
+                this.GetData().GetFireAlarmStatistics().SetEndTime(this.GetCurrentTime());
                 simulationState = null;
                 return true;
             }

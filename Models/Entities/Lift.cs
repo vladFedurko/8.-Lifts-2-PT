@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Models.Entities.Statistics;
 
 namespace Models.Entities
 {
@@ -15,6 +16,9 @@ namespace Models.Entities
         internal int TargetFloor { get; private set; }
 
         public LiftState liftState;
+
+        private ILiftStatistics statistics;
+
         public enum LiftState
         {
             WaitClosed,
@@ -33,24 +37,33 @@ namespace Models.Entities
 
         internal readonly int TICKS_TO_MOVE;
 
-        internal readonly int TICK_TO_WAIT;
+        internal readonly int TICKS_TO_WAIT;
 
         internal Lift(int liftNumber, int ticksToMove = 30, int ticksToWait = 30, int floor = 0) : base()
         {
             TICKS_TO_MOVE = ticksToMove;
             ticksToNotify = TICKS_TO_MOVE;
             this.LiftNumber = liftNumber;
+            TICKS_TO_WAIT = ticksToWait;
             Floor = floor;
             TargetFloor = floor;
             liftState = LiftState.WaitClosed;
+            statistics = new LiftStatistics();
             CountPermission = false;
         }
+
         internal void StartMoving()
         {
             CountPermission = true;
+            this.ticksToNotify = TICKS_TO_MOVE;
             liftState = LiftState.Moving;
         }
-        internal void SetTargetFloor(int floor) => TargetFloor = floor;
+
+        internal void SetTargetFloor(int floor)
+        {
+            this.TargetFloor = floor;
+        }
+
         private void Move()
         {
             if (liftState == LiftState.Moving)
@@ -69,7 +82,11 @@ namespace Models.Entities
 
         internal void OpenDoor()
         {
+            statistics.DirectionChanged();
+            if (!this.IsNotEmpty())
+                statistics.MovedWithoutHumans();
             this.liftState = LiftState.WaitOpened;
+            this.ticksToNotify = TICKS_TO_WAIT;
             this.CountPermission = true;
         }
 
@@ -81,7 +98,7 @@ namespace Models.Entities
 
         public void AddHumans(Human a)
         {
-            if ((Human)a != null)
+            if (a != null)
             {
                 data.Add(a);
                 a.ChangeState();
@@ -97,18 +114,23 @@ namespace Models.Entities
                     AddHumans(humans);
                 }
         }
+
         public void RemoveSomeHumans(Predicate<Human> pred)
         {
             if (pred != null && data.Count > 0)
             {
+                int humansBefore = data.Count;
                 data.RemoveWhere(pred);
                 humanNumber = data.Count;
+                statistics.HumansCarried(humansBefore - data.Count);
             }
         }
+
         public void RemoveHumans(Human humans)
         {
             if (humans != null && data.Contains(humans))
             {
+                statistics.HumansCarried(1);
                 data.Remove(humans);
                 humanNumber--;
             }
@@ -147,11 +169,13 @@ namespace Models.Entities
             }
         }
 
+        public ILiftStatistics GetStatistics() => statistics;
+
         public int getHumanNumber() => humanNumber;
 
         public bool IsNotEmpty()
         {
-            return data.Count>0;
+            return data.Count > 0;
         }
     }
 }

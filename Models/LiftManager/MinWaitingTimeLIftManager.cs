@@ -59,7 +59,7 @@ namespace Models.LiftManager
             }
             foreach (var fl in data.GetFloors())
             {
-                if (targetFloorForLifts.Contains(fl.getKeeperNumber()) && fl.getHumanNumberUp() != 0 && fl.getHumanNumberDown() != 0)
+                if (targetFloorForLifts.Contains(fl.getKeeperNumber()) && fl.getHumanNumberUp() == 0 && fl.getHumanNumberDown() == 0)
                     continue;
                 int distance = Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor());
                 if (distance != 0)

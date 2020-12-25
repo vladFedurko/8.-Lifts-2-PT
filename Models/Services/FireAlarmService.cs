@@ -28,10 +28,12 @@ namespace Models.Services
             dTable.Columns.Add(startColumn);
             dTable.Columns.Add(finiteColumn);
         }
+
         public void StartAlarm()
         {
             sim.TurnOnFireAlarm();
         }
+
         public void StopAlarm()
         {
             sim.TurnOffFireAlarm();

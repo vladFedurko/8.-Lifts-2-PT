@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models.Entities.Statistics;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,12 +11,14 @@ namespace Models.Entities
     public class Human : AResettable
     { 
         internal HumanState state { get; private set; }
-
+#if (DEBUG)
         public void setStateToOnfloors() { state = HumanState.OnFloor; }//do not use this method in project
         //only for testing without timer
+#endif
 
         const int TICKS_TO_BREATHE = 30;
         const int TICKS_TO_DISPOSE = 30;
+
         internal enum HumanState 
         {
             Created,
@@ -52,7 +55,9 @@ namespace Models.Entities
                 this.Dispose();
             }
             if (state == HumanState.OnFloor)
-               state = HumanState.InLift;
+            {
+                state = HumanState.InLift;
+            }
         }
 
         protected override void Notify()
@@ -66,7 +71,12 @@ namespace Models.Entities
             }
         }
 
-        public String GetStatus()
+        public decimal GetWaitingTime()
+        {
+            return (decimal)this.getCurrentTick() / TickTimer.TICKS_PER_SECOND;
+        }
+
+        public String GetStatus() //change to pattern State
         {
             String status;
             switch (this.state)

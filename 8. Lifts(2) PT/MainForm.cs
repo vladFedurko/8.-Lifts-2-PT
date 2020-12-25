@@ -264,12 +264,14 @@ namespace _8.Lifts_2__PT
 
         private void StopSimulationClick(object sender, EventArgs e)
         {
-            if(StopSimulation.Invoke())
-            startButton.Text = "Start";
-            SystemParametersMenuItem.Enabled = true;
-            PauseMenuItem.Enabled = false;
-            StartMenuItem.Enabled = true;
-            StatisticMenuItem.Enabled = true;
+            if (StopSimulation.Invoke())
+            {
+                startButton.Text = "Start";
+                SystemParametersMenuItem.Enabled = true;
+                PauseMenuItem.Enabled = false;
+                StartMenuItem.Enabled = true;
+                StatisticMenuItem.Enabled = true;
+            }
         }
 
         private void FireAlarmClick(object sender, EventArgs e)
@@ -331,7 +333,9 @@ namespace _8.Lifts_2__PT
 
         private void StatisticsClick(object sender, EventArgs e)
         {
-
+            SimulationStatisticsForm form = new SimulationStatisticsForm();
+            new StatisticsPresenter(form, new StatisticsService(simulation.GetData()));
+            form.Show();
         }
 
         private void HumanStatusClick(object sender, EventArgs e)
