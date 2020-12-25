@@ -46,6 +46,13 @@
     <Compile Include="Entities\HumanFactory.cs" />
     <Compile Include="Entities\Human.cs" />
     <Compile Include="Entities\HumanCreator.cs" />
+    <Compile Include="Entities\Statisctics\FireAlarmStatistics.cs" />
+    <Compile Include="Entities\Statisctics\HumanFullStatistics.cs" />
+    <Compile Include="Entities\Statisctics\IFireAlarmStatistics.cs" />
+    <Compile Include="Entities\Statisctics\IHumanFullStatistics.cs" />
+    <Compile Include="Entities\Statisctics\ILiftStatistics.cs" />
+    <Compile Include="Entities\Statisctics\IStatistic.cs" />
+    <Compile Include="Entities\Statisctics\LiftStatistics.cs" />
     <Compile Include="FileWork\ABinary.cs" />
     <Compile Include="FileWork\ABinaryLoad.cs" />
     <Compile Include="FileWork\ABinarySave.cs" />
@@ -62,13 +69,6 @@
     <Compile Include="FileWork\TextLoadLiftConf.cs" />
     <Compile Include="FileWork\TextSaveGenTable.cs" />
     <Compile Include="FileWork\TextSaveLiftConf.cs" />
-    <Compile Include="Entities\Statistics\FireAlarmStatistics.cs" />
-    <Compile Include="Entities\Statistics\HumanFullStatistics.cs" />
-    <Compile Include="Entities\Statistics\IFireAlarmStatistics.cs" />
-    <Compile Include="Entities\Statistics\IHumanFullStatistics.cs" />
-    <Compile Include="Entities\Statistics\ILiftStatistics.cs" />
-    <Compile Include="Entities\Statistics\IStatistic.cs" />
-    <Compile Include="Entities\Statistics\LiftStatistics.cs" />
     <Compile Include="FileWork\TextSaveStatistics.cs" />
     <Compile Include="HumansMover.cs" />
     <Compile Include="ITickable.cs" />
