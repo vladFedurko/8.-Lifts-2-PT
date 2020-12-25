@@ -69,6 +69,7 @@
     <Compile Include="Entities\Statistics\ILiftStatistics.cs" />
     <Compile Include="Entities\Statistics\IStatistic.cs" />
     <Compile Include="Entities\Statistics\LiftStatistics.cs" />
+    <Compile Include="FileWork\TextSaveStatistics.cs" />
     <Compile Include="HumansMover.cs" />
     <Compile Include="ITickable.cs" />
     <Compile Include="ISimulation.cs" />

@@ -11,18 +11,20 @@ namespace Presenters
     {
         private ISimulationStatisticsView _veiw;
         private IStatisticsService _statisticsService;
+        private IFileWorkService _fileWorkService;
 
-        public StatisticsPresenter(ISimulationStatisticsView veiw, IStatisticsService statisticsService)
+        public StatisticsPresenter(ISimulationStatisticsView veiw, IStatisticsService statisticsService,IFileWorkService fileWorkService)
         {
             _veiw = veiw;
             _statisticsService = statisticsService;
+            _fileWorkService = fileWorkService;
             _veiw.LoadStatistics(statisticsService.GetStatistics());
             _veiw.ExportToFile += this.ExportToFile;
         }
 
         public void ExportToFile(string path)
         {
-            _statisticsService.ExportToFile(path);
+            _fileWorkService.saveStatistics(path);
         }
     }
 }

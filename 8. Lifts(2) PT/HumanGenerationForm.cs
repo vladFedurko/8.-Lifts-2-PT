@@ -75,7 +75,14 @@ namespace _8.Lifts_2__PT
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            this.GenerateHumans?.Invoke(_dTable);
+            try
+            {
+                this.GenerateHumans?.Invoke(_dTable);
+            }
+            catch (Exception exc) 
+            {
+                MessageBox.Show(exc.Message);
+            }
             this.Close();
         }
 

@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 namespace Models.Services
 {
     public interface IStatisticsService : IService
-    {
-        public void ExportToFile(string path);
-
+    { 
         public IEnumerable<string> GetStatistics();
     }
 }

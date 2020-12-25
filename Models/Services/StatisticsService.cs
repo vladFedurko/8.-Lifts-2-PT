@@ -15,11 +15,7 @@ namespace Models.Services
         {
             this.data = data;
         }
-
-        public void ExportToFile(string path)
-        {
-            //TODO
-        }
+        public void ResetStatistics() { data.RemoveAllStatistics(); }
 
         public IEnumerable<string> GetStatistics()
         {

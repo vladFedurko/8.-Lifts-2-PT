@@ -13,5 +13,6 @@ namespace Models.Services
         void saveGenerationTable(string filename);
         void openLiftConfig(string filename);
         void openGenerationTable(string filename);
+        public void saveStatistics(string filename);
     }
 }
