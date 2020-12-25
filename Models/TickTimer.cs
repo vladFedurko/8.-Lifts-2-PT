@@ -47,9 +47,9 @@ namespace Models
             currentTick = 0;
         }
 
-        public int GetCurrentSecond()
+        public decimal GetCurrentSecond()
         {
-            return currentTick / TICKS_PER_SECOND;
+            return (decimal)currentTick / TICKS_PER_SECOND;
         }
 
         protected void DoTick(object source, ElapsedEventArgs e)

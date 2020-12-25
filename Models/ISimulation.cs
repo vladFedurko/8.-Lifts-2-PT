@@ -26,7 +26,7 @@ namespace Models
 
         public bool TurnOffFireAlarm();
 
-        public int GetCurrentTime();
+        public decimal GetCurrentTime();
 
         public void DoTick();
 

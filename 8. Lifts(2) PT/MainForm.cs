@@ -262,12 +262,14 @@ namespace _8.Lifts_2__PT
 
         private void StopSimulationClick(object sender, EventArgs e)
         {
-            if(StopSimulation.Invoke())
-            startButton.Text = "Start";
-            SystemParametersMenuItem.Enabled = true;
-            PauseMenuItem.Enabled = false;
-            StartMenuItem.Enabled = true;
-            StatisticMenuItem.Enabled = true;
+            if (StopSimulation.Invoke())
+            {
+                startButton.Text = "Start";
+                SystemParametersMenuItem.Enabled = true;
+                PauseMenuItem.Enabled = false;
+                StartMenuItem.Enabled = true;
+                StatisticMenuItem.Enabled = true;
+            }
         }
 
         private void FireAlarmClick(object sender, EventArgs e)
@@ -319,7 +321,7 @@ namespace _8.Lifts_2__PT
                 form.LoadTable(new PlanFirePresenter(form, new FireAlarmService(simulation))?.LoadTable());
                 form.Show();
             }
-            catch (Exception exc) { MessageBox.Show("I'm too bad for degugging this...Try again"); }
+            catch (Exception) { MessageBox.Show("I'm too bad for degugging this...Try again"); }
         }
 
         private void SystemParametersClick(object sender, EventArgs e)

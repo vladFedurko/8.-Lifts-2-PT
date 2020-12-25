@@ -11,22 +11,35 @@ using System.Windows.Forms;
 
 namespace _8.Lifts_2__PT
 {
-    public partial class SimulationStatisticsForm : Form, IView
+    public partial class SimulationStatisticsForm : Form, ISimulationStatisticsView
     {
-        public SimulationStatisticsForm(IEnumerable<int> stat)
+        public SimulationStatisticsForm()
         {
             InitializeComponent();
-            //TODO
+        }
+
+        public event Action<string> ExportToFile;
+
+        public void LoadStatistics(IEnumerable<string> stats)
+        {
+            this.statisticsTabel.SuspendLayout();
+            for (int i = 1; i < this.statisticsTabel.RowCount; ++i)
+            {
+                Control c = this.statisticsTabel.GetControlFromPosition(1, i);
+                c.Text = stats.ElementAt(i - 1);
+            }
+            this.statisticsTabel.ResumeLayout(false);
+            this.statisticsTabel.PerformLayout();
         }
 
         public void CloseForm()
         {
-            this.Show();
+            this.Close();
         }
 
         public void ShowForm()
         {
-            this.Close();
+            this.Show();
         }
 
         private void CancelStatistics(object sender, EventArgs e)

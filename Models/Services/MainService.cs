@@ -38,7 +38,7 @@ namespace Models.Services
 
         public int ShowCurrentTime()
         {
-            return simulation.GetCurrentTime();
+            return (int)simulation.GetCurrentTime();
         }
 
         public void StartSimulation()

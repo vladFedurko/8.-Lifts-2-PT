@@ -85,7 +85,7 @@ namespace Models
             mainService.UpdateClock(observer.getCurrentTime());
         }
 
-        public int GetCurrentTime()
+        public decimal GetCurrentTime()
         {
             return observer.getCurrentTime();
         }

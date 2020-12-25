@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimulationStatisticsForm));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.statisticsTabel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,9 +58,9 @@
             this.statisticsTabel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // statisticsTabel
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.statisticsTabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.statisticsTabel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -172,7 +172,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(263, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Total number of people transported by each lift";
+            this.label6.Text = "Total number of transported people";
             // 
             // label7
             // 
@@ -370,21 +370,21 @@
             this.ClientSize = new System.Drawing.Size(465, 440);
             this.Controls.Add(this.cancelStatisticsButton);
             this.Controls.Add(this.exportStatisticsButton);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.statisticsTabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SimulationStatisticsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simulation statistics";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.statisticsTabel.ResumeLayout(false);
+            this.statisticsTabel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel statisticsTabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
