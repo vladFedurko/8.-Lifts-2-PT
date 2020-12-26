@@ -303,7 +303,7 @@ namespace _8.Lifts_2__PT
         private void HumanGenerationClick(object sender, EventArgs e)
         {
             HumanGenerationForm form = new HumanGenerationForm();
-            form.LoadTable(new HumanGenerationPresenter(form, new HumanCreationService(simulation.GetData()))?.LoadTable());
+            form.LoadTable(new HumanGenerationPresenter(form, new HumanCreationService(simulation.GetData())).LoadTable());
             form.Show();
         }
 
