@@ -50,12 +50,12 @@ namespace Models
         {
             if(systemData.IsEverythingEmpty())
             {
-                observer.Stop();
-                observer.ResetTime();
                 foreach (Lift lift in GetData().GetLifts())
                     lift.Reset();
                 mainService.ShowDataInView(systemData);
                 TurnOffFireAlarm();
+                observer.Stop();
+                observer.ResetTime();
                 stopped = true;
                 return true;
             }
@@ -81,9 +81,9 @@ namespace Models
                 ((ILiftManager)simulationState).ManageLifts(systemData);
             else
                 systemData.GetParameters().LiftManager.ManageLifts(systemData);
+            mainService.UpdateCarriedHumans(GetData().getCarriedHumansNumber());
             mainService.ShowDataInView(systemData);
             mainService.UpdateClock(observer.getCurrentTime());
-            mainService.UpdateCarriedHumans(GetData().getCarriedHumansNumber());
         }
 
         public decimal GetCurrentTime()

@@ -40,7 +40,7 @@ namespace Models.LiftManager
         {
             foreach (var lift in data.GetLifts())
             {
-                lift.OpenDoor(); //turns on timer
+                lift.WaitClosed(); //turns on timer
             }
         }
 

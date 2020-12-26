@@ -117,256 +117,60 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="initialFlootLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="initialFlootLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 9</value>
+    <value>157, 9</value>
   </data>
   <data name="initialFlootLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
   </data>
-  <data name="initialFlootLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="initialFlootLabel.Text" xml:space="preserve">
-    <value>Initial floor</value>
-  </data>
-  <data name="&gt;&gt;initialFlootLabel.Name" xml:space="preserve">
-    <value>initialFlootLabel</value>
-  </data>
-  <data name="&gt;&gt;initialFlootLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;initialFlootLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;initialFlootLabel.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="finiteFloorLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="finiteFloorLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 9</value>
+    <value>283, 9</value>
   </data>
   <data name="finiteFloorLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 13</value>
   </data>
-  <data name="finiteFloorLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="finiteFloorLabel.Text" xml:space="preserve">
-    <value>Finite floor</value>
-  </data>
-  <data name="&gt;&gt;finiteFloorLabel.Name" xml:space="preserve">
-    <value>finiteFloorLabel</value>
-  </data>
-  <data name="&gt;&gt;finiteFloorLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;finiteFloorLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;finiteFloorLabel.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="inSecondsLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="inSecondsLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>388, 9</value>
+    <value>409, 9</value>
   </data>
   <data name="inSecondsLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 13</value>
   </data>
-  <data name="inSecondsLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="inSecondsLabel.Text" xml:space="preserve">
-    <value>In (seconds)</value>
-  </data>
-  <data name="&gt;&gt;inSecondsLabel.Name" xml:space="preserve">
-    <value>inSecondsLabel</value>
-  </data>
-  <data name="&gt;&gt;inSecondsLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;inSecondsLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;inSecondsLabel.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
   <data name="initialFloorSelector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 24</value>
+    <value>160, 25</value>
   </data>
   <data name="initialFloorSelector.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 20</value>
   </data>
-  <data name="initialFloorSelector.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;initialFloorSelector.Name" xml:space="preserve">
-    <value>initialFloorSelector</value>
-  </data>
-  <data name="&gt;&gt;initialFloorSelector.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;initialFloorSelector.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;initialFloorSelector.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="finiteFloorSelector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 24</value>
+    <value>286, 25</value>
   </data>
   <data name="finiteFloorSelector.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 20</value>
   </data>
-  <data name="finiteFloorSelector.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;finiteFloorSelector.Name" xml:space="preserve">
-    <value>finiteFloorSelector</value>
-  </data>
-  <data name="&gt;&gt;finiteFloorSelector.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;finiteFloorSelector.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;finiteFloorSelector.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="inSecondsSelector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>391, 24</value>
+    <value>412, 25</value>
   </data>
   <data name="inSecondsSelector.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 20</value>
   </data>
-  <data name="inSecondsSelector.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="&gt;&gt;inSecondsSelector.Name" xml:space="preserve">
-    <value>inSecondsSelector</value>
-  </data>
-  <data name="&gt;&gt;inSecondsSelector.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;inSecondsSelector.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;inSecondsSelector.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 57</value>
+    <value>99, 57</value>
   </data>
   <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 23</value>
   </data>
-  <data name="saveButton.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="saveButton.Text" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="&gt;&gt;saveButton.Name" xml:space="preserve">
-    <value>saveButton</value>
-  </data>
-  <data name="&gt;&gt;saveButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;saveButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;saveButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="cancelButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 57</value>
+    <value>234, 57</value>
   </data>
   <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 23</value>
   </data>
-  <data name="cancelButton.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="cancelButton.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;cancelButton.Name" xml:space="preserve">
-    <value>cancelButton</value>
-  </data>
-  <data name="&gt;&gt;cancelButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cancelButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cancelButton.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="HumanNumberSelector.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 24</value>
-  </data>
-  <data name="HumanNumberSelector.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 20</value>
-  </data>
-  <data name="HumanNumberSelector.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
-  </data>
-  <data name="&gt;&gt;HumanNumberSelector.Name" xml:space="preserve">
-    <value>HumanNumberSelector</value>
-  </data>
-  <data name="&gt;&gt;HumanNumberSelector.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HumanNumberSelector.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;HumanNumberSelector.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="HumanNumberLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="HumanNumberLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 8</value>
-  </data>
-  <data name="HumanNumberLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 13</value>
-  </data>
-  <data name="HumanNumberLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
-  </data>
-  <data name="HumanNumberLabel.Text" xml:space="preserve">
-    <value>Number of Humans</value>
-  </data>
-  <data name="&gt;&gt;HumanNumberLabel.Name" xml:space="preserve">
-    <value>HumanNumberLabel</value>
-  </data>
-  <data name="&gt;&gt;HumanNumberLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;HumanNumberLabel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;HumanNumberLabel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>516, 85</value>
+    <value>544, 93</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -625,18 +429,5 @@
         JyhMVl/6DY+9+hI0Fm7ix8ZglC7s1Jf+1ggMIX5EDMbMDAqYf6jkx8FgMBgMBoPBYDAYDAaDwWAwGAwG
         g8FgMBgMBoPBYDCmHf4PfpPbfAT0P94AAAAASUVORK5CYII=
 </value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Create human</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>CreateHumanForm</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

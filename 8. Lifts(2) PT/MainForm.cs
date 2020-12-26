@@ -246,7 +246,7 @@ namespace _8.Lifts_2__PT
                 this.simulationTable.Controls.Add(CreateTableLabel("Lift " + (j - 1)), j, 0);
             for (int i = 1; i < this.simulationTable.RowCount; i++)
                 for (int j = 1; j < this.simulationTable.ColumnCount; j++)
-                    this.simulationTable.Controls.Add(CreateTableLabel("0"), j, i);
+                    this.simulationTable.Controls.Add(CreateTableLabel(""), j, i);
         }
 
         private void StartSimulationClick(object sender, EventArgs e)

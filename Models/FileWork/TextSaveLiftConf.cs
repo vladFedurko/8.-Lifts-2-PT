@@ -27,13 +27,13 @@ namespace Models.FileWork
                         +dataTable.SecondsToMove+" "
                         +dataTable.SecondsToWait
                         );
-                    Console.WriteLine("Save added "+ 
+                    /*Console.WriteLine("Save added "+ 
                         dataTable.FloorsCount+" "
                         + dataTable.LiftManager + " "
                         + dataTable.LiftsCapacity + " "
                         + dataTable.LiftsCount + " "
                         + dataTable.SecondsToMove + " "
-                        + dataTable.SecondsToWait);
+                        + dataTable.SecondsToWait);*/
                 }
             }
         }

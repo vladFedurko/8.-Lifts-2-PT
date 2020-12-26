@@ -20,12 +20,13 @@ namespace Models
         protected abstract void Notify();
 
         protected int getCurrentTick() => CurrentTick;
+        protected void setCurrentTick() => CurrentTick = 0;
         internal int getTicksToNotify() => ticksToNotify;
         public void DoTick()
         {
             if (CountPermission)
                 CurrentTick++;
-            if (CurrentTick >= ticksToNotify)
+            if (CurrentTick >= ticksToNotify && ticksToNotify != -1)
             {
                 this.Notify();
                 CurrentTick = 0;

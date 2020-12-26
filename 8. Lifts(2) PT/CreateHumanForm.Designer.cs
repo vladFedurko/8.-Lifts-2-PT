@@ -37,9 +37,12 @@
             this.inSecondsSelector = new System.Windows.Forms.NumericUpDown();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.HumanNumberSelector = new System.Windows.Forms.NumericUpDown();
+            this.HumanNumberLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.initialFloorSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.finiteFloorSelector)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inSecondsSelector)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HumanNumberSelector)).BeginInit();
             this.SuspendLayout();
             // 
             // initialFlootLabel
@@ -121,11 +124,33 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
+            // HumanNumberSelector
+            // 
+            resources.ApplyResources(this.HumanNumberSelector, "HumanNumberSelector");
+            this.HumanNumberSelector.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.HumanNumberSelector.Name = "HumanNumberSelector";
+            this.HumanNumberSelector.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // HumanNumberLabel
+            // 
+            resources.ApplyResources(this.HumanNumberLabel, "HumanNumberLabel");
+            this.HumanNumberLabel.Name = "HumanNumberLabel";
+            // 
             // CreateHumanForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.HumanNumberLabel);
+            this.Controls.Add(this.HumanNumberSelector);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.inSecondsSelector);
@@ -139,6 +164,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.initialFloorSelector)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.finiteFloorSelector)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inSecondsSelector)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HumanNumberSelector)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +179,7 @@
         private System.Windows.Forms.NumericUpDown inSecondsSelector;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.NumericUpDown HumanNumberSelector;
+        private System.Windows.Forms.Label HumanNumberLabel;
     }
 }

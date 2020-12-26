@@ -10,7 +10,8 @@ namespace Models.Entities
     {
         public bool Disposing = false;
 
-        public HumanCreator(int FiniteFloor, int ticksToNotify, Floor floor) : base(1, FiniteFloor, ticksToNotify, floor) { }
+        public HumanCreator(int humanNumber, int FiniteFloor, int ticksToNotify, Floor floor) 
+            : base(humanNumber, FiniteFloor, ticksToNotify, floor) { }
 
         protected override void Notify()
         {

@@ -28,7 +28,7 @@ namespace Models.Entities
             {
                 Human Human = new Human(FiniteFloor);
                 floor.AddHumans(Human);
-                Console.WriteLine("Human created " + i + " on floor " + floor.getKeeperFloor());
+                //Console.WriteLine("Human created " + i + " on floor " + floor.getKeeperFloor());
             }
         }
 
@@ -48,7 +48,9 @@ namespace Models.Entities
 
         public override int GetHashCode()
         {
-            return humanNumber.GetHashCode() * (1 >> 10) + FiniteFloor.GetHashCode() * (1 >> 5) + floor.getKeeperNumber() + getCurrentTick() * (1 >> 21);
+            return humanNumber.GetHashCode() * (1 >> 10) + FiniteFloor.GetHashCode() * (1 >> 5) +
+                floor.getKeeperNumber() + 
+                getCurrentTick() * (1 >> 21);
         }
     }
 }
