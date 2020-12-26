@@ -32,6 +32,7 @@ namespace Presenters
             _mainService.UpdateSystemData += this.ShowData;
             _mainService.UpdateTime += this.ShowTime;
             _mainService.UpdateAlarm += this.updateAlarm;
+            _mainService.UpdateNumberOfCarriedHumans += this.UpdateCarriedHumans;
         }
 
         public void ShowTime(int time)
@@ -42,7 +43,10 @@ namespace Presenters
         {
             _view.updateAlarm();
         }
-
+        public void UpdateCarriedHumans(int number) 
+        {
+            _view.UpdateCarriedHumans(number);
+        }
         public void ShowData(SystemData data)
         {
             _view.ShowState(data);

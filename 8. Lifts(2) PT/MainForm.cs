@@ -102,6 +102,15 @@ namespace _8.Lifts_2__PT
             else
                 TimeStatusLabel.Text = "Time:" + Time.ToString();
         }
+        private delegate void UpdateStatusNumberHumans(int number);
+        
+        public void UpdateCarriedHumans(int number)
+        {
+            if (statusStrip.InvokeRequired)
+                statusStrip.Invoke(new UpdateStatusNumberHumans((int number) => { HumanStatusLabel.Text = "Humans:" + number.ToString(); }), number);
+            else
+                HumanStatusLabel.Text = "Humans:" + number.ToString();
+        }
 
         private delegate void UpdateAlarm();
 

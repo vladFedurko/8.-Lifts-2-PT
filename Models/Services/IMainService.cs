@@ -23,6 +23,7 @@ namespace Models.Services
         void ShowDataInView(SystemData data);
 
         void UpdateClock(int time);
+        public void UpdateCarriedHumans(int number);
 
         void UpdateFireAlarm();
 
@@ -37,5 +38,6 @@ namespace Models.Services
         event Action<SystemData> UpdateSystemData;
         event Action<int> UpdateTime;
         public event Action UpdateAlarm;
+        public event Action<int> UpdateNumberOfCarriedHumans;
     }
 }

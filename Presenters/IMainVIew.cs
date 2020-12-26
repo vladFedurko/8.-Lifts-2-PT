@@ -14,6 +14,7 @@ namespace Presenters
 
         void setTime(int Time);
         void updateAlarm();
+        public void UpdateCarriedHumans(int number);
 
         public delegate bool State();
 
