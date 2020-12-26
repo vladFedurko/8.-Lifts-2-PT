@@ -80,7 +80,7 @@ namespace _8.Lifts_2__PT
                 Control control = this.simulationTable.GetControlFromPosition(1, j);
                 if (control != null)
                     control.Text = a[this.simulationTable.RowCount - j - 1].ToString();
-                else throw new Exception("Hello world from form");
+                else MessageBox.Show("I'm too bad for degugging this...Try again");
                 for (i = 2; i < this.simulationTable.ColumnCount; i++)
                 {
                     Control controli = this.simulationTable.GetControlFromPosition(i,j);
@@ -123,13 +123,11 @@ namespace _8.Lifts_2__PT
             else
                 if (fireAlarmButton.Text.Equals("Fire alarm"))
             {
-                this.StartFireAlarm?.Invoke();
                 fireAlarmButton.Text = "Stop alarm";
                 fireAlarmButton.BackColor = Color.DarkOrange;
             }
             else if (fireAlarmButton.Text.Equals("Stop alarm"))
             {
-                this.StopFireAlarm?.Invoke();
                 fireAlarmButton.Text = "Fire alarm";
                 fireAlarmButton.BackColor = Color.IndianRed;
             }
@@ -297,7 +295,7 @@ namespace _8.Lifts_2__PT
 
         private void CreateHumanClick(object sender, EventArgs e)
         {
-            CreateHumanForm form = new CreateHumanForm(simulation.GetData().GetParameters().FloorsCount);
+            CreateHumanForm form = new CreateHumanForm();
             new CreateHumanPresenter(form, new HumanCreationService(simulation.GetData()));
             form.Show();
         }
@@ -318,8 +316,12 @@ namespace _8.Lifts_2__PT
         private void PlanFireAlarmClick(object sender, EventArgs e)
         {
             PlanFireAlarmForm form = new PlanFireAlarmForm();
-            form.LoadTable(new PlanFirePresenter(form, new FireAlarmService(simulation))?.LoadTable());
-            form.Show();
+            try
+            {
+                form.LoadTable(new PlanFirePresenter(form, new FireAlarmService(simulation))?.LoadTable());
+                form.Show();
+            }
+            catch (Exception) { MessageBox.Show("I'm too bad for degugging this...Try again"); }
         }
 
         private void SystemParametersClick(object sender, EventArgs e)
@@ -334,7 +336,7 @@ namespace _8.Lifts_2__PT
         private void StatisticsClick(object sender, EventArgs e)
         {
             SimulationStatisticsForm form = new SimulationStatisticsForm();
-            new StatisticsPresenter(form, new StatisticsService(simulation.GetData()));
+            new StatisticsPresenter(form, new StatisticsService(simulation.GetData()), new FileWorkService(simulation.GetData()));
             form.Show();
         }
 

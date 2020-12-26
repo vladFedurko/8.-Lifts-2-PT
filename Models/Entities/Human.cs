@@ -71,6 +71,8 @@ namespace Models.Entities
             }
         }
 
+        public void OnFire() { FiniteFloor = 0; }
+
         public decimal GetWaitingTime()
         {
             return (decimal)this.getCurrentTick() / TickTimer.TICKS_PER_SECOND;
@@ -98,12 +100,12 @@ namespace Models.Entities
                     }
                 case HumanState.Disposing:
                     {
-                        status = "Delivered to the target floor";
+                        status = "Delivered to the target floor1";
                         break;
                     }
                 case HumanState.DisposeNow:
                     {
-                        status = "Delivered to the target floor";
+                        status = "Delivered to the target floor2";
                         break;
                     }
                 default:
