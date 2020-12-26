@@ -297,7 +297,7 @@ namespace _8.Lifts_2__PT
 
         private void CreateHumanClick(object sender, EventArgs e)
         {
-            CreateHumanForm form = new CreateHumanForm();
+            CreateHumanForm form = new CreateHumanForm(simulation.GetData().GetParameters().FloorsCount);
             new CreateHumanPresenter(form, new HumanCreationService(simulation.GetData()));
             form.Show();
         }
@@ -305,7 +305,7 @@ namespace _8.Lifts_2__PT
         private void HumanGenerationClick(object sender, EventArgs e)
         {
             HumanGenerationForm form = new HumanGenerationForm();
-            form.LoadTable(new HumanGenerationPresenter(form, new HumanCreationService(simulation.GetData()))?.LoadTable());
+            form.LoadTable(new HumanGenerationPresenter(form, new HumanCreationService(simulation.GetData())).LoadTable());
             form.Show();
         }
 

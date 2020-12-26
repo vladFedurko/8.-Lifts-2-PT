@@ -18,63 +18,46 @@ namespace Models
                 {
                     Floor floor = data.GetFloorByNumber(lift.getKeeperFloor());
                     HumansMover.ExitLift(floor, lift);
-                    HumansMover.EnterLift(floor, lift, data.GetHumanStatistics());
+                    HumansMover.EnterLift(floor, lift, data.GetHumanStatistics(), data.GetParameters().LiftsCapacity);
                 }
             }
         }
 
-        public static void EnterLift(Floor floor, Lift lift, IHumanFullStatistics stats)
+        public static void EnterLift(Floor floor, Lift lift, IHumanFullStatistics stats, int liftCapacity)
         {
-            IEnumerable<Human> HumansToMove = floor?.getHumans().Where<Human>(h =>
+            IEnumerable<Human> HumansToMove = floor.getHumans().Where<Human>(h =>
                            h.state == Human.HumanState.OnFloor
                        &&
-                           lift.liftState == Lift.LiftState.WaitOpened
-                       &&
                            (
-                               lift.getHumanNumber() == 0
+                                lift.TargetFloor - lift.Floor > 0
+                                &&
+                                (floor.getKeeperFloor() - h.FiniteFloor) < 0
                            ||
-                               (
-                                  lift.getHumans().ElementAt(0).FiniteFloor - lift.Floor > 0
-                                  &&
-                                  (floor.getKeeperFloor() - h.FiniteFloor) < 0
-                               )
-                           ||
-                               (
-                                    lift.getHumans().ElementAt(0).FiniteFloor - lift.Floor < 0
-                                   &&
-                                    (floor.getKeeperFloor() - h.FiniteFloor) > 0
-                               )
+                                lift.TargetFloor - lift.Floor < 0
+                                &&
+                                (floor.getKeeperFloor() - h.FiniteFloor) > 0
                            )
-            //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
                         );
             foreach (var h in HumansToMove)
-                stats.AddWaitingTime(h.GetWaitingTime());
-            lift?.AddRangeHumans(HumansToMove);
-            floor?.RemoveSomeHumans(
+            {
+                if (liftCapacity > lift.getHumanNumber())
+                {
+                    stats.AddWaitingTime(h.GetWaitingTime());
+                    lift.AddHumans(h);
+                }
+                else
+                    break;
+            }
+            floor.RemoveSomeHumans(
                 h =>
                 h.state == Human.HumanState.InLift
-                &&
-                (
-                    (
-                        (floor.getKeeperFloor() - h.FiniteFloor) < 0
-                        &&
-                        lift.getHumans().ElementAt(0).FiniteFloor - lift.getKeeperFloor() > 0
-                    )
-                ||
-                    (
-                        (floor.getKeeperFloor() - h.FiniteFloor) > 0
-                        &&
-                        lift.getHumans().ElementAt(0).FiniteFloor - lift.getKeeperFloor() < 0
-                    )
-                )
-            //&& ((rem+=h.) <Parameter_Max_Floor_count - lift.
             );
         }
 
         public static void ExitLift(Floor floor, Lift lift)
         {
             IEnumerable<Human> Lift_humans = lift?.getHumans();
-            floor?.AddRangeHumans
+            floor.AddRangeHumans
                 (
                 Lift_humans.Where
                     (
@@ -84,11 +67,9 @@ namespace Models
                             (floor.getKeeperFloor() - h.FiniteFloor) == 0
                     )
                 );
-            lift?.RemoveSomeHumans(
+            lift.RemoveSomeHumans(
                 h =>
                     h.state == Entities.Human.HumanState.Disposing
-                &&
-                    (floor.getKeeperFloor() == h.FiniteFloor)
             );
         }
     }

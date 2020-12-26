@@ -75,6 +75,7 @@
     <Compile Include="ISimulationParameters.cs" />
     <Compile Include="LiftManager\FireAlarm.cs" />
     <Compile Include="LiftManager\ISimulationState.cs" />
+    <Compile Include="LiftManager\LiftManagerContext.cs" />
     <Compile Include="Services\FileWorkService.cs" />
     <Compile Include="Services\IFileWorkService.cs" />
     <Compile Include="Services\IStatisticsService.cs" />

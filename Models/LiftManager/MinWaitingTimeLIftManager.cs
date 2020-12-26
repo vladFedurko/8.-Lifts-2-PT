@@ -13,18 +13,19 @@ namespace Models.LiftManager
         public void ManageLifts(SystemData data)
         {
             HumansMover.MoveHumans(data);
+            LiftManagerContext context = new LiftManagerContext();
             foreach (Lift lift in data.GetLifts())
             {
                 if (lift.liftState == Lift.LiftState.Moving)
                 {
                     if (lift.TargetFloor == lift.getKeeperFloor())
                     {
-                        lift.SetTargetFloor(this.GetNearestFloor(lift, data.GetFloorByNumber(lift.getKeeperFloor())));
+                        lift.SetTargetFloor(context.GetNearestFloor(lift, data.GetFloorByNumber(lift.getKeeperFloor())));
                         lift.OpenDoor();
                     }
-                    else
+                    else if(data.GetParameters().LiftsCapacity > lift.getHumanNumber())
                     {
-                        this.ChangeTargetFloor(data, lift);
+                        context.ChangeTargetFloor(data, lift);
                     }
                 }
                 else if (lift.liftState == Lift.LiftState.WaitClosed)
@@ -34,8 +35,10 @@ namespace Models.LiftManager
                     else
                     {
                         lift.SetTargetFloor(this.GetTargetFloorForMinWaitingTime(data, lift));
-                        if (lift.TargetFloor == lift.getKeeperFloor() && data.GetFloorByNumber(lift.TargetFloor).getHumanNumber() != 0)
+                        Floor fl = data.GetFloorByNumber(lift.TargetFloor);
+                        if (lift.TargetFloor == lift.getKeeperFloor() && fl.getHumanNumberUp() + fl.getHumanNumberDown() != 0)
                         {
+                            lift.SetTargetFloor(context.GetNearestFloor(lift, data.GetFloorByNumber(lift.getKeeperFloor())));
                             lift.OpenDoor();
                         }
                         else if (lift.TargetFloor != lift.getKeeperFloor())
@@ -52,24 +55,22 @@ namespace Models.LiftManager
             decimal maxEff = 0;
             int numFloor = -1;
             decimal curEff = 0;
-            List<int> targetFloorForLifts = new List<int>(data.GetParameters().LiftsCount);
-            foreach (var l in data.GetLifts())
-            {
-                targetFloorForLifts.Add(l.TargetFloor);
-            }
             foreach (var fl in data.GetFloors())
             {
-                if (targetFloorForLifts.Contains(fl.getKeeperNumber()) && fl.getHumanNumberUp() == 0 && fl.getHumanNumberDown() == 0)
+                int humsUp;
+                int humsDown;
+                new LiftManagerContext().GetEffectiveHumanCountOnFloor(fl, lift, data, out humsUp, out humsDown);
+                if (this.CheckOtherLiftsEfficientcy(data, fl, lift))
                     continue;
                 int distance = Math.Abs(lift.getKeeperFloor() - fl.getKeeperFloor());
                 if (distance != 0)
                 {
-                    if (fl.getHumanNumberUp() > fl.getHumanNumberDown())
-                        curEff = (decimal)fl.getHumanNumberUp() / (lift.GetTickToMove() * distance);
+                    if (humsUp > humsDown)
+                        curEff = (decimal)humsUp / distance;
                     else
-                        curEff = (decimal)fl.getHumanNumberDown() / (lift.GetTickToMove() * distance);
+                        curEff = (decimal)humsDown / distance;
                 }
-                else if(fl.getHumanNumberUp() != 0 || fl.getHumanNumberDown() != 0)
+                else if (humsUp > 0 || humsDown > 0)
                 {
                     numFloor = fl.getKeeperFloor();
                     break;
@@ -85,93 +86,20 @@ namespace Models.LiftManager
             return numFloor;
         }
 
-        private void ChangeTargetFloor(SystemData data, Lift lift)
+        private bool CheckOtherLiftsEfficientcy(SystemData data, Floor floor, Lift lift)
         {
-            bool isDirUp = lift.getKeeperFloor() < lift.TargetFloor;
-            int i = lift.getKeeperFloor() + (isDirUp ? 1 : -1);
-            while (i != lift.TargetFloor)
+            int distance = Math.Abs(lift.getKeeperFloor() - floor.getKeeperFloor());
+            foreach (var l in data.GetLifts())
             {
-                Floor fl = data.GetFloorByNumber(i);
-                if (isDirUp && fl.getHumanNumberUp() > 0 || !isDirUp && fl.getHumanNumberDown() > 0)
+                if (l != lift && l.liftState == Lift.LiftState.WaitClosed && l.getHumanNumber() == 0)
                 {
-                    lift.SetTargetFloor(i);
-                    break;
-                }
-                else
-                    i += (isDirUp ? 1 : -1);
-            }
-            Floor TargetFloor = data.GetFloorByNumber(lift.TargetFloor);
-            if (isDirUp && TargetFloor.getHumanNumberUp() > 0 || !isDirUp && TargetFloor.getHumanNumberDown() > 0)
-            {
-                lift.SetTargetFloor(this.GetNearestFloorForHumansInLift(lift));
-                while (i != lift.TargetFloor)
-                {
-                    Floor fl = data.GetFloorByNumber(i);
-                    if (isDirUp && fl.getHumanNumberUp() > 0 || !isDirUp && fl.getHumanNumberDown() > 0)
-                        lift.SetTargetFloor(i);
-                    else
-                        i += (isDirUp ? 1 : -1);
-                }
-            }
-        }
-
-        private int GetNearestFloor(Lift lift, Floor floor)
-        {
-            if (lift.getHumanNumber() == 0)
-            {
-                if (floor.getHumanNumber() == 0)
-                    return lift.getKeeperFloor();
-                int nearestFloorUp = int.MaxValue;
-                int nearestFloorDown = int.MinValue;
-                int countHumansUp = 0;
-                int countHumansDown = 0;
-                foreach (var h in floor.getHumans())
-                {
-                    if (floor.getKeeperFloor() - h.FiniteFloor < 0)
+                    if (Math.Abs(l.getKeeperFloor() - floor.getKeeperFloor()) < distance)
                     {
-                        countHumansUp++;
-                        if (nearestFloorUp > h.FiniteFloor)
-                            nearestFloorUp = h.FiniteFloor;
-                    }
-                    else
-                    {
-                        countHumansDown++;
-                        if (nearestFloorDown < h.FiniteFloor)
-                            nearestFloorDown = h.FiniteFloor;
+                        return true;
                     }
                 }
-                if (countHumansUp > countHumansDown)
-                    return nearestFloorUp;
-                else
-                    return nearestFloorDown;
             }
-            else
-            {
-                return this.GetNearestFloorForHumansInLift(lift);
-            }
-        }
-
-        private int GetNearestFloorForHumansInLift(Lift lift)
-        {
-            if (lift.getHumanNumber() != 0)
-            {
-                int nearestFloor = int.MaxValue;
-                bool dir = lift.getHumans().ElementAt(0).FiniteFloor > lift.getKeeperFloor();
-                foreach (var h in lift.getHumans())
-                {
-                    if (Math.Abs(lift.getKeeperFloor() - h.FiniteFloor) < Math.Abs(lift.getKeeperFloor() - nearestFloor))
-                        nearestFloor = h.FiniteFloor;
-#if DEBUG
-                    if (dir != (h.FiniteFloor > lift.getKeeperFloor()))
-                    {
-                        Console.WriteLine("Hello world from LiftMan");
-                        throw new Exception("MODEL: MinWaitingTimeStrategy: IsChoosenDirectionUp: Not all humans go in same direction!");
-                    }
-#endif
-                }
-                return nearestFloor;
-            }
-            return lift.getKeeperFloor();
+            return false;
         }
     }
 }

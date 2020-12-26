@@ -16,14 +16,17 @@ namespace _8.Lifts_2__PT
     {
         public event Action<int, int, int> CreateHuman;
 
-        public CreateHumanForm()
+        public CreateHumanForm(int floorCount)
         {
             InitializeComponent();
+            initialFloorSelector.Maximum = floorCount;
+            finiteFloorSelector.Maximum = floorCount;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            this.CreateHuman?.Invoke((int)initialFloorSelector.Value, (int)finiteFloorSelector.Value, (int)inSecondsSelector.Value);
+            if(initialFloorSelector.Value != finiteFloorSelector.Value)
+                this.CreateHuman.Invoke((int)initialFloorSelector.Value, (int)finiteFloorSelector.Value, (int)inSecondsSelector.Value);
             this.Close();
         }
 
