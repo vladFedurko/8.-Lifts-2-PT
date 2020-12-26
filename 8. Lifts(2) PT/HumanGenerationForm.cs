@@ -23,7 +23,8 @@ namespace _8.Lifts_2__PT
             humanGenerationDataGridView.AllowUserToAddRows = false;
             humanGenerationDataGridView.AllowUserToResizeRows = false;
             humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            humanGenerationDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //humanGenerationDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            humanGenerationDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             humanGenerationDataGridView.DataSource = _dTable;
             humanGenerationDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             humanGenerationDataGridView.EditingControlShowing += HumanGenerationDataGridView_EditingControlShowing;

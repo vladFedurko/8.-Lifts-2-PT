@@ -23,7 +23,7 @@ namespace _8.Lifts_2__PT
             firePlanDataGridView.AllowUserToAddRows = false;
             firePlanDataGridView.AllowUserToResizeRows = false;
             firePlanDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-            firePlanDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            firePlanDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             firePlanDataGridView.DataSource = dataTable;
             firePlanDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             firePlanDataGridView.EditingControlShowing += FirePlanDataGridView_EditingControlShowing;
