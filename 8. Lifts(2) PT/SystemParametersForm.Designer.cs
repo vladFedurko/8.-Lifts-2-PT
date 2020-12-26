@@ -201,6 +201,11 @@
             0,
             0,
             0});
+            this.liftWaitingTimeSelecter.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.liftWaitingTimeSelecter.Name = "liftWaitingTimeSelecter";
             this.liftWaitingTimeSelecter.Size = new System.Drawing.Size(160, 22);
             this.liftWaitingTimeSelecter.TabIndex = 10;
