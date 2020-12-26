@@ -31,12 +31,12 @@ SimuLift
 
 Анализ требований
 -----------------
-![UseCase 1](https://i.imgur.com/EqoyFip.jpg)
-![UseCase 2](https://i.imgur.com/EWkAnf5.jpg)
-![UseCase 3](https://i.imgur.com/p6jdmhl.jpg)
+![UseCase 1](https://i.imgur.com/YUX9Wyu.jpg)
+![UseCase 2](https://i.imgur.com/z0BcP9x.jpg)
+![UseCase 3](https://i.imgur.com/sHH0C3d.jpg)
 
 Диаграммы активности
 --------------
-![Activity Diagram 1](https://i.imgur.com/YUX9Wyu.jpg)
-![Activity Diagram 2](https://i.imgur.com/Lwv9HK7.jpg)
-![Activity Diagram 3](https://i.imgur.com/sHH0C3d.jpg)
+![Activity Diagram 1](https://i.imgur.com/EqoyFip.jpg)
+![Activity Diagram 2](https://i.imgur.com/EWkAnf5.jpg)
+![Activity Diagram 3](https://i.imgur.com/p6jdmhl.jpg)
