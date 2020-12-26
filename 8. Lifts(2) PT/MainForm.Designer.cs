@@ -38,6 +38,7 @@
             this.createHumanButton = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.TimeStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.HumanStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.openLiftFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SimulationMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StartMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,6 @@
             this.saveLiftFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.openGenerationFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveGeneratedFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.HumanStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.SpeedSelecter)).BeginInit();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -73,7 +73,7 @@
             // 
             this.simulationTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.simulationTable.ColumnCount = 4;
-            this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.simulationTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -202,6 +202,12 @@
             this.TimeStatusLabel.Name = "TimeStatusLabel";
             this.TimeStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.TimeStatusLabel.Text = "Status";
+            // 
+            // HumanStatusLabel
+            // 
+            this.HumanStatusLabel.Name = "HumanStatusLabel";
+            this.HumanStatusLabel.Size = new System.Drawing.Size(97, 17);
+            this.HumanStatusLabel.Text = "StatusOfHumans";
             // 
             // SimulationMenuItem
             // 
@@ -380,12 +386,6 @@
             // openGenerationFileDialog
             // 
             this.openGenerationFileDialog.FileName = "openFileDialog1";
-            // 
-            // HumanStatusLabel
-            // 
-            this.HumanStatusLabel.Name = "HumanStatusLabel";
-            this.HumanStatusLabel.Size = new System.Drawing.Size(97, 17);
-            this.HumanStatusLabel.Text = "StatusOfHumans";
             // 
             // SimulationForm
             // 

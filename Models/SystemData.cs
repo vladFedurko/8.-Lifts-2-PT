@@ -84,8 +84,8 @@ namespace Models
             factories.Union(newFactories);
         }*/
 
-        public void CreateHuman(int initialFloor, int finitefloor, int inSec) {
-            HumanCreator creator = new HumanCreator(finitefloor, inSec * TickTimer.TICKS_PER_SECOND, GetFloorByNumber(initialFloor));
+        public void CreateHuman(int humanNumber,int initialFloor, int finitefloor, int inSec) {
+            HumanCreator creator = new HumanCreator(humanNumber,finitefloor, inSec * TickTimer.TICKS_PER_SECOND, GetFloorByNumber(initialFloor));
             factories.Add(creator);
         }
 

@@ -41,7 +41,7 @@ namespace Models.FileWork
                             continue;
                         }
                         Writer.WriteLine(a0 + " " + a1 + " " + a2 + " " + a3);
-                        Console.WriteLine($"Save added {a[0]} {a[1]} {a[2]} {a[3]}");
+                        //Console.WriteLine($"Save added {a[0]} {a[1]} {a[2]} {a[3]}");
                     }
                 }
             }

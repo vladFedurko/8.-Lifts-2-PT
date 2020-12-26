@@ -24,9 +24,9 @@ namespace Presenters
             _view.CreateHuman += this.CreateHuman;
         }
 
-        public void CreateHuman(int initialFloor, int finiteFloor, int inSeconds)
+        public void CreateHuman(int humanNumber,int initialFloor, int finiteFloor, int inSeconds)
         {
-            _humanService.CreateHuman(initialFloor - 1, finiteFloor - 1, inSeconds); //отсчет с 0
+            _humanService.CreateHuman(humanNumber,initialFloor - 1, finiteFloor - 1, inSeconds); //отсчет с 0
         }
     }
 }

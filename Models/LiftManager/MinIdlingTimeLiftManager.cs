@@ -36,17 +36,24 @@ namespace Models.LiftManager
             }
             foreach (Floor fl in data.GetFloors())
             {
-                if(fl.getHumanNumberUp() != 0 || fl.getHumanNumberDown() != 0)
+                if (fl.getHumanNumberUp() != 0 || fl.getHumanNumberDown() != 0)
                 {
                     Lift waitingLift = GetNearestWaitingLift(data, fl);
-                    Lift movingLift = GetMostEffectiveMovingLift(data, fl);
-                    if(movingLift == null)
+                    if (waitingLift == null)
+                        break;
+                    if (fl.getKeeperFloor() == waitingLift.getKeeperFloor() && waitingLift.liftState != Lift.LiftState.WaitOpened)
                     {
-                        waitingLift.SetTargetFloor(fl.getKeeperFloor());
-                        if (waitingLift.TargetFloor == waitingLift.getKeeperFloor())
-                            waitingLift.OpenDoor();
-                        else
+                        waitingLift.SetTargetFloor(context.GetNearestFloor(waitingLift, data.GetFloorByNumber(waitingLift.getKeeperFloor())));
+                        waitingLift.OpenDoor();
+                    }
+                    else
+                    {
+                        Lift movingLift = GetMostEffectiveMovingLift(data, fl);
+                        if (movingLift == null || movingLift.TargetFloor != fl.getKeeperFloor())
+                        {
+                            waitingLift.SetTargetFloor(fl.getKeeperFloor());
                             waitingLift.StartMoving();
+                        }
                     }
                 }
             }
@@ -57,7 +64,7 @@ namespace Models.LiftManager
             int distance = int.MaxValue;
             int curDist = 0;
             Lift nearestLift = null;
-            foreach(var l in data.GetLifts())
+            foreach (var l in data.GetLifts())
             {
                 curDist = Math.Abs(l.getKeeperFloor() - floor.getKeeperFloor());
                 if (l.liftState == Lift.LiftState.WaitClosed && curDist < distance)

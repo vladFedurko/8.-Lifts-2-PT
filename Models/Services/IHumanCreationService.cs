@@ -10,7 +10,7 @@ namespace Models.Services
 {
     public interface IHumanCreationService : IService
     {
-        void CreateHuman(int initialFloor, int finiteFloor, int inSeconds);
+        void CreateHuman(int humanNumber,int initialFloor, int finiteFloor, int inSeconds);
 
         void CreateHumanGenerationTable(DataTable dataTable);
         DataTable GetHumanGenerationTable();

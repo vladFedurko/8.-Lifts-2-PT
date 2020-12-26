@@ -35,13 +35,13 @@ namespace Models.FileWork
                     simParam.LiftsCount = Int32.Parse(a[3]);
                     simParam.SecondsToMove = Int32.Parse(a[4]);
                     simParam.SecondsToWait = Int32.Parse(a[5]);
-                    Console.WriteLine("Load completed " +
+                    /*Console.WriteLine("Load completed " +
                         simParam.FloorsCount + " "
                         + simParam.LiftManager + " "
                         + simParam.LiftsCapacity + " "
                         + simParam.LiftsCount + " "
                         + simParam.SecondsToMove + " "
-                        + simParam.SecondsToWait);
+                        + simParam.SecondsToWait);*/
                 }
             }
             return simParam;

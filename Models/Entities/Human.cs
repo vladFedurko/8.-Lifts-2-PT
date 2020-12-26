@@ -56,6 +56,8 @@ namespace Models.Entities
             }
             if (state == HumanState.OnFloor)
             {
+                CountPermission = false;
+                setCurrentTick();
                 state = HumanState.InLift;
             }
         }
@@ -67,7 +69,7 @@ namespace Models.Entities
             if (state == HumanState.Created)
             {
                 state = HumanState.OnFloor;
-                CountPermission = false;
+                ticksToNotify = -1;
             }
         }
 

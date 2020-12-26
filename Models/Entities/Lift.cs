@@ -58,7 +58,7 @@ namespace Models.Entities
             this.ticksToNotify = TICKS_TO_MOVE;
             liftState = LiftState.Moving;
         }
-        internal void Reset() { if(data.Count == 0) Floor = 0; }
+        internal void Reset() { if(data.Count == 0) Floor = 0; liftState = LiftState.WaitClosed; }
 
         internal void SetTargetFloor(int floor)
         {
@@ -83,9 +83,11 @@ namespace Models.Entities
 
         internal void OpenDoor()
         {
-            statistics.DirectionChanged();
-            if (!this.IsNotEmpty())
-                statistics.MovedWithoutHumans();
+            if (liftState != LiftState.WaitClosed) {
+                statistics.DirectionChanged();
+                if (!this.IsNotEmpty())
+                    statistics.MovedWithoutHumans();
+            }
             this.liftState = LiftState.WaitOpened;
             this.ticksToNotify = TICKS_TO_WAIT;
             this.CountPermission = true;
@@ -94,6 +96,11 @@ namespace Models.Entities
         internal void WaitWithOpenedDoor()
         {
             this.liftState = LiftState.WaitOpened;
+            this.CountPermission = false;
+        }
+        internal void WaitClosed()
+        {
+            this.liftState = LiftState.WaitClosed;
             this.CountPermission = false;
         }
 

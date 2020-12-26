@@ -21,11 +21,11 @@ namespace Models.Services
             type = new HumanFactory(0, 1, int.MaxValue, null).GetType();
         }
 
-        public void CreateHuman(int initialFloor, int finiteFloor, int inSeconds)
+        public void CreateHuman(int humanNumber,int initialFloor, int finiteFloor, int inSeconds)
         {
             if (initialFloor == finiteFloor)
                 throw new Exception("Person is already on the destination floor!");
-            data.CreateHuman(initialFloor, finiteFloor, inSeconds);
+            data.CreateHuman(humanNumber,initialFloor, finiteFloor, inSeconds);
         }
         public void InitTable(out DataTable dTable)
         {
