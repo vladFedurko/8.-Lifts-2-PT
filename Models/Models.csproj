@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{66E381EF-4A5C-4D23-A2BD-E08E5500474E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Models</RootNamespace>
     <AssemblyName>Models</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,9 +32,80 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\AlarmCaller.cs" />
+    <Compile Include="Entities\Floor.cs" />
+    <Compile Include="Entities\HumanFactory.cs" />
+    <Compile Include="Entities\Human.cs" />
+    <Compile Include="Entities\HumanCreator.cs" />
+    <Compile Include="FileWork\ABinary.cs" />
+    <Compile Include="FileWork\ABinaryLoad.cs" />
+    <Compile Include="FileWork\ABinarySave.cs" />
+    <Compile Include="FileWork\AText.cs" />
+    <Compile Include="FileWork\ATextLoad.cs" />
+    <Compile Include="FileWork\ATextSave.cs" />
+    <Compile Include="FileWork\BinaryDeserializer.cs" />
+    <Compile Include="FileWork\BinarySerializer.cs" />
+    <Compile Include="FileWork\IFileFormat.cs" />
+    <Compile Include="FileWork\IFileWork.cs" />
+    <Compile Include="FileWork\ILoad.cs" />
+    <Compile Include="FileWork\ISave.cs" />
+    <Compile Include="FileWork\TextLoadGenTable.cs" />
+    <Compile Include="FileWork\TextLoadLiftConf.cs" />
+    <Compile Include="FileWork\TextSaveGenTable.cs" />
+    <Compile Include="FileWork\TextSaveLiftConf.cs" />
+    <Compile Include="Entities\Statistics\FireAlarmStatistics.cs" />
+    <Compile Include="Entities\Statistics\HumanFullStatistics.cs" />
+    <Compile Include="Entities\Statistics\IFireAlarmStatistics.cs" />
+    <Compile Include="Entities\Statistics\IHumanFullStatistics.cs" />
+    <Compile Include="Entities\Statistics\ILiftStatistics.cs" />
+    <Compile Include="Entities\Statistics\IStatistic.cs" />
+    <Compile Include="Entities\Statistics\LiftStatistics.cs" />
+    <Compile Include="FileWork\TextSaveStatistics.cs" />
+    <Compile Include="HumansMover.cs" />
+    <Compile Include="ITickable.cs" />
+    <Compile Include="ISimulation.cs" />
+    <Compile Include="ISimulationParameters.cs" />
+    <Compile Include="LiftManager\FireAlarm.cs" />
+    <Compile Include="LiftManager\ISimulationState.cs" />
+    <Compile Include="LiftManager\LiftManagerContext.cs" />
+    <Compile Include="Services\FileWorkService.cs" />
+    <Compile Include="Services\IFileWorkService.cs" />
+    <Compile Include="Services\IStatisticsService.cs" />
+    <Compile Include="Services\StatisticsService.cs" />
+    <Compile Include="TickTimer.cs" />
+    <Compile Include="Services\HumanCreationService.cs" />
+    <Compile Include="Services\MainService.cs" />
+    <Compile Include="Services\SystemParametersService.cs" />
+    <Compile Include="Services\FireAlarmService.cs" />
+    <Compile Include="Simulation.cs" />
+    <Compile Include="SimulationParameters.cs" />
+    <Compile Include="SystemData.cs" />
+    <Compile Include="AResettable.cs" />
+    <Compile Include="Entities\Lift.cs" />
+    <Compile Include="LiftManager\MinIdlingTimeLiftManager.cs" />
+    <Compile Include="LiftManager\MinWaitingTimeLIftManager.cs" />
+    <Compile Include="Services\IHumanCreationService.cs" />
+    <Compile Include="IKeepHuman.cs" />
+    <Compile Include="Services\IMainService.cs" />
+    <Compile Include="Services\IPlanFireAlarm.cs" />
+    <Compile Include="Services\ISystemParametersService.cs" />
+    <Compile Include="Services\IService.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="LiftManager\ILiftManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

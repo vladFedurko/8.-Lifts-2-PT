@@ -118,6 +118,60 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="initialFlootLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 9</value>
+  </data>
+  <data name="initialFlootLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 13</value>
+  </data>
+  <data name="finiteFloorLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>283, 9</value>
+  </data>
+  <data name="finiteFloorLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 13</value>
+  </data>
+  <data name="inSecondsLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>409, 9</value>
+  </data>
+  <data name="inSecondsLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 13</value>
+  </data>
+  <data name="initialFloorSelector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>160, 25</value>
+  </data>
+  <data name="initialFloorSelector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 20</value>
+  </data>
+  <data name="finiteFloorSelector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 25</value>
+  </data>
+  <data name="finiteFloorSelector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 20</value>
+  </data>
+  <data name="inSecondsSelector.Location" type="System.Drawing.Point, System.Drawing">
+    <value>412, 25</value>
+  </data>
+  <data name="inSecondsSelector.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 20</value>
+  </data>
+  <data name="saveButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 57</value>
+  </data>
+  <data name="saveButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 23</value>
+  </data>
+  <data name="cancelButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>234, 57</value>
+  </data>
+  <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 23</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>544, 93</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAAAAAAEAIABZOwAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAEAAAABAAgGAAAAXHKoZgAAAAFv

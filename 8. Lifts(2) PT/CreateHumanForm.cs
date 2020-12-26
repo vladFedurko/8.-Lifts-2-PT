@@ -7,18 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Presenters;
+
 
 namespace _8.Lifts_2__PT
 {
-    public partial class CreateHumanForm : Form
+    public partial class CreateHumanForm : Form, ICreateHumanView
     {
+        public event Action<int, int, int,int> CreateHuman;
+
         public CreateHumanForm()
         {
             InitializeComponent();
         }
+
         private void saveButton_Click(object sender, EventArgs e)
         {
-            //TO DO
+            try
+            {
+                this.CreateHuman?.Invoke((int)HumanNumberSelector.Value,(int)initialFloorSelector.Value, (int)finiteFloorSelector.Value, (int)inSecondsSelector.Value);
+            }
+            catch (Exception exc) { MessageBox.Show(exc.Message); }
             this.Close();
         }
 
@@ -27,14 +36,19 @@ namespace _8.Lifts_2__PT
             this.Close();
         }
 
-        private void CreateHumanForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void CreateHumanForm_Deactivate(object sender, EventArgs e)
         {
             this.Activate();
+        }
+
+        public void ShowForm()
+        {
+            this.Show();
+        }
+
+        public void CloseForm()
+        {
+            this.Close();
         }
     }
 }

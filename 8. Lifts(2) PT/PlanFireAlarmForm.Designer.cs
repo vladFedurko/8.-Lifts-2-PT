@@ -105,6 +105,7 @@
             this.Controls.Add(this.deleteButton);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(495, 415);
             this.Name = "PlanFireAlarmForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlanFireAlarmForm";
